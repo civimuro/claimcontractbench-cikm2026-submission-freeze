@@ -33,6 +33,7 @@ artifact/paper_claim_gold_benchmark_cases_20260521.csv,paper-claim gold benchmar
 artifact/paper_excerpt_reviewer_value_schema_20260521.json,paper-excerpt reviewer-value schema,yes,yes,no,Public-safe schema for source-anchored selected-excerpt reviewer-value rows
 artifact/paper_excerpt_reviewer_value_cases_20260521.csv,paper-excerpt reviewer-value cases,yes,yes,no,Public-safe source-anchored selected-excerpt benchmark rows and registered controls
 src/validate_release_surface.py,validation script,yes,yes,no,Standard-library release surface validator
+src/claimcontractbench.py,user-facing command hub,yes,yes,no,Standard-library convenience CLI for doctor smoke templates packet initialization and packet review
 src/run_projection_smoke.py,projection smoke runner,yes,yes,no,Standard-library runner that regenerates five public claim-passport rows
 src/run_claim_audit_report.py,claim audit report runner,yes,yes,no,Standard-library runner that generates reviewer-facing claim audit reports from public-safe derived assets
 src/run_claim_template_admission.py,claim template admission runner,yes,yes,no,Standard-library runner that admits support-only and mainline templates or rejects patchwork expansion

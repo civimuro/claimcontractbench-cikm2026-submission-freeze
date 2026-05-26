@@ -20,8 +20,8 @@ routed metric-to-claim audits.
 From the release root:
 
 ```bash
-python3 src/validate_release_surface.py
-python3 src/run_llm_claim_review_packet.py \
+python3 src/claimcontractbench.py doctor
+python3 src/claimcontractbench.py review \
   --input artifact/llm_claim_review_packet_template_20260527.csv \
   --output reports/llm_claim_review_packet_20260527
 ```
@@ -50,7 +50,7 @@ reports/llm_claim_review_packet_20260527/llm_claim_review_packet_report.md
 To test the happy path plus several bad packets that must fail closed:
 
 ```bash
-python3 src/run_release_smoke_suite.py
+python3 src/claimcontractbench.py smoke
 ```
 
 ## Use It On A New Paper
@@ -58,11 +58,17 @@ python3 src/run_release_smoke_suite.py
 1. Give an LLM the prompt below and the paper text, abstract, or results
    section you are allowed to process.
 2. Ask it to output only CSV rows with the exact header shown below.
-3. Save the CSV as, for example, `my_claim_packet.csv`.
-4. Run:
+3. Create a packet file:
 
 ```bash
-python3 src/run_llm_claim_review_packet.py \
+python3 src/claimcontractbench.py init-packet --output my_claim_packet.csv
+```
+
+4. Replace the header-only file with the LLM's plain CSV output.
+5. Run:
+
+```bash
+python3 src/claimcontractbench.py review \
   --input my_claim_packet.csv \
   --output reports/my_claim_packet
 ```
@@ -120,6 +126,12 @@ Exact registered examples are in:
 - `data/claim_passport_casebook_20260519.csv`
 - `data/nab_adapter_visual_passport_rows_20260519.csv`
 - `artifact/claim_template_admission_cases_20260521.csv`
+
+You can also print the current shortlist:
+
+```bash
+python3 src/claimcontractbench.py templates
+```
 
 If a paper is about model cards, datasheets, robustness, distribution shift,
 selective prediction, LLM evaluation, legal safety, novelty, proof correctness,

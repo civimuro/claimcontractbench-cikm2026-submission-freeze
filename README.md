@@ -13,15 +13,18 @@ The release is designed so that a reviewer can start without raw data, GPUs, or
 third-party Python packages. From the release root:
 
 ```bash
-python3 src/validate_release_surface.py
-python3 src/run_projection_smoke.py
+python3 src/claimcontractbench.py doctor
+python3 src/claimcontractbench.py smoke
 ```
 
-For a single command that also checks the LLM-assisted path and critical
-fail-closed bad packets:
+The first command checks that the release root is usable. The second command
+runs positive paths and critical fail-closed bad-packet checks.
+
+The lower-level scripts remain available if you want to inspect each step:
 
 ```bash
-python3 src/run_release_smoke_suite.py
+python3 src/validate_release_surface.py
+python3 src/run_projection_smoke.py
 ```
 
 For the fuller reviewer path, follow:
@@ -29,7 +32,7 @@ For the fuller reviewer path, follow:
 - `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 
-The surface validator should report 67 required files, 67 public-safe rows, and
+The surface validator should report 68 required files, 68 public-safe rows, and
 0 raw-data rows. The projection smoke runner should regenerate five public
 claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
 The release smoke suite should report three positive checks and four
@@ -41,8 +44,20 @@ ClaimContractBench is easiest to try as an LLM-assisted workflow: let an LLM
 extract and route candidate claims, then let the deterministic release scripts
 accept, rewrite, suppress, or fail closed.
 
+To see the registered template boundaries:
+
 ```bash
-python3 src/run_llm_claim_review_packet.py \
+python3 src/claimcontractbench.py templates
+```
+
+To create a blank packet for an LLM to fill:
+
+```bash
+python3 src/claimcontractbench.py init-packet --output my_claim_packet.csv
+```
+
+```bash
+python3 src/claimcontractbench.py review \
   --input artifact/llm_claim_review_packet_template_20260527.csv \
   --output reports/llm_claim_review_packet_20260527
 ```
