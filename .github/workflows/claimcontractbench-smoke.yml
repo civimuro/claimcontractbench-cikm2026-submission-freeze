@@ -1,0 +1,20 @@
+name: ClaimContractBench smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  release-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run release smoke suite
+        run: python3 src/run_release_smoke_suite.py

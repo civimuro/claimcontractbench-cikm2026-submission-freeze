@@ -1,6 +1,7 @@
 path,role,required,public_safe,raw_data,notes
 README.md,reviewer resource entrypoint,yes,yes,no,Top-level resource orientation for reviewer checkout
 .gitignore,generated report ignore rules,yes,yes,no,Release-root ignore rules for generated report directories
+.github/workflows/claimcontractbench-smoke.yml,GitHub Actions smoke workflow,yes,yes,no,Optional repository CI workflow that runs the standard-library release smoke suite
 LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and derived resource files; raw third-party data is excluded
 LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
@@ -39,6 +40,7 @@ src/run_reviewer_claim_intake.py,reviewer claim-intake runner,yes,yes,no,Standar
 src/run_reviewer_audit_demo.py,reviewer-facing audit demo runner,yes,yes,no,Standard-library runner that joins paragraph routing and deterministic intake into reviewer audit cards
 src/run_reviewer_audit_demo_regression.py,reviewer-facing audit demo regression runner,yes,yes,no,Standard-library runner that locks the reviewer demo card counts decisions fail-closed boundary and HTML surface
 src/run_llm_claim_review_packet.py,LLM claim review packet runner,yes,yes,no,Standard-library runner that turns LLM-produced claim-routing packets into fail-closed review reports
+src/run_release_smoke_suite.py,release smoke suite runner,yes,yes,no,Standard-library one-command smoke suite covering positive paths and critical fail-closed packet checks
 src/run_claim_audit_gold_probe.py,claim-audit gold probe runner,yes,yes,no,Standard-library runner that distinguishes registered-template calls from adapter-needed and out-of-scope text
 src/run_paper_claim_gold_benchmark.py,paper-claim gold benchmark runner,yes,yes,no,Standard-library runner that evaluates 40-paper claim benchmark consistency and fail-closed routing
 src/run_paper_claim_annotation_agreement.py,paper-claim annotation agreement runner,yes,yes,no,Standard-library runner that validates blind annotation packets and computes second-annotator agreement when labels are filled

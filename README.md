@@ -17,14 +17,23 @@ python3 src/validate_release_surface.py
 python3 src/run_projection_smoke.py
 ```
 
+For a single command that also checks the LLM-assisted path and critical
+fail-closed bad packets:
+
+```bash
+python3 src/run_release_smoke_suite.py
+```
+
 For the fuller reviewer path, follow:
 
 - `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 
-The surface validator should report 65 required files, 65 public-safe rows, and
+The surface validator should report 67 required files, 67 public-safe rows, and
 0 raw-data rows. The projection smoke runner should regenerate five public
 claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
+The release smoke suite should report three positive checks and four
+fail-closed negative checks.
 
 ## Use With An LLM In Five Minutes
 

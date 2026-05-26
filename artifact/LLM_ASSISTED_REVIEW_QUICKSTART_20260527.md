@@ -47,6 +47,12 @@ Open the generated report:
 reports/llm_claim_review_packet_20260527/llm_claim_review_packet_report.md
 ```
 
+To test the happy path plus several bad packets that must fail closed:
+
+```bash
+python3 src/run_release_smoke_suite.py
+```
+
 ## Use It On A New Paper
 
 1. Give an LLM the prompt below and the paper text, abstract, or results
