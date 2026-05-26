@@ -65,7 +65,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("Next useful commands:")
     print("- python3 src/claimcontractbench.py smoke")
     print("- python3 src/claimcontractbench.py templates")
-    print("- python3 src/claimcontractbench.py init-packet --output my_claim_packet.csv")
+    print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
     return 0
 
 
@@ -109,6 +109,7 @@ def command_init_packet(args: argparse.Namespace) -> int:
     print(f"output: {output}")
     print("")
     print("Send this CSV header to your LLM and ask it to return plain CSV only.")
+    print("The default claim_packets/ folder is ignored by git.")
     print("Then run:")
     print(f"python3 src/claimcontractbench.py review --input {output}")
     return 0

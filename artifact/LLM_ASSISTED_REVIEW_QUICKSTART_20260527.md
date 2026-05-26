@@ -61,7 +61,7 @@ python3 src/claimcontractbench.py smoke
 3. Create a packet file:
 
 ```bash
-python3 src/claimcontractbench.py init-packet --output my_claim_packet.csv
+python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
 ```
 
 4. Replace the header-only file with the LLM's plain CSV output.
@@ -69,7 +69,7 @@ python3 src/claimcontractbench.py init-packet --output my_claim_packet.csv
 
 ```bash
 python3 src/claimcontractbench.py review \
-  --input my_claim_packet.csv \
+  --input claim_packets/my_claim_packet.csv \
   --output reports/my_claim_packet
 ```
 

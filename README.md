@@ -53,7 +53,7 @@ python3 src/claimcontractbench.py templates
 To create a blank packet for an LLM to fill:
 
 ```bash
-python3 src/claimcontractbench.py init-packet --output my_claim_packet.csv
+python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
 ```
 
 ```bash
