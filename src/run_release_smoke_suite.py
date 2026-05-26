@@ -269,13 +269,29 @@ def main() -> int:
                 str(temp_root / "template_admission_probe"),
             ],
         )
+        feedback_output = temp_root / "feedback" / "my_feedback_report.md"
+        run_command(
+            "optional feedback scaffold",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "init-feedback",
+                "--output",
+                str(feedback_output),
+            ],
+        )
+        if not feedback_output.exists():
+            print("FAIL optional feedback scaffold")
+            print(f"missing feedback output: {feedback_output}")
+            raise SystemExit(1)
         run_negative_packets(root, temp_root)
 
     if (root / "src" / "__pycache__").exists():
         shutil.rmtree(root / "src" / "__pycache__")
 
     print("PASS release smoke suite")
-    print("positive_checks: 4")
+    print("positive_checks: 5")
     print("negative_fail_closed_checks: 4")
     return 0
 

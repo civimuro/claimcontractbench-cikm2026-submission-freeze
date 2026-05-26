@@ -32,10 +32,10 @@ For the fuller reviewer path, follow:
 - `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 
-The surface validator should report 70 required files, 70 public-safe rows, and
+The surface validator should report 72 required files, 72 public-safe rows, and
 0 raw-data rows. The projection smoke runner should regenerate five public
 claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
-The release smoke suite should report four positive checks and four
+The release smoke suite should report five positive checks and four
 fail-closed negative checks.
 
 ## The Main Path
@@ -72,6 +72,18 @@ python3 src/claimcontractbench.py admit-template --input claim_packets/my_templa
 The LLM is a drafting and routing assistant. ClaimContractBench is the
 fail-closed checker for registered claim templates and candidate template
 contracts.
+
+5. If a trial user agrees to share usability feedback, create an optional
+   feedback report:
+
+```bash
+python3 src/claimcontractbench.py feedback-guide
+python3 src/claimcontractbench.py init-feedback --output feedback/my_feedback_report.md
+```
+
+The feedback path is consent-based and should not include confidential paper
+text, private reviewer notes, raw data, local paths, or author identities unless
+sharing is explicitly allowed.
 
 ## Use The Included Example
 
@@ -116,6 +128,12 @@ If no registered template matches, use
 `artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md`. A new template must supply
 an evidence unit, finite claim template, `G/Q/U` bindings, action mapping,
 typed preorder or incomparability, forbidden claim, anchor, and boundary note.
+
+If a user tries the LLM-assisted path, the optional
+`artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md` asks their AI assistant
+to report time-to-first-useful-output, CSV validity, overconfident template
+calls, missing template families, confusing terms, privacy blockers, and whether
+the generated report changed a review or rewrite decision.
 
 This archive is a manifest-controlled derived-asset release. Running the
 quickstart creates reviewer reports under `reports/`; those reports are

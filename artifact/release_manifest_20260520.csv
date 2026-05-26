@@ -11,6 +11,8 @@ artifact/RELEASE_ROOT_PLAN_20260520.md,release plan,yes,yes,no,Maps current work
 artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md,reviewer quickstart,yes,yes,no,Release-root relative quickstart draft
 artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md,LLM-assisted review quickstart,yes,yes,no,Copy-paste LLM front-end workflow and prompt guide for fail-closed claim review packets
 artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md,template admission quickstart,yes,yes,no,Copy-paste guide for drafting and checking new typed claim templates when no registered template matches
+artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md,user-experience feedback guide,yes,yes,no,Consent-based guide and LLM prompt for optional trial feedback reports
+artifact/user_experience_feedback_template_20260527.md,user-experience feedback template,yes,yes,no,Public-safe Markdown template for optional usability and LLM-routing feedback
 artifact/release_manifest_20260520.csv,release manifest,yes,yes,no,Machine-readable public-safe release surface
 artifact/source_license_snapshot_20260520.csv,source/license snapshot,yes,yes,no,Access-date refreshed source and redistribution posture table
 artifact/dataset_source_manifest_20260520.csv,dataset/source manifest,yes,yes,no,Public-safe dataset roles sources and release boundaries

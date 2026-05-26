@@ -260,3 +260,25 @@ author, or institutional rules that apply to you. For confidential peer review,
 use an approved private model or do not use the LLM front end. ClaimContractBench
 can still run on manually prepared CSV packets without sending any text to an
 external model.
+
+## Optional Feedback Report
+
+If the user agrees, their AI assistant can also write a separate user-experience
+feedback report after the trial. This is not required to use the tool.
+
+```bash
+python3 src/claimcontractbench.py feedback-guide
+python3 src/claimcontractbench.py init-feedback --output feedback/my_feedback_report.md
+```
+
+The feedback report should focus on usability and reliability: whether the LLM
+could produce valid CSV, whether it overcalled registered templates, which rows
+needed template admission, which terms were confusing, and which outputs were
+actually useful for review or author revision. It should not include
+confidential paper text, private reviewer notes, raw data, local paths, or
+author identities unless sharing is explicitly allowed.
+
+Use the prompt and template in:
+
+- `artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md`
+- `artifact/user_experience_feedback_template_20260527.md`

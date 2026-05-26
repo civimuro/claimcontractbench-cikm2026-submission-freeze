@@ -86,6 +86,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("- python3 src/claimcontractbench.py templates")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
     print("- python3 src/claimcontractbench.py admission-guide")
+    print("- python3 src/claimcontractbench.py feedback-guide")
     return 0
 
 
@@ -208,6 +209,58 @@ def command_admission_guide(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_feedback_guide(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    guide = root / "artifact" / "USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md"
+    template = root / "artifact" / "user_experience_feedback_template_20260527.md"
+    print("Optional user-experience feedback path")
+    print("")
+    print("Use this only when the user agrees to share a feedback report.")
+    print("Do not include confidential paper text, private review notes, raw data,")
+    print("local paths, or author identities unless sharing is explicitly allowed.")
+    print("")
+    print("Guide:")
+    print(f"  {guide}")
+    print("Template:")
+    print(f"  {template}")
+    print("")
+    print("Create a local feedback draft:")
+    print("  python3 src/claimcontractbench.py init-feedback --output feedback/my_feedback_report.md")
+    print("")
+    print("Useful feedback covers:")
+    for item in [
+        "time to first useful report",
+        "whether the LLM produced valid CSV on the first try",
+        "overconfident registered-template calls",
+        "NEEDS_TEMPLATE_ADMISSION cases",
+        "confusing terms or commands",
+        "missing template families",
+        "privacy blockers",
+        "whether the report changed a review or rewrite decision",
+    ]:
+        print(f"- {item}")
+    return 0
+
+
+def command_init_feedback(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    output = resolve(root, args.output)
+    if output.exists() and not args.force:
+        print("FAIL init feedback")
+        print(f"output already exists: {output}")
+        print("Use --force to overwrite.")
+        return 1
+    output.parent.mkdir(parents=True, exist_ok=True)
+    source = root / "artifact" / "user_experience_feedback_template_20260527.md"
+    shutil.copy2(source, output)
+    print("PASS init feedback")
+    print(f"output: {output}")
+    print("")
+    print("This report is optional and consent-based.")
+    print("Keep confidential paper text and private review notes out unless sharing is explicitly allowed.")
+    return 0
+
+
 def command_templates(args: argparse.Namespace) -> int:
     root = resolve(Path.cwd(), args.root)
     path = root / "artifact" / "claim_template_admission_cases_20260521.csv"
@@ -283,6 +336,13 @@ def build_parser() -> argparse.ArgumentParser:
     add_subcommand_root(admission_guide)
     admission_guide.set_defaults(func=command_admission_guide)
 
+    feedback_guide = subparsers.add_parser(
+        "feedback-guide",
+        help="Explain optional consent-based user feedback reports.",
+    )
+    add_subcommand_root(feedback_guide)
+    feedback_guide.set_defaults(func=command_feedback_guide)
+
     init_packet = subparsers.add_parser("init-packet", help="Create a CSV packet skeleton.")
     add_subcommand_root(init_packet)
     init_packet.add_argument("--output", required=True, help="CSV path to create.")
@@ -304,6 +364,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Write only the header instead of copying the boundary-probe example.",
     )
     init_template.set_defaults(func=command_init_template)
+
+    init_feedback = subparsers.add_parser("init-feedback", help="Create a feedback Markdown template.")
+    add_subcommand_root(init_feedback)
+    init_feedback.add_argument("--output", required=True, help="Markdown path to create.")
+    init_feedback.add_argument("--force", action="store_true", help="Overwrite the output if it exists.")
+    init_feedback.set_defaults(func=command_init_feedback)
 
     review = subparsers.add_parser("review", help="Review an LLM-produced claim packet.")
     add_subcommand_root(review)
