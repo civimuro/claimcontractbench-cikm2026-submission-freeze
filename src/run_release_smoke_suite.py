@@ -269,6 +269,21 @@ def main() -> int:
                 str(temp_root / "template_admission_probe"),
             ],
         )
+        agent_guide = run_command(
+            "one-shot agent guide",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "agent-guide",
+            ],
+        )
+        assert_contains("one-shot agent guide", agent_guide.stdout, "One-shot AI-agent review path")
+        assert_contains(
+            "one-shot agent guide",
+            agent_guide.stdout,
+            "AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md",
+        )
         feedback_output = temp_root / "feedback" / "my_feedback_report.md"
         run_command(
             "optional feedback scaffold",
@@ -291,7 +306,7 @@ def main() -> int:
         shutil.rmtree(root / "src" / "__pycache__")
 
     print("PASS release smoke suite")
-    print("positive_checks: 5")
+    print("positive_checks: 6")
     print("negative_fail_closed_checks: 4")
     return 0
 

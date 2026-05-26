@@ -24,6 +24,7 @@ The first CIKM-facing release should include:
 - source/provenance and license posture table;
 - environment note;
 - reviewer quickstart;
+- one-shot AI-agent handoff guide;
 - release or reviewer-accessible archive plan.
 
 Raw datasets are excluded by default unless source terms clearly permit
@@ -111,7 +112,7 @@ python3 src/run_paper_claim_annotation_agreement.py --output reports/paper_claim
 ```
 
 Current work-use status: the validator passes from the `WORKSPACE/` root against
-`artifact/release_manifest_20260520.csv`, with 72 required public-safe rows and
+`artifact/release_manifest_20260520.csv`, with 73 required public-safe rows and
 0 raw-data rows. The manifest includes `LICENSE.md` plus the Apache-2.0 and
 CC-BY-4.0 license texts. The validator scans required release files for private
 coordination paths, local machine paths, and credential-like patterns, and it

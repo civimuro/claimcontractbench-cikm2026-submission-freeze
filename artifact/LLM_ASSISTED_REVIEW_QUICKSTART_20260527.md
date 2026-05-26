@@ -19,10 +19,22 @@ Shortest path:
 
 ```bash
 python3 src/claimcontractbench.py doctor
+python3 src/claimcontractbench.py agent-guide
 python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
 # ask an LLM to fill claim_packets/my_claim_packet.csv as plain CSV
 python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv
 ```
+
+If an AI coding assistant or LLM agent has local file and command access, the
+user-facing one-sentence handoff is:
+
+```text
+Use the tools in this repository to assist a review of this paper.
+```
+
+The agent should follow `artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md`.
+Without local command access, an LLM can draft the CSV packet but cannot run the
+deterministic checks.
 
 If the report says `NEEDS_TEMPLATE_ADMISSION`, switch to:
 

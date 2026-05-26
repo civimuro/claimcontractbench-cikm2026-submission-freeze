@@ -30,12 +30,13 @@ python3 src/run_projection_smoke.py
 For the fuller reviewer path, follow:
 
 - `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
+- `artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md`
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 
-The surface validator should report 72 required files, 72 public-safe rows, and
+The surface validator should report 73 required files, 73 public-safe rows, and
 0 raw-data rows. The projection smoke runner should regenerate five public
 claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
-The release smoke suite should report five positive checks and four
+The release smoke suite should report six positive checks and four
 fail-closed negative checks.
 
 ## The Main Path
@@ -48,19 +49,36 @@ Use the project in this order:
 python3 src/claimcontractbench.py doctor
 ```
 
-2. Ask an LLM to turn paper claims into a CSV packet:
+2. If you are using an AI coding assistant, give it the paper text or file path
+   and say:
+
+```text
+Use the tools in this repository to assist a review of this paper.
+```
+
+Then point it to:
+
+```bash
+python3 src/claimcontractbench.py agent-guide
+```
+
+This one-shot path is meant for agents with local file and command access. If
+your LLM cannot run local commands, it can draft the CSV packet, but it cannot
+complete the deterministic tool run by itself.
+
+3. Ask an LLM to turn paper claims into a CSV packet:
 
 ```bash
 python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
 ```
 
-3. Review that packet:
+4. Review that packet:
 
 ```bash
 python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv
 ```
 
-4. If the report says `NEEDS_TEMPLATE_ADMISSION`, do not force a match. Start
+5. If the report says `NEEDS_TEMPLATE_ADMISSION`, do not force a match. Start
    the template-admission path:
 
 ```bash
@@ -73,7 +91,7 @@ The LLM is a drafting and routing assistant. ClaimContractBench is the
 fail-closed checker for registered claim templates and candidate template
 contracts.
 
-5. If a trial user agrees to share usability feedback, create an optional
+6. If a trial user agrees to share usability feedback, create an optional
    feedback report:
 
 ```bash

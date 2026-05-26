@@ -84,6 +84,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("Next useful commands:")
     print("- python3 src/claimcontractbench.py smoke")
     print("- python3 src/claimcontractbench.py templates")
+    print("- python3 src/claimcontractbench.py agent-guide")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
     print("- python3 src/claimcontractbench.py admission-guide")
     print("- python3 src/claimcontractbench.py feedback-guide")
@@ -209,6 +210,33 @@ def command_admission_guide(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_agent_guide(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    guide = root / "artifact" / "AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md"
+    llm_guide = root / "artifact" / "LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md"
+    print("One-shot AI-agent review path")
+    print("")
+    print('User instruction this guide supports: "Use the tools in this repository to assist a review of this paper."')
+    print("")
+    print("Read:")
+    print(f"  {guide}")
+    print(f"  {llm_guide}")
+    print("")
+    print("Minimal local workflow:")
+    print("  python3 src/claimcontractbench.py doctor")
+    print("  python3 src/claimcontractbench.py smoke")
+    print("  python3 src/claimcontractbench.py templates")
+    print("  python3 src/claimcontractbench.py init-packet --output claim_packets/agent_claim_packet.csv")
+    print("  # extract candidate empirical claims from the supplied paper into the packet")
+    print("  python3 src/claimcontractbench.py review --input claim_packets/agent_claim_packet.csv --output reports/agent_claim_review")
+    print("")
+    print("Stop or ask for input if no paper text/path is supplied, local commands cannot run,")
+    print("or confidential text would need to be sent to an unapproved external model.")
+    print("")
+    print("Report claim-level actions, template gaps, out-of-scope rows, tool limits, and next actions.")
+    return 0
+
+
 def command_feedback_guide(args: argparse.Namespace) -> int:
     root = resolve(Path.cwd(), args.root)
     guide = root / "artifact" / "USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md"
@@ -303,7 +331,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="One-entry ClaimContractBench command hub.",
         epilog=(
-            "Typical path: doctor -> smoke -> init-packet -> ask an LLM to fill "
+            "Typical path: doctor -> smoke -> agent-guide -> init-packet -> ask an LLM to fill "
             "the packet -> review."
         ),
     )
@@ -335,6 +363,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     add_subcommand_root(admission_guide)
     admission_guide.set_defaults(func=command_admission_guide)
+
+    agent_guide = subparsers.add_parser(
+        "agent-guide",
+        help="Explain the one-shot AI-agent assisted review workflow.",
+    )
+    add_subcommand_root(agent_guide)
+    agent_guide.set_defaults(func=command_agent_guide)
 
     feedback_guide = subparsers.add_parser(
         "feedback-guide",
