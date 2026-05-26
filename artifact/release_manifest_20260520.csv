@@ -10,6 +10,7 @@ artifact/ENVIRONMENT_NOTE_20260526.md,environment note,yes,yes,no,Python and run
 artifact/RELEASE_ROOT_PLAN_20260520.md,release plan,yes,yes,no,Maps current workspace to future public release root
 artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md,reviewer quickstart,yes,yes,no,Release-root relative quickstart draft
 artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md,LLM-assisted review quickstart,yes,yes,no,Copy-paste LLM front-end workflow and prompt guide for fail-closed claim review packets
+artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md,template admission quickstart,yes,yes,no,Copy-paste guide for drafting and checking new typed claim templates when no registered template matches
 artifact/release_manifest_20260520.csv,release manifest,yes,yes,no,Machine-readable public-safe release surface
 artifact/source_license_snapshot_20260520.csv,source/license snapshot,yes,yes,no,Access-date refreshed source and redistribution posture table
 artifact/dataset_source_manifest_20260520.csv,dataset/source manifest,yes,yes,no,Public-safe dataset roles sources and release boundaries
@@ -21,6 +22,7 @@ artifact/claim_template_admission_cases_20260521.csv,template-admission cases,ye
 artifact/reviewer_claim_intake_schema_20260521.json,reviewer claim-intake schema,yes,yes,no,Machine-readable schema for application-facing claim intake rows
 artifact/reviewer_claim_intake_examples_20260521.csv,reviewer claim-intake examples,yes,yes,no,Public-safe author and reviewer claim-intake examples for application decisions
 artifact/llm_claim_review_packet_template_20260527.csv,LLM claim review packet template,yes,yes,no,Public-safe CSV template for LLM-assisted claim extraction and route handoff
+artifact/template_admission_packet_template_20260527.csv,template admission packet template,yes,yes,no,Public-safe CSV example for drafting candidate templates before admission checking
 artifact/application_motivation_cases_20260521.csv,application motivation cases,yes,yes,no,Public-safe external case map connecting application pressures to claim-governance decisions
 artifact/claim_audit_gold_probe_schema_20260521.json,claim-audit gold probe schema,yes,yes,no,Machine-readable schema for routing and decision gold-probe rows
 artifact/claim_audit_gold_probe_cases_20260521.csv,claim-audit gold probe cases,yes,yes,no,Public-safe gold-probe rows separating registered calls from adapter-needed and out-of-scope text

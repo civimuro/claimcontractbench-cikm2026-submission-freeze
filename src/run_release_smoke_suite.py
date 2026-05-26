@@ -257,13 +257,25 @@ def main() -> int:
                 str(temp_root / "llm_happy_path"),
             ],
         )
+        run_command(
+            "template admission boundary-probe example",
+            root,
+            [
+                sys.executable,
+                "src/run_claim_template_admission.py",
+                "--cases",
+                "artifact/template_admission_packet_template_20260527.csv",
+                "--output",
+                str(temp_root / "template_admission_probe"),
+            ],
+        )
         run_negative_packets(root, temp_root)
 
     if (root / "src" / "__pycache__").exists():
         shutil.rmtree(root / "src" / "__pycache__")
 
     print("PASS release smoke suite")
-    print("positive_checks: 3")
+    print("positive_checks: 4")
     print("negative_fail_closed_checks: 4")
     return 0
 

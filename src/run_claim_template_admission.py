@@ -92,6 +92,11 @@ def parse_args() -> argparse.Namespace:
         default="reports/claim_template_admission_20260521",
         help="Report output directory. Relative paths are resolved under root.",
     )
+    parser.add_argument(
+        "--cases",
+        default=FILES["cases"],
+        help="Template-admission CSV to validate. Relative paths are resolved under root.",
+    )
     return parser.parse_args()
 
 
@@ -119,6 +124,13 @@ def resolve_output(root: Path, output: str) -> Path:
     if not out.is_absolute():
         out = root / out
     return out.resolve()
+
+
+def resolve_input(root: Path, value: str) -> Path:
+    path = Path(value)
+    if not path.is_absolute():
+        path = root / path
+    return path.resolve()
 
 
 def short(text: str, limit: int = 150) -> str:
@@ -466,6 +478,9 @@ def main() -> int:
     args = parse_args()
     root = Path(args.root).resolve()
     output_dir = resolve_output(root, args.output)
+    cases_path = resolve_input(root, args.cases)
+    default_cases_path = (root / FILES["cases"]).resolve()
+    default_case_set = cases_path == default_cases_path
 
     failures: list[str] = []
     try:
@@ -475,10 +490,10 @@ def main() -> int:
         failures.append(f"{FILES['schema']}: could not read schema: {exc}")
 
     try:
-        cases, case_header = read_csv(root / FILES["cases"])
+        cases, case_header = read_csv(cases_path)
     except OSError as exc:
         cases, case_header = [], []
-        failures.append(f"{FILES['cases']}: could not read cases: {exc}")
+        failures.append(f"{cases_path}: could not read cases: {exc}")
 
     try:
         casebook_rows, _ = read_csv(root / FILES["casebook"])
@@ -583,8 +598,12 @@ def main() -> int:
         checks,
         "ADM-07",
         "mainline action coverage",
-        mainline_actions == ACTION_FAMILIES,
-        "mainline templates cover all five action families",
+        (not default_case_set) or mainline_actions == ACTION_FAMILIES,
+        (
+            "custom template packet: action-family coverage is not required"
+            if not default_case_set
+            else "mainline templates cover all five action families"
+        ),
         f"found mainline actions {sorted(mainline_actions)}; expected {sorted(ACTION_FAMILIES)}",
     )
 
@@ -610,8 +629,13 @@ def main() -> int:
         checks,
         "ADM-09",
         "boundary rejection remains active",
-        any(row.get("domain_id") == "ai4i_predictive_maintenance" for row in rejected_rows),
-        "AI4I boundary probe is rejected until it supplies the adapter contract",
+        (not default_case_set)
+        or any(row.get("domain_id") == "ai4i_predictive_maintenance" for row in rejected_rows),
+        (
+            "custom template packet: fixed AI4I boundary probe is not required"
+            if not default_case_set
+            else "AI4I boundary probe is rejected until it supplies the adapter contract"
+        ),
         "no rejected AI4I boundary probe found",
     )
 

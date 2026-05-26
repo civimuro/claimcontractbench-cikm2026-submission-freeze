@@ -15,6 +15,21 @@ The current release does not provide autonomous full-paper reviewing. It
 provides a conservative LLM-assisted front end for registered or explicitly
 routed metric-to-claim audits.
 
+Shortest path:
+
+```bash
+python3 src/claimcontractbench.py doctor
+python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
+# ask an LLM to fill claim_packets/my_claim_packet.csv as plain CSV
+python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv
+```
+
+If the report says `NEEDS_TEMPLATE_ADMISSION`, switch to:
+
+```bash
+python3 src/claimcontractbench.py admission-guide
+```
+
 ## Five-Minute Path
 
 From the release root:
@@ -220,6 +235,23 @@ For paper review, the most useful rows are often not the accepted ones. The
 high-value rows are usually rewrites, suppressions, support-only boundaries,
 and admission tickets, because those show where a paper's prose outruns its
 evidence.
+
+## When No Template Matches
+
+`NEEDS_TEMPLATE_ADMISSION` is not an error. It means the current release is
+refusing to pretend that a nearby template applies. Use:
+
+```bash
+python3 src/claimcontractbench.py admission-guide
+python3 src/claimcontractbench.py init-template --output claim_packets/my_template_admission.csv
+python3 src/claimcontractbench.py admit-template --input claim_packets/my_template_admission.csv
+```
+
+The user's LLM should draft a candidate row following
+`artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md`. The required idea is:
+new domains enter only by supplying a typed evidence unit, finite claim
+template, `G/Q/U` bindings, action mapping, preorder/incomparability,
+forbidden claim, anchor, and boundary note.
 
 ## Safety And Privacy
 

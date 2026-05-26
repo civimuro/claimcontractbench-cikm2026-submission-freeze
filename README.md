@@ -32,28 +32,53 @@ For the fuller reviewer path, follow:
 - `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 
-The surface validator should report 68 required files, 68 public-safe rows, and
+The surface validator should report 70 required files, 70 public-safe rows, and
 0 raw-data rows. The projection smoke runner should regenerate five public
 claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
-The release smoke suite should report three positive checks and four
+The release smoke suite should report four positive checks and four
 fail-closed negative checks.
 
-## Use With An LLM In Five Minutes
+## The Main Path
 
-ClaimContractBench is easiest to try as an LLM-assisted workflow: let an LLM
-extract and route candidate claims, then let the deterministic release scripts
-accept, rewrite, suppress, or fail closed.
+Use the project in this order:
+
+1. Check the checkout:
+
+```bash
+python3 src/claimcontractbench.py doctor
+```
+
+2. Ask an LLM to turn paper claims into a CSV packet:
+
+```bash
+python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
+```
+
+3. Review that packet:
+
+```bash
+python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv
+```
+
+4. If the report says `NEEDS_TEMPLATE_ADMISSION`, do not force a match. Start
+   the template-admission path:
+
+```bash
+python3 src/claimcontractbench.py admission-guide
+python3 src/claimcontractbench.py init-template --output claim_packets/my_template_admission.csv
+python3 src/claimcontractbench.py admit-template --input claim_packets/my_template_admission.csv
+```
+
+The LLM is a drafting and routing assistant. ClaimContractBench is the
+fail-closed checker for registered claim templates and candidate template
+contracts.
+
+## Use The Included Example
 
 To see the registered template boundaries:
 
 ```bash
 python3 src/claimcontractbench.py templates
-```
-
-To create a blank packet for an LLM to fill:
-
-```bash
-python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
 ```
 
 ```bash
@@ -80,14 +105,17 @@ checks_failed: 0
 For a new paper, copy the prompt in
 `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`, ask your LLM to output
 the required CSV packet, and rerun the command with that CSV as `--input`.
-The LLM is only the claim-extraction front end; ClaimContractBench remains the
-fail-closed claim-governance layer.
 
 For new-paper text, most rows should usually become `NEEDS_TEMPLATE_ADMISSION`
 or `OUT_OF_SCOPE_DO_NOT_CALL` unless they exactly match a registered control or
 template. Unknown templates, malformed CSV, private local paths, duplicate
 packet ids, and missing human-check flags are treated as packet failures rather
 than silently accepted rows.
+
+If no registered template matches, use
+`artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md`. A new template must supply
+an evidence unit, finite claim template, `G/Q/U` bindings, action mapping,
+typed preorder or incomparability, forbidden claim, anchor, and boundary note.
 
 This archive is a manifest-controlled derived-asset release. Running the
 quickstart creates reviewer reports under `reports/`; those reports are
@@ -109,6 +137,12 @@ reviewer, benchmark maintainer, or resource builder ask:
 The resource includes manifests, claim schemas, reportability policies,
 projection actions, validation scripts, source/provenance notes, and compact
 derived evidence tables.
+
+The core theory governs the middle layer between evidence and prose: given a
+typed evidence/context contract, it decides which empirical claim may be
+emitted, weakened, rewritten, relabeled, suppressed, or kept as support-only. It
+does not automatically extract all claims from a paper, prove a model is good,
+invent new templates, judge novelty, or verify proofs.
 
 ## What The Paper Is Not
 
