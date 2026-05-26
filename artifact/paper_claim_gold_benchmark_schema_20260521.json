@@ -1,0 +1,147 @@
+{
+  "schema_id": "paper_claim_gold_benchmark_schema_20260521",
+  "status": "release_surface_schema",
+  "purpose": "Public-safe schema for a paper-claim gold benchmark measuring current claim-audit routing coverage and post-admission action labels.",
+  "source_fields": [
+    {
+      "name": "paper_id",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "source_role",
+      "required": true,
+      "type": "enum",
+      "values": [
+        "external_paper",
+        "registered_control"
+      ]
+    },
+    {
+      "name": "source_family",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "title",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "primary_source",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "year_or_version",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "benchmark_role",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "case_fields": [
+    {
+      "name": "claim_id",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "paper_id",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "source_family",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "case_role",
+      "required": true,
+      "type": "enum",
+      "values": [
+        "external_claim",
+        "registered_control"
+      ]
+    },
+    {
+      "name": "claim_index",
+      "required": true,
+      "type": "integer"
+    },
+    {
+      "name": "route_label",
+      "required": true,
+      "type": "enum",
+      "values": [
+        "CALL_REGISTERED_TEMPLATE",
+        "NEEDS_TEMPLATE_ADMISSION",
+        "OUT_OF_SCOPE_DO_NOT_CALL"
+      ]
+    },
+    {
+      "name": "template_id",
+      "required": false,
+      "type": "string"
+    },
+    {
+      "name": "submitted_claim",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "intended_use",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "gold_action_after_admission",
+      "required": true,
+      "type": "enum",
+      "values": [
+        "ACCEPT",
+        "REWRITE",
+        "WEAKEN",
+        "SUPPORT_ONLY",
+        "SUPPRESS",
+        "REJECT",
+        "OUT_OF_SCOPE"
+      ]
+    },
+    {
+      "name": "current_expected_action",
+      "required": true,
+      "type": "enum",
+      "values": [
+        "ACCEPT",
+        "REWRITE",
+        "WEAKEN",
+        "SUPPORT_ONLY",
+        "SUPPRESS",
+        "REJECT",
+        "UNSUPPORTED_TEMPLATE",
+        "OUT_OF_SCOPE"
+      ]
+    },
+    {
+      "name": "evidence_anchor",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "rationale",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "non_goals": [
+    "verbatim reproduction of paper text",
+    "automatic claim extraction from PDFs",
+    "automatic template routing without a separate extractor benchmark",
+    "judging novelty, proof correctness, code correctness, legal compliance, or deployment safety"
+  ]
+}

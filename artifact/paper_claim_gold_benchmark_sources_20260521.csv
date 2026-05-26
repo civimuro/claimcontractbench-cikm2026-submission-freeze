@@ -1,0 +1,42 @@
+paper_id,source_role,source_family,title,primary_source,year_or_version,benchmark_role
+P001,external_paper,model_reporting,Model Cards for Model Reporting,https://arxiv.org/abs/1810.03993,2018,model reporting and intended-use documentation
+P002,external_paper,dataset_documentation,Datasheets for Datasets,https://arxiv.org/abs/1803.09010,2018,dataset documentation and use-boundary reporting
+P003,external_paper,dataset_documentation,Data Statements for Natural Language Processing,https://aclanthology.org/Q18-1041/,2018,NLP data provenance and generalization boundary
+P004,external_paper,dataset_documentation,Data Cards: Purposeful and Transparent Dataset Documentation for Responsible AI,https://arxiv.org/abs/2204.01075,2022,structured dataset documentation
+P005,external_paper,dataset_quality,The Dataset Nutrition Label (2nd Gen),https://arxiv.org/abs/2201.03954,2022,dataset quality and risk label
+P006,external_paper,distribution_shift,WILDS: A Benchmark of in-the-Wild Distribution Shifts,https://proceedings.mlr.press/v139/koh21a.html,2021,real-world distribution-shift benchmark
+P007,external_paper,distribution_shift,TableShift: Benchmarking Distribution Shift in Tabular Data,https://arxiv.org/abs/2312.07577,2024,tabular distribution-shift benchmark
+P008,external_paper,domain_generalization,In Search of Lost Domain Generalization,https://arxiv.org/abs/2007.01434,2020,domain generalization benchmark protocol
+P009,external_paper,robustness_benchmark,RobustBench: a standardized adversarial robustness benchmark,https://arxiv.org/abs/2010.09670,2020,adversarial robustness benchmark
+P010,external_paper,language_benchmark,GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding,https://arxiv.org/abs/1804.07461,2018,language understanding benchmark
+P011,external_paper,language_benchmark,SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems,https://arxiv.org/abs/1905.00537,2019,general-purpose language understanding benchmark
+P012,external_paper,llm_evaluation,Holistic Evaluation of Language Models,https://arxiv.org/abs/2211.09110,2022,scenario-by-metric language model evaluation
+P013,external_paper,llm_evaluation,Measuring Massive Multitask Language Understanding,https://arxiv.org/abs/2009.03300,2020,multi-task language understanding benchmark
+P014,external_paper,llm_evaluation,Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models,https://arxiv.org/abs/2206.04615,2022,large collaborative capability benchmark
+P015,external_paper,behavioral_testing,Beyond Accuracy: Behavioral Testing of NLP Models with CheckList,https://aclanthology.org/2020.acl-main.442/,2020,behavioral capability testing
+P016,external_paper,behavioral_robustness,Robustness Gym: Unifying the NLP Evaluation Landscape,https://arxiv.org/abs/2101.04840,2021,"slice, transformation, and robustness evaluation"
+P017,external_paper,behavioral_testing,Evaluating Models with Contrast Sets,https://arxiv.org/abs/2004.02709,2020,local perturbation and contrast-set evaluation
+P018,external_paper,behavioral_testing,Right for the Wrong Reasons: Diagnosing Syntactic Heuristics in NLI,https://arxiv.org/abs/1902.01007,2019,heuristic stress testing in NLI
+P019,external_paper,benchmark_validity,What Will it Take to Fix Benchmarking in Natural Language Understanding?,https://arxiv.org/abs/2104.02145,2021,benchmark construct-validity critique
+P020,external_paper,llm_evaluation,EleutherAI Language Model Evaluation Harness,https://github.com/EleutherAI/lm-evaluation-harness,ongoing,evaluation harness and benchmark runner
+P021,external_paper,calibration,On Calibration of Modern Neural Networks,https://arxiv.org/abs/1706.04599,2017,calibration metric and post-hoc calibration
+P022,external_paper,uncertainty_shift,Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift,https://arxiv.org/abs/1906.02530,2019,uncertainty under shift
+P023,external_paper,uncertainty,Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles,https://arxiv.org/abs/1612.01474,2016,ensemble uncertainty and calibration
+P024,external_paper,selective_prediction,Selective Classification for Deep Neural Networks,https://papers.neurips.cc/paper/7073-selective-classification-for-deep-neural-networks,2017,risk-coverage selective prediction
+P025,external_paper,selective_prediction,SelectiveNet: A Deep Neural Network with an Integrated Reject Option,https://arxiv.org/abs/1901.09192,2019,selective prediction reject-option model
+P026,external_paper,conformal_prediction,Uncertainty Sets for Image Classifiers using Conformal Prediction,https://arxiv.org/abs/2009.14193,2020,conformal prediction set coverage
+P027,external_paper,conformal_prediction,Distribution-Free Risk Controlling Prediction Sets,https://arxiv.org/abs/2101.02703,2021,risk-controlling prediction sets
+P028,external_paper,conformal_prediction,A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification,https://arxiv.org/abs/2107.07511,2021,conformal prediction tutorial and guarantees
+P029,external_paper,conformal_prediction,Conformalized Quantile Regression,https://arxiv.org/abs/1905.03222,2019,marginal coverage and interval efficiency
+P030,external_paper,conformal_shift,Conformal Prediction under Covariate Shift,https://arxiv.org/abs/1904.06019,2019,weighted conformal shift guarantee
+P031,external_paper,conformal_limits,Limits of Distribution-Free Conditional Predictive Inference,https://arxiv.org/abs/1903.04684,2019,limits on conditional validity claims
+P032,external_paper,llm_evaluation,OpenAI Evals,https://github.com/openai/evals,ongoing,application eval harness
+P033,external_paper,llm_peer_review,Can Large Language Models Provide Useful Feedback on Research Papers?,https://arxiv.org/abs/2310.01783,2023,LLM feedback for research papers
+P034,external_paper,llm_peer_review,Usefulness of LLMs as an Author Checklist Assistant for Scientific Papers,https://arxiv.org/abs/2411.03417,2024,LLM checklist assistant
+P035,external_paper,llm_peer_review,Can LLM feedback enhance review quality? A randomized study of 20K reviews at ICLR 2025,https://arxiv.org/abs/2504.09737,2025,LLM review-feedback agent
+P036,external_paper,llm_peer_review,Monitoring AI-Modified Content at Scale,https://arxiv.org/abs/2403.07183,2024,AI-modified review content monitoring
+P037,external_paper,llm_peer_review,The AI Review Lottery,https://arxiv.org/abs/2405.02150,2024,AI-assisted peer review effects
+P038,external_paper,scientific_summarization,Generalization Bias in LLM Summarization of Scientific Research,https://arxiv.org/abs/2504.00025,2025,LLM scientific summary overgeneralization
+P039,external_paper,llm_peer_review_security,Invisible Text Injection and Peer Review by AI Models,https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2844042,2026,prompt-injection risk in AI review
+P040,external_paper,benchmark_validity,BetterBench: Assessing and Improving Benchmark Lifecycle Practices,https://papers.nips.cc/paper_files/paper/2024/hash/26889e8359e7ef8a7f5d77457364ca55-Abstract-Datasets_and_Benchmarks_Track.html,2024,benchmark lifecycle and interpretation practice
+CONTROL-01,registered_control,registered_control,ClaimContractBench registered-template control set,WORKSPACE current release assets,2026-05-21,internal registered-template controls

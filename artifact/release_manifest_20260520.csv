@@ -1,0 +1,62 @@
+path,role,required,public_safe,raw_data,notes
+README.md,reviewer resource entrypoint,yes,yes,no,Top-level resource orientation for reviewer checkout
+LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and derived resource files; raw third-party data is excluded
+LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
+LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
+artifact/RESOURCE_SPEC.md,resource specification,yes,yes,no,Defines artifact MVP and release boundaries
+artifact/ENVIRONMENT_NOTE_20260526.md,environment note,yes,yes,no,Python and runtime requirements for first reviewer inspection
+artifact/RELEASE_ROOT_PLAN_20260520.md,release plan,yes,yes,no,Maps current workspace to future public release root
+artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md,reviewer quickstart,yes,yes,no,Release-root relative quickstart draft
+artifact/release_manifest_20260520.csv,release manifest,yes,yes,no,Machine-readable public-safe release surface
+artifact/source_license_snapshot_20260520.csv,source/license snapshot,yes,yes,no,Access-date refreshed source and redistribution posture table
+artifact/dataset_source_manifest_20260520.csv,dataset/source manifest,yes,yes,no,Public-safe dataset roles sources and release boundaries
+artifact/split_scenario_manifest_examples_20260520.csv,split/scenario manifest examples,yes,yes,no,Public-safe scenario and split role examples
+artifact/claim_contract_schema_20260520.json,claim-contract schema,yes,yes,no,Machine-readable claim-contract field schema
+artifact/projection_smoke_cases_20260521.csv,projection smoke inputs,yes,yes,no,Public-safe cases for regenerating five action-family passport rows
+artifact/claim_template_admission_schema_20260521.json,template-admission schema,yes,yes,no,Machine-readable schema for batch claim-template admission
+artifact/claim_template_admission_cases_20260521.csv,template-admission cases,yes,yes,no,Public-safe cases for admitting or rejecting claim templates under the adapter contract
+artifact/reviewer_claim_intake_schema_20260521.json,reviewer claim-intake schema,yes,yes,no,Machine-readable schema for application-facing claim intake rows
+artifact/reviewer_claim_intake_examples_20260521.csv,reviewer claim-intake examples,yes,yes,no,Public-safe author and reviewer claim-intake examples for application decisions
+artifact/application_motivation_cases_20260521.csv,application motivation cases,yes,yes,no,Public-safe external case map connecting application pressures to claim-governance decisions
+artifact/claim_audit_gold_probe_schema_20260521.json,claim-audit gold probe schema,yes,yes,no,Machine-readable schema for routing and decision gold-probe rows
+artifact/claim_audit_gold_probe_cases_20260521.csv,claim-audit gold probe cases,yes,yes,no,Public-safe gold-probe rows separating registered calls from adapter-needed and out-of-scope text
+artifact/paper_claim_gold_benchmark_schema_20260521.json,paper-claim gold benchmark schema,yes,yes,no,Machine-readable schema for paper-claim benchmark sources and cases
+artifact/paper_claim_gold_benchmark_annotation_protocol_20260521.md,paper-claim gold benchmark annotation protocol,yes,yes,no,Public-safe labeling protocol and reliability boundary for paper-claim benchmark rows
+artifact/paper_claim_gold_benchmark_blind_annotation_packet_20260521.csv,paper-claim blind annotation packet,yes,yes,no,Public-safe randomized annotation packet without gold labels for independent second annotation
+artifact/paper_claim_gold_benchmark_annotation_map_20260521.csv,paper-claim annotation map,yes,yes,no,Public-safe map from blind annotation ids to benchmark claim ids for agreement computation
+artifact/paper_claim_gold_benchmark_sources_20260521.csv,paper-claim gold benchmark sources,yes,yes,no,Public-safe source manifest for 40 external empirical ML/evaluation papers plus registered controls
+artifact/paper_claim_gold_benchmark_cases_20260521.csv,paper-claim gold benchmark cases,yes,yes,no,Public-safe paraphrased paper-claim rows for reliability and unsupported-template boundary measurement
+artifact/paper_excerpt_reviewer_value_schema_20260521.json,paper-excerpt reviewer-value schema,yes,yes,no,Public-safe schema for source-anchored selected-excerpt reviewer-value rows
+artifact/paper_excerpt_reviewer_value_cases_20260521.csv,paper-excerpt reviewer-value cases,yes,yes,no,Public-safe source-anchored selected-excerpt benchmark rows and registered controls
+src/validate_release_surface.py,validation script,yes,yes,no,Standard-library release surface validator
+src/run_projection_smoke.py,projection smoke runner,yes,yes,no,Standard-library runner that regenerates five public claim-passport rows
+src/run_claim_audit_report.py,claim audit report runner,yes,yes,no,Standard-library runner that generates reviewer-facing claim audit reports from public-safe derived assets
+src/run_claim_template_admission.py,claim template admission runner,yes,yes,no,Standard-library runner that admits support-only and mainline templates or rejects patchwork expansion
+src/run_reviewer_claim_intake.py,reviewer claim-intake runner,yes,yes,no,Standard-library runner that turns registered templates and submitted claims into author/reviewer decisions
+src/run_reviewer_audit_demo.py,reviewer-facing audit demo runner,yes,yes,no,Standard-library runner that joins paragraph routing and deterministic intake into reviewer audit cards
+src/run_reviewer_audit_demo_regression.py,reviewer-facing audit demo regression runner,yes,yes,no,Standard-library runner that locks the reviewer demo card counts decisions fail-closed boundary and HTML surface
+src/run_claim_audit_gold_probe.py,claim-audit gold probe runner,yes,yes,no,Standard-library runner that distinguishes registered-template calls from adapter-needed and out-of-scope text
+src/run_paper_claim_gold_benchmark.py,paper-claim gold benchmark runner,yes,yes,no,Standard-library runner that evaluates 40-paper claim benchmark consistency and fail-closed routing
+src/run_paper_claim_annotation_agreement.py,paper-claim annotation agreement runner,yes,yes,no,Standard-library runner that validates blind annotation packets and computes second-annotator agreement when labels are filled
+src/run_paper_excerpt_reviewer_value_benchmark.py,paper-excerpt reviewer-value benchmark runner,yes,yes,no,Standard-library runner that evaluates selected source-anchored excerpt reviewer-value decisions and front-end predictions
+data/claim_passport_casebook_20260519.csv,claim passport data,yes,yes,no,Five action-family casebook rows
+data/final_display_assets_20260520/claim_passport_compressed_table.csv,compressed display data,yes,yes,no,Main claim passport display source
+data/support_resource_display_20260520/resource_component_rows.csv,resource component data,yes,yes,no,Resource component table source
+data/gqu_ablation_display_20260520/ablation_display_rows.csv,GQU ablation data,yes,yes,no,Field-intervention control rows
+data/q_policy_sensitivity_display_20260519/q_policy_display_rows.csv,Q policy data,yes,yes,no,Declared reportability-policy sensitivity rows
+data/wdc_unified_stability_display_20260519/model_seed_not_reportable_display.csv,WDC depth data,yes,yes,no,Six-matrix main empirical-depth display source
+data/wdc_unified_stability_display_20260519/model_seed_counts_display.csv,WDC depth counts,yes,yes,no,Six-matrix count support
+data/official_backup_full_matrix_readout_20260520/target_group_summary.csv,official support data,yes,yes,no,Support-only protocol-sensitivity group summary
+data/walmart_amazon_r2_scenario_summary.csv,held-out support data,yes,yes,no,Bounded Walmart-Amazon scenario summary
+data/nab_adapter_visual_passport_rows_20260519.csv,adapter support data,yes,yes,no,Support-only NAB adapter passport rows
+reports/paragraph_claim_span_router_external_eval_guided_20260521/noisy_claim_span_router_items.csv,reviewer demo selected paragraph items,yes,yes,no,Public-safe selected paragraph routing fixture items for reviewer demo regeneration
+reports/paragraph_claim_span_router_external_eval_guided_20260521/noisy_claim_span_router_decisions.csv,reviewer demo selected paragraph decisions,yes,yes,no,Public-safe selected paragraph route decisions for reviewer demo regeneration
+reports/paragraph_claim_span_router_external_eval_guided_20260521/noisy_claim_span_router_summary.json,reviewer demo selected paragraph summary,yes,yes,no,Public-safe selected paragraph route summary for reviewer demo regeneration
+reports/paragraph_claim_span_router_holdout_eval_guided_20260521/noisy_claim_span_router_items.csv,reviewer demo holdout paragraph items,yes,yes,no,Public-safe holdout paragraph routing fixture items for reviewer demo regeneration
+reports/paragraph_claim_span_router_holdout_eval_guided_20260521/noisy_claim_span_router_decisions.csv,reviewer demo holdout paragraph decisions,yes,yes,no,Public-safe holdout paragraph route decisions for reviewer demo regeneration
+reports/paragraph_claim_span_router_holdout_eval_guided_20260521/noisy_claim_span_router_summary.json,reviewer demo holdout paragraph summary,yes,yes,no,Public-safe holdout paragraph route summary for reviewer demo regeneration
+paper/figures/figure1_claim_projection_workflow_20260520.svg,workflow figure,yes,yes,no,Main workflow display source
+paper/figures/figure2_wdc_six_matrix_heatmap_20260520.svg,WDC figure,yes,yes,no,Main empirical-depth display source
+paper/APPENDIX_C_RESOURCE_RELEASE.md,release appendix,yes,yes,no,Work-use release and source posture ledger
+paper/REVIEWER_AUDIT_DEMO_USE_PROTOCOL_20260521.md,reviewer audit demo use protocol,yes,yes,no,Public-safe protocol defining human LLM and deterministic tool roles plus non-goals
+paper/PAPER_EXCERPT_REVIEWER_VALUE_BENCHMARK_20260521.md,paper-excerpt reviewer-value benchmark readout,yes,yes,no,Public-safe readout for selected-excerpt reviewer-value benchmark and transparent baseline

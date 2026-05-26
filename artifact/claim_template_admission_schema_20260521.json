@@ -1,0 +1,40 @@
+{
+  "schema_id": "claim_template_admission_schema_20260521",
+  "status": "release_surface_schema",
+  "purpose": "Public-safe schema for batch claim-template admission into the typed claim-contract workflow.",
+  "fields": [
+    {"name": "template_id", "required": true, "type": "string", "description": "Stable identifier for the template-admission case."},
+    {"name": "domain_id", "required": true, "type": "string", "description": "Dataset or adapter domain identifier."},
+    {"name": "domain_family", "required": true, "type": "string", "description": "Short domain family label."},
+    {"name": "template_role", "required": true, "type": "enum", "values": ["mainline", "support_only", "boundary_probe"], "description": "Role of this template in the current release."},
+    {"name": "evidence_unit", "required": false, "type": "string", "description": "Auditable evidence unit or certificate family."},
+    {"name": "claim_template", "required": false, "type": "string", "description": "Finite claim template to be projected."},
+    {"name": "G_binding", "required": false, "type": "string", "description": "Information or comparison boundary binding."},
+    {"name": "Q_binding", "required": false, "type": "string", "description": "Declared reportability-policy binding."},
+    {"name": "U_binding", "required": false, "type": "string", "description": "Decision-use or context binding."},
+    {"name": "action_mapping", "required": false, "type": "enum", "values": ["emit_as_written", "relabel_as_upper_bound", "weaken_to_diagnostic", "rewrite_to_decision_local", "suppress_fallback", "none"], "description": "Projection action family expected for the template."},
+    {"name": "preorder_relation", "required": false, "type": "string", "description": "Typed preorder or declared incomparability."},
+    {"name": "forbidden_claim", "required": false, "type": "string", "description": "Stronger claim that must not be emitted."},
+    {"name": "visual_or_case_anchor", "required": false, "type": "string", "description": "Casebook or visual passport row anchoring the template."},
+    {"name": "expected_level", "required": true, "type": "enum", "values": ["L3_MAINLINE", "L2_SUPPORT_ONLY", "L1_BOUNDARY_PROBE", "L0_REJECTED"], "description": "Expected admission level."},
+    {"name": "expected_verdict", "required": true, "type": "enum", "values": ["ADMIT_MAINLINE_TEMPLATE", "ADMIT_SUPPORT_ONLY_TEMPLATE", "KEEP_BOUNDARY_PROBE", "REJECT_PATCHWORK"], "description": "Expected computed verdict."},
+    {"name": "boundary_note", "required": true, "type": "string", "description": "Plain-language ceiling for the template."}
+  ],
+  "critical_fields_for_admission": [
+    "evidence_unit",
+    "claim_template",
+    "G_binding",
+    "Q_binding",
+    "U_binding",
+    "action_mapping",
+    "preorder_relation",
+    "forbidden_claim",
+    "visual_or_case_anchor"
+  ],
+  "non_goals": [
+    "arbitrary natural-language claim admission",
+    "domain popularity as evidence of admissibility",
+    "broad external-validity certification",
+    "automatic promotion from support-only adapter to headline claim"
+  ]
+}

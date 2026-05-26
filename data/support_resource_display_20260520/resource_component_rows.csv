@@ -1,0 +1,8 @@
+component,what_it_records,artifact_anchor,risk_controlled,boundary
+dataset manifest,"source, task family, redistribution posture",Appendix C1,raw-data and release ambiguity,not a raw-data redistribution guarantee
+scenario manifest,"shift axis, seed, model/source, source-target context",Appendix C2,hidden scenario changes,not an external-validity proof
+claim schema,"16 release fields including layer, G/Q/U, action, emitted claim",Appendix C3,denominator and context collapse,"current public schema, not universal field minimality"
+projection specification,"Gamma_T+, Lambda_T+, Pi(T), bottom_T, casebook rows",Appendix A/B,rhetorical-only resource,"finite generated claims, not arbitrary prose"
+action certificates,"emit, relabel, weaken, rewrite, suppress",Appendix B1,silent strengthening,"action trace, not population prevalence"
+validation scripts,number and evidence consistency checks,validator output,manuscript/evidence drift,work-use paths must be normalized for release
+release notes,"source, license, provenance posture",Appendix C6-C8,raw redistribution overclaim,provider terms still govern raw data

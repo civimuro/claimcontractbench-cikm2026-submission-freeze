@@ -1,0 +1,7 @@
+matrix,role,metric_NR,decision_NR,slice_decision_NR,score_NR,slice_score_NR,ordering
+roberta seed 2033,B1 baseline,0.0%,56.5%,63.4%,91.3%,93.9%,PASS
+roberta seed 2034,B2 added seed,0.0%,55.0%,63.2%,77.0%,86.7%,PASS
+roberta seed 2035,B2 added seed,0.0%,43.3%,51.8%,70.6%,79.8%,PASS
+distilbert seed 2033,B1D second provider,0.0%,68.1%,72.7%,89.7%,93.7%,PASS
+distilbert seed 2034,B2 added seed,0.0%,69.6%,75.3%,92.9%,96.1%,PASS
+distilbert seed 2035,B2 added seed,0.0%,64.5%,70.6%,96.8%,98.8%,PASS
