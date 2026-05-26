@@ -20,10 +20,40 @@ python3 src/run_projection_smoke.py
 For the fuller reviewer path, follow:
 
 - `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
+- `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 
-The surface validator should report 61 required files, 61 public-safe rows, and
+The surface validator should report 64 required files, 64 public-safe rows, and
 0 raw-data rows. The projection smoke runner should regenerate five public
 claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
+
+## Use With An LLM In Five Minutes
+
+ClaimContractBench is easiest to try as an LLM-assisted workflow: let an LLM
+extract and route candidate claims, then let the deterministic release scripts
+accept, rewrite, suppress, or fail closed.
+
+```bash
+python3 src/run_llm_claim_review_packet.py \
+  --input artifact/llm_claim_review_packet_template_20260527.csv \
+  --output reports/llm_claim_review_packet_20260527
+```
+
+Expected result:
+
+```text
+PASS LLM claim review packet
+packet_rows: 4
+call_registered_template: 2
+needs_template_admission: 1
+out_of_scope: 1
+unsafe_release_rate: 0.000
+```
+
+For a new paper, copy the prompt in
+`artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`, ask your LLM to output
+the required CSV packet, and rerun the command with that CSV as `--input`.
+The LLM is only the claim-extraction front end; ClaimContractBench remains the
+fail-closed claim-governance layer.
 
 This archive is a manifest-controlled derived-asset release. Running the
 quickstart creates reviewer reports under `reports/`; those reports are

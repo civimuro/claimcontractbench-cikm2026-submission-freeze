@@ -50,11 +50,38 @@ Expected output for the surface validator:
 PASS release surface validation
 root: /path/to/release/root
 manifest: artifact/release_manifest_20260520.csv
-rows: 61
-required_files: 61
-public_safe_rows: 61
+rows: 64
+required_files: 64
+public_safe_rows: 64
 raw_data_rows: 0
 ```
+
+## Fast LLM-Assisted Path
+
+For users who want to review a paper with an LLM front end, start here:
+
+```bash
+python3 src/run_llm_claim_review_packet.py \
+  --input artifact/llm_claim_review_packet_template_20260527.csv \
+  --output reports/llm_claim_review_packet_20260527
+```
+
+Expected output:
+
+```text
+PASS LLM claim review packet
+packet_rows: 4
+call_registered_template: 2
+needs_template_admission: 1
+out_of_scope: 1
+unsafe_release_rate: 0.000
+checks_passed: 7
+checks_failed: 0
+```
+
+Then follow `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md` to ask an LLM
+to produce the same CSV format for a new paper. The LLM performs claim
+extraction and routing only; it does not license claims.
 
 Expected output for the projection smoke runner:
 

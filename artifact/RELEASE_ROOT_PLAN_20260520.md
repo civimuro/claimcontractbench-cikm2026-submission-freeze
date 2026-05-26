@@ -22,6 +22,7 @@ ClaimContractBench/
 │   ├── ENVIRONMENT_NOTE_20260526.md
 │   ├── RELEASE_ROOT_PLAN_20260520.md
 │   ├── REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md
+│   ├── LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md
 │   ├── release_manifest_20260520.csv
 │   ├── source_license_snapshot_20260520.csv
 │   ├── dataset_source_manifest_20260520.csv
@@ -32,6 +33,7 @@ ClaimContractBench/
 │   ├── claim_template_admission_cases_20260521.csv
 │   ├── reviewer_claim_intake_schema_20260521.json
 │   ├── reviewer_claim_intake_examples_20260521.csv
+│   ├── llm_claim_review_packet_template_20260527.csv
 │   ├── application_motivation_cases_20260521.csv
 │   ├── claim_audit_gold_probe_schema_20260521.json
 │   ├── claim_audit_gold_probe_cases_20260521.csv
@@ -68,6 +70,7 @@ ClaimContractBench/
     ├── run_reviewer_claim_intake.py
     ├── run_reviewer_audit_demo.py
     ├── run_reviewer_audit_demo_regression.py
+    ├── run_llm_claim_review_packet.py
     ├── run_claim_audit_gold_probe.py
     ├── run_paper_claim_gold_benchmark.py
     ├── run_paper_excerpt_reviewer_value_benchmark.py
@@ -94,6 +97,7 @@ Include:
 - standard-library reviewer claim-intake decision generator;
 - standard-library reviewer-facing audit demo generator;
 - standard-library reviewer-facing audit demo regression generator;
+- standard-library LLM claim-review packet generator;
 - public-safe selected and holdout paragraph routing fixtures needed to
   regenerate the reviewer-facing audit demo;
 - standard-library claim-audit gold-probe runner;
@@ -126,6 +130,7 @@ python3 src/run_claim_template_admission.py --output reports/claim_template_admi
 python3 src/run_reviewer_claim_intake.py --output reports/reviewer_claim_intake_20260521
 python3 src/run_reviewer_audit_demo.py --output reports/reviewer_facing_audit_demo_20260521
 python3 src/run_reviewer_audit_demo_regression.py --output reports/reviewer_facing_audit_demo_regression_20260521
+python3 src/run_llm_claim_review_packet.py --output reports/llm_claim_review_packet_20260527
 python3 src/run_claim_audit_gold_probe.py --output reports/claim_audit_gold_probe_20260521
 python3 src/run_paper_claim_gold_benchmark.py --output reports/paper_claim_gold_benchmark_20260521
 python3 src/run_paper_excerpt_reviewer_value_benchmark.py --output reports/paper_excerpt_reviewer_value_benchmark_20260521
@@ -136,9 +141,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 61
-required_files: 61
-public_safe_rows: 61
+rows: 64
+required_files: 64
+public_safe_rows: 64
 raw_data_rows: 0
 PASS projection smoke runner
 smoke_rows: 5
@@ -163,6 +168,12 @@ audit_cards_checked: 72
 checks_passed: 11
 locked_registered_template_controls: 8
 locked_fail_closed_boundary: yes
+PASS LLM claim review packet
+packet_rows: 4
+call_registered_template: 2
+needs_template_admission: 1
+out_of_scope: 1
+unsafe_release_rate: 0.000
 PASS claim audit gold probe
 gold_rows: 18
 registered_template_rows: 8

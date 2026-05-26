@@ -7,6 +7,7 @@ artifact/RESOURCE_SPEC.md,resource specification,yes,yes,no,Defines artifact MVP
 artifact/ENVIRONMENT_NOTE_20260526.md,environment note,yes,yes,no,Python and runtime requirements for first reviewer inspection
 artifact/RELEASE_ROOT_PLAN_20260520.md,release plan,yes,yes,no,Maps current workspace to future public release root
 artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md,reviewer quickstart,yes,yes,no,Release-root relative quickstart draft
+artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md,LLM-assisted review quickstart,yes,yes,no,Copy-paste LLM front-end workflow and prompt guide for fail-closed claim review packets
 artifact/release_manifest_20260520.csv,release manifest,yes,yes,no,Machine-readable public-safe release surface
 artifact/source_license_snapshot_20260520.csv,source/license snapshot,yes,yes,no,Access-date refreshed source and redistribution posture table
 artifact/dataset_source_manifest_20260520.csv,dataset/source manifest,yes,yes,no,Public-safe dataset roles sources and release boundaries
@@ -17,6 +18,7 @@ artifact/claim_template_admission_schema_20260521.json,template-admission schema
 artifact/claim_template_admission_cases_20260521.csv,template-admission cases,yes,yes,no,Public-safe cases for admitting or rejecting claim templates under the adapter contract
 artifact/reviewer_claim_intake_schema_20260521.json,reviewer claim-intake schema,yes,yes,no,Machine-readable schema for application-facing claim intake rows
 artifact/reviewer_claim_intake_examples_20260521.csv,reviewer claim-intake examples,yes,yes,no,Public-safe author and reviewer claim-intake examples for application decisions
+artifact/llm_claim_review_packet_template_20260527.csv,LLM claim review packet template,yes,yes,no,Public-safe CSV template for LLM-assisted claim extraction and route handoff
 artifact/application_motivation_cases_20260521.csv,application motivation cases,yes,yes,no,Public-safe external case map connecting application pressures to claim-governance decisions
 artifact/claim_audit_gold_probe_schema_20260521.json,claim-audit gold probe schema,yes,yes,no,Machine-readable schema for routing and decision gold-probe rows
 artifact/claim_audit_gold_probe_cases_20260521.csv,claim-audit gold probe cases,yes,yes,no,Public-safe gold-probe rows separating registered calls from adapter-needed and out-of-scope text
@@ -35,6 +37,7 @@ src/run_claim_template_admission.py,claim template admission runner,yes,yes,no,S
 src/run_reviewer_claim_intake.py,reviewer claim-intake runner,yes,yes,no,Standard-library runner that turns registered templates and submitted claims into author/reviewer decisions
 src/run_reviewer_audit_demo.py,reviewer-facing audit demo runner,yes,yes,no,Standard-library runner that joins paragraph routing and deterministic intake into reviewer audit cards
 src/run_reviewer_audit_demo_regression.py,reviewer-facing audit demo regression runner,yes,yes,no,Standard-library runner that locks the reviewer demo card counts decisions fail-closed boundary and HTML surface
+src/run_llm_claim_review_packet.py,LLM claim review packet runner,yes,yes,no,Standard-library runner that turns LLM-produced claim-routing packets into fail-closed review reports
 src/run_claim_audit_gold_probe.py,claim-audit gold probe runner,yes,yes,no,Standard-library runner that distinguishes registered-template calls from adapter-needed and out-of-scope text
 src/run_paper_claim_gold_benchmark.py,paper-claim gold benchmark runner,yes,yes,no,Standard-library runner that evaluates 40-paper claim benchmark consistency and fail-closed routing
 src/run_paper_claim_annotation_agreement.py,paper-claim annotation agreement runner,yes,yes,no,Standard-library runner that validates blind annotation packets and computes second-annotator agreement when labels are filled
