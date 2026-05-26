@@ -1,6 +1,6 @@
 # LLM-Assisted Review Quickstart
 
-Date: 2026-05-27  
+Date: 2026-05-27
 Status: `PUBLIC_SAFE_LLM_FRONTEND_GUIDE`
 
 This guide shows how to use ClaimContractBench with an LLM quickly, without
