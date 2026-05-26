@@ -1,5 +1,6 @@
 path,role,required,public_safe,raw_data,notes
 README.md,reviewer resource entrypoint,yes,yes,no,Top-level resource orientation for reviewer checkout
+.gitignore,generated report ignore rules,yes,yes,no,Release-root ignore rules for generated report directories
 LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and derived resource files; raw third-party data is excluded
 LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials

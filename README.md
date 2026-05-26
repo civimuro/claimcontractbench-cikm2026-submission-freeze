@@ -22,7 +22,7 @@ For the fuller reviewer path, follow:
 - `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 
-The surface validator should report 64 required files, 64 public-safe rows, and
+The surface validator should report 65 required files, 65 public-safe rows, and
 0 raw-data rows. The projection smoke runner should regenerate five public
 claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
 
@@ -47,6 +47,10 @@ call_registered_template: 2
 needs_template_admission: 1
 out_of_scope: 1
 unsafe_release_rate: 0.000
+rejected_unknown_template: 0
+invalid_route_rows: 0
+checks_passed: 14
+checks_failed: 0
 ```
 
 For a new paper, copy the prompt in
@@ -54,6 +58,12 @@ For a new paper, copy the prompt in
 the required CSV packet, and rerun the command with that CSV as `--input`.
 The LLM is only the claim-extraction front end; ClaimContractBench remains the
 fail-closed claim-governance layer.
+
+For new-paper text, most rows should usually become `NEEDS_TEMPLATE_ADMISSION`
+or `OUT_OF_SCOPE_DO_NOT_CALL` unless they exactly match a registered control or
+template. Unknown templates, malformed CSV, private local paths, duplicate
+packet ids, and missing human-check flags are treated as packet failures rather
+than silently accepted rows.
 
 This archive is a manifest-controlled derived-asset release. Running the
 quickstart creates reviewer reports under `reports/`; those reports are

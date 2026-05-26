@@ -20,8 +20,10 @@ import sys
 from run_reviewer_claim_intake import (
     build_template_rows,
     decide_intake,
+    normalize,
     read_csv,
     short,
+    source_from_anchor,
     write_csv,
     write_json,
 )
@@ -51,6 +53,14 @@ ROUTE_LABELS = {
     "CALL_REGISTERED_TEMPLATE",
     "NEEDS_TEMPLATE_ADMISSION",
     "OUT_OF_SCOPE_DO_NOT_CALL",
+}
+
+VALID_HUMAN_CHECK_VALUES = {"yes", "no"}
+
+GENERATIVE_DECISIONS = {
+    "ACCEPT_LICENSED",
+    "REWRITE_TO_LICENSED",
+    "SUPPORT_ONLY_REWRITE",
 }
 
 PRIVATE_DIR_MARKERS = (
@@ -96,6 +106,13 @@ def resolve(root: Path, value: str) -> Path:
     return path.resolve()
 
 
+def display_path(root: Path, path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(root.resolve()))
+    except ValueError:
+        return f"<external:{path.name}>"
+
+
 def load_json(path: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -123,13 +140,35 @@ def add_check(
     )
 
 
+def read_packet_csv(path: Path) -> tuple[list[dict[str, str]], list[str], list[str]]:
+    try:
+        with path.open(newline="", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
+            rows = list(reader)
+            columns = list(reader.fieldnames or [])
+    except (OSError, UnicodeDecodeError, csv.Error) as exc:
+        raise RuntimeError(f"could not read input CSV: {exc}") from exc
+
+    malformed: list[str] = []
+    for idx, row in enumerate(rows, start=2):
+        if None in row:
+            packet_id = row.get("packet_id") or f"line-{idx}"
+            malformed.append(str(packet_id))
+    return rows, columns, malformed
+
+
 def load_templates(
     root: Path,
 ) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, str]], dict[str, dict[str, str]]]:
-    template_schema = load_json(root / FILES["template_schema"])
-    template_cases, _ = read_csv(root / FILES["template_cases"])
-    casebook, _ = read_csv(root / FILES["casebook"])
-    nab_visual, _ = read_csv(root / FILES["nab_visual"])
+    try:
+        template_schema = load_json(root / FILES["template_schema"])
+        template_cases, _ = read_csv(root / FILES["template_cases"])
+        casebook, _ = read_csv(root / FILES["casebook"])
+        nab_visual, _ = read_csv(root / FILES["nab_visual"])
+    except (OSError, UnicodeDecodeError, csv.Error, json.JSONDecodeError) as exc:
+        raise RuntimeError(
+            "could not load release assets; run from the release root or pass --root"
+        ) from exc
     critical_fields = list(template_schema.get("critical_fields_for_admission", []))
     templates = build_template_rows(template_cases, critical_fields)
     return (
@@ -139,11 +178,30 @@ def load_templates(
     )
 
 
+def forbidden_sentences(
+    templates: dict[str, dict[str, str]],
+    casebook_by_id: dict[str, dict[str, str]],
+    nab_by_id: dict[str, dict[str, str]],
+) -> set[str]:
+    forbidden: set[str] = set()
+    for template in templates.values():
+        source = source_from_anchor(template, casebook_by_id, nab_by_id)
+        for value in [source.get("forbidden", ""), template.get("forbidden_claim", "")]:
+            if value:
+                forbidden.add(normalize(value))
+    return forbidden
+
+
+def is_control_row(row: dict[str, str]) -> bool:
+    return row.get("source_title", "").strip() == "ClaimContractBench registered control"
+
+
 def review_row(
     row: dict[str, str],
     templates: dict[str, dict[str, str]],
     casebook_by_id: dict[str, dict[str, str]],
     nab_by_id: dict[str, dict[str, str]],
+    forbidden: set[str],
 ) -> dict[str, str]:
     route = row.get("route_label", "").strip()
     template_id = row.get("template_id", "").strip()
@@ -200,19 +258,27 @@ def review_row(
         "expected_output_hint": "",
     }
     decision = decide_intake(intake, templates, casebook_by_id, nab_by_id)
-    unsafe = "yes" if decision["decision"] in {"ACCEPT_LICENSED", "REWRITE_TO_LICENSED"} and not template_id else "no"
+    output_norm = normalize(decision["recommended_output"])
+    unsafe = (
+        decision["decision"] in GENERATIVE_DECISIONS
+        and (
+            not output_norm
+            or output_norm == "bottom_t"
+            or output_norm in forbidden
+        )
+    )
     return {
         **base,
         "tool_decision": decision["decision"],
         "recommended_output": decision["recommended_output"],
         "explanation": decision["explanation"],
         "source_anchor": decision["source_anchor"],
-        "unsafe_release": unsafe if decision["decision"] == "REJECT_UNKNOWN_TEMPLATE" else "no",
+        "unsafe_release": "yes" if unsafe else "no",
     }
 
 
 def build_markdown(
-    input_path: Path,
+    input_label: str,
     summary: dict[str, object],
     checks: list[dict[str, str]],
     decisions: list[dict[str, str]],
@@ -220,7 +286,7 @@ def build_markdown(
     lines: list[str] = []
     lines.append("# LLM Claim Review Packet Report")
     lines.append("")
-    lines.append(f"Input: `{input_path}`")
+    lines.append(f"Input: `{input_label}`")
     lines.append("")
     lines.append("## Role Split")
     lines.append("")
@@ -244,6 +310,8 @@ def build_markdown(
         "accepted_or_rewritten",
         "suppressed_or_rejected",
         "unsafe_release_rate",
+        "rejected_unknown_template",
+        "invalid_route_rows",
         "checks_passed",
         "checks_failed",
     ]:
@@ -347,22 +415,42 @@ def main() -> int:
     root = Path(args.root).resolve()
     input_path = resolve(root, args.input)
     output_dir = resolve(root, args.output)
-    rows, columns = read_csv(input_path)
-    templates, casebook_by_id, nab_by_id = load_templates(root)
+    input_label = display_path(root, input_path)
+    output_label = display_path(root, output_dir)
+    try:
+        rows, columns, malformed_rows = read_packet_csv(input_path)
+        templates, casebook_by_id, nab_by_id = load_templates(root)
+    except RuntimeError as exc:
+        print("FAIL LLM claim review packet")
+        print(f"input: {input_label}")
+        print(f"error: {exc}")
+        if exc.__cause__:
+            print(f"detail: {exc.__cause__}")
+        return 2
 
     checks: list[dict[str, str]] = []
     missing_columns = [column for column in REQUIRED_COLUMNS if column not in columns]
+    extra_columns = [column for column in columns if column not in REQUIRED_COLUMNS]
+    exact_header = columns == REQUIRED_COLUMNS
     add_check(
         checks,
         "LCP-01",
-        "required columns",
-        not missing_columns,
-        "all required columns present",
-        f"missing columns: {missing_columns}",
+        "exact CSV header",
+        exact_header,
+        "header matches the required LLM packet schema exactly",
+        f"missing columns: {missing_columns}; extra columns: {extra_columns}",
     )
     add_check(
         checks,
         "LCP-02",
+        "rows are well formed",
+        not malformed_rows,
+        "no row has unparsed extra fields",
+        f"malformed rows with extra fields: {malformed_rows}",
+    )
+    add_check(
+        checks,
+        "LCP-03",
         "packet is non-empty",
         bool(rows),
         f"{len(rows)} rows",
@@ -371,7 +459,7 @@ def main() -> int:
     route_bad = [row.get("packet_id", "") for row in rows if row.get("route_label", "") not in ROUTE_LABELS]
     add_check(
         checks,
-        "LCP-03",
+        "LCP-04",
         "route labels are valid",
         not route_bad,
         "all route labels use the three supported lanes",
@@ -380,7 +468,7 @@ def main() -> int:
     private_bad = [row.get("packet_id", "") for row in rows if contains_private_marker(row)]
     add_check(
         checks,
-        "LCP-04",
+        "LCP-05",
         "no private markers in packet",
         not private_bad,
         "no private path or credential-like marker found",
@@ -394,40 +482,134 @@ def main() -> int:
     ]
     add_check(
         checks,
-        "LCP-05",
+        "LCP-06",
         "registered calls name a template",
         not missing_template,
         "all CALL_REGISTERED_TEMPLATE rows include template_id",
         f"missing template_id in: {missing_template}",
     )
+    unknown_template = [
+        row.get("packet_id", "")
+        for row in rows
+        if row.get("route_label", "") == "CALL_REGISTERED_TEMPLATE"
+        and row.get("template_id", "").strip()
+        and row.get("template_id", "").strip() not in templates
+    ]
+    add_check(
+        checks,
+        "LCP-07",
+        "registered calls use known templates",
+        not unknown_template,
+        "all CALL_REGISTERED_TEMPLATE template ids are registered",
+        f"unknown template_id in: {unknown_template}",
+    )
+    non_call_template = [
+        row.get("packet_id", "")
+        for row in rows
+        if row.get("route_label", "") in {"NEEDS_TEMPLATE_ADMISSION", "OUT_OF_SCOPE_DO_NOT_CALL"}
+        and row.get("template_id", "").strip()
+    ]
+    add_check(
+        checks,
+        "LCP-08",
+        "non-call rows leave template blank",
+        not non_call_template,
+        "NEEDS_TEMPLATE_ADMISSION and OUT_OF_SCOPE rows do not name templates",
+        f"non-call rows with template_id: {non_call_template}",
+    )
+    packet_ids = [row.get("packet_id", "") for row in rows]
+    packet_id_counts = Counter(packet_ids)
+    duplicate_ids = sorted(packet_id for packet_id, count in packet_id_counts.items() if count > 1)
+    add_check(
+        checks,
+        "LCP-09",
+        "packet ids are unique",
+        not duplicate_ids,
+        "packet_id values are unique",
+        f"duplicate packet_id values: {duplicate_ids}",
+    )
+    invalid_human_check = [
+        row.get("packet_id", "")
+        for row in rows
+        if row.get("human_check_required", "").strip().lower()
+        not in VALID_HUMAN_CHECK_VALUES
+    ]
+    add_check(
+        checks,
+        "LCP-10",
+        "human_check_required is yes/no",
+        not invalid_human_check,
+        "all human_check_required values are yes or no",
+        f"invalid human_check_required values in: {invalid_human_check}",
+    )
+    missing_human_check = [
+        row.get("packet_id", "")
+        for row in rows
+        if not is_control_row(row)
+        and row.get("human_check_required", "").strip().lower() != "yes"
+    ]
+    add_check(
+        checks,
+        "LCP-11",
+        "non-control rows require human check",
+        not missing_human_check,
+        "all non-control rows require human_check_required=yes",
+        f"non-control rows without human_check_required=yes: {missing_human_check}",
+    )
     blank_claims = [row.get("packet_id", "") for row in rows if not row.get("submitted_claim", "").strip()]
     add_check(
         checks,
-        "LCP-06",
+        "LCP-12",
         "claims are non-empty",
         not blank_claims,
         "all submitted_claim fields are non-empty",
         f"blank claims in: {blank_claims}",
     )
 
-    decisions = [review_row(row, templates, casebook_by_id, nab_by_id) for row in rows]
+    pre_decision_failures = [row for row in checks if row["status"] == "FAIL"]
+    if private_bad:
+        print("FAIL LLM claim review packet")
+        print(f"input: {input_label}")
+        for row in pre_decision_failures:
+            print(f"{row['check_id']} {row['label']}: {row['evidence']}")
+        print("outputs: suppressed because the packet contains private markers")
+        return 1
+
+    forbidden = forbidden_sentences(templates, casebook_by_id, nab_by_id)
+    decisions = [
+        review_row(row, templates, casebook_by_id, nab_by_id, forbidden)
+        for row in rows
+    ]
     counts = Counter(row["route_label"] for row in decisions)
     decision_counts = Counter(row["tool_decision"] for row in decisions)
     unsafe_rows = [row for row in decisions if row["unsafe_release"] == "yes"]
     unsafe_rate = len(unsafe_rows) / len(decisions) if decisions else 0.0
+    forbidden_output_rows = [
+        row["packet_id"]
+        for row in decisions
+        if normalize(row["recommended_output"]) in forbidden
+    ]
     add_check(
         checks,
-        "LCP-07",
+        "LCP-13",
         "unsafe release rate is zero",
         unsafe_rate == 0.0,
         "unsafe_release_rate=0.000",
         f"unsafe rows: {[row['packet_id'] for row in unsafe_rows]}",
     )
+    add_check(
+        checks,
+        "LCP-14",
+        "no recommended output is forbidden",
+        not forbidden_output_rows,
+        "no recommended output matches a registered forbidden claim",
+        f"forbidden recommended outputs in: {forbidden_output_rows}",
+    )
 
     checks_passed = sum(1 for row in checks if row["status"] == "PASS")
     checks_failed = len(checks) - checks_passed
     summary: dict[str, object] = {
-        "input": str(input_path),
+        "input": input_label,
         "packet_rows": len(rows),
         "call_registered_template": counts["CALL_REGISTERED_TEMPLATE"],
         "needs_template_admission": counts["NEEDS_TEMPLATE_ADMISSION"],
@@ -438,6 +620,8 @@ def main() -> int:
         + decision_counts["REJECT_PATCHWORK"]
         + decision_counts["REJECT_UNKNOWN_TEMPLATE"],
         "unsafe_release_rate": f"{unsafe_rate:.3f}",
+        "rejected_unknown_template": decision_counts["REJECT_UNKNOWN_TEMPLATE"],
+        "invalid_route_rows": decision_counts["INVALID_ROUTE_LABEL"],
         "checks_passed": checks_passed,
         "checks_failed": checks_failed,
         "decision_counts": dict(sorted(decision_counts.items())),
@@ -468,7 +652,7 @@ def main() -> int:
     write_csv(output_dir / "llm_claim_review_packet_checks.csv", checks, ["check_id", "label", "status", "evidence"])
     write_json(output_dir / "llm_claim_review_packet_summary.json", summary)
     (output_dir / "llm_claim_review_packet_report.md").write_text(
-        build_markdown(input_path, summary, checks, decisions), encoding="utf-8"
+        build_markdown(input_label, summary, checks, decisions), encoding="utf-8"
     )
     (output_dir / "llm_claim_review_packet_report.html").write_text(
         build_html(summary, checks, decisions), encoding="utf-8"
@@ -480,6 +664,8 @@ def main() -> int:
     print(f"needs_template_admission: {summary['needs_template_admission']}")
     print(f"out_of_scope: {summary['out_of_scope']}")
     print(f"unsafe_release_rate: {summary['unsafe_release_rate']}")
+    print(f"rejected_unknown_template: {summary['rejected_unknown_template']}")
+    print(f"invalid_route_rows: {summary['invalid_route_rows']}")
     print(f"checks_passed: {checks_passed}")
     print(f"checks_failed: {checks_failed}")
     print("outputs:")
@@ -490,7 +676,7 @@ def main() -> int:
         "llm_claim_review_packet_checks.csv",
         "llm_claim_review_packet_decisions.csv",
     ]:
-        print(f"- {output_dir / name}")
+        print(f"- {output_label}/{name}")
     return 0 if checks_failed == 0 else 1
 
 

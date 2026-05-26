@@ -35,6 +35,10 @@ call_registered_template: 2
 needs_template_admission: 1
 out_of_scope: 1
 unsafe_release_rate: 0.000
+rejected_unknown_template: 0
+invalid_route_rows: 0
+checks_passed: 14
+checks_failed: 0
 ```
 
 Open the generated report:
@@ -66,6 +70,17 @@ claim into one of three lanes.
 packet_id,source_title,source_section,submitted_claim,intended_use,route_label,template_id,evidence_pointer,llm_reason,human_check_required
 ```
 
+CSV packet rules:
+
+- use this exact header, in this exact order, with no extra columns;
+- quote fields that contain commas, quotation marks, or line breaks;
+- do not wrap the CSV in Markdown code fences when saving it to a file;
+- use one claim per row;
+- keep `packet_id` unique;
+- set `human_check_required` to `yes` for every non-control row;
+- keep `template_id` blank unless `route_label` is
+  `CALL_REGISTERED_TEMPLATE`.
+
 Allowed `route_label` values:
 
 - `CALL_REGISTERED_TEMPLATE`
@@ -76,19 +91,29 @@ Use `CALL_REGISTERED_TEMPLATE` only when the claim clearly matches one of the
 registered template ids below. Otherwise use `NEEDS_TEMPLATE_ADMISSION` or
 `OUT_OF_SCOPE_DO_NOT_CALL`.
 
+If a row names an unknown template id, the row is reported as
+`REJECT_UNKNOWN_TEMPLATE` and the whole packet fails check `LCP-07`. This is
+intentional: an unknown id is not a safe adapter.
+
 ## Registered Template Shortlist
 
 | Template | Use only for | Do not use for |
 | --- | --- | --- |
-| `CTA-CORE-01` | bounded ACS local slice support | all-slice reliability |
-| `CTA-CORE-02` | WDC stronger-information upper-bound reference | same-regime model superiority |
-| `CTA-CORE-03` | weak ACS local support that must be diagnostic | decisive local result claims |
-| `CTA-CORE-04` | WDC decision-local winner rewrite | global metric winner transfer |
-| `CTA-CORE-05` | unsupported WDC local slice suppression | calibrated hard-negative slice claims |
-| `CTA-NAB-01` | support-only clean-stream no-alert claim | overall detector effectiveness |
-| `CTA-NAB-02` | support-only no-alert suppression | broad anomaly validation |
-| `CTA-NAB-03` | support-only false-alarm-sensitive diagnostic claim | unqualified detector effectiveness |
+| `CTA-CORE-01` | bounded ACS local slice support, as in `CP-01` | all-slice reliability |
+| `CTA-CORE-02` | WDC stronger-information upper-bound reference, as in `CP-02` | same-regime model superiority |
+| `CTA-CORE-03` | weak ACS local support that must be diagnostic, as in `CP-03` | decisive local result claims |
+| `CTA-CORE-04` | WDC decision-local winner rewrite, as in `CP-04` | global metric winner transfer |
+| `CTA-CORE-05` | unsupported WDC local slice suppression, as in `CP-05` | calibrated hard-negative slice claims |
+| `CTA-NAB-01` | support-only clean-stream no-alert claim, as in `NAB-VIS-01` | overall detector effectiveness |
+| `CTA-NAB-02` | support-only no-alert suppression, as in `NAB-VIS-02` | broad anomaly validation |
+| `CTA-NAB-03` | support-only false-alarm-sensitive diagnostic claim, as in `NAB-VIS-04` | unqualified detector effectiveness |
 | `CTA-AI4I-01` | boundary probe that must be rejected | admitted predictive-maintenance claim |
+
+Exact registered examples are in:
+
+- `data/claim_passport_casebook_20260519.csv`
+- `data/nab_adapter_visual_passport_rows_20260519.csv`
+- `artifact/claim_template_admission_cases_20260521.csv`
 
 If a paper is about model cards, datasheets, robustness, distribution shift,
 selective prediction, LLM evaluation, legal safety, novelty, proof correctness,
@@ -146,6 +171,7 @@ Rules:
 - Prefer NEEDS_TEMPLATE_ADMISSION over CALL_REGISTERED_TEMPLATE when uncertain.
 - Prefer OUT_OF_SCOPE_DO_NOT_CALL over NEEDS_TEMPLATE_ADMISSION for non-metric
   review tasks.
+- Return plain CSV only. Do not include explanations outside CSV fields.
 ```
 
 ## How To Read The Tool Output
@@ -166,6 +192,11 @@ The runner returns one action per row:
 - `NEEDS_TEMPLATE_ADMISSION`: the row may be relevant, but a new typed adapter
   is needed first.
 - `OUT_OF_SCOPE_DO_NOT_CALL`: the row is outside the metric-to-claim tool.
+
+`unsafe_release_rate` is an output-safety check over the packet decisions. It is
+not a score for whether the LLM extracted every relevant claim from a paper.
+The current release audits the supplied packet; it does not certify full
+coverage of a full paper.
 
 For paper review, the most useful rows are often not the accepted ones. The
 high-value rows are usually rewrites, suppressions, support-only boundaries,
