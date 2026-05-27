@@ -8,6 +8,7 @@
   README path selection and `python3 src/claimcontractbench.py human-guide`.
 - Added second-layer documentation under `docs/`:
   - plain-language concepts guide;
+  - reviewer verification checklist;
   - human reviewer guide;
   - example output explanations;
   - FAQ;

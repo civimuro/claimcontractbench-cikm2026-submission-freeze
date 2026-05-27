@@ -18,6 +18,7 @@ final public resource snapshot for the paper.
 - Mixed license scope: Apache-2.0 for code, CC-BY-4.0 for derived materials.
 - GitHub Actions smoke workflow.
 - Second-layer documentation under `docs/`.
+- Reviewer verification checklist for first-pass artifact inspection.
 - Plain-language concept guide for readers who are new to metric-to-claim
   contracts.
 - Public contribution, support, security, issue, and pull-request templates.

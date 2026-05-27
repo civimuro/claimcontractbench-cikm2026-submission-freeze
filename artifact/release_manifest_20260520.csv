@@ -16,6 +16,7 @@ LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and deriv
 LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
 docs/QUICKSTART.md,second-layer reviewer quickstart,yes,yes,no,Ten-minute reviewer path and expected outputs
+docs/REVIEWER_CHECKLIST.md,reviewer verification checklist,yes,yes,no,One-page reviewer map for artifact validation evidence inspection and misuse red flags
 docs/CONCEPTS.md,plain-language concept guide,yes,yes,no,Human-friendly explanation of metric-to-claim contracts GQU templates and fail-closed routing
 docs/HUMAN_REVIEWER_GUIDE.md,human reviewer guide,yes,yes,no,Non-LLM reviewer inspection guide and interpretation path
 docs/EXAMPLE_OUTPUTS.md,example outputs guide,yes,yes,no,Plain-language interpretation of common command outputs

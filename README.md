@@ -12,7 +12,7 @@ LLM to draft a claim packet that the deterministic checker then audits.
 | I want to... | Start here | What you get |
 | --- | --- | --- |
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
-| Verify the resource as a reviewer | `python3 src/claimcontractbench.py doctor` then `python3 src/claimcontractbench.py smoke` | A public-safe release check and fail-closed smoke suite. |
+| Verify the resource as a reviewer | `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
 | Add a new claim family | `python3 src/claimcontractbench.py admission-guide` | A typed template-admission workflow instead of loose template reuse. |
@@ -22,6 +22,7 @@ LLM to draft a claim packet that the deterministic checker then audits.
 From the repository root:
 
 ```bash
+python3 src/claimcontractbench.py reviewer-checklist
 python3 src/claimcontractbench.py doctor
 python3 src/claimcontractbench.py smoke
 ```
@@ -30,22 +31,23 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 95
-required_files: 95
-public_safe_rows: 95
+rows: 96
+required_files: 96
+public_safe_rows: 96
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 7
+positive_checks: 8
 negative_fail_closed_checks: 4
 ```
 
-The first command checks that the repository is a manifest-controlled,
-public-safe release surface. The second command runs positive examples and
-negative packets that must fail closed.
+The checklist shows what to inspect. The doctor command checks that the
+repository is a manifest-controlled, public-safe release surface. The smoke
+command runs positive examples and negative packets that must fail closed.
 
 Then read:
 
+- `docs/REVIEWER_CHECKLIST.md`
 - `docs/CONCEPTS.md`
 - `docs/HUMAN_REVIEWER_GUIDE.md`
 - `docs/EXAMPLE_OUTPUTS.md`
@@ -168,7 +170,8 @@ See `docs/TEMPLATE_ADMISSION.md`.
 ## Repository Map
 
 - `docs/`: concepts, human-facing guides, boundaries, examples, report index,
-  reproducibility, data/license posture, FAQ, and LLM-assisted path.
+  reviewer checklist, reproducibility, data/license posture, FAQ, and
+  LLM-assisted path.
 - `artifact/`: schemas, manifests, quickstarts, packet templates, and release
   checklist.
 - `data/`: public-safe derived tables and compact evidence displays.

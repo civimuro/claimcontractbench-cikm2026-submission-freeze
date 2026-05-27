@@ -299,6 +299,25 @@ def main() -> int:
             human_guide.stdout,
             "docs/HUMAN_REVIEWER_GUIDE.md",
         )
+        reviewer_checklist = run_command(
+            "reviewer verification checklist",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "reviewer-checklist",
+            ],
+        )
+        assert_contains(
+            "reviewer verification checklist",
+            reviewer_checklist.stdout,
+            "Reviewer verification checklist",
+        )
+        assert_contains(
+            "reviewer verification checklist",
+            reviewer_checklist.stdout,
+            "docs/REVIEWER_CHECKLIST.md",
+        )
         feedback_output = temp_root / "feedback" / "my_feedback_report.md"
         run_command(
             "optional feedback scaffold",
@@ -321,7 +340,7 @@ def main() -> int:
         shutil.rmtree(root / "src" / "__pycache__")
 
     print("PASS release smoke suite")
-    print("positive_checks: 7")
+    print("positive_checks: 8")
     print("negative_fail_closed_checks: 4")
     return 0
 

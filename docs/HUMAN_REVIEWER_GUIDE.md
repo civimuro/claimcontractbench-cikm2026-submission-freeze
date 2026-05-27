@@ -17,11 +17,12 @@ for first inspection.
 
 ## What To Read Next
 
-1. `docs/EXAMPLE_OUTPUTS.md`
+1. `docs/REVIEWER_CHECKLIST.md`
 2. `docs/CONCEPTS.md`
-3. `docs/REPORT_INDEX.md`
-4. `docs/BOUNDARIES.md`
-5. `docs/DATA_AND_LICENSES.md`
+3. `docs/EXAMPLE_OUTPUTS.md`
+4. `docs/REPORT_INDEX.md`
+5. `docs/BOUNDARIES.md`
+6. `docs/DATA_AND_LICENSES.md`
 
 These files explain what the commands prove, where the generated reports go,
 and which claims are intentionally out of scope.

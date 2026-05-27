@@ -83,6 +83,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("Ready.")
     print("Next useful commands:")
     print("- python3 src/claimcontractbench.py smoke")
+    print("- python3 src/claimcontractbench.py reviewer-checklist")
     print("- python3 src/claimcontractbench.py human-guide")
     print("- python3 src/claimcontractbench.py templates")
     print("- python3 src/claimcontractbench.py agent-guide")
@@ -110,6 +111,7 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("   python3 src/claimcontractbench.py templates")
     print("4. Read the human-facing guides:")
     for rel_path in [
+        "docs/REVIEWER_CHECKLIST.md",
         "docs/CONCEPTS.md",
         "docs/HUMAN_REVIEWER_GUIDE.md",
         "docs/EXAMPLE_OUTPUTS.md",
@@ -123,6 +125,34 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("")
     print("LLM-assisted packet drafting is optional. The deterministic checks are the")
     print("release boundary whether a packet is written by a human or drafted by an LLM.")
+    return 0
+
+
+def command_reviewer_checklist(args: argparse.Namespace) -> int:
+    print("Reviewer verification checklist")
+    print("")
+    print("Use this path when you want to verify the artifact without treating it")
+    print("as a paper decision system.")
+    print("")
+    print("Ten-minute check:")
+    print("  python3 src/claimcontractbench.py doctor")
+    print("  python3 src/claimcontractbench.py smoke")
+    print("")
+    print("Then inspect:")
+    for rel_path in [
+        "docs/REVIEWER_CHECKLIST.md",
+        "docs/CONCEPTS.md",
+        "docs/REPORT_INDEX.md",
+        "docs/BOUNDARIES.md",
+        "docs/DATA_AND_LICENSES.md",
+        "artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md",
+    ]:
+        print(f"  {rel_path}")
+    print("")
+    print("Good signals: public-safe manifest, fail-closed bad packets, exact")
+    print("template boundaries, and explicit non-goals.")
+    print("Red flags: accept/reject claims, autonomous full-paper review claims,")
+    print("raw-data redistribution claims, or forced use of nearby templates.")
     return 0
 
 
@@ -386,6 +416,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     add_subcommand_root(human_guide)
     human_guide.set_defaults(func=command_human_guide)
+
+    reviewer_checklist = subparsers.add_parser(
+        "reviewer-checklist",
+        help="Print the reviewer artifact verification checklist.",
+    )
+    add_subcommand_root(reviewer_checklist)
+    reviewer_checklist.set_defaults(func=command_reviewer_checklist)
 
     templates = subparsers.add_parser("templates", help="Print registered template boundaries.")
     add_subcommand_root(templates)

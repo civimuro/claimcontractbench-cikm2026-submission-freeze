@@ -8,8 +8,8 @@ not raw-data reproductions.
 
 | Claim to verify | Command | Expected signal |
 | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 95 rows, 95 required files, 95 public-safe rows, 0 raw-data rows. |
-| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 7 positive checks and 4 fail-closed negative checks pass. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 96 rows, 96 required files, 96 public-safe rows, 0 raw-data rows. |
+| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 8 positive checks and 4 fail-closed negative checks pass. |
 | The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. |
 
 ## Resource Behavior Reports
@@ -42,6 +42,7 @@ python3 src/run_reviewer_audit_demo_regression.py \
 ## Stable Evidence Files
 
 - `artifact/release_manifest_20260520.csv`: public-safe release surface.
+- `docs/REVIEWER_CHECKLIST.md`: one-page reviewer verification map.
 - `artifact/source_license_snapshot_20260520.csv`: source and license posture.
 - `artifact/dataset_source_manifest_20260520.csv`: dataset roles and raw-data
   redistribution boundaries.
