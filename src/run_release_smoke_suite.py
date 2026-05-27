@@ -284,6 +284,21 @@ def main() -> int:
             agent_guide.stdout,
             "AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md",
         )
+        human_guide = run_command(
+            "human reviewer guide",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "human-guide",
+            ],
+        )
+        assert_contains("human reviewer guide", human_guide.stdout, "Human reviewer path")
+        assert_contains(
+            "human reviewer guide",
+            human_guide.stdout,
+            "docs/HUMAN_REVIEWER_GUIDE.md",
+        )
         feedback_output = temp_root / "feedback" / "my_feedback_report.md"
         run_command(
             "optional feedback scaffold",
@@ -306,7 +321,7 @@ def main() -> int:
         shutil.rmtree(root / "src" / "__pycache__")
 
     print("PASS release smoke suite")
-    print("positive_checks: 6")
+    print("positive_checks: 7")
     print("negative_fail_closed_checks: 4")
     return 0
 

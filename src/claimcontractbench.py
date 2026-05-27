@@ -83,6 +83,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("Ready.")
     print("Next useful commands:")
     print("- python3 src/claimcontractbench.py smoke")
+    print("- python3 src/claimcontractbench.py human-guide")
     print("- python3 src/claimcontractbench.py templates")
     print("- python3 src/claimcontractbench.py agent-guide")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
@@ -94,6 +95,33 @@ def command_doctor(args: argparse.Namespace) -> int:
 def command_smoke(args: argparse.Namespace) -> int:
     root = resolve(Path.cwd(), args.root)
     return run(root, [sys.executable, script(root, "run_release_smoke_suite.py"), "--root", str(root)])
+
+
+def command_human_guide(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    print("Human reviewer path")
+    print("")
+    print("Use this path when you want to inspect the resource without an LLM.")
+    print("")
+    print("1. Verify that the checkout is a public-safe release surface:")
+    print("   python3 src/claimcontractbench.py doctor")
+    print("2. Run the first-inspection smoke suite:")
+    print("   python3 src/claimcontractbench.py smoke")
+    print("3. Inspect the registered claim templates:")
+    print("   python3 src/claimcontractbench.py templates")
+    print("4. Read the human-facing guides:")
+    for rel_path in [
+        "docs/HUMAN_REVIEWER_GUIDE.md",
+        "docs/EXAMPLE_OUTPUTS.md",
+        "docs/REPORT_INDEX.md",
+        "docs/BOUNDARIES.md",
+        "docs/FAQ.md",
+    ]:
+        print(f"   {root / rel_path}")
+    print("")
+    print("LLM-assisted packet drafting is optional. The deterministic checks are the")
+    print("release boundary whether a packet is written by a human or drafted by an LLM.")
+    return 0
 
 
 def command_review(args: argparse.Namespace) -> int:
@@ -331,8 +359,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="One-entry ClaimContractBench command hub.",
         epilog=(
-            "Typical path: doctor -> smoke -> agent-guide -> init-packet -> ask an LLM to fill "
-            "the packet -> review."
+            "Typical human path: doctor -> smoke -> human-guide. "
+            "Optional LLM path: templates -> init-packet -> review."
         ),
     )
     parser.add_argument("--root", default=str(default_root()), help="Release root.")
@@ -352,6 +380,13 @@ def build_parser() -> argparse.ArgumentParser:
     smoke = subparsers.add_parser("smoke", help="Run positive and fail-closed smoke checks.")
     add_subcommand_root(smoke)
     smoke.set_defaults(func=command_smoke)
+
+    human_guide = subparsers.add_parser(
+        "human-guide",
+        help="Explain the non-LLM reviewer inspection workflow.",
+    )
+    add_subcommand_root(human_guide)
+    human_guide.set_defaults(func=command_human_guide)
 
     templates = subparsers.add_parser("templates", help="Print registered template boundaries.")
     add_subcommand_root(templates)

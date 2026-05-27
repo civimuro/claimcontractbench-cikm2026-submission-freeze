@@ -8,11 +8,15 @@ LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and deriv
 LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
 docs/QUICKSTART.md,second-layer reviewer quickstart,yes,yes,no,Ten-minute reviewer path and expected outputs
+docs/HUMAN_REVIEWER_GUIDE.md,human reviewer guide,yes,yes,no,Non-LLM reviewer inspection guide and interpretation path
+docs/EXAMPLE_OUTPUTS.md,example outputs guide,yes,yes,no,Plain-language interpretation of common command outputs
 docs/BOUNDARIES.md,boundary and non-goal guide,yes,yes,no,Scope roles and safe interpretation guide
 docs/REPORT_INDEX.md,report and evidence index,yes,yes,no,Maps paper-facing claims to commands outputs and boundaries
 docs/TEMPLATE_ADMISSION.md,template admission documentation,yes,yes,no,Explains new-template contract fields and admission outcomes
+docs/LLM_ASSISTED_PATH.md,LLM-assisted path guide,yes,yes,no,Optional LLM packet drafting path separated from human reviewer path
 docs/REPRODUCIBILITY.md,reproducibility documentation,yes,yes,no,Environment and validation details for first inspection
 docs/DATA_AND_LICENSES.md,data and license documentation,yes,yes,no,Raw-data posture derived-material license and user responsibility guide
+docs/FAQ.md,public FAQ,yes,yes,no,Human-friendly answers about LLMs raw data GQU and citation
 artifact/RESOURCE_SPEC.md,resource specification,yes,yes,no,Defines artifact MVP and release boundaries
 artifact/ENVIRONMENT_NOTE_20260526.md,environment note,yes,yes,no,Python and runtime requirements for first reviewer inspection
 artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md,public release checklist,yes,yes,no,Checklist for final tag archive DOI and paper availability statement

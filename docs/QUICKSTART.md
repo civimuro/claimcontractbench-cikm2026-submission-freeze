@@ -16,9 +16,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 82
-required_files: 82
-public_safe_rows: 82
+rows: 86
+required_files: 86
+public_safe_rows: 86
 raw_data_rows: 0
 ```
 
@@ -37,7 +37,7 @@ Expected result:
 
 ```text
 PASS release smoke suite
-positive_checks: 6
+positive_checks: 7
 negative_fail_closed_checks: 4
 ```
 

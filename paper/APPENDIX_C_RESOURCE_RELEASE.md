@@ -126,7 +126,7 @@ regenerates the five public claim-passport casebook rows covering emit, relabel,
 weaken, rewrite, and suppress. It checks exact alignment with
 `data/claim_passport_casebook_20260519.csv`, action/layer enum validity,
 dataset/scenario joins, and `bottom_T` behavior. Current work-use result: the
-validator and projection smoke runner PASS with 82 rows, 82 required files, 82
+validator and projection smoke runner PASS with 86 rows, 86 required files, 86
 public-safe rows, 0 raw-data rows, and five regenerated smoke rows.
 
 The third command generates a reviewer-facing audit report from the public claim
@@ -202,7 +202,7 @@ benchmark runner, and annotation-agreement scaffold.
 
 A clean copied-release simulation at
 the manifest-controlled release root also passes the same command
-with 82 rows and 0 raw-data rows. This validates the release surface in a
+with 86 rows and 0 raw-data rows. This validates the release surface in a
 manifest-only copy, not just inside the full working repository.
 
 The five-row projection smoke runner is now release-root normalized. The deeper
@@ -250,7 +250,7 @@ The machine-readable source and redistribution posture snapshot is
 | claim-contract schema | `artifact/claim_contract_schema_20260520.json` | final public-archive sync |
 | projection examples | action-covering examples seeded as public-schema casebook rows | final public-archive sync |
 | release-surface quickstart | release-root validator and projection smoke runner passing in workspace and clean copied-release simulation | final public-archive rerun |
-| release-candidate builder | the manifest-controlled GitHub snapshot contains 82 required public-safe rows and validates in place | final public-archive rerun after repository/archive choice |
+| release-candidate builder | the manifest-controlled GitHub snapshot contains 86 required public-safe rows and validates in place | final public-archive rerun after repository/archive choice |
 | operator quickstart | five-row public smoke runner available; 375-event internal runner local reference runtime recorded | release-root normalization before claiming full public runner support |
 | claim audit report | `src/run_claim_audit_report.py` generates reviewer-facing Markdown/HTML/CSV/JSON reports with 11 checks passing | final public-archive rerun and optional sample report inclusion |
 | claim template admission | `src/run_claim_template_admission.py` admits 5 mainline and 3 support-only templates and rejects 1 patchwork probe with 10 checks passing | final public-archive rerun and optional sample report inclusion |
@@ -261,7 +261,7 @@ The machine-readable source and redistribution posture snapshot is
 | paper-excerpt reviewer-value benchmark | 80 public-safe source-anchored selected-excerpt units, 8 registered controls, 40 source papers, 22 source families, 13 passing checks, 0 unsafe-release rate, and transparent keyword baseline | future work should add independent body-excerpt annotation and reviewer utility study |
 | annotation agreement scaffold | `src/run_paper_claim_annotation_agreement.py` validates 128 blind annotation rows and reports `PENDING_SECOND_ANNOTATOR` until labels are filled | second annotator, adjudication, and agreement reporting |
 | license table | 2026-05-20 source/license snapshot exists | recheck at final archive time |
-| release manifest | 82 public-safe required rows, validator, projection smoke runner, claim audit report runner, claim template admission runner, reviewer claim-intake runner, claim-audit gold-probe runner, paper-claim gold benchmark runner, paper-excerpt reviewer-value benchmark runner, annotation-agreement scaffold, environment note, and docs layer passing | final file snapshot after public archive |
+| release manifest | 86 public-safe required rows, validator, projection smoke runner, claim audit report runner, claim template admission runner, reviewer claim-intake runner, claim-audit gold-probe runner, paper-claim gold benchmark runner, paper-excerpt reviewer-value benchmark runner, annotation-agreement scaffold, environment note, and docs layer passing | final file snapshot after public archive |
 | release path | pending | public/reviewer repo and DOI/archive plan |
 
 ## C8. Availability Statement Draft

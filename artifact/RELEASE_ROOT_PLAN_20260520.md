@@ -141,9 +141,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 82
-required_files: 82
-public_safe_rows: 82
+rows: 86
+required_files: 86
+public_safe_rows: 86
 raw_data_rows: 0
 PASS projection smoke runner
 smoke_rows: 5

@@ -4,7 +4,13 @@
 
 - Reframed the repository as a reviewer-verifiable resource snapshot while
   preserving the LLM-assisted quick trial.
+- Promoted the non-LLM human reviewer path to a first-class entry point through
+  README path selection and `python3 src/claimcontractbench.py human-guide`.
 - Added second-layer documentation under `docs/`:
+  - human reviewer guide;
+  - example output explanations;
+  - FAQ;
+  - optional LLM-assisted path;
   - reviewer quickstart;
   - scope boundaries;
   - report/evidence index;

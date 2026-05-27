@@ -8,7 +8,7 @@ not raw-data reproductions.
 
 | Claim to verify | Command | Expected signal |
 | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 82 rows, 82 required files, 82 public-safe rows, 0 raw-data rows. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 86 rows, 86 required files, 86 public-safe rows, 0 raw-data rows. |
 | The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 6 positive checks and 4 fail-closed negative checks pass. |
 | The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. |
 
