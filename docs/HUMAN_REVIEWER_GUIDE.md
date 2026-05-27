@@ -18,9 +18,10 @@ for first inspection.
 ## What To Read Next
 
 1. `docs/EXAMPLE_OUTPUTS.md`
-2. `docs/REPORT_INDEX.md`
-3. `docs/BOUNDARIES.md`
-4. `docs/DATA_AND_LICENSES.md`
+2. `docs/CONCEPTS.md`
+3. `docs/REPORT_INDEX.md`
+4. `docs/BOUNDARIES.md`
+5. `docs/DATA_AND_LICENSES.md`
 
 These files explain what the commands prove, where the generated reports go,
 and which claims are intentionally out of scope.
@@ -103,3 +104,9 @@ python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.c
 ```
 
 The report is a claim-audit aid, not a review verdict.
+
+## If You Want To Ask A Public Question
+
+Use `SUPPORT.md` and the GitHub issue templates. Keep questions public-safe:
+paraphrase examples, avoid confidential paper text, and do not upload raw data
+or private review notes.

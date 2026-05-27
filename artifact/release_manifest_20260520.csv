@@ -4,10 +4,19 @@ CITATION.cff,citation metadata candidate,yes,yes,no,Citation metadata for releas
 CHANGELOG.md,release change log,yes,yes,no,Public-safe release-candidate change log
 .gitignore,generated report ignore rules,yes,yes,no,Release-root ignore rules for generated report directories
 .github/workflows/claimcontractbench-smoke.yml,GitHub Actions smoke workflow,yes,yes,no,Optional repository CI workflow that runs the standard-library release smoke suite
+.github/ISSUE_TEMPLATE/bug_report.yml,bug report issue template,yes,yes,no,Guided public-safe bug and reproducibility report form
+.github/ISSUE_TEMPLATE/resource_question.yml,resource question issue template,yes,yes,no,Guided public-safe resource and documentation question form
+.github/ISSUE_TEMPLATE/template_admission_request.yml,template admission issue template,yes,yes,no,Guided public-safe typed claim-template admission request form
+.github/pull_request_template.md,pull request template,yes,yes,no,Public-safe pull request checklist for validation manifest and documentation changes
+CONTRIBUTING.md,contribution guide,yes,yes,no,Public-safe contribution scope and pull request checklist
+CODE_OF_CONDUCT.md,code of conduct,yes,yes,no,Public discussion norms and confidentiality boundaries
+SUPPORT.md,support guide,yes,yes,no,Public-safe support request guidance and required details
+SECURITY.md,security and privacy guide,yes,yes,no,Accidental disclosure release-safety and privacy reporting guidance
 LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and derived resource files; raw third-party data is excluded
 LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
 docs/QUICKSTART.md,second-layer reviewer quickstart,yes,yes,no,Ten-minute reviewer path and expected outputs
+docs/CONCEPTS.md,plain-language concept guide,yes,yes,no,Human-friendly explanation of metric-to-claim contracts GQU templates and fail-closed routing
 docs/HUMAN_REVIEWER_GUIDE.md,human reviewer guide,yes,yes,no,Non-LLM reviewer inspection guide and interpretation path
 docs/EXAMPLE_OUTPUTS.md,example outputs guide,yes,yes,no,Plain-language interpretation of common command outputs
 docs/BOUNDARIES.md,boundary and non-goal guide,yes,yes,no,Scope roles and safe interpretation guide

@@ -7,6 +7,7 @@
 - Promoted the non-LLM human reviewer path to a first-class entry point through
   README path selection and `python3 src/claimcontractbench.py human-guide`.
 - Added second-layer documentation under `docs/`:
+  - plain-language concepts guide;
   - human reviewer guide;
   - example output explanations;
   - FAQ;
@@ -18,6 +19,8 @@
   - reproducibility;
   - data and license posture.
 - Added a public release checklist for tag/archive/DOI readiness.
+- Added public-facing community files: contributing guide, code of conduct,
+  support and security notes, issue templates, and pull-request template.
 - Kept the command hub and smoke suite as the primary first-inspection path.
 
 ## Initial Private Staging

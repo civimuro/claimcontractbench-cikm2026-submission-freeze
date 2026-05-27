@@ -1,6 +1,6 @@
 # Reviewer Quickstart Release Candidate (2026-05-20)
 
-Status: `RELEASE_ROOT_RELATIVE_VALIDATED_2026-05-26`.
+Status: `PUBLIC_FRIENDLY_SURFACE_CANDIDATE_2026-05-27`.
 
 This quickstart is written for the public/reviewer artifact root. It is not tied
 to private coordination directories or local machine paths.
@@ -50,9 +50,9 @@ Expected output for the surface validator:
 PASS release surface validation
 root: /path/to/release/root
 manifest: artifact/release_manifest_20260520.csv
-rows: 86
-required_files: 86
-public_safe_rows: 86
+rows: 95
+required_files: 95
+public_safe_rows: 95
 raw_data_rows: 0
 ```
 

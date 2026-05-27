@@ -11,6 +11,7 @@ LLM to draft a claim packet that the deterministic checker then audits.
 
 | I want to... | Start here | What you get |
 | --- | --- | --- |
+| Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
 | Verify the resource as a reviewer | `python3 src/claimcontractbench.py doctor` then `python3 src/claimcontractbench.py smoke` | A public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
@@ -29,9 +30,9 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 86
-required_files: 86
-public_safe_rows: 86
+rows: 95
+required_files: 95
+public_safe_rows: 95
 raw_data_rows: 0
 
 PASS release smoke suite
@@ -45,6 +46,7 @@ negative packets that must fail closed.
 
 Then read:
 
+- `docs/CONCEPTS.md`
 - `docs/HUMAN_REVIEWER_GUIDE.md`
 - `docs/EXAMPLE_OUTPUTS.md`
 - `docs/REPORT_INDEX.md`
@@ -131,6 +133,21 @@ Detailed LLM guides:
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 - `artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md`
 
+## Public Project Entry Points
+
+The repository is organized for two audiences:
+
+- humans who want to understand or verify the resource directly;
+- LLM-assisted users who want a conservative packet-drafting route.
+
+For public discussion and contribution, use:
+
+- `CONTRIBUTING.md`
+- `SUPPORT.md`
+- `SECURITY.md`
+- `.github/ISSUE_TEMPLATE/`
+- `.github/pull_request_template.md`
+
 ## Template Admission
 
 If a relevant claim does not match a registered template, do not force a nearby
@@ -150,7 +167,7 @@ See `docs/TEMPLATE_ADMISSION.md`.
 
 ## Repository Map
 
-- `docs/`: human-facing guides, boundaries, examples, report index,
+- `docs/`: concepts, human-facing guides, boundaries, examples, report index,
   reproducibility, data/license posture, FAQ, and LLM-assisted path.
 - `artifact/`: schemas, manifests, quickstarts, packet templates, and release
   checklist.

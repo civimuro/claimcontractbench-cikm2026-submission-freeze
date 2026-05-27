@@ -23,6 +23,8 @@ derived tables, and fixtures. It does not redistribute raw third-party datasets.
 reportability policy. `U` records the decision-use context. Together they stop
 a metric result from being silently reused as a stronger prose claim.
 
+See `docs/CONCEPTS.md` for a plain-language example.
+
 ## Why are so many external paper rows unsupported or out of scope?
 
 That is part of the resource boundary. The current catalog is small and
@@ -46,6 +48,12 @@ clarity, and venue fit.
 Because LLMs can be convenient for drafting candidate claim packets. The path is
 separate so that the project remains usable by humans and so that LLM output is
 never treated as licensing authority.
+
+## How should I ask a question or propose a template?
+
+Use `SUPPORT.md`, `CONTRIBUTING.md`, and the GitHub issue templates. Keep the
+question public-safe: paraphrase examples, cite public sources when possible,
+and avoid confidential review material or raw data.
 
 ## What should I cite?
 

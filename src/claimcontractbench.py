@@ -98,7 +98,6 @@ def command_smoke(args: argparse.Namespace) -> int:
 
 
 def command_human_guide(args: argparse.Namespace) -> int:
-    root = resolve(Path.cwd(), args.root)
     print("Human reviewer path")
     print("")
     print("Use this path when you want to inspect the resource without an LLM.")
@@ -111,13 +110,16 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("   python3 src/claimcontractbench.py templates")
     print("4. Read the human-facing guides:")
     for rel_path in [
+        "docs/CONCEPTS.md",
         "docs/HUMAN_REVIEWER_GUIDE.md",
         "docs/EXAMPLE_OUTPUTS.md",
         "docs/REPORT_INDEX.md",
         "docs/BOUNDARIES.md",
         "docs/FAQ.md",
+        "SUPPORT.md",
+        "CONTRIBUTING.md",
     ]:
-        print(f"   {root / rel_path}")
+        print(f"   {rel_path}")
     print("")
     print("LLM-assisted packet drafting is optional. The deterministic checks are the")
     print("release boundary whether a packet is written by a human or drafted by an LLM.")
@@ -206,8 +208,7 @@ def command_init_template(args: argparse.Namespace) -> int:
 
 
 def command_admission_guide(args: argparse.Namespace) -> int:
-    root = resolve(Path.cwd(), args.root)
-    guide = root / "artifact" / "TEMPLATE_ADMISSION_QUICKSTART_20260527.md"
+    guide = "artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md"
     print("Template admission path")
     print("")
     print("Use this when review returns NEEDS_TEMPLATE_ADMISSION.")
@@ -239,9 +240,8 @@ def command_admission_guide(args: argparse.Namespace) -> int:
 
 
 def command_agent_guide(args: argparse.Namespace) -> int:
-    root = resolve(Path.cwd(), args.root)
-    guide = root / "artifact" / "AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md"
-    llm_guide = root / "artifact" / "LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md"
+    guide = "artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md"
+    llm_guide = "artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md"
     print("One-shot AI-agent review path")
     print("")
     print('User instruction this guide supports: "Use the tools in this repository to assist a review of this paper."')
@@ -266,9 +266,8 @@ def command_agent_guide(args: argparse.Namespace) -> int:
 
 
 def command_feedback_guide(args: argparse.Namespace) -> int:
-    root = resolve(Path.cwd(), args.root)
-    guide = root / "artifact" / "USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md"
-    template = root / "artifact" / "user_experience_feedback_template_20260527.md"
+    guide = "artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md"
+    template = "artifact/user_experience_feedback_template_20260527.md"
     print("Optional user-experience feedback path")
     print("")
     print("Use this only when the user agrees to share a feedback report.")

@@ -16,9 +16,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 86
-required_files: 86
-public_safe_rows: 86
+rows: 95
+required_files: 95
+public_safe_rows: 95
 raw_data_rows: 0
 ```
 
@@ -42,9 +42,9 @@ negative_fail_closed_checks: 4
 ```
 
 The positive checks cover release validation, projection smoke rows, the LLM
-packet happy path, template admission, the one-shot agent guide, and optional
-feedback scaffolding. The negative checks verify that unsafe or malformed LLM
-packets fail closed rather than producing a licensed claim report.
+packet happy path, template admission, the one-shot agent guide, the human guide,
+and optional feedback scaffolding. The negative checks verify that unsafe or
+malformed LLM packets fail closed rather than producing a licensed claim report.
 
 ## 3. Inspect The Registered Templates
 
@@ -86,3 +86,6 @@ template, or should not call the claim runner at all.
 Use `docs/REPORT_INDEX.md` to see which runner supports which paper-facing
 claim. Use `docs/BOUNDARIES.md` before interpreting any result as a reviewer
 utility claim, full-paper coverage claim, or autonomous-review claim.
+
+If the terminology is unfamiliar, start with `docs/CONCEPTS.md` before reading
+the report index.
