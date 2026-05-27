@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use ClaimContractBench, cite the archived release and the accompanying paper."
+title: "ClaimContractBench: A Finite Claim-Licensing Resource for Metric-to-Claim Reporting"
+authors:
+  - name: "ClaimContractBench Authors"
+version: "0.1.0-cikm2026-resource-snapshot-candidate"
+date-released: "2026-05-27"
+repository-code: "https://github.com/civimuro/claimcontractbench"
+license: "Apache-2.0 AND CC-BY-4.0"

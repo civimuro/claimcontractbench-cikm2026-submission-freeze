@@ -35,7 +35,7 @@ raw-pair redistribution.
 | `walmart_amazon_em_shakedown` | `prior_random_pi020` | 2049 | 845 | 0.094192 | 0.200000 | +0.105808 |
 
 The matching reportability counts are promoted in
-`WORKSPACE/data/walmart_amazon_r2_scenario_summary.csv` and Appendix B §B4.
+`data/walmart_amazon_r2_scenario_summary.csv` and Appendix B §B4.
 
 ## C3. Claim-Contract Schema
 
@@ -126,7 +126,7 @@ regenerates the five public claim-passport casebook rows covering emit, relabel,
 weaken, rewrite, and suppress. It checks exact alignment with
 `data/claim_passport_casebook_20260519.csv`, action/layer enum validity,
 dataset/scenario joins, and `bottom_T` behavior. Current work-use result: the
-validator and projection smoke runner PASS with 58 rows, 58 required files, 58
+validator and projection smoke runner PASS with 82 rows, 82 required files, 82
 public-safe rows, 0 raw-data rows, and five regenerated smoke rows.
 
 The third command generates a reviewer-facing audit report from the public claim
@@ -201,8 +201,8 @@ runner, paper-claim gold benchmark runner, paper-excerpt reviewer-value
 benchmark runner, and annotation-agreement scaffold.
 
 A clean copied-release simulation at
-`/tmp/claimcontractbench_release_check_20260520` also passes the same command
-with 58 rows and 0 raw-data rows. This validates the release surface in a
+the manifest-controlled release root also passes the same command
+with 82 rows and 0 raw-data rows. This validates the release surface in a
 manifest-only copy, not just inside the full working repository.
 
 The five-row projection smoke runner is now release-root normalized. The deeper
@@ -250,7 +250,7 @@ The machine-readable source and redistribution posture snapshot is
 | claim-contract schema | `artifact/claim_contract_schema_20260520.json` | final public-archive sync |
 | projection examples | action-covering examples seeded as public-schema casebook rows | final public-archive sync |
 | release-surface quickstart | release-root validator and projection smoke runner passing in workspace and clean copied-release simulation | final public-archive rerun |
-| release-candidate builder | `src/build_release_candidate.py` copies 58 required public-safe rows and validates the copied candidate | final public-archive rerun after repository/archive choice |
+| release-candidate builder | the manifest-controlled GitHub snapshot contains 82 required public-safe rows and validates in place | final public-archive rerun after repository/archive choice |
 | operator quickstart | five-row public smoke runner available; 375-event internal runner local reference runtime recorded | release-root normalization before claiming full public runner support |
 | claim audit report | `src/run_claim_audit_report.py` generates reviewer-facing Markdown/HTML/CSV/JSON reports with 11 checks passing | final public-archive rerun and optional sample report inclusion |
 | claim template admission | `src/run_claim_template_admission.py` admits 5 mainline and 3 support-only templates and rejects 1 patchwork probe with 10 checks passing | final public-archive rerun and optional sample report inclusion |
@@ -261,7 +261,7 @@ The machine-readable source and redistribution posture snapshot is
 | paper-excerpt reviewer-value benchmark | 80 public-safe source-anchored selected-excerpt units, 8 registered controls, 40 source papers, 22 source families, 13 passing checks, 0 unsafe-release rate, and transparent keyword baseline | future work should add independent body-excerpt annotation and reviewer utility study |
 | annotation agreement scaffold | `src/run_paper_claim_annotation_agreement.py` validates 128 blind annotation rows and reports `PENDING_SECOND_ANNOTATOR` until labels are filled | second annotator, adjudication, and agreement reporting |
 | license table | 2026-05-20 source/license snapshot exists | recheck at final archive time |
-| release manifest | 58 public-safe required rows, validator, projection smoke runner, claim audit report runner, claim template admission runner, reviewer claim-intake runner, claim-audit gold-probe runner, paper-claim gold benchmark runner, paper-excerpt reviewer-value benchmark runner, annotation-agreement scaffold, and environment note passing | final file snapshot after public archive |
+| release manifest | 82 public-safe required rows, validator, projection smoke runner, claim audit report runner, claim template admission runner, reviewer claim-intake runner, claim-audit gold-probe runner, paper-claim gold benchmark runner, paper-excerpt reviewer-value benchmark runner, annotation-agreement scaffold, environment note, and docs layer passing | final file snapshot after public archive |
 | release path | pending | public/reviewer repo and DOI/archive plan |
 
 ## C8. Availability Statement Draft
@@ -273,7 +273,7 @@ clearly permit redistribution with required attribution. Reviewers can inspect
 the claim-contract workflow using committed derived evidence and can follow
 source-provider instructions for raw data access where needed.
 
-## C8b. GenAI Usage Disclosure (Work-Use Placeholder)
+## C8b. GenAI Usage Disclosure
 
 CIKM 2026 requires every submission to include a GenAI Usage Disclosure
 section placed immediately before the references. This section is excluded
@@ -281,25 +281,16 @@ from the page limit (per CIKM 2026 submission policy for full, short,
 resource, and demo tracks) and disclosure is a hard requirement: omission can
 result in desk rejection or other ACM-policy actions.
 
-Work-use placeholder (specific AI-usage description deferred to submission
-time):
+Current compact-manuscript candidate wording:
 
-[AUTHOR-TO-VERIFY at submission time] — Replace this placeholder with the
-author-verified GenAI Usage Disclosure paragraph following CIKM 2026's required
-disclosure format and position. The disclosure should cover, at minimum, which
-AI tools were used, what they were used for (drafting / synthesis / formal
-content / numeric evidence), and the human-oversight regime. Numeric evidence
-in this resource (event counts, candidate counts, F1 cells, Wilson bounds,
-Q-monotonicity rows, proof obligation closure rows) is generated by the
-operator and validation scripts under human review, not by AI free-form
-generation; formal theorem statements, theorem registry entries, claim-firewall
-lists, and forbidden-claim guards are reviewed and adjusted by the authors
-before inclusion; source/license assessments and dataset posture decisions in
-this appendix are author-made — these properties may inform the final
-disclosure but the exact wording is for the authors to verify.
+> The authors used AI-assisted tools during drafting, code inspection, and
+> review-cycle triage. The authors are responsible for the paper's claims,
+> citations, artifact contents, and final submitted wording.
 
-This placeholder is for coordination use only and must not be treated as the
-final submission disclosure.
+The submitting authors should verify this wording before upload. Numeric
+evidence in this resource is generated by the operator and validation scripts
+under human review, not by AI free-form generation; source/license assessments
+and dataset posture decisions remain author responsibility.
 
 ## C8c. CIKM 2026 Resource Submission Compliance Map
 
@@ -308,11 +299,11 @@ Current official-policy interpretation, checked 2026-05-20:
 | Requirement | Current status | Required final action |
 | --- | --- | --- |
 | Resource paper length | ACM preview is 4 pages for main content; references and GenAI disclosure are outside the limited pages | keep the main-content budget at 4 pages after final metadata insertion |
-| Review model | Resource Track is single-blind | replace all author/affiliation placeholders with real names and affiliations before submission |
+| Review model | Resource Track is single-blind | replace temporary author/affiliation fields with real names and affiliations before submission |
 | Reviewer nomination | CIKM requires at least one author to be nominated for reviewing papers | complete this in EasyChair; failure is a desk-rejection risk |
 | Resource availability | code resources should be publicly available through reputable code-sharing platforms; datasets/benchmarks should provide metadata/DOI when relevant | choose repository/archive location and DOI/archive plan; rerun the release validator on the final snapshot |
 | Review rubric | novelty, availability, utility, and predicted impact are explicit Resource Track criteria | keep the claim passport, release manifest, quickstart, WDC depth witness, and limitations aligned with those criteria |
-| GenAI disclosure | required immediately before references and outside the page limit | replace the work-use placeholder with author-verified final wording |
+| GenAI disclosure | required immediately before references and outside the page limit | verify the candidate disclosure wording before submission |
 | Accessibility | alt text is strongly encouraged for floats | preserve the current figure descriptions and verify final float descriptions |
 
 ## C9. Relation To Final 4-Page Paper

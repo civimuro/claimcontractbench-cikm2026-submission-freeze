@@ -1,12 +1,21 @@
 path,role,required,public_safe,raw_data,notes
 README.md,reviewer resource entrypoint,yes,yes,no,Top-level resource orientation for reviewer checkout
+CITATION.cff,citation metadata candidate,yes,yes,no,Citation metadata for release candidate and later archive citation
+CHANGELOG.md,release change log,yes,yes,no,Public-safe release-candidate change log
 .gitignore,generated report ignore rules,yes,yes,no,Release-root ignore rules for generated report directories
 .github/workflows/claimcontractbench-smoke.yml,GitHub Actions smoke workflow,yes,yes,no,Optional repository CI workflow that runs the standard-library release smoke suite
 LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and derived resource files; raw third-party data is excluded
 LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
+docs/QUICKSTART.md,second-layer reviewer quickstart,yes,yes,no,Ten-minute reviewer path and expected outputs
+docs/BOUNDARIES.md,boundary and non-goal guide,yes,yes,no,Scope roles and safe interpretation guide
+docs/REPORT_INDEX.md,report and evidence index,yes,yes,no,Maps paper-facing claims to commands outputs and boundaries
+docs/TEMPLATE_ADMISSION.md,template admission documentation,yes,yes,no,Explains new-template contract fields and admission outcomes
+docs/REPRODUCIBILITY.md,reproducibility documentation,yes,yes,no,Environment and validation details for first inspection
+docs/DATA_AND_LICENSES.md,data and license documentation,yes,yes,no,Raw-data posture derived-material license and user responsibility guide
 artifact/RESOURCE_SPEC.md,resource specification,yes,yes,no,Defines artifact MVP and release boundaries
 artifact/ENVIRONMENT_NOTE_20260526.md,environment note,yes,yes,no,Python and runtime requirements for first reviewer inspection
+artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md,public release checklist,yes,yes,no,Checklist for final tag archive DOI and paper availability statement
 artifact/RELEASE_ROOT_PLAN_20260520.md,release plan,yes,yes,no,Maps current workspace to future public release root
 artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md,reviewer quickstart,yes,yes,no,Release-root relative quickstart draft
 artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md,LLM-assisted review quickstart,yes,yes,no,Copy-paste LLM front-end workflow and prompt guide for fail-closed claim review packets

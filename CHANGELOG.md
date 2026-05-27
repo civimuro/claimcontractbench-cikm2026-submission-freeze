@@ -1,0 +1,21 @@
+# Changelog
+
+## Unreleased - CIKM 2026 Resource Snapshot Candidate
+
+- Reframed the repository as a reviewer-verifiable resource snapshot while
+  preserving the LLM-assisted quick trial.
+- Added second-layer documentation under `docs/`:
+  - reviewer quickstart;
+  - scope boundaries;
+  - report/evidence index;
+  - template admission;
+  - reproducibility;
+  - data and license posture.
+- Added a public release checklist for tag/archive/DOI readiness.
+- Kept the command hub and smoke suite as the primary first-inspection path.
+
+## Initial Private Staging
+
+- Created a manifest-controlled public-safe release surface.
+- Added the command hub, LLM packet runner, template-admission path, one-shot
+  agent guide, optional feedback scaffold, and GitHub Actions smoke workflow.

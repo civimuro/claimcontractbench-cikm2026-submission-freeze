@@ -1,117 +1,89 @@
 # ClaimContractBench
 
-This release contains the public-safe ClaimContractBench resource surface for a
-CIKM 2026 Resource Paper submission.
+ClaimContractBench is a manifest-controlled research resource for auditing the
+step between metric evidence and prose claims in empirical ML papers.
 
 Working title:
 
 **ClaimContractBench: A Finite Claim-Licensing Resource for Metric-to-Claim Reporting**
 
-## Reviewer First Step
+The release is designed to serve two audiences without mixing their roles:
 
-The release is designed so that a reviewer can start without raw data, GPUs, or
-third-party Python packages. From the release root:
+1. reviewers who need to verify that the resource is real, bounded, runnable,
+   and internally consistent; and
+2. authors or LLM users who want a quick, conservative way to try the
+   claim-routing workflow on a paper excerpt.
+
+The LLM path is a front end. The deterministic ClaimContractBench tools remain
+the licensing boundary. This repository is not an autonomous reviewer,
+paper-acceptance engine, arbitrary fact checker, model leaderboard, official
+benchmark reproduction, or raw-data redistribution bundle.
+
+## Ten-Minute Reviewer Path
+
+From the release root:
 
 ```bash
 python3 src/claimcontractbench.py doctor
 python3 src/claimcontractbench.py smoke
 ```
 
-The first command checks that the release root is usable. The second command
-runs positive paths and critical fail-closed bad-packet checks.
-
-The lower-level scripts remain available if you want to inspect each step:
-
-```bash
-python3 src/validate_release_surface.py
-python3 src/run_projection_smoke.py
-```
-
-For the fuller reviewer path, follow:
-
-- `artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`
-- `artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md`
-- `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
-
-The surface validator should report 73 required files, 73 public-safe rows, and
-0 raw-data rows. The projection smoke runner should regenerate five public
-claim-passport rows covering emit, relabel, rewrite, suppress, and weaken.
-The release smoke suite should report six positive checks and four
-fail-closed negative checks.
-
-## The Main Path
-
-Use the project in this order:
-
-1. Check the checkout:
-
-```bash
-python3 src/claimcontractbench.py doctor
-```
-
-2. If you are using an AI coding assistant, give it the paper text or file path
-   and say:
+Expected high-level result:
 
 ```text
-Use the tools in this repository to assist a review of this paper.
+PASS release surface validation
+rows: 82
+required_files: 82
+public_safe_rows: 82
+raw_data_rows: 0
+
+PASS release smoke suite
+positive_checks: 6
+negative_fail_closed_checks: 4
 ```
 
-Then point it to:
+`doctor` checks the manifest-controlled release surface. `smoke` checks the
+positive public paths and four fail-closed packet failures: unknown template,
+template id on a non-call row, duplicate packet id, and private-marker report
+suppression.
 
-```bash
-python3 src/claimcontractbench.py agent-guide
-```
+For a guided explanation, read:
 
-This one-shot path is meant for agents with local file and command access. If
-your LLM cannot run local commands, it can draft the CSV packet, but it cannot
-complete the deterministic tool run by itself.
+- `docs/QUICKSTART.md`
+- `docs/REPRODUCIBILITY.md`
+- `docs/REPORT_INDEX.md`
+- `docs/BOUNDARIES.md`
 
-3. Ask an LLM to turn paper claims into a CSV packet:
+## What This Resource Verifies
 
-```bash
-python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
-```
+ClaimContractBench asks one narrow question:
 
-4. Review that packet:
+> Given a metric/evidence bundle and a declared context, which emitted empirical
+> claim is licensed, weakened, rewritten, relabeled, suppressed, or kept
+> support-only?
 
-```bash
-python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv
-```
+The release contains:
 
-5. If the report says `NEEDS_TEMPLATE_ADMISSION`, do not force a match. Start
-   the template-admission path:
+- a public-safe release manifest;
+- source/license and dataset/scenario manifests;
+- a machine-readable claim-contract schema;
+- five claim-passport smoke rows spanning emit, relabel, weaken, rewrite, and
+  suppress actions;
+- WDC/ACS/NAB-derived public-safe evidence tables;
+- template-admission and reviewer-intake examples;
+- selected paper-claim and excerpt benchmarks that measure fail-closed behavior
+  rather than autonomous full-paper reading;
+- standard-library runners that regenerate reports without raw data downloads,
+  third-party Python packages, or GPU training.
 
-```bash
-python3 src/claimcontractbench.py admission-guide
-python3 src/claimcontractbench.py init-template --output claim_packets/my_template_admission.csv
-python3 src/claimcontractbench.py admit-template --input claim_packets/my_template_admission.csv
-```
+## Quick LLM Trial
 
-The LLM is a drafting and routing assistant. ClaimContractBench is the
-fail-closed checker for registered claim templates and candidate template
-contracts.
-
-6. If a trial user agrees to share usability feedback, create an optional
-   feedback report:
-
-```bash
-python3 src/claimcontractbench.py feedback-guide
-python3 src/claimcontractbench.py init-feedback --output feedback/my_feedback_report.md
-```
-
-The feedback path is consent-based and should not include confidential paper
-text, private reviewer notes, raw data, local paths, or author identities unless
-sharing is explicitly allowed.
-
-## Use The Included Example
-
-To see the registered template boundaries:
+The repository still supports the original quick LLM-assisted trial. This path
+is useful for fast exploration, but it should not be read as automatic paper
+review.
 
 ```bash
 python3 src/claimcontractbench.py templates
-```
-
-```bash
 python3 src/claimcontractbench.py review \
   --input artifact/llm_claim_review_packet_template_20260527.csv \
   --output reports/llm_claim_review_packet_20260527
@@ -132,74 +104,80 @@ checks_passed: 14
 checks_failed: 0
 ```
 
-For a new paper, copy the prompt in
-`artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`, ask your LLM to output
-the required CSV packet, and rerun the command with that CSV as `--input`.
+For a new paper, create a packet and ask an LLM to fill only the CSV fields:
 
-For new-paper text, most rows should usually become `NEEDS_TEMPLATE_ADMISSION`
-or `OUT_OF_SCOPE_DO_NOT_CALL` unless they exactly match a registered control or
-template. Unknown templates, malformed CSV, private local paths, duplicate
-packet ids, and missing human-check flags are treated as packet failures rather
-than silently accepted rows.
+```bash
+python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv
+```
 
-If no registered template matches, use
-`artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md`. A new template must supply
-an evidence unit, finite claim template, `G/Q/U` bindings, action mapping,
-typed preorder or incomparability, forbidden claim, anchor, and boundary note.
+Then run:
 
-If a user tries the LLM-assisted path, the optional
-`artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md` asks their AI assistant
-to report time-to-first-useful-output, CSV validity, overconfident template
-calls, missing template families, confusing terms, privacy blockers, and whether
-the generated report changed a review or rewrite decision.
+```bash
+python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv
+```
 
-This archive is a manifest-controlled derived-asset release. Running the
-quickstart creates reviewer reports under `reports/`; those reports are
-generated inspection outputs, not raw-data reproductions and not a claim that
-raw third-party datasets are redistributed.
+Use `CALL_REGISTERED_TEMPLATE` only for exact registered template matches. Use
+`NEEDS_TEMPLATE_ADMISSION` for relevant empirical metric-to-claim statements
+without a registered template. Use `OUT_OF_SCOPE_DO_NOT_CALL` for proof
+correctness, novelty, implementation bugs, legal/policy decisions, ethics
+approval, or acceptance judgments.
 
-License scope is defined in `LICENSE.md`: executable code is Apache-2.0,
-derived non-code resource materials are CC-BY-4.0, and raw third-party data is
-not redistributed.
+Details:
 
-## What The Resource Is
+- `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
+- `artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md`
+- `docs/TEMPLATE_ADMISSION.md`
 
-ClaimContractBench is an executable claim-licensing audit resource. It helps a
-reviewer, benchmark maintainer, or resource builder ask:
+## Template Admission
 
-> Given a metric/evidence bundle and a declared context, which emitted
-> empirical claim is actually licensed?
+If a relevant claim does not match a registered template, do not force a nearby
+template. Start a typed admission row:
 
-The resource includes manifests, claim schemas, reportability policies,
-projection actions, validation scripts, source/provenance notes, and compact
-derived evidence tables.
+```bash
+python3 src/claimcontractbench.py admission-guide
+python3 src/claimcontractbench.py init-template --output claim_packets/my_template_admission.csv
+python3 src/claimcontractbench.py admit-template --input claim_packets/my_template_admission.csv
+```
 
-The core theory governs the middle layer between evidence and prose: given a
-typed evidence/context contract, it decides which empirical claim may be
-emitted, weakened, rewritten, relabeled, suppressed, or kept as support-only. It
-does not automatically extract all claims from a paper, prove a model is good,
-invent new templates, judge novelty, or verify proofs.
+A candidate template must supply an evidence unit, finite claim template,
+`G/Q/U` bindings, action mapping, preorder or incomparability relation,
+forbidden stronger claim, anchor, and boundary note.
 
-## What The Paper Is Not
+## Repository Map
 
-It is not a generic calibration benchmark, a model leaderboard, an official WDC
-reproduction, a deployment-safety validation, a raw-data redistribution bundle,
-an arbitrary free-form claim verifier, or an autonomous full-paper reviewer.
+- `docs/`: reviewer-facing second-layer paper: quickstart, boundaries, report
+  index, data/license posture, reproducibility, and template admission.
+- `artifact/`: schemas, manifests, quickstarts, packet templates, and release
+  checklist.
+- `data/`: public-safe derived tables and compact evidence displays.
+- `src/`: standard-library runners and the `claimcontractbench.py` command hub.
+- `reports/`: tracked public-safe fixture inputs for report regeneration; most
+  generated reports are ignored by git.
+- `paper/`: public-safe release protocol notes and paper-facing figures.
+- `LICENSES/`: Apache-2.0 and CC-BY-4.0 license texts.
 
-## Folder Map
+## Release And Citation Status
 
-- `paper/`: CIKM paper outlines and manuscript drafts
-- `artifact/`: resource specification and release checklist
-- `data/`: dataset inventory, split metadata, and external-data notes
-- `src/`: code for resource tooling
-- `experiments/`: validation runs and compact benchmark evidence
-- `reports/`: generated reports, plots, and screenshots
-- `notes/`: working notes and decision log
-- `admin/`: venue facts, policies, and source/license notes
+This snapshot is prepared for a CIKM 2026 Resource Paper submission. If this
+checkout has no release tag, GitHub release, or archive DOI, cite the paper and
+the repository commit. The final public release should add a version tag,
+release notes, archive DOI, and final citation metadata.
+
+Current license scope:
+
+- Apache-2.0 for executable code and scripts;
+- CC-BY-4.0 for derived non-code resource materials;
+- no redistribution grant for raw third-party datasets.
+
+See:
+
+- `LICENSE.md`
+- `docs/DATA_AND_LICENSES.md`
+- `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md`
 
 ## Immediate Milestone
 
-Submit a CIKM Resource package whose paper and public snapshot agree on:
+The paper and public snapshot should agree on:
 
 1. ClaimContractBench as the resource object;
 2. the finite operator and `G/Q/U` schema as executable design;

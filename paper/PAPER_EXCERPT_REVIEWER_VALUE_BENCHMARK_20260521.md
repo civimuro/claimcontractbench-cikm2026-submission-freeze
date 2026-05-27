@@ -30,11 +30,11 @@ free-floating paraphrase table, but still not a full body-text/PDF benchmark.
 
 ## Assets
 
-- `WORKSPACE/artifact/paper_excerpt_reviewer_value_schema_20260521.json`
-- `WORKSPACE/artifact/paper_excerpt_reviewer_value_cases_20260521.csv`
-- `WORKSPACE/src/run_paper_excerpt_reviewer_value_benchmark.py`
-- `WORKSPACE/reports/paper_excerpt_reviewer_value_benchmark_20260521/paper_excerpt_reviewer_value_report.md`
-- `WORKSPACE/reports/paper_excerpt_reviewer_value_benchmark_text_rules_20260521/paper_excerpt_reviewer_value_report.md`
+- `artifact/paper_excerpt_reviewer_value_schema_20260521.json`
+- `artifact/paper_excerpt_reviewer_value_cases_20260521.csv`
+- `src/run_paper_excerpt_reviewer_value_benchmark.py`
+- generated report: `reports/paper_excerpt_reviewer_value_benchmark_20260521/paper_excerpt_reviewer_value_report.md`
+- optional baseline report: `reports/paper_excerpt_reviewer_value_benchmark_text_rules_20260521/paper_excerpt_reviewer_value_report.md`
 
 Default command:
 

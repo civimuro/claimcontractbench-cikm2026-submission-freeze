@@ -111,8 +111,8 @@ python3 src/run_paper_excerpt_reviewer_value_benchmark.py --output reports/paper
 python3 src/run_paper_claim_annotation_agreement.py --output reports/paper_claim_annotation_agreement_20260521
 ```
 
-Current work-use status: the validator passes from the `WORKSPACE/` root against
-`artifact/release_manifest_20260520.csv`, with 73 required public-safe rows and
+Current release-candidate status: the validator passes from the release root against
+`artifact/release_manifest_20260520.csv`, with 82 required public-safe rows and
 0 raw-data rows. The manifest includes `LICENSE.md` plus the Apache-2.0 and
 CC-BY-4.0 license texts. The validator scans required release files for private
 coordination paths, local machine paths, and credential-like patterns, and it

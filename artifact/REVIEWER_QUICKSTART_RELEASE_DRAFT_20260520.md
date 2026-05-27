@@ -50,9 +50,9 @@ Expected output for the surface validator:
 PASS release surface validation
 root: /path/to/release/root
 manifest: artifact/release_manifest_20260520.csv
-rows: 64
-required_files: 64
-public_safe_rows: 64
+rows: 82
+required_files: 82
+public_safe_rows: 82
 raw_data_rows: 0
 ```
 
@@ -75,7 +75,7 @@ call_registered_template: 2
 needs_template_admission: 1
 out_of_scope: 1
 unsafe_release_rate: 0.000
-checks_passed: 7
+checks_passed: 14
 checks_failed: 0
 ```
 
