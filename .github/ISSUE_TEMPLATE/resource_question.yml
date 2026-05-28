@@ -1,0 +1,42 @@
+name: Resource or documentation question
+description: Ask a public-safe question about concepts, outputs, or docs.
+title: "[Question]: "
+labels: ["question", "documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for public-safe questions about how to read the resource. The project cannot decide paper acceptance, scientific correctness, legal status, ethics approval, or deployment safety.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Topic
+      options:
+        - concepts and G/Q/U
+        - human reviewer path
+        - LLM-assisted path
+        - example outputs
+        - report index
+        - data and licenses
+        - release and citation
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Please keep the question public-safe and specific.
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you already checked
+      description: Mention docs or commands you tried, if any.
+      placeholder: |
+        docs/CONCEPTS.md
+        docs/HUMAN_REVIEWER_GUIDE.md
+        python3 src/claimcontractbench.py human-guide
+    validations:
+      required: false

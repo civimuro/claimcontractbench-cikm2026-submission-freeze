@@ -1,0 +1,77 @@
+span_task_id,adjudication_reasons,annotator_a_span_found,annotator_b_span_found,annotator_a_match_type,annotator_b_match_type,section_exact_match,span_exact_match,span_token_jaccard,span_token_containment,annotator_a_span,annotator_b_span
+F1CS-003,low_span_overlap,yes,yes,exact_support,exact_support,yes,no,0.000,0.000,a characterization of a dataset that provides context,datasets and their represented populations into better focus
+F1CS-004,span_found_mismatch;match_type_mismatch;section_mismatch;low_span_overlap,yes,partial,exact_support,narrower_support,no,no,0.154,0.286,"upstream sources, data collection and annotation methods",A Data Card contains a structured collection of summaries
+F1CS-005,section_mismatch;non_exact_but_overlapping_span,yes,yes,exact_support,exact_support,no,no,0.714,0.833,training/test splits and evaluation metrics,evaluation metrics and train/test splits
+F1CS-006,section_mismatch;non_exact_but_overlapping_span,yes,yes,exact_support,exact_support,no,no,0.714,0.833,training/test splits and evaluation metrics,evaluation metrics and train/test splits
+F1CS-007,section_mismatch;non_exact_but_overlapping_span,yes,yes,exact_support,exact_support,no,no,0.556,0.833,distribution shift benchmark for tabular data,benchmarking suite for tabular data under distribution shift
+F1CS-008,section_mismatch;low_span_overlap,yes,yes,exact_support,exact_support,no,no,0.300,0.500,"scenarios, models, metrics, and prompting strategies","scenarios, same metrics, and with the same prompts"
+F1CS-009,section_mismatch;low_span_overlap,yes,yes,exact_support,exact_support,no,no,0.000,0.000,The benchmark covers 57 subjects,measure classification accuracy across all examples and tasks
+F1CS-010,non_exact_but_overlapping_span,yes,yes,exact_support,exact_support,yes,no,0.833,1.000,general linguistic capabilities and test types,linguistic capabilities and test types
+F1CS-011,non_exact_but_overlapping_span,yes,yes,exact_support,exact_support,yes,no,0.833,1.000,general linguistic capabilities and test types,linguistic capabilities and test types
+F1CS-012,match_type_mismatch;low_span_overlap,yes,yes,limitation_boundary,exact_support,yes,no,0.095,0.286,no general way to prove that a concrete benchmark faithfully measures performance on an abstract task,determine if a benchmark presents a valid measure
+F1CS-013,section_mismatch;low_span_overlap,yes,yes,exact_support,exact_support,no,no,0.111,0.200,1 - alpha marginal coverage guarantee,marginal over X and Y
+F1CS-014,section_mismatch;low_span_overlap,yes,yes,exact_support,exact_support,no,no,0.111,0.200,1 - alpha marginal coverage guarantee,marginal over X and Y
+F1CS-015,section_mismatch,yes,yes,exact_support,exact_support,no,yes,1.000,1.000,controls the risk with high probability,controls the risk with high probability
+F1CS-016,low_span_overlap,yes,yes,exact_support,exact_support,yes,no,0.385,0.625,evaluated the quality of GPT-4’s feedback,57.4% of the users found GPT-4 generated feedback helpful
+F1CS-017,non_exact_but_overlapping_span,yes,yes,exact_support,exact_support,yes,no,0.600,1.000,57.4% found the feedback helpful,57.4% of the users found GPT-4 generated feedback helpful
+F1CS-018,low_span_overlap,yes,yes,exact_support,exact_support,yes,no,0.000,0.000,generally helpful in verifying checklist completion,over 70% of authors reported that they found the assistant useful
+F1CS-019,low_span_overlap,yes,yes,exact_support,exact_support,yes,no,0.062,0.125,27% of reviewers who received feedback updated their reviews,"more informative reviews, as evaluated by blinded researchers"
+F1CS-020,span_found_mismatch;match_type_mismatch;section_mismatch;low_span_overlap,partial,yes,limitation_boundary,exact_support,no,no,0.000,0.000,blueprint for minimum quality assurances,commonly used benchmarks suffer from significant issues
+F1CS-021,section_mismatch;low_span_overlap,yes,yes,exact_support,exact_support,no,no,0.214,0.600,clarify the intended use cases,"intended use cases, information about attributes for which model performance may vary"
+F1CS-022,span_found_mismatch;match_type_mismatch;section_mismatch;low_span_overlap,partial,yes,narrower_support,exact_support,no,no,0.000,0.000,disaggregated population subgroups,evaluation supplemented with additional considerations such as intended use
+F1CS-023,section_mismatch;span_missing_or_uncomparable,no,no,no_match,no_match,no,no,NA,NA,,
+F1CS-024,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.083,0.167,responsible and informed deployment of models,The safety of using the dataset in practice
+F1CS-025,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.125,0.222,10 datasets reflecting a diverse range of distribution shifts,models cannot be expected to generalize to arbitrary distribution shifts
+F1CS-026,section_mismatch;low_span_overlap,partial,partial,narrower_support,narrower_support,no,no,0.071,0.143,actual shift in a real-world production,benchmarking suite for tabular data under distribution shift
+F1CS-027,non_exact_but_overlapping_span,partial,partial,limitation_boundary,limitation_boundary,yes,no,0.462,1.000,best models still need substantial improvements,best models still need substantial improvements before they can reach expert-level accuracy
+F1CS-028,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.000,0.000,Evaluating Models’ Local Decision Boundaries via Contrast Sets,cannot confirm that a model does
+F1CS-029,non_exact_but_overlapping_span,partial,partial,narrower_support,narrower_support,yes,no,0.455,1.000,reproducibility and comparability between papers,Evaluation with publicly available prompts ensures reproducibility and comparability between papers.
+F1CS-030,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,marginal coverage guarantee,"it holds on average, not for a particular image X"
+F1CS-031,section_mismatch,partial,partial,narrower_support,narrower_support,no,yes,1.000,1.000,potential applicability in maintaining the integrity of the peer review process,potential applicability in maintaining the integrity of the peer review process
+F1CS-032,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,minimize their usage in contexts,"intended use cases, potential pitfalls"
+F1CS-033,match_type_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,yes,no,0.000,0.000,domain generalization algorithms are in realistic settings,no algorithm shows state-of-the-art performance across all datasets
+F1CS-034,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.143,0.250,current state of the art in image classification,does not guarantee the safety of the benchmarked model
+F1CS-035,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.167,0.400,slices of data in RG,performance degradation on 12 slices of up to 18%
+F1CS-036,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.077,0.167,reliable confidence measures are absolutely necessary,expected sample accuracy as a function of confidence
+F1CS-038,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,limitation_boundary,narrower_support,no,no,0.000,0.000,trading-off coverage,classify samples in production with any desired level of risk
+F1CS-039,section_mismatch;span_missing_or_uncomparable,no,no,no_match,no_match,no,no,NA,NA,,
+F1CS-040,section_mismatch;low_span_overlap,partial,partial,narrower_support,narrower_support,no,no,0.364,0.667,distribution shifts that naturally arise in real-world applications,robust to real-world distribution shifts
+F1CS-041,match_type_mismatch;section_mismatch;span_missing_or_uncomparable,no,no,no_match,out_of_scope_cue,no,no,NA,NA,,
+F1CS-042,section_mismatch;span_missing_or_uncomparable,no,no,no_match,no_match,no,no,NA,NA,,
+F1CS-043,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,partial,no,limitation_boundary,no_match,no,no,NA,NA,intended to mitigate,
+F1CS-044,section_mismatch;span_missing_or_uncomparable,no,no,no_match,no_match,no,no,NA,NA,,
+F1CS-045,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.167,0.333,external evaluations based on adaptive attacks,could still be broken by new adaptive attacks
+F1CS-046,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.000,0.000,General Language Understanding Evaluation (GLUE) benchmark,still leave room for improvement
+F1CS-047,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,"practitioner’s task, evaluation needs, and resource constraints",These idioms are not exhaustive
+F1CS-048,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,partial,no,limitation_boundary,out_of_scope_cue,no,no,NA,NA,reliable confidence measures are absolutely necessary,
+F1CS-049,match_type_mismatch;section_mismatch;span_missing_or_uncomparable,no,no,no_match,out_of_scope_cue,no,no,NA,NA,,
+F1CS-050,match_type_mismatch;section_mismatch;span_missing_or_uncomparable,no,no,no_match,out_of_scope_cue,no,no,NA,NA,,
+F1CS-051,section_mismatch;span_missing_or_uncomparable,no,no,no_match,no_match,no,no,NA,NA,,
+F1CS-052,section_mismatch;span_missing_or_uncomparable,no,no,no_match,no_match,no,no,NA,NA,,
+F1CS-053,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,partial,no,absence_boundary,out_of_scope_cue,no,no,NA,NA,broader than warranted by the original study,
+F1CS-054,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,partial,no,absence_boundary,out_of_scope_cue,no,no,NA,NA,no humans or actual manuscripts were involved,
+F1CS-055,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,partial,no,limitation_boundary,no_match,no,no,NA,NA,"restrictions (e.g., licenses, fees)",
+F1CS-056,match_type_mismatch;section_mismatch;span_missing_or_uncomparable,no,no,no_match,out_of_scope_cue,no,no,NA,NA,,
+F1CS-057,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,partial,no,limitation_boundary,no_match,no,no,NA,NA,do not currently taxonomize nor evaluate desiderata,
+F1CS-058,match_type_mismatch;section_mismatch;span_missing_or_uncomparable,no,no,no_match,out_of_scope_cue,no,no,NA,NA,,
+F1CS-059,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.000,0.000,world knowledge and problem solving ability,it does not master a single subject
+F1CS-060,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.000,0.000,present and near-future capabilities and limitations,unable to reliably predict the scale
+F1CS-061,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,new capabilities are as yet poorly characterized,this optimistic extrapolation relies on the limitations of current benchmarks
+F1CS-062,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.000,0.000,identifying critical failures,"input-output behavior, without any knowledge"
+F1CS-063,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.429,0.600,marginal distribution-free prediction interval,"marginal, distribution-free coverage guarantee"
+F1CS-064,section_mismatch,partial,partial,narrower_support,narrower_support,no,yes,1.000,1.000,General Language Understanding Evaluation (GLUE) benchmark,General Language Understanding Evaluation (GLUE) benchmark
+F1CS-065,section_mismatch;low_span_overlap,partial,partial,narrower_support,narrower_support,no,no,0.333,0.667,general linguistic knowledge across tasks,represent linguistic knowledge
+F1CS-066,low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,yes,no,0.111,0.200,scalar summary statistic of calibration,weighted average of all gaps
+F1CS-067,low_span_overlap,partial,partial,narrower_support,narrower_support,yes,no,0.000,0.000,overgeneralizing in 26-73% of cases,most LLMs produced broader generalizations
+F1CS-068,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,limited experimental setting,simulated medical peer review
+F1CS-069,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.000,0.000,identifying critical failures,"input-output behavior, without any knowledge"
+F1CS-070,section_mismatch;non_exact_but_overlapping_span,partial,partial,limitation_boundary,limitation_boundary,no,no,0.562,1.000,no general way to prove that a concrete benchmark faithfully measures performance on an abstract task,no general way to prove that a concrete benchmark
+F1CS-071,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,partial,no,narrower_support,no_match,no,no,NA,NA,framework for evaluating large language models,
+F1CS-073,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.214,0.429,regulate or prohibit the use of LLMs,Defining the integration of LLMs in peer review will require
+F1CS-074,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,not sufficient to assess the suitability of a benchmark,checklist for minimum quality assurance
+F1CS-075,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,mitigating harms caused by automated decision-making systems,risks and opportunities of working with ADS
+F1CS-076,span_found_mismatch;match_type_mismatch;section_mismatch;span_missing_or_uncomparable,no,partial,no_match,narrower_support,no,no,NA,NA,,transparency at the dataset level
+F1CS-077,section_mismatch;low_span_overlap,partial,partial,limitation_boundary,limitation_boundary,no,no,0.000,0.000,"practitioner’s task, evaluation needs, and resource constraints",These idioms are not exhaustive
+F1CS-078,match_type_mismatch;section_mismatch;low_span_overlap,partial,partial,narrower_support,limitation_boundary,no,no,0.333,0.600,under conditions of distributional shift,does not guarantee calibration under distributional shift
+F1CS-079,span_found_mismatch;match_type_mismatch;low_span_overlap,partial,yes,narrower_support,exact_support,yes,no,0.062,0.125,certain populations in the development of technology for other populations,datasets and their represented populations into better focus
+F1CS-080,low_span_overlap,yes,yes,exact_support,exact_support,yes,no,0.000,0.000,YAML config file support via --config,log task and cli specific configs

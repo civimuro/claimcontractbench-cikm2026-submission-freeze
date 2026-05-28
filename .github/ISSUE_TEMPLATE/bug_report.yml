@@ -1,0 +1,73 @@
+name: Bug or reproducibility report
+description: Report a public-safe failure in commands, outputs, or release files.
+title: "[Bug]: "
+labels: ["bug", "reproducibility"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping make the resource easier to verify. Do not paste confidential paper text, private review notes, raw data, credentials, or local absolute paths.
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or release tag
+      description: Which checkout did you use?
+      placeholder: "for example: main at abc1234 or v0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - doctor
+        - smoke
+        - claim review packet
+        - template admission
+        - report regeneration
+        - documentation
+        - manifest or licensing
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands run
+      description: Include only public-safe commands and output excerpts.
+      placeholder: |
+        python3 src/claimcontractbench.py doctor
+        python3 src/claimcontractbench.py smoke
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and Python version are usually enough.
+      placeholder: |
+        OS:
+        Python:
+    validations:
+      required: false
+  - type: checkboxes
+    id: public_safe
+    attributes:
+      label: Public-safety check
+      options:
+        - label: I removed confidential paper text, private review notes, raw data, credentials, and local absolute paths.
+          required: true

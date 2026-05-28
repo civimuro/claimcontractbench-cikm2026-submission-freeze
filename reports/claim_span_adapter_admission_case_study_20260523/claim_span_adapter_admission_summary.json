@@ -1,0 +1,30 @@
+{
+  "action_counts": {
+    "ACCEPT": 9,
+    "REWRITE": 6,
+    "SUPPORT_ONLY": 2,
+    "SUPPRESS": 1,
+    "WEAKEN": 4
+  },
+  "adapter_specs": 6,
+  "admitted_rows": 22,
+  "checks_failed": 0,
+  "checks_passed": 10,
+  "evidence_mode_counts": {
+    "absence_boundary_rewrite": 2,
+    "direct_span_support": 8,
+    "localized_boundary_or_limitation": 9,
+    "partial_or_narrower_span_support": 3
+  },
+  "no_span_accept_rows": 0,
+  "passport_rows": 22,
+  "protected_false_release_rows": 0,
+  "recommendation": "USE_AS_CONTROLLED_ADAPTER_ADMISSION_EVIDENCE",
+  "renderer": "deterministic_target_kind_span_renderer",
+  "renderer_inputs": "source_family,claim_level_target_kind,claim_level_span_found,span_match_type",
+  "selected_families": "conformal_prediction,dataset_documentation,llm_evaluation",
+  "stage": "CLAIM_SPAN_ADAPTER_ADMISSION_CASE_STUDY",
+  "status": "PASS",
+  "upstream_provenance_status": "PASS_WITH_WARNINGS",
+  "wording_guardrail_status": "PASS"
+}

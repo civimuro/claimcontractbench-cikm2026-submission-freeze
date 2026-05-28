@@ -1,0 +1,9 @@
+intake_id,actor,template_id,submitted_claim,intended_use,expected_decision,expected_output_hint
+RCI-01,author,CTA-CORE-01,In the declared CA-to-TX ACS setting source-isotonic supports the RAC1P=1 slice claim under the reportability policy.,paper result sentence,ACCEPT_LICENSED,already licensed local slice claim
+RCI-02,reviewer,CTA-CORE-02,Oracle target isotonic is the same-regime winner.,reviewer overclaim check,REWRITE_TO_LICENSED,upper-bound reference not same-regime winner
+RCI-03,reviewer,CTA-CORE-03,The RAC1P=6 slice is fully reportable as a decisive local result.,weak local support claim,REWRITE_TO_LICENSED,diagnostic not decisive
+RCI-04,author,CTA-CORE-04,The global ECE winner transfers unchanged to the auto-merge decision.,deployment/action claim,REWRITE_TO_LICENSED,decision-local winner claim
+RCI-05,reviewer,CTA-CORE-05,The raw method is calibrated on the hard-negative slice.,unsupported slice claim,SUPPRESS_BOTTOM,bottom_T
+RCI-06,author,CTA-NAB-01,The null detector is effective on NAB overall.,adapter expansion claim,SUPPORT_ONLY_REWRITE,support-only clean-stream claim
+RCI-07,author,CTA-AI4I-01,AI4I predictive maintenance results support a calibrated maintenance-warning claim.,future domain expansion,REJECT_PATCHWORK,missing adapter contract
+RCI-08,tool_demo,CTA-UNKNOWN-01,This unregistered benchmark claim should be accepted because it has a metric.,unknown template test,REJECT_UNKNOWN_TEMPLATE,unknown template

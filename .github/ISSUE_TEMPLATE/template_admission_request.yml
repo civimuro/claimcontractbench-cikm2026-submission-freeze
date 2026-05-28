@@ -1,0 +1,69 @@
+name: Template admission request
+description: Propose a new public-safe claim family for typed admission.
+title: "[Template admission]: "
+labels: ["template-admission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when a relevant empirical metric-to-claim family has no exact registered template. Do not paste confidential paper text or raw data. Paraphrase public-safe examples.
+  - type: input
+    id: claim_family
+    attributes:
+      label: Claim family
+      placeholder: "for example: calibration under stated protocol"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_unit
+    attributes:
+      label: Evidence unit
+      description: What metric, scenario, split, table, or derived display anchors the claim?
+    validations:
+      required: true
+  - type: textarea
+    id: safe_claim
+    attributes:
+      label: Safe claim template
+      description: Write the narrow sentence that should be licensed.
+    validations:
+      required: true
+  - type: textarea
+    id: forbidden_claim
+    attributes:
+      label: Forbidden stronger claim
+      description: Write the broader sentence that should not be licensed.
+    validations:
+      required: true
+  - type: textarea
+    id: gqu
+    attributes:
+      label: G/Q/U bindings
+      description: State the comparison boundary, reportability policy, and use context.
+      placeholder: |
+        G:
+        Q:
+        U:
+    validations:
+      required: true
+  - type: textarea
+    id: action_mapping
+    attributes:
+      label: Proposed action mapping
+      description: Should the claim emit, relabel, weaken, rewrite, suppress, or remain support-only?
+    validations:
+      required: true
+  - type: textarea
+    id: anchor
+    attributes:
+      label: Public-safe anchor
+      description: Cite or describe a public-safe source, table, row, or example. Do not upload raw data.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public_safe
+    attributes:
+      label: Public-safety check
+      options:
+        - label: I did not include confidential paper text, private review notes, raw data, credentials, or local absolute paths.
+          required: true

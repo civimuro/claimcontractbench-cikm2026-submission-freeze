@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="700" viewBox="0 0 1500 700">
+<title>WDC Six-Matrix Claim-Layer Stability</title>
+<desc>PASS marks the prespecified repeated ordering check by not-reportable share. This display is not a model ranking, broad robustness claim, deployment evidence, or official WDC reproduction.</desc>
+<rect width="1500" height="700" fill="#f8faf8"/>
+<text x="70" y="82" font-family="Avenir Next, Gill Sans, sans-serif" font-size="36" font-weight="800" fill="#1b2226"><tspan x="70" dy="0">WDC Six-Matrix Claim-Layer Stability</tspan></text>
+<text x="72" y="126" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="500" fill="#66706c"><tspan x="72" dy="0">Not-reportable rate by claim layer across RoBERTa/DistilBERT and seeds 2033-2035.</tspan></text>
+<text x="308" y="156" font-family="Avenir Next, Gill Sans, sans-serif" font-size="16" font-weight="800" fill="#66706c"><tspan x="308" dy="0">Metric</tspan></text>
+<text x="478" y="156" font-family="Avenir Next, Gill Sans, sans-serif" font-size="16" font-weight="800" fill="#66706c"><tspan x="478" dy="0">Decision</tspan></text>
+<text x="648" y="156" font-family="Avenir Next, Gill Sans, sans-serif" font-size="16" font-weight="800" fill="#66706c"><tspan x="648" dy="0">Slice-decision</tspan></text>
+<text x="818" y="156" font-family="Avenir Next, Gill Sans, sans-serif" font-size="16" font-weight="800" fill="#66706c"><tspan x="818" dy="0">Score</tspan></text>
+<text x="988" y="156" font-family="Avenir Next, Gill Sans, sans-serif" font-size="16" font-weight="800" fill="#66706c"><tspan x="988" dy="0">Slice-score</tspan></text>
+<text x="72" y="214" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#1b2226"><tspan x="72" dy="0">roberta seed 2033</tspan></text>
+<text x="72" y="239" font-family="Avenir Next, Gill Sans, sans-serif" font-size="14" font-weight="500" fill="#66706c"><tspan x="72" dy="0">B1 baseline</tspan></text>
+<rect x="300" y="180" width="162" height="74" fill="#e8f2ee" stroke="#ffffff" stroke-width="2"/>
+<text x="342" y="226" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="342" dy="0">0.0%</tspan></text>
+<rect x="470" y="180" width="162" height="74" fill="#729196" stroke="#ffffff" stroke-width="2"/>
+<text x="512" y="226" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="512" dy="0">56.5%</tspan></text>
+<rect x="640" y="180" width="162" height="74" fill="#64858b" stroke="#ffffff" stroke-width="2"/>
+<text x="682" y="226" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="682" dy="0">63.4%</tspan></text>
+<rect x="810" y="180" width="162" height="74" fill="#2a5560" stroke="#ffffff" stroke-width="2"/>
+<text x="852" y="226" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="852" dy="0">91.3%</tspan></text>
+<rect x="980" y="180" width="162" height="74" fill="#25505c" stroke="#ffffff" stroke-width="2"/>
+<text x="1022" y="226" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="1022" dy="0">93.9%</tspan></text>
+<text x="1178" y="227" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#287a4b"><tspan x="1178" dy="0">PASS</tspan></text>
+<text x="72" y="296" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#1b2226"><tspan x="72" dy="0">roberta seed 2034</tspan></text>
+<text x="72" y="321" font-family="Avenir Next, Gill Sans, sans-serif" font-size="14" font-weight="500" fill="#66706c"><tspan x="72" dy="0">B2 added seed</tspan></text>
+<rect x="300" y="262" width="162" height="74" fill="#e8f2ee" stroke="#ffffff" stroke-width="2"/>
+<text x="342" y="308" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="342" dy="0">0.0%</tspan></text>
+<rect x="470" y="262" width="162" height="74" fill="#769398" stroke="#ffffff" stroke-width="2"/>
+<text x="512" y="308" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="512" dy="0">55.0%</tspan></text>
+<rect x="640" y="262" width="162" height="74" fill="#65858b" stroke="#ffffff" stroke-width="2"/>
+<text x="682" y="308" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="682" dy="0">63.2%</tspan></text>
+<rect x="810" y="262" width="162" height="74" fill="#486e76" stroke="#ffffff" stroke-width="2"/>
+<text x="852" y="308" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="852" dy="0">77.0%</tspan></text>
+<rect x="980" y="262" width="162" height="74" fill="#345d67" stroke="#ffffff" stroke-width="2"/>
+<text x="1022" y="308" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="1022" dy="0">86.7%</tspan></text>
+<text x="1178" y="309" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#287a4b"><tspan x="1178" dy="0">PASS</tspan></text>
+<text x="72" y="378" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#1b2226"><tspan x="72" dy="0">roberta seed 2035</tspan></text>
+<text x="72" y="403" font-family="Avenir Next, Gill Sans, sans-serif" font-size="14" font-weight="500" fill="#66706c"><tspan x="72" dy="0">B2 added seed</tspan></text>
+<rect x="300" y="344" width="162" height="74" fill="#e8f2ee" stroke="#ffffff" stroke-width="2"/>
+<text x="342" y="390" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="342" dy="0">0.0%</tspan></text>
+<rect x="470" y="344" width="162" height="74" fill="#8ea8aa" stroke="#ffffff" stroke-width="2"/>
+<text x="512" y="390" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="512" dy="0">43.3%</tspan></text>
+<rect x="640" y="344" width="162" height="74" fill="#7c999d" stroke="#ffffff" stroke-width="2"/>
+<text x="682" y="390" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="682" dy="0">51.8%</tspan></text>
+<rect x="810" y="344" width="162" height="74" fill="#557980" stroke="#ffffff" stroke-width="2"/>
+<text x="852" y="390" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="852" dy="0">70.6%</tspan></text>
+<rect x="980" y="344" width="162" height="74" fill="#426972" stroke="#ffffff" stroke-width="2"/>
+<text x="1022" y="390" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="1022" dy="0">79.8%</tspan></text>
+<text x="1178" y="391" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#287a4b"><tspan x="1178" dy="0">PASS</tspan></text>
+<text x="72" y="460" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#1b2226"><tspan x="72" dy="0">distilbert seed 2033</tspan></text>
+<text x="72" y="485" font-family="Avenir Next, Gill Sans, sans-serif" font-size="14" font-weight="500" fill="#66706c"><tspan x="72" dy="0">B1D second provider</tspan></text>
+<rect x="300" y="426" width="162" height="74" fill="#e8f2ee" stroke="#ffffff" stroke-width="2"/>
+<text x="342" y="472" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="342" dy="0">0.0%</tspan></text>
+<rect x="470" y="426" width="162" height="74" fill="#5a7d84" stroke="#ffffff" stroke-width="2"/>
+<text x="512" y="472" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="512" dy="0">68.1%</tspan></text>
+<rect x="640" y="426" width="162" height="74" fill="#51757d" stroke="#ffffff" stroke-width="2"/>
+<text x="682" y="472" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="682" dy="0">72.7%</tspan></text>
+<rect x="810" y="426" width="162" height="74" fill="#2d5862" stroke="#ffffff" stroke-width="2"/>
+<text x="852" y="472" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="852" dy="0">89.7%</tspan></text>
+<rect x="980" y="426" width="162" height="74" fill="#25515c" stroke="#ffffff" stroke-width="2"/>
+<text x="1022" y="472" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="1022" dy="0">93.7%</tspan></text>
+<text x="1178" y="473" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#287a4b"><tspan x="1178" dy="0">PASS</tspan></text>
+<text x="72" y="542" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#1b2226"><tspan x="72" dy="0">distilbert seed 2034</tspan></text>
+<text x="72" y="567" font-family="Avenir Next, Gill Sans, sans-serif" font-size="14" font-weight="500" fill="#66706c"><tspan x="72" dy="0">B2 added seed</tspan></text>
+<rect x="300" y="508" width="162" height="74" fill="#e8f2ee" stroke="#ffffff" stroke-width="2"/>
+<text x="342" y="554" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="342" dy="0">0.0%</tspan></text>
+<rect x="470" y="508" width="162" height="74" fill="#577a81" stroke="#ffffff" stroke-width="2"/>
+<text x="512" y="554" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="512" dy="0">69.6%</tspan></text>
+<rect x="640" y="508" width="162" height="74" fill="#4b7079" stroke="#ffffff" stroke-width="2"/>
+<text x="682" y="554" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="682" dy="0">75.3%</tspan></text>
+<rect x="810" y="508" width="162" height="74" fill="#27525d" stroke="#ffffff" stroke-width="2"/>
+<text x="852" y="554" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="852" dy="0">92.9%</tspan></text>
+<rect x="980" y="508" width="162" height="74" fill="#204d58" stroke="#ffffff" stroke-width="2"/>
+<text x="1022" y="554" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="1022" dy="0">96.1%</tspan></text>
+<text x="1178" y="555" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#287a4b"><tspan x="1178" dy="0">PASS</tspan></text>
+<text x="72" y="624" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#1b2226"><tspan x="72" dy="0">distilbert seed 2035</tspan></text>
+<text x="72" y="649" font-family="Avenir Next, Gill Sans, sans-serif" font-size="14" font-weight="500" fill="#66706c"><tspan x="72" dy="0">B2 added seed</tspan></text>
+<rect x="300" y="590" width="162" height="74" fill="#e8f2ee" stroke="#ffffff" stroke-width="2"/>
+<text x="342" y="636" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#1b2226"><tspan x="342" dy="0">0.0%</tspan></text>
+<rect x="470" y="590" width="162" height="74" fill="#628389" stroke="#ffffff" stroke-width="2"/>
+<text x="512" y="636" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="512" dy="0">64.5%</tspan></text>
+<rect x="640" y="590" width="162" height="74" fill="#557980" stroke="#ffffff" stroke-width="2"/>
+<text x="682" y="636" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="682" dy="0">70.6%</tspan></text>
+<rect x="810" y="590" width="162" height="74" fill="#1f4c57" stroke="#ffffff" stroke-width="2"/>
+<text x="852" y="636" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="852" dy="0">96.8%</tspan></text>
+<rect x="980" y="590" width="162" height="74" fill="#1a4854" stroke="#ffffff" stroke-width="2"/>
+<text x="1022" y="636" font-family="Avenir Next, Gill Sans, sans-serif" font-size="24" font-weight="800" fill="#f8fbf7"><tspan x="1022" dy="0">98.8%</tspan></text>
+<text x="1178" y="637" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="800" fill="#287a4b"><tspan x="1178" dy="0">PASS</tspan></text>
+<text x="70" y="690" font-family="Avenir Next, Gill Sans, sans-serif" font-size="15" font-weight="600" fill="#66706c"><tspan x="70" dy="0">PASS marks the repeated ordering check; not model ranking, broad robustness, deployment evidence, or official WDC reproduction.</tspan></text>
+</svg>

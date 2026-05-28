@@ -1,0 +1,45 @@
+{
+  "adapter_evidence_present_rate": "0.968",
+  "adapter_evidence_present_rows": 60,
+  "checks_failed": 0,
+  "checks_passed": 8,
+  "direct_registered_rows": 0,
+  "localization_class_counts": {
+    "adapter_claim_not_localized": 2,
+    "adapter_evidence_present": 60,
+    "do_not_call_boundary_cue_present": 7,
+    "do_not_call_boundary_not_localized": 11
+  },
+  "needs_adapter_rows": 62,
+  "non_consensus_adjudication_decision_rows": 70,
+  "paper_facing_role_counts": {
+    "adapter_boundary_or_weakening_candidate": 38,
+    "adapter_gap_or_recheck_candidate": 2,
+    "boundary_stop_evidence": 7,
+    "boundary_stop_no_claim_span": 11,
+    "clean_adapter_accept_candidate": 17,
+    "partial_adapter_accept_candidate": 5
+  },
+  "papers": 37,
+  "post_admission_action_counts": {
+    "ACCEPT": 22,
+    "OUT_OF_SCOPE": 18,
+    "REWRITE": 18,
+    "SUPPORT_ONLY": 2,
+    "SUPPRESS": 8,
+    "WEAKEN": 12
+  },
+  "raw_adjudication_candidate_rows": 76,
+  "raw_quality_gate_failed_checks": 4,
+  "recommendation": "USE_AS_ADAPTER_OPPORTUNITY_AND_BOUNDARY_EVIDENCE",
+  "route_counts": {
+    "NEEDS_TEMPLATE_ADMISSION": 62,
+    "OUT_OF_SCOPE_DO_NOT_CALL": 18
+  },
+  "rows": 80,
+  "source_families": 21,
+  "stage": "FRONTEND_FULLTEXT_PHASE1_CLAIM_SPAN_GOLD_READOUT",
+  "status": "PASS",
+  "stop_rows": 18,
+  "stop_yes_rows": 0
+}

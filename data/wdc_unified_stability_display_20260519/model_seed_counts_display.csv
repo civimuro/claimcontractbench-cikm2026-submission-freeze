@@ -1,0 +1,7 @@
+matrix,role,cells,metric_R_W_NR,score_R_W_NR,decision_R_W_NR,slice_score_R_W_NR,slice_decision_R_W_NR,ordering
+roberta seed 2033,B1 baseline,18,126/0/0,7/4/115,163/56/285,25/52/1183,1076/771/3193,PASS
+roberta seed 2034,B2 added seed,18,126/0/0,11/18/97,167/60/277,45/123/1092,1070/784/3186,PASS
+roberta seed 2035,B2 added seed,18,126/0/0,27/10/89,227/59/218,44/211/1005,1310/1117/2613,PASS
+distilbert seed 2033,B1D second provider,18,126/0/0,4/9/113,117/44/343,22/58/1180,745/630/3665,PASS
+distilbert seed 2034,B2 added seed,18,126/0/0,3/6/117,116/37/351,18/31/1211,702/543/3795,PASS
+distilbert seed 2035,B2 added seed,18,126/0/0,0/4/122,122/57/325,0/15/1245,830/650/3560,PASS

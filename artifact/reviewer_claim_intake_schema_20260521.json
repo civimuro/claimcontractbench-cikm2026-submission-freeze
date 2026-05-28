@@ -1,0 +1,20 @@
+{
+  "schema_id": "reviewer_claim_intake_schema_20260521",
+  "status": "release_surface_schema",
+  "purpose": "Public-safe schema for applying admitted claim templates to reviewer or author claim-intake rows.",
+  "fields": [
+    {"name": "intake_id", "required": true, "type": "string", "description": "Stable identifier for the claim-intake example."},
+    {"name": "actor", "required": true, "type": "enum", "values": ["author", "reviewer", "tool_demo"], "description": "Who is using the intake row."},
+    {"name": "template_id", "required": true, "type": "string", "description": "Claim-template admission id, or an unknown id for fail-closed tests."},
+    {"name": "submitted_claim", "required": true, "type": "string", "description": "Claim sentence submitted for audit."},
+    {"name": "intended_use", "required": true, "type": "string", "description": "Where the submitted claim would be used."},
+    {"name": "expected_decision", "required": true, "type": "enum", "values": ["ACCEPT_LICENSED", "REWRITE_TO_LICENSED", "SUPPRESS_BOTTOM", "SUPPORT_ONLY_REWRITE", "REJECT_PATCHWORK", "REJECT_UNKNOWN_TEMPLATE"], "description": "Expected intake decision for the public example."},
+    {"name": "expected_output_hint", "required": true, "type": "string", "description": "Short expected output or boundary hint."}
+  ],
+  "non_goals": [
+    "free-form natural-language claim parsing",
+    "automatic discovery of template ids",
+    "deployment safety certification",
+    "support-only promotion into mainline claims"
+  ]
+}

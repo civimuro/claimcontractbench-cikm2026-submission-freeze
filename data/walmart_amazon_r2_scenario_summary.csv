@@ -1,0 +1,6 @@
+scenario_id,source_cal_n,target_eval_n,source_cal_prior,target_eval_prior,delta_target_minus_source,metric_reportable,metric_weakly_reportable,metric_not_reportable,score_reportable,score_weakly_reportable,score_not_reportable,decision_reportable,decision_weakly_reportable,decision_not_reportable
+random_split_baseline,2049,1929,0.094192288921,0.094349403836,+0.000157114915,42,0,0,0,20,22,126,0,0
+electronics_to_office_printers,831,296,0.052948255114,0.091216216216,+0.038267961102,42,0,0,0,0,42,0,9,117
+peripherals_to_computers_networking,385,97,0.085714285714,0.195876288660,+0.110162002946,0,42,0,0,0,42,0,11,115
+target_projection_screens_sparse,2049,316,0.094192288921,0.012658227848,-0.081534061073,0,42,0,0,0,42,0,3,123
+prior_random_pi020,2049,845,0.094192288921,0.200000000000,+0.105807711079,42,0,0,2,16,24,126,0,0

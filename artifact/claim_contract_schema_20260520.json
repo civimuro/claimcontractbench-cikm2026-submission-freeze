@@ -1,0 +1,29 @@
+{
+  "schema_id": "claim_contract_schema_20260520",
+  "status": "release_surface_schema",
+  "purpose": "Public-safe schema for finite generated claim-contract events and passport rows.",
+  "fields": [
+    {"name": "event_id", "required": true, "type": "string", "description": "Stable identifier for a generated claim-contract event."},
+    {"name": "dataset_id", "required": true, "type": "string", "description": "Dataset or adapter identifier from dataset_source_manifest_20260520.csv."},
+    {"name": "scenario_id", "required": true, "type": "string", "description": "Scenario identifier from split_scenario_manifest_examples_20260520.csv or a release successor."},
+    {"name": "model_or_scorer", "required": true, "type": "string", "description": "Model, scorer, or adapter source for the evidence row."},
+    {"name": "seed_or_profile", "required": false, "type": "string", "description": "Random seed, run id, alert profile, or declared profile context."},
+    {"name": "claim_layer", "required": true, "type": "enum", "values": ["scalar", "score_region", "slice", "decision_region", "slice_decision"], "description": "Typed layer of the tempting claim."},
+    {"name": "G_information_boundary", "required": true, "type": "string", "description": "Comparison and information boundary such as same-regime or upper-bound-only."},
+    {"name": "Q_reportability_policy", "required": true, "type": "string", "description": "Declared reportability policy or support state."},
+    {"name": "U_decision_use", "required": true, "type": "string", "description": "Decision-use regime or no-decision-claim marker."},
+    {"name": "preorder_relation", "required": true, "type": "string", "description": "Typed preorder relation or declared incomparability class."},
+    {"name": "tempting_sentence", "required": true, "type": "string", "description": "Claim sentence that a metric-only reading might emit."},
+    {"name": "licensed_sentence", "required": true, "type": "string", "description": "Projected claim after applying the claim-contract operator, or bottom_T."},
+    {"name": "forbidden_sentence", "required": true, "type": "string", "description": "Representative overclaim blocked by the contract."},
+    {"name": "projection_action", "required": true, "type": "enum", "values": ["emit_as_written", "relabel_as_upper_bound", "weaken_to_diagnostic", "rewrite_to_decision_local", "suppress_fallback"], "description": "Action certificate family."},
+    {"name": "source_anchor_id", "required": true, "type": "string", "description": "Public-safe source identifier, not a private local path."},
+    {"name": "boundary_note", "required": true, "type": "string", "description": "Plain-language boundary that prevents overstatement."}
+  ],
+  "non_goals": [
+    "arbitrary natural-language claim checking",
+    "raw-data redistribution guarantee",
+    "model leaderboard or SOTA ranking",
+    "deployment safety certification"
+  ]
+}

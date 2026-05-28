@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="720" viewBox="0 0 1680 720">
+<rect width="1680" height="720" fill="#f8faf8"/>
+<text x="70" y="86" font-family="Avenir Next, Gill Sans, sans-serif" font-size="38" font-weight="800" fill="#1b2226"><tspan x="70" dy="0">Figure 1. From Metric Evidence To Licensed Emitted</tspan><tspan x="70" dy="45">Claim</tspan></text>
+<text x="72" y="132" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="500" fill="#66706c"><tspan x="72" dy="0">Finite generated claims, policy-relative licensing, and action certificates. Not an arbitrary prose parser.</tspan></text>
+<rect x="72" y="230" width="235" height="230" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
+<rect x="72" y="230" width="235" height="10" fill="#145c5a" stroke="#145c5a" stroke-width="0"/>
+<text x="92" y="288" font-family="Avenir Next, Gill Sans, sans-serif" font-size="22" font-weight="800" fill="#1b2226"><tspan x="92" dy="0">Metric evidence</tspan></text>
+<text x="92" y="342" font-family="Avenir Next, Gill Sans, sans-serif" font-size="17" font-weight="500" fill="#66706c"><tspan x="92" dy="0">Scores, ECE/F1, local</tspan><tspan x="92" dy="23">support, source row</tspan></text>
+
+<line x1="312" y1="345" x2="327" y2="345" stroke="#66706c" stroke-width="3"/>
+<polygon points="327,345 317,339 317,351" fill="#66706c"/>
+
+<rect x="335" y="230" width="235" height="230" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
+<rect x="335" y="230" width="235" height="10" fill="#2f6fba" stroke="#2f6fba" stroke-width="0"/>
+<text x="355" y="288" font-family="Avenir Next, Gill Sans, sans-serif" font-size="22" font-weight="800" fill="#1b2226"><tspan x="355" dy="0">Context tuple</tspan></text>
+<text x="355" y="342" font-family="Avenir Next, Gill Sans, sans-serif" font-size="17" font-weight="500" fill="#66706c"><tspan x="355" dy="0">Source, scenario,</tspan><tspan x="355" dy="23">layer, G/Q/U</tspan></text>
+
+<line x1="575" y1="345" x2="590" y2="345" stroke="#66706c" stroke-width="3"/>
+<polygon points="590,345 580,339 580,351" fill="#66706c"/>
+
+<rect x="598" y="230" width="235" height="230" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
+<rect x="598" y="230" width="235" height="10" fill="#c17d10" stroke="#c17d10" stroke-width="0"/>
+<text x="618" y="288" font-family="Avenir Next, Gill Sans, sans-serif" font-size="22" font-weight="800" fill="#1b2226"><tspan x="618" dy="0">Typed frontier</tspan></text>
+<text x="618" y="342" font-family="Avenir Next, Gill Sans, sans-serif" font-size="17" font-weight="500" fill="#66706c"><tspan x="618" dy="0">Finite candidate</tspan><tspan x="618" dy="23">claims Gamma_T+</tspan></text>
+
+<line x1="838" y1="345" x2="853" y2="345" stroke="#66706c" stroke-width="3"/>
+<polygon points="853,345 843,339 843,351" fill="#66706c"/>
+
+<rect x="861" y="230" width="235" height="230" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
+<rect x="861" y="230" width="235" height="10" fill="#6f5aa7" stroke="#6f5aa7" stroke-width="0"/>
+<text x="881" y="288" font-family="Avenir Next, Gill Sans, sans-serif" font-size="22" font-weight="800" fill="#1b2226"><tspan x="881" dy="0">License</tspan><tspan x="881" dy="28">predicate</tspan></text>
+<text x="881" y="342" font-family="Avenir Next, Gill Sans, sans-serif" font-size="17" font-weight="500" fill="#66706c"><tspan x="881" dy="0">F/G/Q/U plus action</tspan><tspan x="881" dy="23">certificates</tspan></text>
+
+<line x1="1101" y1="345" x2="1116" y2="345" stroke="#66706c" stroke-width="3"/>
+<polygon points="1116,345 1106,339 1106,351" fill="#66706c"/>
+
+<rect x="1124" y="230" width="235" height="230" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
+<rect x="1124" y="230" width="235" height="10" fill="#4c5357" stroke="#4c5357" stroke-width="0"/>
+<text x="1144" y="288" font-family="Avenir Next, Gill Sans, sans-serif" font-size="22" font-weight="800" fill="#1b2226"><tspan x="1144" dy="0">Projection</tspan></text>
+<text x="1144" y="342" font-family="Avenir Next, Gill Sans, sans-serif" font-size="17" font-weight="500" fill="#66706c"><tspan x="1144" dy="0">Maximal licensed</tspan><tspan x="1144" dy="23">claim or bottom_T</tspan></text>
+
+<line x1="1364" y1="345" x2="1379" y2="345" stroke="#66706c" stroke-width="3"/>
+<polygon points="1379,345 1369,339 1369,351" fill="#66706c"/>
+
+<rect x="1387" y="230" width="235" height="230" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
+<rect x="1387" y="230" width="235" height="10" fill="#287a4b" stroke="#287a4b" stroke-width="0"/>
+<text x="1407" y="288" font-family="Avenir Next, Gill Sans, sans-serif" font-size="22" font-weight="800" fill="#1b2226"><tspan x="1407" dy="0">Emitted claim</tspan></text>
+<text x="1407" y="342" font-family="Avenir Next, Gill Sans, sans-serif" font-size="17" font-weight="500" fill="#66706c"><tspan x="1407" dy="0">Bounded sentence with</tspan><tspan x="1407" dy="23">certificate</tspan></text>
+<rect x="70" y="545" width="1540" height="92" fill="#edf5f1" stroke="#145c5a" stroke-width="2"/>
+<text x="96" y="582" font-family="Avenir Next, Gill Sans, sans-serif" font-size="19" font-weight="800" fill="#145c5a"><tspan x="96" dy="0">Caption guard</tspan></text>
+<text x="280" y="582" font-family="Avenir Next, Gill Sans, sans-serif" font-size="18" font-weight="500" fill="#1b2226"><tspan x="280" dy="0">The operator projects finite typed candidates under declared context. The figure does not claim universal natural-language</tspan><tspan x="280" dy="24">verification, SOTA, or deployment safety.</tspan></text>
+</svg>

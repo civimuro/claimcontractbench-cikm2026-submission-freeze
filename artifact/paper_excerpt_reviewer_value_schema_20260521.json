@@ -1,0 +1,144 @@
+{
+  "case_fields": [
+    {
+      "name": "excerpt_id",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "paper_id",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "source_family",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "case_role",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "excerpt_index",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "source_title",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "primary_source",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "excerpt_kind",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "source_micro_excerpt",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "micro_excerpt_word_count",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "candidate_claim",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "human_gold_route_label",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "human_gold_template_id",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "post_admission_gold_action",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "current_expected_tool_decision",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "current_expected_reviewer_action",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "overclaim_hazard",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "reviewer_comment_gold",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "selection_rationale",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "gold_label_basis",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "non_goals": [
+    "full PDF parsing",
+    "paper acceptance decisions",
+    "legal or deployment certification",
+    "claiming human-review utility without a separate human reviewer study",
+    "treating LLM predictions as gold labels"
+  ],
+  "purpose": "Schema for a reviewer-facing decision-surface benchmark over short public-safe source-anchored paper excerpt units, optional front-end predictions, and deterministic claim-audit decisions.",
+  "reviewer_actions": [
+    "ACCEPT",
+    "REWRITE",
+    "WEAKEN",
+    "SUPPORT_ONLY",
+    "SUPPRESS",
+    "REJECT",
+    "ADMISSION_REQUIRED",
+    "OUT_OF_SCOPE_STOP"
+  ],
+  "route_labels": [
+    "CALL_REGISTERED_TEMPLATE",
+    "NEEDS_TEMPLATE_ADMISSION",
+    "OUT_OF_SCOPE_DO_NOT_CALL"
+  ],
+  "schema_id": "paper_excerpt_reviewer_value_schema_20260521",
+  "status": "public_safe_source_anchored_excerpt_schema",
+  "text_policy": {
+    "paraphrase_boundary": "candidate_claim and reviewer_comment_gold are author-created public-safe claim/reviewer paraphrases, not verbatim paper text unless separately marked.",
+    "release_boundary": "Rows are source-anchored reviewer-value cases, not full-paper text and not autonomous PDF parsing evidence.",
+    "source_micro_excerpt": "Short source-title or abstract/body micro-anchor, kept under 25 words in this public artifact."
+  },
+  "tool_decisions": [
+    "ACCEPT_LICENSED",
+    "REWRITE_TO_LICENSED",
+    "SUPPRESS_BOTTOM",
+    "SUPPORT_ONLY_REWRITE",
+    "REJECT_PATCHWORK",
+    "REJECT_UNKNOWN_TEMPLATE",
+    "OPEN_ADMISSION_TICKET",
+    "DO_NOT_CALL_CLAIM_RUNNER"
+  ]
+}

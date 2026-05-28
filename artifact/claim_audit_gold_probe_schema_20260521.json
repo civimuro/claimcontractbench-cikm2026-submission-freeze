@@ -1,0 +1,23 @@
+{
+  "schema_id": "claim_audit_gold_probe_schema_20260521",
+  "status": "release_surface_schema",
+  "purpose": "Public-safe schema for a small routing-and-decision gold probe that separates registered-template tool calls from adapter-needed and out-of-scope text.",
+  "fields": [
+    {"name": "gold_id", "required": true, "type": "string", "description": "Stable identifier for the gold-probe row."},
+    {"name": "source_family", "required": true, "type": "string", "description": "Scenario family or external literature family that motivates the row."},
+    {"name": "source_reference", "required": true, "type": "string", "description": "Public-safe local anchor or external source URL."},
+    {"name": "route_label", "required": true, "type": "enum", "values": ["CALL_REGISTERED_TEMPLATE", "NEEDS_TEMPLATE_ADMISSION", "OUT_OF_SCOPE_DO_NOT_CALL"], "description": "Gold routing label before claim-intake decision."},
+    {"name": "template_id", "required": false, "type": "string", "description": "Registered template id when route_label is CALL_REGISTERED_TEMPLATE."},
+    {"name": "submitted_claim", "required": true, "type": "string", "description": "Claim or text fragment to route or audit."},
+    {"name": "intended_use", "required": true, "type": "string", "description": "Where the claim would be used."},
+    {"name": "expected_decision", "required": true, "type": "enum", "values": ["ACCEPT_LICENSED", "REWRITE_TO_LICENSED", "SUPPRESS_BOTTOM", "SUPPORT_ONLY_REWRITE", "REJECT_PATCHWORK", "REJECT_UNKNOWN_TEMPLATE", "NEEDS_TEMPLATE_ADMISSION", "OUT_OF_SCOPE_DO_NOT_CALL"], "description": "Expected current-system outcome."},
+    {"name": "expected_output_hint", "required": true, "type": "string", "description": "Short expected output or boundary hint."},
+    {"name": "rationale", "required": true, "type": "string", "description": "Why this route and decision are the gold expectation."}
+  ],
+  "non_goals": [
+    "automatic full-paper claim extraction",
+    "automatic discovery of template ids from arbitrary prose",
+    "semantic validation of a newly filled adapter template without domain review",
+    "replacement of human novelty, correctness, or deployment-safety judgment"
+  ]
+}
