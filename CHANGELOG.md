@@ -24,7 +24,7 @@
   support and security notes, issue templates, and pull-request template.
 - Kept the command hub and smoke suite as the primary first-inspection path.
 
-## Initial Private Staging
+## Initial Release Surface Assembly
 
 - Created a manifest-controlled public-safe release surface.
 - Added the command hub, LLM packet runner, template-admission path, one-shot
