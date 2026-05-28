@@ -43,11 +43,37 @@ No. It can help inspect whether specific empirical prose claims overreach their
 evidence. Human reviewers still decide novelty, correctness, significance,
 clarity, and venue fit.
 
+## Can it audit proofs?
+
+The metric-to-claim runner does not audit proofs.  The repository now includes
+a separate Codex-only proof-audit guide and local scaffold for theorem and
+rate-chain review:
+
+```bash
+python3 src/claimcontractbench.py proof-audit-guide
+python3 src/claimcontractbench.py init-proof-audit --output proof_audits/my_proof_audit.md
+```
+
+That path can produce gap lists and LaTeX patches, but it is not formal
+verification or a paper verdict.
+
 ## Why does the repo include an LLM-assisted path?
 
 Because LLMs can be convenient for drafting candidate claim packets. The path is
 separate so that the project remains usable by humans and so that LLM output is
 never treated as licensing authority.
+
+## Can another tool integrate only part of this repository?
+
+Yes. Use:
+
+```bash
+python3 src/claimcontractbench.py integration-interface
+```
+
+The JSON interface marks the empirical claim-review checker as the core
+capability and proof audit as optional. A collaborator can ignore proof audit
+without changing the claim-review workflow.
 
 ## How should I ask a question or propose a template?
 

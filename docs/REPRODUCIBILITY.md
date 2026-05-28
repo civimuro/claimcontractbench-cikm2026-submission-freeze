@@ -44,6 +44,8 @@ These commands validate the release root and run the release smoke suite.
 - LLM packet happy path;
 - template-admission boundary-probe example;
 - one-shot agent guide availability;
+- integration interface availability;
+- Codex proof-audit guide availability and local scaffold creation;
 - optional feedback scaffold creation;
 - fail-closed negative packets for unknown template id, illegal template id on a
   non-call row, duplicate packet id, and private-marker report suppression.
@@ -57,6 +59,8 @@ Most generated outputs are intentionally ignored by git:
 - `reports/reviewer_claim_intake_*`;
 - `reports/llm_claim_review_packet_*`;
 - `claim_packets/`;
+- `proof_audit/`;
+- `proof_audits/`;
 - `feedback/`.
 
 Tracked `reports/` files are public-safe fixtures used by the demo runners, not

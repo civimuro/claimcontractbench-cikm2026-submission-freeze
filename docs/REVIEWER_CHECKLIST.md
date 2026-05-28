@@ -16,13 +16,13 @@ Expected high-level signal:
 
 ```text
 PASS release surface validation
-rows: 96
-required_files: 96
-public_safe_rows: 96
+rows: 102
+required_files: 102
+public_safe_rows: 102
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 8
+positive_checks: 11
 negative_fail_closed_checks: 4
 ```
 
@@ -38,8 +38,10 @@ packets.
 | What exactly is in the release? | `artifact/release_manifest_20260520.csv` | Every required row exists, is public-safe, and is not raw data. |
 | What are the smallest examples? | `data/claim_passport_casebook_20260519.csv` | Five action families are present: emit, relabel, weaken, rewrite, suppress. |
 | Which paper-facing claims are supported by which files? | `docs/REPORT_INDEX.md` | Each claim has a command, expected signal, and boundary. |
+| What can another tool integrate? | `python3 src/claimcontractbench.py integration-interface` | The JSON marks core claim review as required and proof audit as optional. |
 | What should not be claimed? | `docs/BOUNDARIES.md` | No autonomous review, peer-review replacement, raw-data redistribution, or human-utility proof is asserted. |
 | How does the optional LLM path behave? | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | The packet reports registered calls, admission-needed rows, out-of-scope rows, and zero unsafe release. |
+| How should proof rows be handled? | `docs/PROOF_AUDIT.md` | Proof claims stay outside metric-to-claim licensing and use a separate Codex-only audit path. |
 
 ## Thirty-Minute Deepening Path
 
@@ -47,15 +49,18 @@ packets.
 2. Run `python3 src/claimcontractbench.py templates` and check the forbidden
    stronger-claim language.
 3. Read `docs/REPORT_INDEX.md` beside the generated report commands.
-4. Run one behavior report, for example:
+4. Read `docs/INTEGRATION_INTERFACE.md` if a collaborator will call the tool
+   from another system.
+5. Read `docs/PROOF_AUDIT.md` if theorem or proof rigor matters.
+6. Run one behavior report, for example:
 
    ```bash
    python3 src/run_claim_audit_report.py --output reports/claim_audit_report_20260521
    ```
 
-5. Read `docs/DATA_AND_LICENSES.md` before making any claim about data
+7. Read `docs/DATA_AND_LICENSES.md` before making any claim about data
    redistribution or raw-data availability.
-6. Check `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` before citing this as
+8. Check `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` before citing this as
    a final archived public release.
 
 ## Red Flags
@@ -66,6 +71,7 @@ Treat any of these as a misuse or a documentation bug:
 - a claim says the tool autonomously read a full paper;
 - an unsupported external claim is silently treated as licensed;
 - a new claim family is forced into a nearby registered template;
+- a proof-audit finding is described as formal verification or a paper verdict;
 - raw third-party data is implied to be redistributed;
 - reviewer utility or inter-annotator agreement is claimed beyond the stated
   boundary.

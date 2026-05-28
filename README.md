@@ -13,8 +13,10 @@ LLM to draft a claim packet that the deterministic checker then audits.
 | --- | --- | --- |
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
 | Verify the resource as a reviewer | `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
+| Integrate from another tool | `python3 src/claimcontractbench.py integration-interface` | A machine-readable capability map where claim review is core and proof audit is optional. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
+| Audit theorem or proof rigor | `python3 src/claimcontractbench.py proof-audit-guide` | A separate Codex-only proof-audit path for rows that are out of metric-to-claim scope. |
 | Add a new claim family | `python3 src/claimcontractbench.py admission-guide` | A typed template-admission workflow instead of loose template reuse. |
 
 ## Ten-Minute Human Check
@@ -31,13 +33,13 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 96
-required_files: 96
-public_safe_rows: 96
+rows: 102
+required_files: 102
+public_safe_rows: 102
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 8
+positive_checks: 11
 negative_fail_closed_checks: 4
 ```
 
@@ -73,6 +75,10 @@ The release includes:
 - template-admission and reviewer-intake examples;
 - selected paper-claim and excerpt benchmarks that measure fail-closed behavior
   rather than autonomous full-paper reading;
+- a machine-readable integration interface that lets external tools use the
+  core claim-review checker with or without the optional proof-audit layer;
+- a Codex-only proof-audit guide and local scaffold for theorem/proof rows that
+  are intentionally outside metric-to-claim licensing;
 - standard-library runners that regenerate reports without raw data downloads,
   third-party Python packages, network access, or GPU training.
 
@@ -135,6 +141,20 @@ Detailed LLM guides:
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 - `artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md`
 
+## Integration Interface
+
+External tools can read the public interface directly:
+
+```bash
+python3 src/claimcontractbench.py integration-interface
+```
+
+The JSON marks `claim_review` as required and `proof_audit` as optional. A
+collaborator can integrate only the deterministic metric-to-claim checker, or
+also expose the Codex proof-audit workflow for theorem/proof rows.
+
+See `docs/INTEGRATION_INTERFACE.md`.
+
 ## Public Project Entry Points
 
 The repository is organized for two audiences:
@@ -170,8 +190,8 @@ See `docs/TEMPLATE_ADMISSION.md`.
 ## Repository Map
 
 - `docs/`: concepts, human-facing guides, boundaries, examples, report index,
-  reviewer checklist, reproducibility, data/license posture, FAQ, and
-  LLM-assisted path.
+  reviewer checklist, integration interface, proof-audit path, reproducibility,
+  data/license posture, FAQ, and LLM-assisted path.
 - `artifact/`: schemas, manifests, quickstarts, packet templates, and release
   checklist.
 - `data/`: public-safe derived tables and compact evidence displays.

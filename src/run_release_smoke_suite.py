@@ -318,6 +318,52 @@ def main() -> int:
             reviewer_checklist.stdout,
             "docs/REVIEWER_CHECKLIST.md",
         )
+        integration_interface = run_command(
+            "integration interface",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "integration-interface",
+            ],
+        )
+        assert_contains(
+            "integration interface",
+            integration_interface.stdout,
+            "claimcontractbench_public_integration_20260528",
+        )
+        assert_contains("integration interface", integration_interface.stdout, "proof_audit")
+        proof_audit_guide = run_command(
+            "Codex proof audit guide",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "proof-audit-guide",
+            ],
+        )
+        assert_contains("Codex proof audit guide", proof_audit_guide.stdout, "Codex proof-audit path")
+        assert_contains(
+            "Codex proof audit guide",
+            proof_audit_guide.stdout,
+            "docs/PROOF_AUDIT.md",
+        )
+        proof_audit_output = temp_root / "proof_audits" / "my_proof_audit.md"
+        run_command(
+            "Codex proof audit scaffold",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "init-proof-audit",
+                "--output",
+                str(proof_audit_output),
+            ],
+        )
+        if not proof_audit_output.exists():
+            print("FAIL Codex proof audit scaffold")
+            print(f"missing proof audit output: {proof_audit_output}")
+            raise SystemExit(1)
         feedback_output = temp_root / "feedback" / "my_feedback_report.md"
         run_command(
             "optional feedback scaffold",
@@ -340,7 +386,7 @@ def main() -> int:
         shutil.rmtree(root / "src" / "__pycache__")
 
     print("PASS release smoke suite")
-    print("positive_checks: 8")
+    print("positive_checks: 11")
     print("negative_fail_closed_checks: 4")
     return 0
 

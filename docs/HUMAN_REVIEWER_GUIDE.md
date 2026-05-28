@@ -18,11 +18,13 @@ for first inspection.
 ## What To Read Next
 
 1. `docs/REVIEWER_CHECKLIST.md`
-2. `docs/CONCEPTS.md`
-3. `docs/EXAMPLE_OUTPUTS.md`
-4. `docs/REPORT_INDEX.md`
-5. `docs/BOUNDARIES.md`
-6. `docs/DATA_AND_LICENSES.md`
+2. `docs/INTEGRATION_INTERFACE.md`
+3. `docs/PROOF_AUDIT.md`
+4. `docs/CONCEPTS.md`
+5. `docs/EXAMPLE_OUTPUTS.md`
+6. `docs/REPORT_INDEX.md`
+7. `docs/BOUNDARIES.md`
+8. `docs/DATA_AND_LICENSES.md`
 
 These files explain what the commands prove, where the generated reports go,
 and which claims are intentionally out of scope.
@@ -80,6 +82,7 @@ A result does not support statements such as:
 - the tool read an entire paper autonomously;
 - the tool makes accept/reject recommendations;
 - the tool proves scientific correctness;
+- the proof-audit path formally verifies theorems;
 - the tool proves human reviewer utility;
 - the repository redistributes raw third-party datasets.
 
@@ -105,6 +108,19 @@ python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.c
 ```
 
 The report is a claim-audit aid, not a review verdict.
+
+## If You Want To Audit Proofs
+
+Proof correctness is intentionally outside the metric-to-claim runner.  For a
+local Codex proof audit, run:
+
+```bash
+python3 src/claimcontractbench.py proof-audit-guide
+python3 src/claimcontractbench.py init-proof-audit --output proof_audits/my_proof_audit.md
+```
+
+The proof-audit draft is an author/reviewer work aid.  It can list gaps and
+patches, but it is not formal verification or a paper verdict.
 
 ## If You Want To Ask A Public Question
 

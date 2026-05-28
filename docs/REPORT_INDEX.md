@@ -8,9 +8,10 @@ not raw-data reproductions.
 
 | Claim to verify | Command | Expected signal |
 | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 96 rows, 96 required files, 96 public-safe rows, 0 raw-data rows. |
-| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 8 positive checks and 4 fail-closed negative checks pass. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 102 rows, 102 required files, 102 public-safe rows, 0 raw-data rows. |
+| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 11 positive checks and 4 fail-closed negative checks pass. |
 | The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. |
+| The integration surface is discoverable by other tools. | `python3 src/claimcontractbench.py integration-interface` | JSON interface with required `claim_review` and optional `proof_audit` capabilities. |
 
 ## Resource Behavior Reports
 
@@ -20,6 +21,7 @@ not raw-data reproductions.
 | Template admission | `python3 src/run_claim_template_admission.py --output reports/claim_template_admission_20260521` | 9 template rows: 5 mainline, 3 support-only, 1 rejected; 10 checks. | Automatic admission of new domains. |
 | Reviewer claim intake | `python3 src/run_reviewer_claim_intake.py --output reports/reviewer_claim_intake_20260521` | 8 author/reviewer submitted claim examples mapped to accept, rewrite, suppress, support-only, and reject decisions. | General reviewer utility. |
 | LLM packet review | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | 4-row packet: 2 registered calls, 1 admission-needed row, 1 out-of-scope row; fail-closed packet checks. | Full-paper extraction or acceptance advice. |
+| Codex proof-audit path | `python3 src/claimcontractbench.py proof-audit-guide` | Local proof-audit guide, gap checklist, and Markdown scaffold for theorem/proof rows. | Formal proof verification or paper verdicts. |
 
 ## Benchmark And Boundary Readouts
 
@@ -43,6 +45,9 @@ python3 src/run_reviewer_audit_demo_regression.py \
 
 - `artifact/release_manifest_20260520.csv`: public-safe release surface.
 - `docs/REVIEWER_CHECKLIST.md`: one-page reviewer verification map.
+- `docs/INTEGRATION_INTERFACE.md`: public integration contract for core claim
+  review and optional proof audit.
+- `docs/PROOF_AUDIT.md`: Codex-only proof-audit path for out-of-scope proof rows.
 - `artifact/source_license_snapshot_20260520.csv`: source and license posture.
 - `artifact/dataset_source_manifest_20260520.csv`: dataset roles and raw-data
   redistribution boundaries.

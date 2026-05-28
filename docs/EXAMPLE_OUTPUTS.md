@@ -14,9 +14,9 @@ Expected high-level output:
 
 ```text
 PASS release surface validation
-rows: 96
-required_files: 96
-public_safe_rows: 96
+rows: 102
+required_files: 102
+public_safe_rows: 102
 raw_data_rows: 0
 ```
 
@@ -42,7 +42,7 @@ Expected high-level output:
 
 ```text
 PASS release smoke suite
-positive_checks: 8
+positive_checks: 11
 negative_fail_closed_checks: 4
 ```
 
@@ -50,7 +50,53 @@ Meaning:
 
 - positive public paths run;
 - the human guide and one-shot agent guide are reachable;
+- the integration interface is reachable;
+- the Codex proof-audit guide and local scaffold are reachable;
 - bad packets fail closed rather than silently producing licensed claims.
+
+## Integration Interface
+
+Command:
+
+```bash
+python3 src/claimcontractbench.py integration-interface
+```
+
+Expected high-level output:
+
+```text
+"interface_id": "claimcontractbench_public_integration_20260528"
+"claim_review"
+"proof_audit"
+```
+
+Meaning:
+
+- external tools can discover the command surface without reading prose docs;
+- `claim_review` is the required deterministic layer;
+- `proof_audit` is optional and can be ignored by tools that only handle
+  empirical metric-to-claim checks.
+
+## Codex Proof Audit Scaffold
+
+Command:
+
+```bash
+python3 src/claimcontractbench.py init-proof-audit --output proof_audits/my_proof_audit.md
+```
+
+Expected high-level output:
+
+```text
+PASS init proof audit
+```
+
+Meaning:
+
+- the release can create a local Markdown draft for theorem or proof rigor
+  review;
+- the proof-audit path remains separate from metric-to-claim licensing;
+- the generated `proof_audits/` directory is ignored by git.
 
 ## Registered Templates
 

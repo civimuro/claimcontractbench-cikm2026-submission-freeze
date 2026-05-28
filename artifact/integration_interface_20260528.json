@@ -1,0 +1,78 @@
+{
+  "interface_id": "claimcontractbench_public_integration_20260528",
+  "schema_version": "1.0",
+  "release_surface": "public_safe_resource_snapshot",
+  "entrypoint": "python3 src/claimcontractbench.py",
+  "docs": {
+    "human": "docs/INTEGRATION_INTERFACE.md",
+    "boundaries": "docs/BOUNDARIES.md",
+    "reviewer_checklist": "docs/REVIEWER_CHECKLIST.md"
+  },
+  "capabilities": {
+    "claim_review": {
+      "required": true,
+      "available": true,
+      "purpose": "Deterministic routing and boundary checking for empirical metric-to-claim packets.",
+      "commands": {
+        "doctor": "python3 src/claimcontractbench.py doctor",
+        "smoke": "python3 src/claimcontractbench.py smoke",
+        "template_menu": "python3 src/claimcontractbench.py templates",
+        "init_packet": "python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv",
+        "review_packet": "python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv --output reports/my_claim_packet",
+        "admission_guide": "python3 src/claimcontractbench.py admission-guide",
+        "init_template": "python3 src/claimcontractbench.py init-template --output claim_packets/my_template_admission.csv",
+        "admit_template": "python3 src/claimcontractbench.py admit-template --input claim_packets/my_template_admission.csv --output reports/my_template_admission"
+      },
+      "input_schema": "artifact/llm_claim_review_packet_template_20260527.csv",
+      "route_labels": [
+        "CALL_REGISTERED_TEMPLATE",
+        "NEEDS_TEMPLATE_ADMISSION",
+        "OUT_OF_SCOPE_DO_NOT_CALL"
+      ],
+      "report_outputs": [
+        "llm_claim_review_packet_report.md",
+        "llm_claim_review_packet_report.html",
+        "llm_claim_review_packet_summary.json"
+      ],
+      "local_generated_paths": [
+        "claim_packets/",
+        "reports/my_claim_packet/",
+        "reports/my_template_admission/"
+      ]
+    },
+    "proof_audit": {
+      "required": false,
+      "available": true,
+      "codex_only": true,
+      "purpose": "Optional local audit workflow for theorem, proof, lower-bound, and rate-chain rigor claims that are outside metric-to-claim licensing.",
+      "commands": {
+        "guide": "python3 src/claimcontractbench.py proof-audit-guide",
+        "init": "python3 src/claimcontractbench.py init-proof-audit --output proof_audits/my_proof_audit.md"
+      },
+      "docs": [
+        "docs/PROOF_AUDIT.md",
+        "artifact/PROOF_AUDIT_CODEX_GUIDE_20260528.md",
+        "artifact/proof_audit_gap_checklist_20260528.md",
+        "artifact/proof_audit_plan_template_20260528.md"
+      ],
+      "recommended_local_state": [
+        "proof_audit/claims.json",
+        "proof_audit/claim_packages/",
+        "proof_audit/state.json",
+        "proof_audit/OPEN_PROBLEMS.md"
+      ],
+      "local_generated_paths": [
+        "proof_audits/"
+      ],
+      "can_ignore": true
+    }
+  },
+  "privacy_and_safety": {
+    "public_safe_only": true,
+    "raw_data_included": false,
+    "confidential_manuscript_text_allowed_in_public_artifacts": false,
+    "deterministic_checker_is_release_boundary": true,
+    "proof_audit_is_formal_verification": false,
+    "paper_accept_reject_decisions_supported": false
+  }
+}

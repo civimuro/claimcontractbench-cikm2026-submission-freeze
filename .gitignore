@@ -12,3 +12,5 @@ reports/my_claim_packet/
 reports/my_template_admission/
 feedback/
 claim_packets/
+proof_audit/
+proof_audits/

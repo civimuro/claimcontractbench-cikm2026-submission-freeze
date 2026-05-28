@@ -17,9 +17,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 96
-required_files: 96
-public_safe_rows: 96
+rows: 102
+required_files: 102
+public_safe_rows: 102
 raw_data_rows: 0
 ```
 
@@ -38,13 +38,14 @@ Expected result:
 
 ```text
 PASS release smoke suite
-positive_checks: 8
+positive_checks: 11
 negative_fail_closed_checks: 4
 ```
 
 The positive checks cover release validation, projection smoke rows, the LLM
 packet happy path, template admission, the one-shot agent guide, the reviewer
-checklist, the human guide, and optional feedback scaffolding. The negative
+checklist, the integration interface, the Codex proof-audit guide and scaffold,
+the human guide, and optional feedback scaffolding. The negative
 checks verify that unsafe or malformed LLM packets fail closed rather than
 producing a licensed claim report.
 
@@ -90,4 +91,7 @@ claim. Use `docs/BOUNDARIES.md` before interpreting any result as a reviewer
 utility claim, full-paper coverage claim, or autonomous-review claim.
 
 If the terminology is unfamiliar, start with `docs/CONCEPTS.md`. If the artifact
-boundary is what matters, start with `docs/REVIEWER_CHECKLIST.md`.
+boundary is what matters, start with `docs/REVIEWER_CHECKLIST.md`. If theorem
+or proof rigor matters, use `docs/PROOF_AUDIT.md`; it is intentionally separate
+from metric-to-claim licensing. If another tool needs to call the package, use
+`docs/INTEGRATION_INTERFACE.md`.

@@ -84,12 +84,44 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("Next useful commands:")
     print("- python3 src/claimcontractbench.py smoke")
     print("- python3 src/claimcontractbench.py reviewer-checklist")
+    print("- python3 src/claimcontractbench.py integration-interface")
+    print("- python3 src/claimcontractbench.py proof-audit-guide")
     print("- python3 src/claimcontractbench.py human-guide")
     print("- python3 src/claimcontractbench.py templates")
     print("- python3 src/claimcontractbench.py agent-guide")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
+    print("- python3 src/claimcontractbench.py init-proof-audit --output proof_audits/my_proof_audit.md")
     print("- python3 src/claimcontractbench.py admission-guide")
     print("- python3 src/claimcontractbench.py feedback-guide")
+    return 0
+
+
+def command_integration_interface(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    source = root / "artifact" / "integration_interface_20260528.json"
+    if not source.is_file():
+        print("FAIL integration interface")
+        print(f"missing interface file: {source}")
+        return 1
+    if args.output:
+        output = resolve(root, args.output)
+        if output.exists() and not args.force:
+            print("FAIL integration interface")
+            print(f"output already exists: {output}")
+            print("Use --force to overwrite.")
+            return 1
+        output.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, output)
+        print("PASS integration interface")
+        print(f"output: {output}")
+        return 0
+    try:
+        text = source.read_text(encoding="utf-8")
+    except OSError as exc:
+        print("FAIL integration interface")
+        print(f"could not read interface file: {exc}")
+        return 1
+    print(text, end="" if text.endswith("\n") else "\n")
     return 0
 
 
@@ -112,6 +144,8 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("4. Read the human-facing guides:")
     for rel_path in [
         "docs/REVIEWER_CHECKLIST.md",
+        "docs/INTEGRATION_INTERFACE.md",
+        "docs/PROOF_AUDIT.md",
         "docs/CONCEPTS.md",
         "docs/HUMAN_REVIEWER_GUIDE.md",
         "docs/EXAMPLE_OUTPUTS.md",
@@ -128,6 +162,33 @@ def command_human_guide(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_proof_audit_guide(args: argparse.Namespace) -> int:
+    print("Codex proof-audit path")
+    print("")
+    print("Use this when a theorem, proof, lower-bound, or rate-chain claim needs")
+    print("rigor review after the metric-to-claim checker routes it out of scope.")
+    print("")
+    print("Codex-only workflow:")
+    print("  python3 src/claimcontractbench.py doctor")
+    print("  python3 src/claimcontractbench.py smoke")
+    print("  python3 src/claimcontractbench.py init-proof-audit --output proof_audits/my_proof_audit.md")
+    print("  # run a small canary preflight before the manuscript audit")
+    print("  # give Codex the paper source and ask it to fill the local audit draft")
+    print("")
+    print("Read:")
+    for rel_path in [
+        "docs/PROOF_AUDIT.md",
+        "artifact/PROOF_AUDIT_CODEX_GUIDE_20260528.md",
+        "artifact/proof_audit_gap_checklist_20260528.md",
+        "artifact/proof_audit_plan_template_20260528.md",
+    ]:
+        print(f"  {rel_path}")
+    print("")
+    print("All audit roles are executed by Codex. Use claim packages, prior-round")
+    print("state, L/S/O triage, and patch lint for multi-round proof repair.")
+    return 0
+
+
 def command_reviewer_checklist(args: argparse.Namespace) -> int:
     print("Reviewer verification checklist")
     print("")
@@ -141,6 +202,8 @@ def command_reviewer_checklist(args: argparse.Namespace) -> int:
     print("Then inspect:")
     for rel_path in [
         "docs/REVIEWER_CHECKLIST.md",
+        "docs/INTEGRATION_INTERFACE.md",
+        "docs/PROOF_AUDIT.md",
         "docs/CONCEPTS.md",
         "docs/REPORT_INDEX.md",
         "docs/BOUNDARIES.md",
@@ -153,6 +216,25 @@ def command_reviewer_checklist(args: argparse.Namespace) -> int:
     print("template boundaries, and explicit non-goals.")
     print("Red flags: accept/reject claims, autonomous full-paper review claims,")
     print("raw-data redistribution claims, or forced use of nearby templates.")
+    return 0
+
+
+def command_init_proof_audit(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    output = resolve(root, args.output)
+    if output.exists() and not args.force:
+        print("FAIL init proof audit")
+        print(f"output already exists: {output}")
+        print("Use --force to overwrite.")
+        return 1
+    output.parent.mkdir(parents=True, exist_ok=True)
+    source = root / "artifact" / "proof_audit_plan_template_20260528.md"
+    shutil.copy2(source, output)
+    print("PASS init proof audit")
+    print(f"output: {output}")
+    print("")
+    print("This is a local Codex proof-audit draft. Keep confidential proof text")
+    print("and private review notes out of public channels unless sharing is allowed.")
     return 0
 
 
@@ -424,6 +506,29 @@ def build_parser() -> argparse.ArgumentParser:
     add_subcommand_root(reviewer_checklist)
     reviewer_checklist.set_defaults(func=command_reviewer_checklist)
 
+    integration_interface = subparsers.add_parser(
+        "integration-interface",
+        help="Print or copy the machine-readable integration interface.",
+    )
+    add_subcommand_root(integration_interface)
+    integration_interface.add_argument(
+        "--output",
+        help="Optional JSON path to copy the interface to.",
+    )
+    integration_interface.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite the output if it exists.",
+    )
+    integration_interface.set_defaults(func=command_integration_interface)
+
+    proof_audit_guide = subparsers.add_parser(
+        "proof-audit-guide",
+        help="Explain the Codex-only proof-audit workflow.",
+    )
+    add_subcommand_root(proof_audit_guide)
+    proof_audit_guide.set_defaults(func=command_proof_audit_guide)
+
     templates = subparsers.add_parser("templates", help="Print registered template boundaries.")
     add_subcommand_root(templates)
     templates.set_defaults(func=command_templates)
@@ -476,6 +581,15 @@ def build_parser() -> argparse.ArgumentParser:
     init_feedback.add_argument("--output", required=True, help="Markdown path to create.")
     init_feedback.add_argument("--force", action="store_true", help="Overwrite the output if it exists.")
     init_feedback.set_defaults(func=command_init_feedback)
+
+    init_proof_audit = subparsers.add_parser(
+        "init-proof-audit",
+        help="Create a local proof-audit Markdown draft.",
+    )
+    add_subcommand_root(init_proof_audit)
+    init_proof_audit.add_argument("--output", required=True, help="Markdown path to create.")
+    init_proof_audit.add_argument("--force", action="store_true", help="Overwrite the output if it exists.")
+    init_proof_audit.set_defaults(func=command_init_proof_audit)
 
     review = subparsers.add_parser("review", help="Review an LLM-produced claim packet.")
     add_subcommand_root(review)

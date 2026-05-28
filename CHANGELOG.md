@@ -16,10 +16,16 @@
   - reviewer quickstart;
   - scope boundaries;
   - report/evidence index;
+  - integration interface;
+  - Codex-only proof-audit path;
   - template admission;
   - reproducibility;
   - data and license posture.
 - Added a public release checklist for tag/archive/DOI readiness.
+- Added a separate Codex proof-audit guide, local scaffold, and gap checklist
+  for theorem/proof rows that remain outside metric-to-claim licensing.
+- Added a machine-readable integration interface so external tools can call the
+  core claim-review checker with or without the optional proof-audit path.
 - Added public-facing community files: contributing guide, code of conduct,
   support and security notes, issue templates, and pull-request template.
 - Kept the command hub and smoke suite as the primary first-inspection path.

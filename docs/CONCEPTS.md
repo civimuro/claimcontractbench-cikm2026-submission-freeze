@@ -75,10 +75,15 @@ An LLM can optionally help draft candidate rows, but the LLM is not the
 authority. The deterministic runner decides whether a row calls a registered
 template, needs admission, or is out of scope.
 
+Proof correctness is a separate path.  When a theorem, proof, or rate-chain row
+is out of metric-to-claim scope, use `docs/PROOF_AUDIT.md` for the Codex
+proof-audit workflow rather than forcing it into a claim template.
+
 ## What To Read Next
 
 - `docs/QUICKSTART.md` for a ten-minute verification path.
 - `docs/HUMAN_REVIEWER_GUIDE.md` for non-LLM inspection.
 - `docs/EXAMPLE_OUTPUTS.md` for command output interpretation.
 - `docs/BOUNDARIES.md` for what the resource must not be used to claim.
+- `docs/PROOF_AUDIT.md` for local theorem/proof rigor review.
 - `docs/TEMPLATE_ADMISSION.md` for adding a claim family.

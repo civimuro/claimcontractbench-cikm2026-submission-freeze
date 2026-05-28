@@ -24,6 +24,8 @@ docs/BOUNDARIES.md,boundary and non-goal guide,yes,yes,no,Scope roles and safe i
 docs/REPORT_INDEX.md,report and evidence index,yes,yes,no,Maps paper-facing claims to commands outputs and boundaries
 docs/TEMPLATE_ADMISSION.md,template admission documentation,yes,yes,no,Explains new-template contract fields and admission outcomes
 docs/LLM_ASSISTED_PATH.md,LLM-assisted path guide,yes,yes,no,Optional LLM packet drafting path separated from human reviewer path
+docs/PROOF_AUDIT.md,Codex proof audit documentation,yes,yes,no,Separate theorem and proof rigor path for out-of-scope proof rows
+docs/INTEGRATION_INTERFACE.md,integration interface documentation,yes,yes,no,Stable public interface for optional proof-audit and core claim-review integrations
 docs/REPRODUCIBILITY.md,reproducibility documentation,yes,yes,no,Environment and validation details for first inspection
 docs/DATA_AND_LICENSES.md,data and license documentation,yes,yes,no,Raw-data posture derived-material license and user responsibility guide
 docs/FAQ.md,public FAQ,yes,yes,no,Human-friendly answers about LLMs raw data GQU and citation
@@ -36,6 +38,10 @@ artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md,LLM-assisted review quicksta
 artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md,one-shot AI-agent review guide,yes,yes,no,Agent-facing workflow for one-instruction assisted paper review with local deterministic checks
 artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md,template admission quickstart,yes,yes,no,Copy-paste guide for drafting and checking new typed claim templates when no registered template matches
 artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md,user-experience feedback guide,yes,yes,no,Consent-based guide and LLM prompt for optional trial feedback reports
+artifact/PROOF_AUDIT_CODEX_GUIDE_20260528.md,Codex proof audit guide,yes,yes,no,Agent-facing local proof rigor audit workflow executed by Codex
+artifact/proof_audit_gap_checklist_20260528.md,proof audit gap checklist,yes,yes,no,Public-safe checklist of common proof and rate-chain gap patterns
+artifact/proof_audit_plan_template_20260528.md,proof audit plan template,yes,yes,no,Local Markdown scaffold for Codex proof audits
+artifact/integration_interface_20260528.json,integration interface manifest,yes,yes,no,Machine-readable public interface for claim-review and optional proof-audit integrations
 artifact/user_experience_feedback_template_20260527.md,user-experience feedback template,yes,yes,no,Public-safe Markdown template for optional usability and LLM-routing feedback
 artifact/release_manifest_20260520.csv,release manifest,yes,yes,no,Machine-readable public-safe release surface
 artifact/source_license_snapshot_20260520.csv,source/license snapshot,yes,yes,no,Access-date refreshed source and redistribution posture table
