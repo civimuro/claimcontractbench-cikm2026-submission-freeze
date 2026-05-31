@@ -1,6 +1,6 @@
-# Reviewer Quickstart Release Candidate (2026-05-20)
+# Reviewer Quickstart Release Snapshot (2026-05-20)
 
-Status: `PUBLIC_FRIENDLY_SURFACE_CANDIDATE_2026-05-27`.
+Status: `PUBLIC_FRIENDLY_SUBMISSION_SNAPSHOT_2026-06-01`.
 
 This quickstart is written for the public/reviewer artifact root. It is not tied
 to private coordination directories or local machine paths.
@@ -14,10 +14,10 @@ License scope is defined in `LICENSE.md`: executable code is Apache-2.0,
 derived non-code resource materials are CC-BY-4.0, and raw third-party data is
 not redistributed.
 
-Maintainer note: when creating a local release candidate from the full project
+Maintainer note: when creating a local submission snapshot from the full project
 workspace, run the release builder from the `WORKSPACE` resource root. Once the
-candidate archive is created or unpacked, the commands below are run from that
-candidate release root.
+snapshot archive is created or unpacked, the commands below are run from that
+release root.
 
 ## Requirements
 
@@ -354,7 +354,7 @@ After the command passes, inspect:
 
 ## Final Publication Metadata To Fill
 
-The runnable release candidate above is self-contained for first inspection.
+The runnable release snapshot above is self-contained for first inspection.
 Before a submitted paper can claim a final public archive, the authors still
 need to fill publication metadata:
 

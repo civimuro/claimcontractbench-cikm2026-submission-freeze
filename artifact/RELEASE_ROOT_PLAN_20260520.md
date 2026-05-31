@@ -1,6 +1,6 @@
 # Release Root Plan (2026-05-20)
 
-Status: `ROUTE_A_RELEASE_READINESS_DRAFT`.
+Status: `PUBLIC_RELEASE_ROOT_PLAN_2026-06-01`.
 
 Purpose: define the public/reviewer-facing artifact root for
 ClaimContractBench without leaking private coordination files, credentials, or
@@ -8,7 +8,7 @@ raw datasets.
 
 ## 1. Release Root
 
-The future reviewer checkout should be organized as:
+The reviewer checkout is organized as:
 
 ```text
 ClaimContractBench/
@@ -21,7 +21,7 @@ ClaimContractBench/
 │   ├── RESOURCE_SPEC.md
 │   ├── ENVIRONMENT_NOTE_20260526.md
 │   ├── RELEASE_ROOT_PLAN_20260520.md
-│   ├── REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md
+│   ├── REVIEWER_QUICKSTART_RELEASE_20260520.md
 │   ├── LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md
 │   ├── release_manifest_20260520.csv
 │   ├── source_license_snapshot_20260520.csv
@@ -303,7 +303,7 @@ The release does not support:
 - broad external validity or anomaly-detection validation;
 - universal medium-train repair.
 
-## 5. Remaining Release Work
+## 5. Remaining Publication Work
 
 Before final submission:
 
@@ -311,7 +311,6 @@ Before final submission:
 2. decide DOI/archive plan;
 3. keep source/license URLs and access dates synchronized with the final
    release snapshot;
-4. normalize any final script paths after moving from work-use workspace to
-   release root;
+4. rerun validation after any final metadata or archive-location change;
 5. run the validator on a clean copied release directory;
 6. update final paper availability statement with the repository/archive id.

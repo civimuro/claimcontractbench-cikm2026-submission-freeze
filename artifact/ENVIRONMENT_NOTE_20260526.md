@@ -3,7 +3,7 @@
 Status: `PUBLIC_SAFE_RELEASE_ENVIRONMENT_NOTE`.
 
 This note describes the environment needed to inspect the ClaimContractBench
-release candidate. It is intentionally narrow: the first inspection path checks
+release snapshot. It is intentionally narrow: the first inspection path checks
 the manifest-controlled release surface and regenerates derived reports. It
 does not download raw datasets, install machine-learning packages, rerun model
 training, or require a GPU.
@@ -20,7 +20,7 @@ No `pip install` step is required for the reviewer quickstart.
 ## First-Inspection Resource Checks
 
 The reviewer-facing commands are listed in
-`artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md`. They validate:
+`artifact/REVIEWER_QUICKSTART_RELEASE_20260520.md`. They validate:
 
 - manifest paths are release-root relative;
 - required files exist;

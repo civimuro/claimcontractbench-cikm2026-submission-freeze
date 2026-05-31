@@ -1,6 +1,6 @@
 path,role,required,public_safe,raw_data,notes
 README.md,reviewer resource entrypoint,yes,yes,no,Top-level resource orientation for reviewer checkout
-CITATION.cff,citation metadata candidate,yes,yes,no,Citation metadata for release candidate and later archive citation
+CITATION.cff,citation metadata,yes,yes,no,Citation metadata for submission snapshot and later archive citation
 CHANGELOG.md,release change log,yes,yes,no,Public-safe release-candidate change log
 .gitignore,generated report ignore rules,yes,yes,no,Release-root ignore rules for generated report directories
 .github/workflows/claimcontractbench-smoke.yml,GitHub Actions smoke workflow,yes,yes,no,Optional repository CI workflow that runs the standard-library release smoke suite
@@ -30,8 +30,8 @@ docs/FAQ.md,public FAQ,yes,yes,no,Human-friendly answers about LLMs raw data GQU
 artifact/RESOURCE_SPEC.md,resource specification,yes,yes,no,Defines artifact MVP and release boundaries
 artifact/ENVIRONMENT_NOTE_20260526.md,environment note,yes,yes,no,Python and runtime requirements for first reviewer inspection
 artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md,public release checklist,yes,yes,no,Checklist for final tag archive DOI and paper availability statement
-artifact/RELEASE_ROOT_PLAN_20260520.md,release plan,yes,yes,no,Maps current workspace to future public release root
-artifact/REVIEWER_QUICKSTART_RELEASE_DRAFT_20260520.md,reviewer quickstart,yes,yes,no,Release-root relative quickstart draft
+artifact/RELEASE_ROOT_PLAN_20260520.md,release plan,yes,yes,no,Maps the submission snapshot release root and remaining publication checks
+artifact/REVIEWER_QUICKSTART_RELEASE_20260520.md,reviewer quickstart,yes,yes,no,Release-root relative quickstart for the submission snapshot
 artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md,LLM-assisted review quickstart,yes,yes,no,Copy-paste LLM front-end workflow and prompt guide for fail-closed claim review packets
 artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md,one-shot AI-agent review guide,yes,yes,no,Agent-facing workflow for one-instruction assisted paper review with local deterministic checks
 artifact/TEMPLATE_ADMISSION_QUICKSTART_20260527.md,template admission quickstart,yes,yes,no,Copy-paste guide for drafting and checking new typed claim templates when no registered template matches
