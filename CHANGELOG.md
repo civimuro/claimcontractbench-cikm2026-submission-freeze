@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased - CIKM 2026 Resource Snapshot Candidate
+## v0.1.0-cikm2026-submission - CIKM 2026 Resource Submission Snapshot
 
 - Reframed the repository as a reviewer-verifiable resource snapshot while
   preserving the LLM-assisted quick trial.

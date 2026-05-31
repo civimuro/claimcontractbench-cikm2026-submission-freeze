@@ -4,7 +4,7 @@
   "false_calls_on_out_of_scope": 0,
   "joint_span_route_accuracy": "1.000",
   "noisy_items": 36,
-  "prediction_source": "reports/paragraph_claim_span_router_holdout_eval_guided_20260521/claude_paragraph_holdout_guided_predictions.csv",
+  "prediction_source": "public-safe guided prediction fixture summarized in this release",
   "registered_template_accuracy": "NA",
   "route_accuracy": "1.000",
   "selection": "holdout",

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Citation metadata for the prepared v0.1.0-cikm2026-submission snapshot. Add the public Zenodo DOI only after the record resolves."
+message: "Citation metadata for the v0.1.0-cikm2026-submission snapshot. Add the public Zenodo DOI only after the record resolves."
 title: "ClaimContractBench: A Finite Claim-Licensing Resource for Metric-to-Claim Reporting"
 authors:
   - family-names: "Guo"

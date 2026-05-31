@@ -187,7 +187,7 @@ See `docs/TEMPLATE_ADMISSION.md`.
 ## Release And Citation Status
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
-prepared submission tag is `v0.1.0-cikm2026-submission`. A Zenodo archive may be
+submission tag is `v0.1.0-cikm2026-submission`. A Zenodo archive may be
 added for the public submission snapshot, but this repository does not claim a
 public DOI until the Zenodo record resolves. After publication, cite the tagged
 GitHub release and the Zenodo archive together.

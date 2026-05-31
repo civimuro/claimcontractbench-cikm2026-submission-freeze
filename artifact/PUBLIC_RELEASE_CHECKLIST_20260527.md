@@ -33,7 +33,8 @@ final public resource snapshot for the paper.
 2. `CITATION.cff` contains the prepared release version and repository URL, but
    does not claim a public DOI before the Zenodo record resolves.
 3. If a Zenodo draft is used, it should persist DOI, title, author, resource type, version,
-   repository URL, Apache-2.0 rights metadata, and the release Description.
+   repository URL, Apache-2.0 and CC-BY-4.0 rights metadata, and the release
+   Description.
 4. The Zenodo draft should contain one uploaded archive file named
    `claimcontractbench-cikm2026.zip`; verify its checksum from the Zenodo
    record page for the exact published artifact.
