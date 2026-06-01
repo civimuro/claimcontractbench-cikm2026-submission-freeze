@@ -504,7 +504,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     feedback_guide = subparsers.add_parser(
         "feedback-guide",
-        help="Explain optional consent-based user feedback reports.",
+        help="Explain the optional public-safe feedback path.",
     )
     add_subcommand_root(feedback_guide)
     feedback_guide.set_defaults(func=command_feedback_guide)
