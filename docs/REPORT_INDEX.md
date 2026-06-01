@@ -12,7 +12,7 @@ surface.
 
 | Claim to verify | Command | Expected signal | Open after running |
 | --- | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 109 rows, 109 required files, 109 public-safe rows, 0 raw-data rows. | Console output. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 110 rows, 110 required files, 110 public-safe rows, 0 raw-data rows. | Console output. |
 | The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 8 positive checks and 4 fail-closed negative checks pass. | Console output. |
 | The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. | Console output, or the path supplied with `--write-generated`. |
 
@@ -41,6 +41,13 @@ specific generated report supports.
 | Fulltext claim-span strict agreement | tracked files under `reports/frontend_fulltext_phase1_claim_span_strict_agreement_20260523/` | 80 paired A/B rows, span-found agreement 0.850, kappa 0.749, match-type kappa 0.482, section exact 0.237, span exact 0.087, containment-at-0.8 rate 0.262. | Quality gates failed; these metrics do not license extraction reliability claims. |
 | Controlled adapter admission case study | tracked files under `reports/claim_span_adapter_admission_case_study_20260523/` | 6 adapter specs, 22 passport rows, actions 9 accept / 6 rewrite / 4 weaken / 1 suppress / 2 support-only, 10 checks passed. | Controlled admission evidence, not cross-domain validation. |
 
+These benchmark/readout files are advanced evidence for reviewers and tool
+developers. Ordinary users do not need them to run the packet workflow. See
+`docs/EVALUATION_SOURCE_INVENTORY.md` for the public-source policy, source mix,
+and why the repository stores links, public-safe anchors, paraphrased claims,
+and aggregate metrics instead of PDFs, long paper excerpts, or confidential
+review material.
+
 For the reviewer-audit regression, first generate the demo at the default path,
 then run:
 
@@ -54,6 +61,8 @@ python3 src/run_reviewer_audit_demo_regression.py \
 
 - `artifact/release_manifest_20260520.csv`: public-safe release surface.
 - `docs/REVIEWER_CHECKLIST.md`: one-page reviewer verification map.
+- `docs/EVALUATION_SOURCE_INVENTORY.md`: advanced public-paper source and
+  benchmark inventory for reviewers and tool developers.
 - `artifact/source_license_snapshot_20260520.csv`: source and license posture.
 - `artifact/dataset_source_manifest_20260520.csv`: dataset roles and raw-data
   redistribution boundaries.

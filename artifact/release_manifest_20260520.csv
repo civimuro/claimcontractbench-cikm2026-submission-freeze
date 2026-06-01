@@ -26,6 +26,7 @@ docs/TEMPLATE_ADMISSION.md,template admission documentation,yes,yes,no,Explains 
 docs/LLM_ASSISTED_PATH.md,LLM-assisted path guide,yes,yes,no,Optional LLM packet drafting path separated from human reviewer path
 docs/REPRODUCIBILITY.md,reproducibility documentation,yes,yes,no,Environment and validation details for first inspection
 docs/DATA_AND_LICENSES.md,data and license documentation,yes,yes,no,Raw-data posture derived-material license and user responsibility guide
+docs/EVALUATION_SOURCE_INVENTORY.md,advanced evaluation source inventory,yes,yes,no,Reviewer-facing inventory for public-paper benchmark surfaces and public-safe source policy
 docs/FAQ.md,public FAQ,yes,yes,no,Human-friendly answers about LLMs raw data GQU and citation
 artifact/RESOURCE_SPEC.md,resource specification,yes,yes,no,Defines artifact MVP and release boundaries
 artifact/ENVIRONMENT_NOTE_20260526.md,environment note,yes,yes,no,Python and runtime requirements for first reviewer inspection

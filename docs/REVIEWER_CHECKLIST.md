@@ -17,9 +17,9 @@ Expected high-level signal:
 
 ```text
 PASS release surface validation
-rows: 109
-required_files: 109
-public_safe_rows: 109
+rows: 110
+required_files: 110
+public_safe_rows: 110
 raw_data_rows: 0
 
 PASS release smoke suite
@@ -77,7 +77,9 @@ judges paper acceptance.
 
 5. Read `docs/DATA_AND_LICENSES.md` before making any claim about data
    redistribution or raw-data availability.
-6. Check `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` before citing this as
+6. Read `docs/EVALUATION_SOURCE_INVENTORY.md` only if you want the advanced
+   public-paper benchmark/source inventory; ordinary users can skip it.
+7. Check `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` before citing this as
    a final archived public release.
 
 ## Red Flags

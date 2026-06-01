@@ -17,9 +17,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 109
-required_files: 109
-public_safe_rows: 109
+rows: 110
+required_files: 110
+public_safe_rows: 110
 raw_data_rows: 0
 ```
 

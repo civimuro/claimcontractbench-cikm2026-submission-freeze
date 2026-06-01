@@ -24,6 +24,8 @@ for first inspection.
 4. `docs/REPORT_INDEX.md`
 5. `docs/BOUNDARIES.md`
 6. `docs/DATA_AND_LICENSES.md`
+7. `docs/EVALUATION_SOURCE_INVENTORY.md` if you want the advanced public-paper
+   benchmark/source inventory rather than the ordinary user path.
 
 These files explain what the commands prove, where the generated reports go,
 and which claims are intentionally out of scope.

@@ -24,7 +24,7 @@ final public resource snapshot for the paper.
 - Plain-language concept guide for readers who are new to metric-to-claim
   contracts.
 - Public contribution, support, security, issue, and pull-request templates.
-- Current manifest validator result: 109 rows, 109 required files, 109
+- Current manifest validator result: 110 rows, 110 required files, 110
   public-safe rows, 0 raw-data rows.
 - Current smoke result: 8 positive checks and 4 negative fail-closed checks.
 

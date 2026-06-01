@@ -38,9 +38,9 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 109
-required_files: 109
-public_safe_rows: 109
+rows: 110
+required_files: 110
+public_safe_rows: 110
 raw_data_rows: 0
 
 PASS release smoke suite
@@ -67,7 +67,7 @@ Then read by depth:
 | --- | --- |
 | 10 minutes | `docs/REVIEWER_CHECKLIST.md`, `docs/CONCEPTS.md`, `docs/BOUNDARIES.md` |
 | 30 minutes | `docs/HUMAN_REVIEWER_GUIDE.md`, `docs/REPORT_INDEX.md`, `docs/EXAMPLE_OUTPUTS.md` |
-| Deep check | `docs/DATA_AND_LICENSES.md`, `docs/REPRODUCIBILITY.md`, `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` |
+| Deep check | `docs/DATA_AND_LICENSES.md`, `docs/REPRODUCIBILITY.md`, `docs/EVALUATION_SOURCE_INVENTORY.md`, `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` |
 
 ## What The Resource Does
 
@@ -89,6 +89,8 @@ The release includes:
   rather than autonomous full-paper reading;
 - tracked fulltext-adjacent claim-span readouts and a controlled adapter
   admission case study for the paper's boundary evidence tier;
+- an advanced evaluation-source inventory that keeps public-paper simulation
+  data separate from the ordinary user path;
 - standard-library runners that regenerate reports without raw data downloads,
   third-party Python packages, network access, or GPU training.
 
