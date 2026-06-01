@@ -318,35 +318,37 @@ def command_agent_guide(args: argparse.Namespace) -> int:
 def command_feedback_guide(args: argparse.Namespace) -> int:
     guide = "artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md"
     template = "artifact/user_experience_feedback_template_20260527.md"
+    prompt = (
+        "With your approval, I can write a public-safe ClaimContractBench "
+        "usability feedback note using only command names, aggregate routing "
+        "counts, non-confidential summaries, and paraphrased template gaps, "
+        "excluding confidential paper text, private review notes, author "
+        "identities, unpublished results, raw data, credentials, private links, "
+        "and local paths."
+    )
     print("Optional user-experience feedback path")
     print("")
-    print("Use this only when the user agrees to share a public-safe feedback report.")
-    print("For public GitHub issues or public reports, do not include confidential")
-    print("paper text, private review notes, raw data, local paths, author identities,")
-    print("or unpublished results. Keep those in a private/local note instead.")
+    print("Human path:")
+    print("  If you can share public-safe usage feedback, we would be grateful.")
+    print("  Contact: civimuro@gmail.com")
+    print("  Only do this when it does not violate CIKM, ACM, institutional,")
+    print("  venue, or review-confidentiality rules. Active CIKM reviewers should")
+    print("  use official review-system or program-committee channels instead.")
     print("")
-    print("Guide:")
-    print(f"  {guide}")
-    print("Template:")
-    print(f"  {template}")
+    print("LLM/agent path:")
+    print("  Show this exact prompt to the user first and generate feedback only")
+    print("  after the user explicitly approves:")
+    print(f"  {prompt}")
     print("")
     print("Create a local feedback draft:")
     print("  python3 src/claimcontractbench.py init-feedback --output feedback/my_feedback_report.md")
     print("Check a draft before sharing it publicly:")
     print("  python3 src/claimcontractbench.py check-feedback --input feedback/my_feedback_report.md")
     print("")
-    print("Useful feedback covers:")
-    for item in [
-        "time to first useful report",
-        "whether the LLM produced valid CSV on the first try",
-        "overconfident registered-template calls",
-        "NEEDS_TEMPLATE_ADMISSION cases",
-        "confusing terms or commands",
-        "missing template families",
-        "privacy blockers",
-        "whether the report changed a review or rewrite decision",
-    ]:
-        print(f"- {item}")
+    print("Guide:")
+    print(f"  {guide}")
+    print("Minimal template:")
+    print(f"  {template}")
     return 0
 
 

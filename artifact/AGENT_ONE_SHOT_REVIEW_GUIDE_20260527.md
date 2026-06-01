@@ -131,3 +131,18 @@ Do not:
 The safest useful outcome is often a report that says which claims should be
 rewritten, weakened, suppressed, or admitted through a new template before the
 paper can make them responsibly.
+
+## Optional Feedback
+
+Do not generate a user-experience feedback report by default. If feedback would
+be useful, first show the user this exact public-safe prompt and wait for
+explicit approval:
+
+```text
+With your approval, I can write a public-safe ClaimContractBench usability feedback note using only command names, aggregate routing counts, non-confidential summaries, and paraphrased template gaps, excluding confidential paper text, private review notes, author identities, unpublished results, raw data, credentials, private links, and local paths.
+```
+
+If the user approves, follow
+`artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md`. If the user is acting as
+a CIKM reviewer or is bound by review-confidentiality rules, do not route
+feedback through the authors; use official venue channels.

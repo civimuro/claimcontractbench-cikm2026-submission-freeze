@@ -15,7 +15,8 @@ final public resource snapshot for the paper.
 - LLM-assisted packet trial.
 - One-shot AI-agent handoff guide.
 - Template-admission path.
-- Optional consent-based feedback scaffold.
+- Optional public-safe feedback scaffold with one-sentence LLM opt-in prompt
+  and review-rule contact boundary.
 - Mixed license scope: Apache-2.0 for code, CC-BY-4.0 for derived materials.
 - GitHub Actions smoke workflow.
 - Second-layer documentation under `docs/`.

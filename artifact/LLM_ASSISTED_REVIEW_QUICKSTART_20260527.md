@@ -279,22 +279,28 @@ external model.
 
 ## Optional Feedback Report
 
-If the user agrees, their AI assistant can also write a separate user-experience
-feedback report after the trial. This is not required to use the tool.
+Feedback is optional and is not required to use the tool. An AI assistant must
+not generate feedback by default. It should first show the user this exact
+public-safe prompt and wait for explicit approval:
+
+```text
+With your approval, I can write a public-safe ClaimContractBench usability feedback note using only command names, aggregate routing counts, non-confidential summaries, and paraphrased template gaps, excluding confidential paper text, private review notes, author identities, unpublished results, raw data, credentials, private links, and local paths.
+```
 
 ```bash
 python3 src/claimcontractbench.py feedback-guide
 python3 src/claimcontractbench.py init-feedback --output feedback/my_feedback_report.md
 ```
 
-The feedback report should focus on usability and reliability: whether the LLM
-could produce valid CSV, whether it overcalled registered templates, which rows
-needed template admission, which terms were confusing, and which outputs were
-actually useful for review or author revision. It should not include
-confidential paper text, private reviewer notes, raw data, local paths, or
-author identities unless sharing is explicitly allowed.
+If the user approves, the feedback should focus only on usability: command
+names, aggregate routing counts, confusing steps, and paraphrased template gaps.
+It must not include confidential paper text, private reviewer notes, raw data,
+local paths, author identities, unpublished results, credentials, or private
+links. If the user is acting as a CIKM reviewer or is bound by
+review-confidentiality rules, use official venue channels rather than contacting
+the authors directly.
 
-Use the prompt and template in:
+Use the prompt and minimal template in:
 
 - `artifact/USER_EXPERIENCE_FEEDBACK_GUIDE_20260527.md`
 - `artifact/user_experience_feedback_template_20260527.md`
