@@ -117,6 +117,8 @@ CSV packet rules:
 - use one claim per row;
 - keep `packet_id` unique;
 - set `human_check_required` to `yes` for every non-control row;
+- for a new user-supplied paper, set `human_check_required` to `yes` for every
+  row, including registered-template calls;
 - keep `template_id` blank unless `route_label` is
   `CALL_REGISTERED_TEMPLATE`.
 
@@ -213,6 +215,8 @@ Rules:
 - evidence_pointer should name the section, table, figure, or sentence span.
 - human_check_required must be yes for every row unless the source text is a
   release-provided registered control.
+- For a new paper supplied by the user, human_check_required should be yes for
+  every row, including registered-template calls.
 - Prefer NEEDS_TEMPLATE_ADMISSION over CALL_REGISTERED_TEMPLATE when uncertain.
 - Prefer OUT_OF_SCOPE_DO_NOT_CALL over NEEDS_TEMPLATE_ADMISSION for non-metric
   review tasks.

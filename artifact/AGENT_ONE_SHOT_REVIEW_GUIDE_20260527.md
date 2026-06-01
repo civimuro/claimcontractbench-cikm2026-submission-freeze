@@ -62,6 +62,9 @@ registered template printed by `templates`. When uncertain, prefer
 `NEEDS_TEMPLATE_ADMISSION`. Use `OUT_OF_SCOPE_DO_NOT_CALL` for novelty,
 proof-correctness, implementation-bug, ethics, policy, legal, or acceptance
 judgments that are not metric-to-claim audits.
+For user-supplied papers, set `human_check_required=yes` for every extracted
+row, including registered-template calls. Use `human_check_required=no` only for
+release-provided registered controls.
 
 Run the packet:
 
