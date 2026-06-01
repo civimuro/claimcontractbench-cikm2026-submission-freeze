@@ -12,11 +12,18 @@ as "the tool is good" is much less useful than a short report that identifies
 where the path became unclear, where the LLM misrouted a claim, or where a new
 template would be needed.
 
-## Consent First
+## Consent And Public-Safety First
 
-The feedback report is optional. Do not include confidential paper text,
-reviewer notes, author identities, unpublished results, or private file paths
-unless you are explicitly allowed to share them.
+The feedback report is optional and public-safe by default. For public GitHub
+issues, public pull requests, public examples, or reports intended for the
+project maintainers, do not include confidential paper text, private review
+notes, author identities, unpublished results, raw data, private links,
+credentials, or local file paths.
+
+If you are using the tool on a confidential manuscript, keep the detailed
+manuscript-specific notes locally or in an approved private channel. The public
+feedback report should describe only abstract task types, aggregate counts,
+command names, redacted error messages, and paraphrased template gaps.
 
 A good default is to share only:
 
@@ -26,6 +33,16 @@ A good default is to share only:
 - short paraphrases of claim types rather than verbatim confidential claims;
 - your LLM's routing difficulties or confusion points;
 - suggested documentation or template-admission improvements.
+
+Before sharing a feedback report publicly, run:
+
+```bash
+python3 src/claimcontractbench.py check-feedback --input feedback/my_feedback_report.md
+```
+
+This heuristic check can catch obvious local paths, credential-like strings, and
+explicit confidential-material flags. It cannot prove that a report is safe; the
+user must still review the text before posting or sending it.
 
 ## What Feedback Helps Most
 
@@ -58,6 +75,12 @@ If the user agrees, their AI assistant can read:
 The AI assistant should then write a separate feedback report using the template
 in `artifact/user_experience_feedback_template_20260527.md`.
 
+If the paper or review is confidential, do not send the paper text, private
+review notes, or unredacted claim packet to an external LLM unless the user has
+an approved private model/workflow. A safe default is to give the assistant only
+aggregate routing counts, command output summaries, and paraphrased missing
+template families.
+
 From the release root:
 
 ```bash
@@ -75,11 +98,13 @@ You are writing an optional user-experience feedback report for
 ClaimContractBench.
 
 Consent and privacy:
-- Do not include confidential paper text, private review notes, author names,
-  local file paths, unpublished tables, or raw datasets unless the user
-  explicitly permits sharing them.
-- Prefer paraphrased claim types over verbatim confidential claims.
-- If the source is confidential, say so and keep examples abstract.
+- Public feedback must not include confidential paper text, private review
+  notes, author names, local file paths, unpublished tables, raw datasets,
+  credentials, or institution-only links.
+- Prefer paraphrased claim types over verbatim claims.
+- If the source is confidential, say so and keep examples abstract. Keep any
+  detailed manuscript-specific notes in a private/local file, not in the public
+  feedback report.
 
 Read:
 1. the ClaimContractBench quickstart or README;
@@ -96,7 +121,9 @@ Write Markdown with these exact headings:
 
 ## Consent And Source Boundary
 State what material you were allowed to inspect and what you intentionally did
-not include.
+not include. Confirm that the public feedback report contains no confidential
+paper text, private review notes, author identities, raw data, credentials, or
+local paths.
 
 ## Trial Setup
 Name the model or assistant used if the user permits, the operating system, and

@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import csv
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -46,6 +47,31 @@ TEMPLATE_ADMISSION_HEADER = [
     "expected_verdict",
     "boundary_note",
 ]
+
+FEEDBACK_PRIVATE_PATTERNS = (
+    ("absolute local user path", re.compile(r"/Users/[A-Za-z0-9._-]+")),
+    ("remote connector host", re.compile(r"\bconnect\.[A-Za-z0-9.-]+\b")),
+    (
+        "credential-like text",
+        re.compile(
+            r"\b(?:password|passwd|token|secret|credential|api[_-]?key)\b\s*[:=]\s*"
+            r"['\"]?[A-Za-z0-9_./+=-]{8,}",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "confidential inclusion flag",
+        re.compile(r"confidential (?:text|material).*:\s*(?:yes|included)", re.IGNORECASE),
+    ),
+    (
+        "private review note flag",
+        re.compile(r"private review notes?.*:\s*(?:yes|included)", re.IGNORECASE),
+    ),
+    (
+        "raw data inclusion flag",
+        re.compile(r"raw data.*:\s*(?:yes|included)", re.IGNORECASE),
+    ),
+)
 
 
 def default_root() -> Path:
@@ -294,9 +320,10 @@ def command_feedback_guide(args: argparse.Namespace) -> int:
     template = "artifact/user_experience_feedback_template_20260527.md"
     print("Optional user-experience feedback path")
     print("")
-    print("Use this only when the user agrees to share a feedback report.")
-    print("Do not include confidential paper text, private review notes, raw data,")
-    print("local paths, or author identities unless sharing is explicitly allowed.")
+    print("Use this only when the user agrees to share a public-safe feedback report.")
+    print("For public GitHub issues or public reports, do not include confidential")
+    print("paper text, private review notes, raw data, local paths, author identities,")
+    print("or unpublished results. Keep those in a private/local note instead.")
     print("")
     print("Guide:")
     print(f"  {guide}")
@@ -305,6 +332,8 @@ def command_feedback_guide(args: argparse.Namespace) -> int:
     print("")
     print("Create a local feedback draft:")
     print("  python3 src/claimcontractbench.py init-feedback --output feedback/my_feedback_report.md")
+    print("Check a draft before sharing it publicly:")
+    print("  python3 src/claimcontractbench.py check-feedback --input feedback/my_feedback_report.md")
     print("")
     print("Useful feedback covers:")
     for item in [
@@ -335,8 +364,43 @@ def command_init_feedback(args: argparse.Namespace) -> int:
     print("PASS init feedback")
     print(f"output: {output}")
     print("")
-    print("This report is optional and consent-based.")
-    print("Keep confidential paper text and private review notes out unless sharing is explicitly allowed.")
+    print("This report is optional and public-safe by default.")
+    print("Do not put confidential paper text or private review notes in a public feedback report.")
+    print("Before sharing publicly, run:")
+    print(f"python3 src/claimcontractbench.py check-feedback --input {output}")
+    return 0
+
+
+def command_check_feedback(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    path = resolve(root, args.input)
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        print("FAIL feedback public-safety check")
+        print(f"could not read feedback file: {exc}")
+        return 1
+
+    hits: list[str] = []
+    for label, pattern in FEEDBACK_PRIVATE_PATTERNS:
+        if pattern.search(text):
+            hits.append(label)
+
+    if hits:
+        print("FAIL feedback public-safety check")
+        print("Do not share this feedback publicly until the flagged material is removed.")
+        print("hits:")
+        for hit in hits:
+            print(f"- {hit}")
+        print("")
+        print("Public feedback should use abstract task types, aggregate counts,")
+        print("command names, and paraphrased template gaps rather than confidential")
+        print("paper text, private review notes, raw data, local paths, or credentials.")
+        return 1
+
+    print("PASS feedback public-safety check")
+    print("No obvious local paths, credential-like markers, or explicit confidential-material flags were found.")
+    print("This is a heuristic check, not a guarantee. Re-read the report before public sharing.")
     return 0
 
 
@@ -470,6 +534,14 @@ def build_parser() -> argparse.ArgumentParser:
     init_feedback.add_argument("--output", required=True, help="Markdown path to create.")
     init_feedback.add_argument("--force", action="store_true", help="Overwrite the output if it exists.")
     init_feedback.set_defaults(func=command_init_feedback)
+
+    check_feedback = subparsers.add_parser(
+        "check-feedback",
+        help="Heuristically check a feedback draft before public sharing.",
+    )
+    add_subcommand_root(check_feedback)
+    check_feedback.add_argument("--input", required=True, help="Feedback Markdown path to check.")
+    check_feedback.set_defaults(func=command_check_feedback)
 
     review = subparsers.add_parser("review", help="Review an LLM-produced claim packet.")
     add_subcommand_root(review)
