@@ -1,7 +1,8 @@
 # Human Reviewer Guide
 
 This guide is for people who want to inspect ClaimContractBench without using an
-LLM.
+LLM. If you are doing a first-pass artifact review, start with
+`docs/REVIEWER_CHECKLIST.md`; this guide is the deeper manual walkthrough.
 
 ## What To Do First
 

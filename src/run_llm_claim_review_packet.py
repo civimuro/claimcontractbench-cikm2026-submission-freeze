@@ -110,7 +110,7 @@ def display_path(root: Path, path: Path) -> str:
     try:
         return str(path.resolve().relative_to(root.resolve()))
     except ValueError:
-        return f"<external:{path.name}>"
+        return str(path.resolve())
 
 
 def load_json(path: Path) -> dict[str, object]:

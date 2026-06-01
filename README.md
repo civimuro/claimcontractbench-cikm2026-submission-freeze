@@ -13,17 +13,23 @@ LLM to draft a claim packet that the deterministic checker then audits.
 | I want to... | Start here | What you get |
 | --- | --- | --- |
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
-| Verify the resource as a reviewer | `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
+| Verify the resource as a reviewer | `docs/REVIEWER_CHECKLIST.md` or `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
 | Add a new claim family | `python3 src/claimcontractbench.py admission-guide` | A typed template-admission workflow instead of loose template reuse. |
 
 ## Ten-Minute Human Check
 
-From the repository root:
+Start here if you are reviewing the artifact for the first time. The checklist
+is the canonical human entry point:
 
 ```bash
 python3 src/claimcontractbench.py reviewer-checklist
+```
+
+From the repository root:
+
+```bash
 python3 src/claimcontractbench.py doctor
 python3 src/claimcontractbench.py smoke
 ```
@@ -44,17 +50,24 @@ negative_fail_closed_checks: 4
 
 The checklist shows what to inspect. The doctor command checks that the
 repository is a manifest-controlled, public-safe release surface. The smoke
-command runs positive examples and negative packets that must fail closed.
+command runs positive examples and negative packets that must fail closed. It
+uses temporary working directories and should leave a clean git checkout.
 
-Then read:
+If you need a strict no-generated-files path, run:
 
-- `docs/REVIEWER_CHECKLIST.md`
-- `docs/CONCEPTS.md`
-- `docs/HUMAN_REVIEWER_GUIDE.md`
-- `docs/EXAMPLE_OUTPUTS.md`
-- `docs/REPORT_INDEX.md`
-- `docs/BOUNDARIES.md`
-- `docs/FAQ.md`
+```bash
+python3 src/claimcontractbench.py doctor
+python3 src/run_projection_smoke.py
+python3 src/claimcontractbench.py templates
+```
+
+Then read by depth:
+
+| Time budget | Read |
+| --- | --- |
+| 10 minutes | `docs/REVIEWER_CHECKLIST.md`, `docs/CONCEPTS.md`, `docs/BOUNDARIES.md` |
+| 30 minutes | `docs/HUMAN_REVIEWER_GUIDE.md`, `docs/REPORT_INDEX.md`, `docs/EXAMPLE_OUTPUTS.md` |
+| Deep check | `docs/DATA_AND_LICENSES.md`, `docs/REPRODUCIBILITY.md`, `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` |
 
 ## What The Resource Does
 

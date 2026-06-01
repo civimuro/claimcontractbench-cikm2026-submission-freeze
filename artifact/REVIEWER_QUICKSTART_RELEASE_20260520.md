@@ -41,7 +41,9 @@ python3 src/run_paper_claim_gold_benchmark.py --output reports/paper_claim_gold_
 python3 src/run_paper_excerpt_reviewer_value_benchmark.py --output reports/paper_excerpt_reviewer_value_benchmark_20260521
 python3 src/run_paper_claim_annotation_agreement.py --output reports/paper_claim_annotation_agreement_20260521
 python3 src/run_reviewer_audit_demo.py --output reports/reviewer_facing_audit_demo_20260521
-python3 src/run_reviewer_audit_demo_regression.py --output reports/reviewer_facing_audit_demo_regression_20260521
+python3 src/run_reviewer_audit_demo_regression.py \
+  --demo-dir reports/reviewer_facing_audit_demo_20260521 \
+  --output reports/reviewer_facing_audit_demo_regression_20260521
 ```
 
 Expected output for the surface validator:
@@ -75,6 +77,8 @@ call_registered_template: 2
 needs_template_admission: 1
 out_of_scope: 1
 unsafe_release_rate: 0.000
+rejected_unknown_template: 0
+invalid_route_rows: 0
 checks_passed: 14
 checks_failed: 0
 ```

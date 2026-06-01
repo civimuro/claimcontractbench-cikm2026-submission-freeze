@@ -102,6 +102,7 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("Human reviewer path")
     print("")
     print("Use this path when you want to inspect the resource without an LLM.")
+    print("Start with docs/REVIEWER_CHECKLIST.md for the canonical first-pass map.")
     print("")
     print("1. Verify that the checkout is a public-safe release surface:")
     print("   python3 src/claimcontractbench.py doctor")
@@ -109,19 +110,10 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("   python3 src/claimcontractbench.py smoke")
     print("3. Inspect the registered claim templates:")
     print("   python3 src/claimcontractbench.py templates")
-    print("4. Read the human-facing guides:")
-    for rel_path in [
-        "docs/REVIEWER_CHECKLIST.md",
-        "docs/CONCEPTS.md",
-        "docs/HUMAN_REVIEWER_GUIDE.md",
-        "docs/EXAMPLE_OUTPUTS.md",
-        "docs/REPORT_INDEX.md",
-        "docs/BOUNDARIES.md",
-        "docs/FAQ.md",
-        "SUPPORT.md",
-        "CONTRIBUTING.md",
-    ]:
-        print(f"   {rel_path}")
+    print("4. Read by depth:")
+    print("   10 min: docs/REVIEWER_CHECKLIST.md, docs/CONCEPTS.md, docs/BOUNDARIES.md")
+    print("   30 min: docs/HUMAN_REVIEWER_GUIDE.md, docs/REPORT_INDEX.md, docs/EXAMPLE_OUTPUTS.md")
+    print("   deep:   docs/DATA_AND_LICENSES.md, docs/REPRODUCIBILITY.md, artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md")
     print("")
     print("LLM-assisted packet drafting is optional. The deterministic checks are the")
     print("release boundary whether a packet is written by a human or drafted by an LLM.")
@@ -138,16 +130,10 @@ def command_reviewer_checklist(args: argparse.Namespace) -> int:
     print("  python3 src/claimcontractbench.py doctor")
     print("  python3 src/claimcontractbench.py smoke")
     print("")
-    print("Then inspect:")
-    for rel_path in [
-        "docs/REVIEWER_CHECKLIST.md",
-        "docs/CONCEPTS.md",
-        "docs/REPORT_INDEX.md",
-        "docs/BOUNDARIES.md",
-        "docs/DATA_AND_LICENSES.md",
-        "artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md",
-    ]:
-        print(f"  {rel_path}")
+    print("Then inspect by depth:")
+    print("  10 min: docs/REVIEWER_CHECKLIST.md, docs/CONCEPTS.md, docs/BOUNDARIES.md")
+    print("  30 min: docs/HUMAN_REVIEWER_GUIDE.md, docs/REPORT_INDEX.md, docs/EXAMPLE_OUTPUTS.md")
+    print("  deep:   docs/DATA_AND_LICENSES.md, docs/REPRODUCIBILITY.md, artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md")
     print("")
     print("Good signals: public-safe manifest, fail-closed bad packets, exact")
     print("template boundaries, and explicit non-goals.")

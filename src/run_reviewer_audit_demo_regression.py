@@ -232,6 +232,22 @@ def main() -> int:
         output_dir.mkdir(parents=True, exist_ok=True)
         write_csv(output_dir / "reviewer_audit_demo_regression_checks.csv", checks, ["check_id", "label", "status", "evidence"])
         (output_dir / "reviewer_audit_demo_regression_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+        (output_dir / "reviewer_audit_demo_regression_report.md").write_text(
+            build_report(summary, checks), encoding="utf-8"
+        )
+        print("FAIL reviewer audit demo regression")
+        print("reason: missing required reviewer audit demo outputs")
+        print(f"demo_dir: {demo_dir}")
+        print("Run the demo first, or pass --demo-dir to the directory you already generated:")
+        print("python3 src/run_reviewer_audit_demo.py --output <demo-dir>")
+        print("python3 src/run_reviewer_audit_demo_regression.py --demo-dir <demo-dir> --output <regression-output-dir>")
+        print("missing:")
+        for path in missing:
+            print(f"- {path}")
+        print("diagnostic outputs:")
+        print(f"- {output_dir / 'reviewer_audit_demo_regression_report.md'}")
+        print(f"- {output_dir / 'reviewer_audit_demo_regression_summary.json'}")
+        print(f"- {output_dir / 'reviewer_audit_demo_regression_checks.csv'}")
         return 1
 
     demo_summary, cards, demo_checks, html, markdown = load_required_files(demo_dir)

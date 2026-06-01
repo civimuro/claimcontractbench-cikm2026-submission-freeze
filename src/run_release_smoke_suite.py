@@ -11,8 +11,8 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -46,9 +46,12 @@ def run_command(
     args: list[str],
     expected_returncode: int = 0,
 ) -> subprocess.CompletedProcess[str]:
+    env = os.environ.copy()
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
     result = subprocess.run(
         args,
         cwd=root,
+        env=env,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -335,9 +338,6 @@ def main() -> int:
             print(f"missing feedback output: {feedback_output}")
             raise SystemExit(1)
         run_negative_packets(root, temp_root)
-
-    if (root / "src" / "__pycache__").exists():
-        shutil.rmtree(root / "src" / "__pycache__")
 
     print("PASS release smoke suite")
     print("positive_checks: 8")

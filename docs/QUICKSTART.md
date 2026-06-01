@@ -46,7 +46,16 @@ The positive checks cover release validation, projection smoke rows, the LLM
 packet happy path, template admission, the one-shot agent guide, the reviewer
 checklist, the human guide, and optional feedback scaffolding. The negative
 checks verify that unsafe or malformed LLM packets fail closed rather than
-producing a licensed claim report.
+producing a licensed claim report. The smoke suite writes only temporary
+working files and should leave a clean git checkout.
+
+For a strict no-generated-files path, use:
+
+```bash
+python3 src/claimcontractbench.py doctor
+python3 src/run_projection_smoke.py
+python3 src/claimcontractbench.py templates
+```
 
 ## 3. Inspect The Registered Templates
 
@@ -58,12 +67,20 @@ This prints the current template catalog. It is deliberately small. For new
 papers, most relevant empirical claims should become `NEEDS_TEMPLATE_ADMISSION`
 unless they exactly match a registered template.
 
-## 4. Try The Included LLM Packet
+## 4. Optional: Try The Included LLM Packet
 
 ```bash
 python3 src/claimcontractbench.py review \
   --input artifact/llm_claim_review_packet_template_20260527.csv \
   --output reports/llm_claim_review_packet_20260527
+```
+
+For a read-only-style local check, choose a temporary output directory instead:
+
+```bash
+python3 src/claimcontractbench.py review \
+  --input artifact/llm_claim_review_packet_template_20260527.csv \
+  --output /tmp/claimcontractbench_llm_claim_review_packet
 ```
 
 Expected result:
@@ -75,6 +92,8 @@ call_registered_template: 2
 needs_template_admission: 1
 out_of_scope: 1
 unsafe_release_rate: 0.000
+rejected_unknown_template: 0
+invalid_route_rows: 0
 checks_passed: 14
 checks_failed: 0
 ```

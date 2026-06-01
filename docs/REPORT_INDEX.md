@@ -2,24 +2,31 @@
 
 This index connects paper-facing resource claims to the release files and
 runners that support them. Generated reports are inspection outputs; they are
-not raw-data reproductions.
+not raw-data reproductions. For a strict local check, you may replace every
+`reports/...` output path below with a temporary directory under `/tmp`.
 
 ## Core Release Checks
 
-| Claim to verify | Command | Expected signal |
-| --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 109 rows, 109 required files, 109 public-safe rows, 0 raw-data rows. |
-| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 8 positive checks and 4 fail-closed negative checks pass. |
-| The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. |
+Use these first. They answer whether the checkout is a safe, runnable release
+surface.
+
+| Claim to verify | Command | Expected signal | Open after running |
+| --- | --- | --- | --- |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 109 rows, 109 required files, 109 public-safe rows, 0 raw-data rows. | Console output. |
+| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 8 positive checks and 4 fail-closed negative checks pass. | Console output. |
+| The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. | Console output, or the path supplied with `--write-generated`. |
 
 ## Resource Behavior Reports
 
-| Resource surface | Command | What it supports | What it does not support |
-| --- | --- | --- | --- |
-| Claim audit report | `python3 src/run_claim_audit_report.py --output reports/claim_audit_report_20260521` | Casebook, `G/Q/U` intervention, Q-policy, NAB support-only rows, and 11 contribution-facing checks. | Arbitrary paper checking. |
-| Template admission | `python3 src/run_claim_template_admission.py --output reports/claim_template_admission_20260521` | 9 template rows: 5 mainline, 3 support-only, 1 rejected; 10 checks. | Automatic admission of new domains. |
-| Reviewer claim intake | `python3 src/run_reviewer_claim_intake.py --output reports/reviewer_claim_intake_20260521` | 8 author/reviewer submitted claim examples mapped to accept, rewrite, suppress, support-only, and reject decisions. | General reviewer utility. |
-| LLM packet review | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | 4-row packet: 2 registered calls, 1 admission-needed row, 1 out-of-scope row; fail-closed packet checks. | Full-paper extraction or acceptance advice. |
+Use these after the core checks. They answer which paper-facing contribution a
+specific generated report supports.
+
+| Resource surface | Command | Open after running | What it supports | What it does not support |
+| --- | --- | --- | --- | --- |
+| Claim audit report | `python3 src/run_claim_audit_report.py --output reports/claim_audit_report_20260521` | `claim_audit_report.md` | Casebook, `G/Q/U` intervention, Q-policy, NAB support-only rows, and 11 contribution-facing checks. | Arbitrary paper checking. |
+| Template admission | `python3 src/run_claim_template_admission.py --output reports/claim_template_admission_20260521` | `claim_template_admission_report.md` | 9 template rows: 5 mainline, 3 support-only, 1 rejected; 10 checks. | Automatic admission of new domains. |
+| Reviewer claim intake | `python3 src/run_reviewer_claim_intake.py --output reports/reviewer_claim_intake_20260521` | `reviewer_claim_intake_report.md` | 8 author/reviewer submitted claim examples mapped to accept, rewrite, suppress, support-only, and reject decisions. | General reviewer utility. |
+| LLM packet review | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | `llm_claim_review_packet_report.md` | 4-row packet: 2 registered calls, 1 admission-needed row, 1 out-of-scope row; fail-closed packet checks. | Full-paper extraction or acceptance advice. |
 
 ## Benchmark And Boundary Readouts
 
@@ -39,6 +46,7 @@ then run:
 
 ```bash
 python3 src/run_reviewer_audit_demo_regression.py \
+  --demo-dir reports/reviewer_facing_audit_demo_20260521 \
   --output reports/reviewer_facing_audit_demo_regression_20260521
 ```
 

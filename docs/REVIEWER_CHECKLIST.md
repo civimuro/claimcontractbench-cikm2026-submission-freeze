@@ -1,7 +1,8 @@
 # Reviewer Verification Checklist
 
-Use this page when you want to decide quickly whether the repository is a
+Start here when you want to decide quickly whether the repository is a
 checkable resource artifact, without treating it as a paper verdict machine.
+This page is the canonical human-reviewer entry point.
 
 ## Ten-Minute Check
 
@@ -28,7 +29,28 @@ negative_fail_closed_checks: 4
 
 If both commands pass, the checkout is a manifest-controlled, public-safe
 release surface and the first-inspection runners still fail closed on bad
-packets.
+packets. The smoke suite uses temporary working directories and should leave a
+clean git checkout.
+
+For a strict no-generated-files check, use:
+
+```bash
+python3 src/claimcontractbench.py doctor
+python3 src/run_projection_smoke.py
+python3 src/claimcontractbench.py templates
+```
+
+## What A Reviewer Can Safely Conclude
+
+If the ten-minute check passes, a safe reviewer-facing conclusion is:
+
+> The artifact is a public-safe, manifest-controlled resource snapshot with
+> standard-library runners that regenerate its core claim-licensing examples
+> and fail-closed checks.
+
+Do not upgrade that conclusion into a claim that the tool autonomously reviews
+papers, proves human-review utility, reproduces all raw-data experiments, or
+judges paper acceptance.
 
 ## What To Inspect Next
 
