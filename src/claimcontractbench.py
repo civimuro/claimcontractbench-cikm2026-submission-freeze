@@ -138,7 +138,7 @@ def command_reviewer_flow(args: argparse.Namespace) -> int:
     print("1. Get the frozen snapshot:")
     print("   git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git")
     print("   cd claimcontractbench-cikm2026-submission-freeze")
-    print("   git checkout v0.1.6-cikm2026-reviewer-workflow")
+    print("   git checkout v0.1.7-cikm2026-reviewer-closure")
     print("")
     print("2. Run the no-LLM reviewer trial:")
     print("   python3 src/claimcontractbench.py try-human")
@@ -622,37 +622,75 @@ def command_check_feedback(args: argparse.Namespace) -> int:
 
 def command_templates(args: argparse.Namespace) -> int:
     root = resolve(Path.cwd(), args.root)
-    path = root / "artifact" / "claim_template_admission_cases_20260521.csv"
+    current_path = root / "artifact" / "real_paper_review_template_cards_v18_20260606.csv"
+    legacy_path = root / "artifact" / "claim_template_admission_cases_20260521.csv"
     try:
-        with path.open(newline="", encoding="utf-8") as handle:
-            rows = list(csv.DictReader(handle))
+        with current_path.open(newline="", encoding="utf-8") as handle:
+            current_rows = list(csv.DictReader(handle))
     except OSError as exc:
         print("FAIL templates")
-        print(f"could not read template cases: {exc}")
+        print(f"could not read current template cards: {exc}")
         return 1
-    print("Registered template shortlist")
+
+    print("Current supported template families")
     print("")
-    print("| template_id | level | action | use boundary | forbidden claim |")
-    print("| --- | --- | --- | --- | --- |")
-    for row in rows:
+    print("Use these for the reviewer-facing real-paper demo and supplied candidate")
+    print("claims. Do not force other domains into a near-looking template; use")
+    print("NEEDS_TEMPLATE_ADMISSION instead.")
+    print("")
+    print("| family | template_id | licensed object | forbidden stronger claim |")
+    print("| --- | --- | --- | --- |")
+    for row in current_rows:
+        family = row.get("family", "")
         template_id = row.get("template_id", "")
-        level = row.get("expected_level", "")
-        action = row.get("action_mapping", "")
-        boundary = row.get("boundary_note", "")
-        forbidden = row.get("forbidden_claim", "")
+        licensed = row.get("licensed_object", "")
+        forbidden = row.get("forbidden_stronger_claims", "")
         print(
             "| "
             + " | ".join(
                 [
+                    family,
                     template_id,
-                    level,
-                    action,
-                    boundary.replace("|", "/"),
+                    licensed.replace("|", "/"),
                     forbidden.replace("|", "/"),
                 ]
             )
             + " |"
         )
+    print("")
+    print("Real-paper trial:")
+    print("  python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo")
+    print("")
+    print("Admission case examples")
+    print("")
+    try:
+        with legacy_path.open(newline="", encoding="utf-8") as handle:
+            legacy_rows = list(csv.DictReader(handle))
+    except OSError as exc:
+        print(f"warning: could not read admission examples: {exc}")
+        legacy_rows = []
+    if legacy_rows:
+        print("| template_id | level | action | use boundary | forbidden claim |")
+        print("| --- | --- | --- | --- | --- |")
+        for row in legacy_rows:
+            template_id = row.get("template_id", "")
+            level = row.get("expected_level", "")
+            action = row.get("action_mapping", "")
+            boundary = row.get("boundary_note", "")
+            forbidden = row.get("forbidden_claim", "")
+            print(
+                "| "
+                + " | ".join(
+                    [
+                        template_id,
+                        level,
+                        action,
+                        boundary.replace("|", "/"),
+                        forbidden.replace("|", "/"),
+                    ]
+                )
+                + " |"
+            )
     print("")
     print("Rule of thumb: when uncertain, use NEEDS_TEMPLATE_ADMISSION instead of CALL_REGISTERED_TEMPLATE.")
     return 0

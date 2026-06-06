@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.7-cikm2026-reviewer-closure - GitHub Release And Template Entry Closure
+
+- Promoted the current three V1.8-backed supported template families in the
+  `templates` command before older admission-case examples, so first-time
+  reviewers see the practical demo surface first.
+- Aligned README, reviewer workflow, citation metadata, and release checklist
+  with the current guided-trial tag.
+- Kept `v0.1.0-cikm2026-submission` as the initial frozen submission snapshot
+  while using this tag for the latest reviewer-facing GitHub workflow.
+
 ## v0.1.6-cikm2026-reviewer-workflow - Reviewer End-To-End Path
 
 - Added `docs/REVIEWER_END_TO_END.md` as the first complete reviewer path
