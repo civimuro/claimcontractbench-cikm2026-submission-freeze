@@ -1,0 +1,32 @@
+{
+  "checks_failed": 0,
+  "checks_passed": 7,
+  "conservative_candidate_safety_accuracy": 0.9583333333333334,
+  "conservative_display_action_accuracy": 0.8055555555555556,
+  "conservative_gate_accuracy": 0.8055555555555556,
+  "conservative_unsafe_false_releases": 3,
+  "evidence_summary_limits": [
+    "LLM-proxy diagnostic over supplied candidate claims, not a human utility study.",
+    "Not automatic full-paper claim discovery.",
+    "Uses short public source excerpts and source locators, not full-paper redistribution.",
+    "Residual unsafe releases remain concentrated in uncertainty-calibration background/support-only rows."
+  ],
+  "family_counts": {
+    "llm_evaluation": 24,
+    "resource_documentation": 24,
+    "uncertainty_calibration": 24
+  },
+  "reference_action_counts": {
+    "ACCEPT": 18,
+    "BLOCK_AND_SUGGEST": 19,
+    "SUPPORT_ONLY": 9,
+    "SUPPRESS": 9,
+    "WEAKEN": 17
+  },
+  "reference_safe_counts": {
+    "no": 54,
+    "yes": 18
+  },
+  "rows": 72,
+  "source_papers": 18
+}

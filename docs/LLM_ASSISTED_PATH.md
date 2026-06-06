@@ -24,6 +24,33 @@ Ask the LLM to fill the packet with one candidate claim per row. Then run:
 python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.csv
 ```
 
+## Real-Paper Demo Workflow
+
+If you want to test an LLM on a fixed public-paper packet instead of drafting a
+new packet, use:
+
+```bash
+python3 src/claimcontractbench.py realpaper-demo
+```
+
+To score an LLM adjudication, give the LLM only:
+
+- `artifact/real_paper_review_candidate_claims_v318b_20260606.csv`
+- `artifact/real_paper_review_template_cards_v18_20260606.csv`
+- `artifact/real_paper_review_llm_prompt_20260606.md`
+
+Do not give the LLM the reference-outcome file, generated reports, or previous
+run outputs during the run. Save the returned CSV and score it:
+
+```bash
+python3 src/claimcontractbench.py realpaper-demo \
+  --adjudication path/to/llm_output.csv \
+  --output /tmp/claimcontractbench_realpaper_llm_score
+```
+
+This evaluates supplied candidate claims in three registered families. It does
+not test full-paper claim discovery.
+
 ## Route Labels
 
 - `CALL_REGISTERED_TEMPLATE`: only for an exact registered template match.
@@ -44,3 +71,6 @@ When uncertain, prefer `NEEDS_TEMPLATE_ADMISSION` over a template call.
 
 For a copy-paste prompt and CSV header, see
 `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`.
+
+For the fixed public-paper demo prompt, see
+`artifact/real_paper_review_llm_prompt_20260606.md`.

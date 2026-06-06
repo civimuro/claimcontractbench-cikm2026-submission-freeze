@@ -17,9 +17,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 110
-required_files: 110
-public_safe_rows: 110
+rows: 123
+required_files: 123
+public_safe_rows: 123
 raw_data_rows: 0
 ```
 
@@ -38,16 +38,16 @@ Expected result:
 
 ```text
 PASS release smoke suite
-positive_checks: 8
-negative_fail_closed_checks: 4
+positive_checks: 9
+negative_fail_closed_checks: 5
 ```
 
 The positive checks cover release validation, projection smoke rows, the LLM
-packet happy path, template admission, the one-shot agent guide, the reviewer
-checklist, the human guide, and optional feedback scaffolding. The negative
-checks verify that unsafe or malformed LLM packets fail closed rather than
-producing a licensed claim report. The smoke suite writes only temporary
-working files and should leave a clean git checkout.
+packet happy path, template admission, the three-family real-paper demo, the
+one-shot agent guide, the reviewer checklist, the human guide, and optional
+feedback scaffolding. The negative checks verify that unsafe or malformed LLM
+packets fail closed rather than producing a licensed claim report. The smoke
+suite writes only temporary working files and should leave a clean git checkout.
 
 For a strict no-generated-files path, use:
 
@@ -57,7 +57,30 @@ python3 src/run_projection_smoke.py
 python3 src/claimcontractbench.py templates
 ```
 
-## 3. Inspect The Registered Templates
+## 3. Try The Real-Paper Template Demo
+
+```bash
+python3 src/claimcontractbench.py realpaper-demo \
+  --output /tmp/claimcontractbench_realpaper_demo
+```
+
+Expected result:
+
+```text
+PASS real-paper review demo
+rows: 72
+source_papers: 18
+conservative_candidate_safety_accuracy: 0.958
+conservative_display_action_accuracy: 0.806
+conservative_unsafe_false_releases: 3
+```
+
+This is the practical trial path for the current addendum. The `/tmp` output
+keeps the checkout clean. It uses three V1.8-backed template families/domains
+over supplied candidate claims from public papers. It does not perform
+full-paper claim discovery or human review.
+
+## 4. Inspect The Registered Templates
 
 ```bash
 python3 src/claimcontractbench.py templates
@@ -67,7 +90,7 @@ This prints the current template catalog. It is deliberately small. For new
 papers, most relevant empirical claims should become `NEEDS_TEMPLATE_ADMISSION`
 unless they exactly match a registered template.
 
-## 4. Optional: Try The Included LLM Packet
+## 5. Optional: Try The Included LLM Packet
 
 ```bash
 python3 src/claimcontractbench.py review \
@@ -102,11 +125,12 @@ The LLM packet is a routing packet, not a paper review verdict. The deterministi
 runner checks whether the supplied rows call a registered template, need a new
 template, or should not call the claim runner at all.
 
-## 5. Read The Evidence Map
+## 6. Read The Evidence Map
 
 Use `docs/REPORT_INDEX.md` to see which runner supports which paper-facing
 claim. Use `docs/BOUNDARIES.md` before interpreting any result as a reviewer
 utility claim, full-paper coverage claim, or autonomous-review claim.
 
 If the terminology is unfamiliar, start with `docs/CONCEPTS.md`. If the artifact
-boundary is what matters, start with `docs/REVIEWER_CHECKLIST.md`.
+boundary is what matters, start with `docs/REVIEWER_CHECKLIST.md`. If you want
+the claim-review trial, read `docs/REAL_PAPER_REVIEW_DEMO.md`.

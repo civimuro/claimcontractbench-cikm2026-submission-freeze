@@ -1,0 +1,161 @@
+{
+  "boundary_case_type_counts": {
+    "acceptable_candidate": 18,
+    "background_support_only": 9,
+    "contradicted_repairable": 19,
+    "hard_nonrepairable_suppress": 9,
+    "same_object_force_scope_overclaim": 17
+  },
+  "conservative_policy": {
+    "by_boundary_case_type": {
+      "acceptable_candidate": {
+        "candidate_safety_accuracy": 1.0,
+        "dangerous_original_false_release": 0,
+        "display_action_accuracy": 1.0,
+        "n": 18,
+        "reportability_gate_accuracy": 1.0,
+        "unsafe_accept_false_release": 0
+      },
+      "background_support_only": {
+        "candidate_safety_accuracy": 0.6666666666666666,
+        "dangerous_original_false_release": 3,
+        "display_action_accuracy": 0.6666666666666666,
+        "n": 9,
+        "reportability_gate_accuracy": 0.6666666666666666,
+        "unsafe_accept_false_release": 3
+      },
+      "contradicted_repairable": {
+        "candidate_safety_accuracy": 1.0,
+        "dangerous_original_false_release": 0,
+        "display_action_accuracy": 0.8947368421052632,
+        "n": 19,
+        "reportability_gate_accuracy": 0.8947368421052632,
+        "unsafe_accept_false_release": 0
+      },
+      "hard_nonrepairable_suppress": {
+        "candidate_safety_accuracy": 1.0,
+        "dangerous_original_false_release": 0,
+        "display_action_accuracy": 0.3333333333333333,
+        "n": 9,
+        "reportability_gate_accuracy": 0.3333333333333333,
+        "unsafe_accept_false_release": 0
+      },
+      "same_object_force_scope_overclaim": {
+        "candidate_safety_accuracy": 1.0,
+        "dangerous_original_false_release": 0,
+        "display_action_accuracy": 0.8235294117647058,
+        "n": 17,
+        "reportability_gate_accuracy": 0.8235294117647058,
+        "unsafe_accept_false_release": 0
+      }
+    },
+    "by_family": {
+      "llm_evaluation": {
+        "candidate_safety_accuracy": 1.0,
+        "dangerous_original_false_release": 0,
+        "display_action_accuracy": 0.875,
+        "n": 24,
+        "reportability_gate_accuracy": 0.875,
+        "unsafe_accept_false_release": 0
+      },
+      "resource_documentation": {
+        "candidate_safety_accuracy": 1.0,
+        "dangerous_original_false_release": 0,
+        "display_action_accuracy": 0.875,
+        "n": 24,
+        "reportability_gate_accuracy": 0.875,
+        "unsafe_accept_false_release": 0
+      },
+      "uncertainty_calibration": {
+        "candidate_safety_accuracy": 0.875,
+        "dangerous_original_false_release": 3,
+        "display_action_accuracy": 0.6666666666666666,
+        "n": 24,
+        "reportability_gate_accuracy": 0.6666666666666666,
+        "unsafe_accept_false_release": 3
+      }
+    },
+    "candidate_safety_accuracy": 0.9583333333333334,
+    "dangerous_original_false_release": 3,
+    "display_action_accuracy": 0.8055555555555556,
+    "label": "no_accept_unless_unanimous",
+    "pred_display_action_counts": {
+      "ACCEPT": 21,
+      "BLOCK_AND_SUGGEST": 26,
+      "SUPPORT_ONLY": 6,
+      "SUPPRESS": 3,
+      "WEAKEN": 16
+    },
+    "pred_safety_counts": {
+      "no": 51,
+      "yes": 21
+    },
+    "reason_code_accuracy": 0.8055555555555556,
+    "reportability_gate_accuracy": 0.8055555555555556,
+    "rows_scored": 72,
+    "unsafe_accept_false_release": 3
+  },
+  "failure_summary": {
+    "conservative_failure_rows": 14,
+    "diagnosis_counts": {
+      "background/motivation was over-read as an emitted empirical claim": 3,
+      "channels chose stronger correction gate rather than weakening gate": 3,
+      "channels tried to repair a claim that gold treats as nonrepairable": 6,
+      "channels weakened instead of replacing with corrected claim": 2,
+      "scope overclaim was not detected by majority": 1
+    },
+    "issue_counts": {
+      "majority_action_mismatch|conservative_action_mismatch": 11,
+      "majority_safety_mismatch|majority_action_mismatch": 1,
+      "majority_safety_mismatch|majority_action_mismatch|conservative_safety_mismatch|conservative_action_mismatch": 3
+    },
+    "majority_failure_rows": 15,
+    "unsafe_conservative_rows": [
+      "V317B-UNC-004",
+      "V317B-UNC-012",
+      "V317B-UNC-016"
+    ],
+    "unsafe_majority_rows": [
+      "V317B-RES-006",
+      "V317B-UNC-004",
+      "V317B-UNC-012",
+      "V317B-UNC-016"
+    ]
+  },
+  "family_counts": {
+    "llm_evaluation": 24,
+    "resource_documentation": 24,
+    "uncertainty_calibration": 24
+  },
+  "input_rows": 72,
+  "limitations": [
+    "LLM-proxy diagnostic over supplied candidate claims, not a human utility study.",
+    "Not automatic full-paper claim discovery.",
+    "Uses short public source excerpts and source locators, not full-paper redistribution.",
+    "Residual unsafe releases remain concentrated in uncertainty-calibration background/support-only rows."
+  ],
+  "packet_version": "V3.18b-public-safe-20260606",
+  "reference_action_counts": {
+    "ACCEPT": 18,
+    "BLOCK_AND_SUGGEST": 19,
+    "SUPPORT_ONLY": 9,
+    "SUPPRESS": 9,
+    "WEAKEN": 17
+  },
+  "reference_safe_counts": {
+    "no": 54,
+    "yes": 18
+  },
+  "source_papers": 18,
+  "source_rows_per_family": {
+    "llm_evaluation": 6,
+    "resource_documentation": 6,
+    "uncertainty_calibration": 6
+  },
+  "stage": "V3.18b public-safe real-paper review addendum",
+  "templates": {
+    "llm_evaluation": "TPL-LLM-EVAL-V18",
+    "resource_documentation": "TPL-RESOURCE-DOC-V18",
+    "uncertainty_calibration": "TPL-UNCERTAINTY-CAL-V18"
+  }
+}

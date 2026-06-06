@@ -12,8 +12,8 @@ surface.
 
 | Claim to verify | Command | Expected signal | Open after running |
 | --- | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 110 rows, 110 required files, 110 public-safe rows, 0 raw-data rows. | Console output. |
-| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 8 positive checks and 4 fail-closed negative checks pass. | Console output. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 123 rows, 123 required files, 123 public-safe rows, 0 raw-data rows. | Console output. |
+| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 9 positive checks and 4 fail-closed negative checks pass. | Console output. |
 | The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. | Console output, or the path supplied with `--write-generated`. |
 
 ## Resource Behavior Reports
@@ -27,6 +27,7 @@ specific generated report supports.
 | Template admission | `python3 src/run_claim_template_admission.py --output reports/claim_template_admission_20260521` | `claim_template_admission_report.md` | 9 template rows: 5 mainline, 3 support-only, 1 rejected; 10 checks. | Automatic admission of new domains. |
 | Reviewer claim intake | `python3 src/run_reviewer_claim_intake.py --output reports/reviewer_claim_intake_20260521` | `reviewer_claim_intake_report.md` | 8 author/reviewer submitted claim examples mapped to accept, rewrite, suppress, support-only, and reject decisions. | General reviewer utility. |
 | LLM packet review | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | `llm_claim_review_packet_report.md` | 4-row packet: 2 registered calls, 1 admission-needed row, 1 out-of-scope row; fail-closed packet checks. | Full-paper extraction or acceptance advice. |
+| Real-paper template demo | `python3 src/claimcontractbench.py realpaper-demo` | `real_paper_review_demo_report.md` | 72 supplied candidate claims from 18 public papers across `llm_evaluation`, `resource_documentation`, and `uncertainty_calibration`; conservative replay safety 0.958 and display-action accuracy 0.806. | Automatic full-paper review, human-utility evidence, or zero-risk release. |
 
 ## Benchmark And Boundary Readouts
 
@@ -70,6 +71,10 @@ python3 src/run_reviewer_audit_demo_regression.py \
 - `data/claim_passport_casebook_20260519.csv`: five public claim-passport rows.
 - `artifact/llm_claim_review_packet_template_20260527.csv`: LLM trial packet.
 - `artifact/template_admission_packet_template_20260527.csv`: admission packet.
+- `artifact/real_paper_review_template_cards_v18_20260606.csv`: three V1.8-backed real-paper template cards.
+- `artifact/real_paper_review_candidate_claims_v318b_20260606.csv`: 72 supplied public-paper candidate rows.
+- `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`: reference outcomes and conservative replay decisions for the real-paper demo.
+- `docs/REAL_PAPER_REVIEW_DEMO.md`: practical real-paper demo guide.
 - `reports/frontend_fulltext_phase1_claim_span_gold_readout_20260523/`: fulltext-adjacent claim-span readout files.
 - `reports/frontend_fulltext_phase1_claim_span_strict_agreement_20260523/`: A/B agreement and adjudication-candidate files.
 - `reports/claim_span_adapter_admission_case_study_20260523/`: controlled adapter-admission case-study files.

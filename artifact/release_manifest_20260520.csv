@@ -109,3 +109,16 @@ paper/figures/figure2_wdc_six_matrix_heatmap_20260520.svg,WDC figure,yes,yes,no,
 paper/APPENDIX_C_RESOURCE_RELEASE.md,release appendix,yes,yes,no,Work-use release and source posture ledger
 paper/REVIEWER_AUDIT_DEMO_USE_PROTOCOL_20260521.md,reviewer audit demo use protocol,yes,yes,no,Public-safe protocol defining human LLM and deterministic tool roles plus non-goals
 paper/PAPER_EXCERPT_REVIEWER_VALUE_BENCHMARK_20260521.md,paper-excerpt decision-surface benchmark readout,yes,yes,no,Public-safe readout for selected-excerpt decision-surface benchmark and transparent baseline
+artifact/real_paper_review_template_cards_v18_20260606.csv,real-paper template cards,yes,yes,no,Public-safe V1.8-backed template cards for LLM evaluation resource documentation and uncertainty calibration families
+artifact/real_paper_review_source_manifest_v318b_20260606.csv,real-paper source manifest,yes,yes,no,Public-safe manifest for 18 public arXiv source papers used by the real-paper template review addendum
+artifact/real_paper_review_candidate_claims_v318b_20260606.csv,real-paper candidate claim packet,yes,yes,no,Public-safe 72-row supplied candidate claim packet with short source-span excerpts for registered-template trial
+artifact/real_paper_review_reference_outcomes_v318b_20260606.csv,real-paper reference outcomes,yes,yes,no,Public-safe reference and conservative replay outcomes for the 72-row real-paper template review addendum
+artifact/real_paper_review_evidence_summary_v318b_20260606.json,real-paper evidence summary,yes,yes,no,Public-safe aggregate summary and limitations for the real-paper template review addendum
+artifact/real_paper_review_public_manifest_v318b_20260606.json,real-paper addendum file manifest,yes,yes,no,Public-safe file hashes and release-root paths for real-paper addendum assets
+artifact/real_paper_review_llm_prompt_20260606.md,real-paper LLM adjudication prompt,yes,yes,no,Clean public-safe prompt for LLM-assisted adjudication of the real-paper candidate packet without gold labels
+docs/REAL_PAPER_REVIEW_DEMO.md,real-paper demo guide,yes,yes,no,Reviewer-facing guide for running and interpreting the three-family real-paper template review demo
+src/run_real_paper_review_demo.py,real-paper demo runner,yes,yes,no,Standard-library runner that validates and reports the 72-row real-paper registered-template addendum and optional adjudications
+reports/real_paper_review_demo_20260606/real_paper_review_demo_report.md,real-paper demo generated report,yes,yes,no,Public-safe generated Markdown report for the real-paper template review demo
+reports/real_paper_review_demo_20260606/real_paper_review_demo_decisions.csv,real-paper demo generated decisions,yes,yes,no,Public-safe generated decision table for the real-paper template review demo
+reports/real_paper_review_demo_20260606/real_paper_review_demo_summary.json,real-paper demo generated summary,yes,yes,no,Public-safe generated aggregate summary for the real-paper template review demo
+reports/real_paper_review_demo_20260606/real_paper_review_demo_checks.csv,real-paper demo generated checks,yes,yes,no,Public-safe generated check table for the real-paper template review demo

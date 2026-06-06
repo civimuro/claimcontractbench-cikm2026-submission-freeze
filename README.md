@@ -15,6 +15,7 @@ LLM to draft a claim packet that the deterministic checker then audits.
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
 | Verify the resource as a reviewer | `docs/REVIEWER_CHECKLIST.md` or `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
+| Try the real-paper template demo | `python3 src/claimcontractbench.py realpaper-demo` | A 72-row public-paper claim review demo over three V1.8-backed template families. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
 | Add a new claim family | `python3 src/claimcontractbench.py admission-guide` | A typed template-admission workflow instead of loose template reuse. |
 
@@ -38,14 +39,14 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 110
-required_files: 110
-public_safe_rows: 110
+rows: 123
+required_files: 123
+public_safe_rows: 123
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 8
-negative_fail_closed_checks: 4
+positive_checks: 9
+negative_fail_closed_checks: 5
 ```
 
 The checklist shows what to inspect. The doctor command checks that the
@@ -69,6 +70,36 @@ Then read by depth:
 | 30 minutes | `docs/HUMAN_REVIEWER_GUIDE.md`, `docs/REPORT_INDEX.md`, `docs/EXAMPLE_OUTPUTS.md` |
 | Deep check | `docs/DATA_AND_LICENSES.md`, `docs/REPRODUCIBILITY.md`, `docs/EVALUATION_SOURCE_INVENTORY.md`, `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` |
 
+## Try The Real-Paper Template Demo
+
+The most direct claim-review trial, without writing generated files into the
+checkout, is:
+
+```bash
+python3 src/claimcontractbench.py realpaper-demo \
+  --output /tmp/claimcontractbench_realpaper_demo
+```
+
+This runs a public-safe addendum built from three V1.8-backed template
+families/domains:
+`llm_evaluation`, `resource_documentation`, and `uncertainty_calibration`. The
+packet contains 72 supplied candidate claims from 18 public arXiv papers. It
+does not read full PDFs, discover all claims, or measure human reviewer utility.
+
+Expected high-level result:
+
+```text
+PASS real-paper review demo
+rows: 72
+source_papers: 18
+conservative_candidate_safety_accuracy: 0.958
+conservative_display_action_accuracy: 0.806
+conservative_unsafe_false_releases: 3
+```
+
+Read `docs/REAL_PAPER_REVIEW_DEMO.md` for the full workflow, including how to
+score an independent LLM adjudication against the supplied reference outcomes.
+
 ## What The Resource Does
 
 ClaimContractBench asks one narrow question:
@@ -89,6 +120,9 @@ The release includes:
   rather than autonomous full-paper reading;
 - tracked fulltext-adjacent claim-span readouts and a controlled adapter
   admission case study for the paper's boundary evidence tier;
+- a public-safe real-paper template-review addendum with 18 public source
+  papers, 72 supplied candidate claims, three V1.8-backed template families,
+  and a replay/scoring runner;
 - an advanced evaluation-source inventory that keeps public-paper simulation
   data separate from the ordinary user path;
 - standard-library runners that regenerate reports without raw data downloads,
@@ -150,6 +184,7 @@ approval, or acceptance judgments.
 Detailed LLM guides:
 
 - `docs/LLM_ASSISTED_PATH.md`
+- `docs/REAL_PAPER_REVIEW_DEMO.md`
 - `artifact/LLM_ASSISTED_REVIEW_QUICKSTART_20260527.md`
 - `artifact/AGENT_ONE_SHOT_REVIEW_GUIDE_20260527.md`
 
@@ -202,10 +237,13 @@ See `docs/TEMPLATE_ADMISSION.md`.
 ## Release And Citation Status
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
-submission tag is `v0.1.0-cikm2026-submission`. A Zenodo archive may be
-added for the public submission snapshot, but this repository does not claim a
-public DOI until the Zenodo record resolves. After publication, cite the tagged
-GitHub release and the Zenodo archive together.
+current addendum tag is
+`v0.1.1-cikm2026-real-paper-template-addendum`. The earlier
+`v0.1.0-cikm2026-submission` tag remains the initial frozen submission
+snapshot. A Zenodo archive may be added for the public submission snapshot, but
+this repository does not claim a public DOI until the Zenodo record resolves.
+After publication, cite the tagged GitHub release and the Zenodo archive
+together.
 
 Current license scope:
 

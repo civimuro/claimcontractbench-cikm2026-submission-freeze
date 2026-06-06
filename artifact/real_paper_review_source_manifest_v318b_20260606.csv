@@ -1,0 +1,19 @@
+source_id,family,title,source_url,rows
+V34H-LLM-001,llm_evaluation,Benchmark Everything Everywhere All at Once,https://arxiv.org/abs/2606.06462,4
+V34H-LLM-002,llm_evaluation,TeleSWEBench: A Commit-Driven Benchmark for Evaluating LLM-Powered Software Engineering in Telecommunications,https://arxiv.org/abs/2606.05001,4
+V34H-LLM-003,llm_evaluation,SenseJudge: Human-Centric Preference-Driven Judgment Framework,https://arxiv.org/abs/2606.03189,4
+V34H-LLM-004,llm_evaluation,Mitigating Perceptual Judgment Bias in Multimodal LLM-as-a-Judge via Perceptual Perturbation and Reward Modeling,https://arxiv.org/abs/2606.02578,4
+V34H-LLM-005,llm_evaluation,TukaBench: A Culturally Grounded Jailbreak Benchmark for African Languages,https://arxiv.org/abs/2606.01322,4
+V34H-LLM-006,llm_evaluation,Beyond Ideal Instruction: A Comprehensive Framework for Evaluating LLMs in Realistic Interactions,https://arxiv.org/abs/2606.03318,4
+V34H-RES-001,resource_documentation,SemRepo: A Knowledge Graph for Research Software and Its Scholarly Ecosystem,https://arxiv.org/abs/2605.13310,4
+V34H-RES-002,resource_documentation,Journal Research Data Policies in Materials Science,https://arxiv.org/abs/2603.19301,4
+V34H-RES-003,resource_documentation,Towards a Metadata Schema for Energy Research Software,https://arxiv.org/abs/2601.09456,4
+V34H-RES-004,resource_documentation,Evidence-Driven Decision Support for AI Model Selection in Research Software Engineering,https://arxiv.org/abs/2512.11984,4
+V34H-RES-005,resource_documentation,OpenDORS: A dataset of openly referenced open research software,https://arxiv.org/abs/2512.01570,4
+V34H-RES-006,resource_documentation,The Software Observatory: aggregating and analysing software metadata for trend computation and FAIR assessment,https://arxiv.org/abs/2510.05705,4
+V34H-UNC-001,uncertainty_calibration,ORCE: Order-Aware Alignment of Verbalized Confidence in Large Language Models,https://arxiv.org/abs/2605.12446,4
+V34H-UNC-002,uncertainty_calibration,Unsupervised Confidence Calibration for Reasoning LLMs from a Single Generation,https://arxiv.org/abs/2604.19444,4
+V34H-UNC-003,uncertainty_calibration,Instinct vs. Reflection: Unifying Token and Verbalized Confidence in Multimodal Large Models,https://arxiv.org/abs/2604.17274,4
+V34H-UNC-004,uncertainty_calibration,Adaptive Conformal Prediction for Improving Factuality of Generations by Large Language Models,https://arxiv.org/abs/2604.13991,4
+V34H-UNC-005,uncertainty_calibration,When to Answer and When to Defer: A Decision Framework for Reliable Code Predictions,https://arxiv.org/abs/2605.19369,4
+V34H-UNC-006,uncertainty_calibration,Uncertainty Reliability Under Domain Shift: An Investigation for Data-Driven Blood Pressure Estimation in Photoplethysmography,https://arxiv.org/abs/2605.18008,4

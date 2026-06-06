@@ -224,6 +224,66 @@ def run_negative_packets(root: Path, temp_root: Path) -> None:
     assert_contains("private marker suppresses reports", result.stdout, "outputs: suppressed")
     assert_missing(private_output, "private marker suppresses reports")
 
+    realpaper_reference = root / "artifact" / "real_paper_review_reference_outcomes_v318b_20260606.csv"
+    realpaper_bad = temp_root / "realpaper_duplicate_adjudication.csv"
+    with realpaper_reference.open(newline="", encoding="utf-8") as handle:
+        reference_rows = list(csv.DictReader(handle))
+    adjudication_header = [
+        "row_id",
+        "source_support_status",
+        "claim_role",
+        "reportability_gate",
+        "candidate_release_safe_yes_no",
+        "display_action",
+        "repair_suggestion_required_yes_no",
+        "suggested_rewrite",
+        "reason_code",
+        "rationale",
+        "confidence_1_to_5",
+    ]
+    adjudication_rows: list[dict[str, str]] = []
+    for row in reference_rows:
+        adjudication_rows.append(
+            {
+                "row_id": row["row_id"],
+                "source_support_status": "directly_supported",
+                "claim_role": "primary_result_claim",
+                "reportability_gate": row["reference_reportability_gate"],
+                "candidate_release_safe_yes_no": row["reference_candidate_release_safe"],
+                "display_action": row["reference_display_action"],
+                "repair_suggestion_required_yes_no": "yes"
+                if row["reference_suggested_rewrite"]
+                else "no",
+                "suggested_rewrite": row["reference_suggested_rewrite"],
+                "reason_code": row["reference_reason_code"],
+                "rationale": "smoke negative fixture",
+                "confidence_1_to_5": "5",
+            }
+        )
+    adjudication_rows[-1]["row_id"] = adjudication_rows[0]["row_id"]
+    with realpaper_bad.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=adjudication_header)
+        writer.writeheader()
+        writer.writerows(adjudication_rows)
+    result = run_command(
+        "duplicate real-paper adjudication row fails packet",
+        root,
+        [
+            sys.executable,
+            "src/run_real_paper_review_demo.py",
+            "--adjudication",
+            str(realpaper_bad),
+            "--output",
+            str(temp_root / "out_realpaper_duplicate_adjudication"),
+        ],
+        expected_returncode=1,
+    )
+    assert_contains(
+        "duplicate real-paper adjudication row fails packet",
+        result.stdout,
+        "RP-008 user row coverage",
+    )
+
 
 def main() -> int:
     args = parse_args()
@@ -271,6 +331,26 @@ def main() -> int:
                 "--output",
                 str(temp_root / "template_admission_probe"),
             ],
+        )
+        realpaper_demo = run_command(
+            "three-family real-paper review demo",
+            root,
+            [
+                sys.executable,
+                "src/run_real_paper_review_demo.py",
+                "--output",
+                str(temp_root / "real_paper_review_demo"),
+            ],
+        )
+        assert_contains(
+            "three-family real-paper review demo",
+            realpaper_demo.stdout,
+            "rows: 72",
+        )
+        assert_contains(
+            "three-family real-paper review demo",
+            realpaper_demo.stdout,
+            "conservative_unsafe_false_releases: 3",
         )
         agent_guide = run_command(
             "one-shot agent guide",
@@ -340,8 +420,8 @@ def main() -> int:
         run_negative_packets(root, temp_root)
 
     print("PASS release smoke suite")
-    print("positive_checks: 8")
-    print("negative_fail_closed_checks: 4")
+    print("positive_checks: 9")
+    print("negative_fail_closed_checks: 5")
     return 0
 
 

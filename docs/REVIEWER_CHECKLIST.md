@@ -17,14 +17,14 @@ Expected high-level signal:
 
 ```text
 PASS release surface validation
-rows: 110
-required_files: 110
-public_safe_rows: 110
+rows: 123
+required_files: 123
+public_safe_rows: 123
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 8
-negative_fail_closed_checks: 4
+positive_checks: 9
+negative_fail_closed_checks: 5
 ```
 
 If both commands pass, the checkout is a manifest-controlled, public-safe
@@ -62,6 +62,7 @@ judges paper acceptance.
 | Which paper-facing claims are supported by which files? | `docs/REPORT_INDEX.md` | Each claim has a command, expected signal, and boundary. |
 | What should not be claimed? | `docs/BOUNDARIES.md` | No autonomous review, peer-review replacement, raw-data redistribution, or human-utility proof is asserted. |
 | How does the optional LLM path behave? | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | The packet reports registered calls, admission-needed rows, out-of-scope rows, and zero unsafe release. |
+| Can the current real-paper templates be tried directly? | `python3 src/claimcontractbench.py realpaper-demo` | The 72-row public-paper demo reports three families, conservative safety 0.958, display-action accuracy 0.806, and three residual unsafe releases. |
 
 ## Thirty-Minute Deepening Path
 

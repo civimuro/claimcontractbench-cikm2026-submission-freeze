@@ -14,9 +14,9 @@ Expected high-level output:
 
 ```text
 PASS release surface validation
-rows: 110
-required_files: 110
-public_safe_rows: 110
+rows: 123
+required_files: 123
+public_safe_rows: 123
 raw_data_rows: 0
 ```
 
@@ -42,15 +42,44 @@ Expected high-level output:
 
 ```text
 PASS release smoke suite
-positive_checks: 8
-negative_fail_closed_checks: 4
+positive_checks: 9
+negative_fail_closed_checks: 5
 ```
 
 Meaning:
 
 - positive public paths run;
+- the three-family real-paper demo runs;
 - the human guide and one-shot agent guide are reachable;
 - bad packets fail closed rather than silently producing licensed claims.
+
+## Real-Paper Template Review Demo
+
+Command:
+
+```bash
+python3 src/claimcontractbench.py realpaper-demo
+```
+
+Expected high-level output:
+
+```text
+PASS real-paper review demo
+rows: 72
+source_papers: 18
+conservative_candidate_safety_accuracy: 0.958
+conservative_display_action_accuracy: 0.806
+conservative_unsafe_false_releases: 3
+```
+
+Meaning:
+
+- three V1.8-backed families are available for trial use;
+- 18 public source papers and 72 supplied candidate claims are included;
+- the conservative replay blocks most unsafe releases but still leaves three
+  unsafe releases, concentrated in uncertainty-calibration background/support
+  rows;
+- this is a bounded claim-review demo, not automatic full-paper review.
 
 ## Registered Templates
 

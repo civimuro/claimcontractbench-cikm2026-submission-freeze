@@ -1,0 +1,66 @@
+{
+  "stage": "V3.18b public-safe real-paper template review addendum",
+  "scope": "registered-template trial on supplied real-paper candidate claims; not automatic full-paper review",
+  "files": [
+    {
+      "path": "artifact/real_paper_review_template_cards_v18_20260606.csv",
+      "bytes": 4034,
+      "sha256": "99fb6cb176cb8cf70d628f8661012cc92e778c2e80330b3eef42fc1ebfe57df3"
+    },
+    {
+      "path": "artifact/real_paper_review_source_manifest_v318b_20260606.csv",
+      "bytes": 2785,
+      "sha256": "1de44a4a36596df71912877bdeb56e20d04ff8c720ebf446a470b4460a695a9f"
+    },
+    {
+      "path": "artifact/real_paper_review_candidate_claims_v318b_20260606.csv",
+      "bytes": 37480,
+      "sha256": "03788e6a76585e8eb1fc66b3ab1d5b822dcf3b8a31305a69aa0d0718cbbad9db"
+    },
+    {
+      "path": "artifact/real_paper_review_reference_outcomes_v318b_20260606.csv",
+      "bytes": 30141,
+      "sha256": "de88ce9dfab487d80fa173bf05c6355d4a4e271c485b617c0f00ce708a5a59c5"
+    },
+    {
+      "path": "artifact/real_paper_review_evidence_summary_v318b_20260606.json",
+      "bytes": 5419,
+      "sha256": "7d89272c5776202be31d1ec0d56a6c6ba9b8d01dc450304f6fe2110419e1bd68"
+    },
+    {
+      "path": "artifact/real_paper_review_llm_prompt_20260606.md",
+      "bytes": 3080,
+      "sha256": "e632e18789434c63a30be18b3d58b8f705925c40913e777672ae6b34224482ee"
+    },
+    {
+      "path": "docs/REAL_PAPER_REVIEW_DEMO.md",
+      "bytes": 4517,
+      "sha256": "678960085920664ba9a426e68526415bb080f5b97a522e35f55177a4ff8a41c2"
+    },
+    {
+      "path": "src/run_real_paper_review_demo.py",
+      "bytes": 22617,
+      "sha256": "62604df9eee594944aeba7e6640c9921e0bce3aa4e95368fd134c3165657e903"
+    },
+    {
+      "path": "reports/real_paper_review_demo_20260606/real_paper_review_demo_report.md",
+      "bytes": 4224,
+      "sha256": "a8523ae9a04848a6804045297c22b86bc35624eb9bce46c04d8b0ef2e011ae91"
+    },
+    {
+      "path": "reports/real_paper_review_demo_20260606/real_paper_review_demo_decisions.csv",
+      "bytes": 41649,
+      "sha256": "852d7a5d415d57625f2c18982419541700ccbe06da796ff1f094ecb8616c8c34"
+    },
+    {
+      "path": "reports/real_paper_review_demo_20260606/real_paper_review_demo_summary.json",
+      "bytes": 1002,
+      "sha256": "a21a8c06fb9c4d0deb1f44f988aa041f81d9b6d453580f566c34058644e45eaa"
+    },
+    {
+      "path": "reports/real_paper_review_demo_20260606/real_paper_review_demo_checks.csv",
+      "bytes": 613,
+      "sha256": "da0b31175efe512f73434412bb72d452ee265ab91705ef35fefd2e04b2e39a4d"
+    }
+  ]
+}

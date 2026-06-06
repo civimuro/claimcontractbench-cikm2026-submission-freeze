@@ -42,19 +42,27 @@ The release keeps public-source simulations low risk:
 | Controlled adapter admission case study | `reports/claim_span_adapter_admission_case_study_20260523/` | 6 adapter specs and 22 passport rows across three selected families | structural admission behavior and protected false-release checks | cross-domain validation |
 | Annotation agreement scaffold | `artifact/paper_claim_gold_benchmark_blind_annotation_packet_20260521.csv`, `src/run_paper_claim_annotation_agreement.py` | 128 blind annotation rows, currently pending second annotator | readiness for future independent agreement measurement | existing inter-annotator agreement |
 | Reviewer-demo regression | `src/run_reviewer_audit_demo.py`, `src/run_reviewer_audit_demo_regression.py`, `reports/reviewer_facing_audit_demo_20260521/` | 72 public-safe cards | fail-closed reviewer-facing route/card generation after supplied candidate rows | production reviewer study |
+| Real-paper template review addendum | `docs/REAL_PAPER_REVIEW_DEMO.md`, `artifact/real_paper_review_candidate_claims_v318b_20260606.csv`, `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`, `src/run_real_paper_review_demo.py`, `reports/real_paper_review_demo_20260606/` | 18 public arXiv papers, 72 supplied candidate claims, 3 V1.8-backed template families | reviewer-reproducible trial of registered templates on supplied real-paper candidate claims, with residual unsafe-release boundaries exposed | automatic full-paper extraction, broad template coverage, zero-risk release, or human-utility measurement |
 
 ## Source Mix
 
 The current public-paper surfaces include model-reporting,
 dataset-documentation, distribution-shift, benchmark-validity, calibration,
 uncertainty, selective-prediction, conformal-prediction, LLM-evaluation,
-behavioral-testing, and LLM peer-review/security families.
+behavioral-testing, LLM peer-review/security, resource-documentation, and
+uncertainty-calibration families.
 
 The larger paper-claim and excerpt surfaces use 40 external public source
 papers. Their source manifest includes arXiv pages, ACL Anthology pages, PMLR,
 NeurIPS/papers pages, GitHub project pages, and one JAMA Network page. The
 repository stores links and public-safe derived rows rather than the papers
 themselves.
+
+The real-paper template review addendum uses 18 public arXiv papers: 6
+LLM-evaluation papers, 6 resource-documentation papers, and 6
+uncertainty-calibration papers. It stores source URLs, section locators, short
+source-span excerpts, candidate claims, template cards, reference outcomes, and
+public-safe replay summaries. It does not store PDFs or full-paper text.
 
 ## How Reviewers Should Read These Files
 
@@ -68,6 +76,8 @@ Use the surfaces as advanced evidence for these bounded questions:
    expanding the current template registry?
 4. Do the claim-span agreement/readout files honestly expose localization
    difficulty rather than hiding it?
+5. Can three V1.8-backed templates process supplied real-paper candidate claims
+   while exposing residual unsafe-release boundaries?
 
 Do not use these files to claim:
 
@@ -84,4 +94,3 @@ source URL or identifier, version date, source family, license/posture, public-
 safe claim text or paraphrase, route label, and boundary rationale. Full papers
 or long excerpts should stay outside the repository unless the individual
 license clearly permits redistribution.
-

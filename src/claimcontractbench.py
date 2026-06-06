@@ -112,6 +112,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("- python3 src/claimcontractbench.py reviewer-checklist")
     print("- python3 src/claimcontractbench.py human-guide")
     print("- python3 src/claimcontractbench.py templates")
+    print("- python3 src/claimcontractbench.py realpaper-demo")
     print("- python3 src/claimcontractbench.py agent-guide")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
     print("- python3 src/claimcontractbench.py admission-guide")
@@ -144,6 +145,9 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("")
     print("LLM-assisted packet drafting is optional. The deterministic checks are the")
     print("release boundary whether a packet is written by a human or drafted by an LLM.")
+    print("")
+    print("For the current three-family public-paper demo, run:")
+    print("   python3 src/claimcontractbench.py realpaper-demo")
     return 0
 
 
@@ -167,6 +171,9 @@ def command_reviewer_checklist(args: argparse.Namespace) -> int:
     print("template boundaries, and explicit non-goals.")
     print("Red flags: accept/reject claims, autonomous full-paper review claims,")
     print("raw-data redistribution claims, or forced use of nearby templates.")
+    print("")
+    print("Three-family public-paper trial:")
+    print("  python3 src/claimcontractbench.py realpaper-demo")
     return 0
 
 
@@ -182,6 +189,21 @@ def command_review(args: argparse.Namespace) -> int:
         "--output",
         args.output,
     ]
+    return run(root, command)
+
+
+def command_realpaper_demo(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    command = [
+        sys.executable,
+        script(root, "run_real_paper_review_demo.py"),
+        "--root",
+        str(root),
+        "--output",
+        args.output,
+    ]
+    if args.adjudication:
+        command.extend(["--adjudication", args.adjudication])
     return run(root, command)
 
 
@@ -552,6 +574,23 @@ def build_parser() -> argparse.ArgumentParser:
     review.add_argument("--input", required=True, help="Input CSV packet.")
     review.add_argument("--output", default="reports/my_claim_packet", help="Report output directory.")
     review.set_defaults(func=command_review)
+
+    realpaper_demo = subparsers.add_parser(
+        "realpaper-demo",
+        help="Run the three-family public-paper template review demo.",
+    )
+    add_subcommand_root(realpaper_demo)
+    realpaper_demo.add_argument(
+        "--adjudication",
+        default="",
+        help="Optional user/LLM adjudication CSV to score against the reference.",
+    )
+    realpaper_demo.add_argument(
+        "--output",
+        default="reports/real_paper_review_demo_20260606",
+        help="Report output directory.",
+    )
+    realpaper_demo.set_defaults(func=command_realpaper_demo)
 
     admit_template = subparsers.add_parser("admit-template", help="Check a template-admission CSV.")
     add_subcommand_root(admit_template)
