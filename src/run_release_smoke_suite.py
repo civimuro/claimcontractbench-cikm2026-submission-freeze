@@ -503,6 +503,20 @@ def main() -> int:
             reviewer_checklist.stdout,
             "docs/REVIEWER_CHECKLIST.md",
         )
+        claim_id_guide = run_command(
+            "claim identification guide",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "claim-id-guide",
+            ],
+        )
+        assert_contains(
+            "claim identification guide",
+            claim_id_guide.stdout,
+            "checks supplied candidate claims",
+        )
         feedback_output = temp_root / "feedback" / "my_feedback_report.md"
         run_command(
             "optional feedback scaffold",
@@ -522,7 +536,7 @@ def main() -> int:
         run_negative_packets(root, temp_root)
 
     print("PASS release smoke suite")
-    print("positive_checks: 12")
+    print("positive_checks: 13")
     print("negative_fail_closed_checks: 5")
     return 0
 

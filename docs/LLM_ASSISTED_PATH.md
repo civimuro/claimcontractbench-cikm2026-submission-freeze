@@ -11,6 +11,10 @@ The human reviewer path does not require it.
 - Human: decides whether the output matters for a review, rewrite, or template
   addition.
 
+The claim-finding step belongs to the LLM or the human user, not to the
+deterministic checker. The checker audits the supplied packet; it does not
+certify full-paper claim recall.
+
 ## Minimal Workflow
 
 If you want the cleanest fixed public-paper trial, start with:
@@ -63,6 +67,9 @@ python3 src/claimcontractbench.py realpaper-demo \
 
 This evaluates supplied candidate claims in three registered families. It does
 not test full-paper claim discovery.
+
+For custom papers, use `docs/CLAIM_IDENTIFICATION.md` to decide what the LLM
+should extract and what should be routed out of scope.
 
 ## Route Labels
 

@@ -6,6 +6,10 @@ Use the human path if you want to inspect the resource yourself. Use the LLM
 path if you want an AI assistant to help adjudicate supplied candidate claims
 inside the current registered templates.
 
+The tool does not find every claim in a paper by itself. It audits supplied
+candidate claims. For a custom paper, a human or an LLM must first identify
+candidate empirical claims. See `docs/CLAIM_IDENTIFICATION.md`.
+
 ## Path A: Human / Reviewer Trial
 
 Run one command:
@@ -65,6 +69,18 @@ The current practical template surface covers three registered families:
 
 The real-paper trial uses 18 public arXiv papers and 72 supplied candidate
 claims: 6 papers and 24 candidate rows per family.
+
+## Claim Identification Boundary
+
+The fixed demo already includes candidate claims. A new paper does not.
+
+- Human path: the reviewer selects candidate empirical claims manually, then
+  fills or checks a packet.
+- LLM path: the LLM may extract candidate empirical claims and route them into
+  a packet, but the deterministic checker still decides whether a registered
+  template was called safely.
+
+Neither path proves full-paper coverage.
 
 ## What To Conclude
 

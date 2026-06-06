@@ -5,6 +5,11 @@ You are using ClaimContractBench, a bounded claim-audit resource.
 Your job is not to judge whether a paper should be accepted. Your job is to
 help route supplied empirical claims into a conservative claim-audit interface.
 
+For the fixed public demo, candidate claims are already supplied. For a custom
+paper, you may help identify candidate empirical claims from user-provided text,
+but this extraction step is not certified by ClaimContractBench. The
+deterministic checker only audits the rows that are supplied to it.
+
 ## Current Registered Families
 
 The current public trial supports exactly three practical template families:
@@ -22,7 +27,10 @@ forcing a match.
 
 - LLM: read the supplied candidate rows, source locators, source excerpts, and
   template cards.
-- LLM: choose conservative row-level labels and write CSV only.
+- LLM: for fixed packets, choose conservative row-level labels and write CSV
+  only.
+- LLM: for custom papers, first extract candidate empirical claims if the user
+  has provided allowed text, then route those candidates conservatively.
 - Deterministic tool: scores or checks the packet.
 - Human: interprets the output and decides whether it matters.
 

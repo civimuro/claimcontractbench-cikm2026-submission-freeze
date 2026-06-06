@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.5-cikm2026-claim-identification-boundary - Claim Selection Boundary
+
+- Added an explicit claim-identification guide: ClaimContractBench checks
+  supplied candidate claims and does not automatically find every claim in a
+  paper.
+- Clarified the human path: humans manually select candidate empirical claims,
+  fill or inspect a packet, and run the deterministic checker.
+- Clarified the LLM path: an LLM may help extract and route candidate claims
+  from allowed text, but the deterministic checker remains the licensing
+  boundary and no full-paper recall claim is made.
+- Added a CLI `claim-id-guide` command and smoke coverage for this boundary.
+
 ## v0.1.4-cikm2026-guided-trial-paths - Human And LLM Trial UX
 
 - Added a first-contact guide, LLM context file, and supported-template-family

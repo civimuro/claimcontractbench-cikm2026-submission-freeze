@@ -27,6 +27,10 @@ The current practical surface supports three V1.8-backed template families:
 Other domains should go through template admission instead of being forced into
 a nearby template.
 
+Important: the tool checks supplied candidate claims. It does not automatically
+find every claim in a paper. For custom papers, a human or an LLM first
+identifies candidate claims; see `docs/CLAIM_IDENTIFICATION.md`.
+
 Start with `docs/START_HERE.md` if you want the shortest guided path, or
 `docs/LLM_CONTEXT.md` if you are giving the repository to an AI assistant.
 
@@ -36,6 +40,7 @@ Start with `docs/START_HERE.md` if you want the shortest guided path, or
 | --- | --- | --- |
 | Try it as a human reviewer | `python3 src/claimcontractbench.py try-human` | A no-LLM public-paper trial and report under `/tmp`. |
 | Prepare a clean LLM trial | `python3 src/claimcontractbench.py try-llm` | A gold-free packet containing only candidate claims, template cards, prompt, and LLM context. |
+| Understand claim selection | `docs/CLAIM_IDENTIFICATION.md` or `python3 src/claimcontractbench.py claim-id-guide` | How humans or LLMs identify candidate claims before the checker runs. |
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
 | Verify the resource as a reviewer | `docs/REVIEWER_CHECKLIST.md` or `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
@@ -63,13 +68,13 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 131
-required_files: 131
-public_safe_rows: 131
+rows: 132
+required_files: 132
+public_safe_rows: 132
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 12
+positive_checks: 13
 negative_fail_closed_checks: 5
 ```
 
@@ -90,7 +95,7 @@ Then read by depth:
 
 | Time budget | Read |
 | --- | --- |
-| First contact | `docs/START_HERE.md`, `docs/SUPPORTED_TEMPLATE_FAMILIES.md` |
+| First contact | `docs/START_HERE.md`, `docs/CLAIM_IDENTIFICATION.md`, `docs/SUPPORTED_TEMPLATE_FAMILIES.md` |
 | 10 minutes | `docs/REVIEWER_CHECKLIST.md`, `docs/CONCEPTS.md`, `docs/BOUNDARIES.md` |
 | 30 minutes | `docs/HUMAN_REVIEWER_GUIDE.md`, `docs/REPORT_INDEX.md`, `docs/EXAMPLE_OUTPUTS.md` |
 | Deep check | `docs/DATA_AND_LICENSES.md`, `docs/REPRODUCIBILITY.md`, `docs/EVALUATION_SOURCE_INVENTORY.md`, `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` |
@@ -150,6 +155,8 @@ The release includes:
   suppress actions;
 - WDC/ACS/NAB-derived evidence tables;
 - template-admission and reviewer-intake examples;
+- a claim-identification guide separating human-selected claims from
+  LLM-assisted extraction and routing;
 - selected paper-claim and excerpt benchmarks that measure fail-closed behavior
   rather than autonomous full-paper reading;
 - tracked fulltext-adjacent claim-span readouts and a controlled adapter
@@ -273,13 +280,14 @@ See `docs/TEMPLATE_ADMISSION.md`.
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
 current guided-trial tag is
-`v0.1.4-cikm2026-guided-trial-paths`. Earlier tags remain part of the release
+`v0.1.5-cikm2026-claim-identification-boundary`. Earlier tags remain part of the release
 history: `v0.1.0-cikm2026-submission` is the initial frozen submission
 snapshot, `v0.1.1-cikm2026-real-paper-template-addendum` adds the first public
 real-paper template addendum, `v0.1.2-cikm2026-real-paper-template-addendum`
 records the read-only-style `/tmp` trial path, and
 `v0.1.3-cikm2026-public-surface-audit` closes the public-surface manifest
-audit. A Zenodo archive may be added for the public submission snapshot, but
+audit; `v0.1.4-cikm2026-guided-trial-paths` adds guided human and LLM trial
+paths. A Zenodo archive may be added for the public submission snapshot, but
 this repository does not claim a public DOI until the Zenodo record resolves.
 After publication, cite the tagged GitHub release and the Zenodo archive
 together.

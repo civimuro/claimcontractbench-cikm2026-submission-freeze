@@ -7,7 +7,7 @@ the CIKM Resource paper.
 Current status note: this appendix is a paper-facing release/provenance note,
 not the canonical user quickstart. The current public checkout is governed by
 `artifact/release_manifest_20260520.csv` and the README. The manifest-controlled
-surface now contains 131 required public-safe rows and includes the later
+surface now contains 132 required public-safe rows and includes the later
 real-paper template-review addendum.
 
 ## C1. Public-Safe Dataset Manifest
@@ -139,8 +139,8 @@ regenerates the five public claim-passport casebook rows covering emit, relabel,
 weaken, rewrite, and suppress. It checks exact alignment with
 `data/claim_passport_casebook_20260519.csv`, action/layer enum validity,
 dataset/scenario joins, and `bottom_T` behavior. Current work-use result: the
-validator and projection smoke runner PASS with 131 rows, 131 required files,
-131 public-safe rows, 0 raw-data rows, and five regenerated smoke rows.
+validator and projection smoke runner PASS with 132 rows, 132 required files,
+132 public-safe rows, 0 raw-data rows, and five regenerated smoke rows.
 
 The third command generates a reviewer-facing audit report from the public claim
 passport, G/Q/U intervention, Q-policy sensitivity, NAB support-only adapter,
@@ -208,7 +208,7 @@ python3 src/claimcontractbench.py smoke
 
 These commands validate the manifest-controlled reviewer surface and run the
 release smoke suite from the public checkout. Current work-use result: PASS with
-131 rows, 131 required files, 131 public-safe rows, 0 raw-data rows, 12 positive
+132 rows, 132 required files, 132 public-safe rows, 0 raw-data rows, 13 positive
 smoke checks, and 5 fail-closed negative checks. This is the executable
 reviewer path for the current package; historical clean-copy builder drills are
 not part of the public command surface.
@@ -271,7 +271,7 @@ The machine-readable source and redistribution posture snapshot is
 | claim-contract schema | `artifact/claim_contract_schema_20260520.json` | final public-archive sync |
 | projection examples | action-covering examples seeded as public-schema casebook rows | final public-archive sync |
 | release-surface quickstart | release-root validator and projection smoke runner passing in workspace and clean copied-release simulation | final public-archive rerun |
-| release-candidate builder | the manifest-controlled GitHub snapshot contains 131 required public-safe rows and validates in place | final public-archive rerun after repository/archive choice |
+| release-candidate builder | the manifest-controlled GitHub snapshot contains 132 required public-safe rows and validates in place | final public-archive rerun after repository/archive choice |
 | operator quickstart | five-row public smoke runner available; 375-event internal runner local reference runtime recorded | release-root normalization before claiming full public runner support |
 | claim audit report | `src/run_claim_audit_report.py` generates reviewer-facing Markdown/HTML/CSV/JSON reports with 11 checks passing | final public-archive rerun and optional sample report inclusion |
 | claim template admission | `src/run_claim_template_admission.py` admits 5 mainline and 3 support-only templates and rejects 1 patchwork probe with 10 checks passing | final public-archive rerun and optional sample report inclusion |
@@ -286,7 +286,7 @@ The machine-readable source and redistribution posture snapshot is
 | annotation agreement scaffold | `src/run_paper_claim_annotation_agreement.py` validates 128 blind annotation rows and reports `PENDING_SECOND_ANNOTATOR` until labels are filled | second annotator, adjudication, and agreement reporting |
 | real-paper template addendum | 18 public arXiv papers, 72 supplied candidate claims, 3 V1.8-backed families, conservative safety 0.958, display-action accuracy 0.806, and 3 conservative unsafe false releases | registered-template replay evidence only; not automatic full-paper extraction or human utility |
 | license table | 2026-05-20 source/license snapshot exists | recheck at final archive time |
-| release manifest | 131 public-safe required rows, validator, projection smoke runner, claim audit report runner, claim template admission runner, reviewer claim-intake runner, claim-audit gold-probe runner, paper-claim gold benchmark runner, paper-excerpt decision-surface benchmark runner, fulltext claim-span readouts, controlled adapter case-study reports, annotation-agreement scaffold, environment note, and docs layer passing | final file snapshot after public archive |
+| release manifest | 132 public-safe required rows, validator, projection smoke runner, claim audit report runner, claim template admission runner, reviewer claim-intake runner, claim-audit gold-probe runner, paper-claim gold benchmark runner, paper-excerpt decision-surface benchmark runner, fulltext claim-span readouts, controlled adapter case-study reports, annotation-agreement scaffold, environment note, and docs layer passing | final file snapshot after public archive |
 | release path | `https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze` | frozen reviewer snapshot and DOI/archive plan |
 
 ## C8. Availability Statement Draft

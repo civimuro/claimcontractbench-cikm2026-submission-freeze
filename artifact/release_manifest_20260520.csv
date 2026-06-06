@@ -18,6 +18,7 @@ LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons A
 docs/QUICKSTART.md,second-layer reviewer quickstart,yes,yes,no,Ten-minute reviewer path and expected outputs
 docs/START_HERE.md,first-contact trial guide,yes,yes,no,Human and LLM no-threshold trial paths for the current three-family resource surface
 docs/REVIEWER_CHECKLIST.md,reviewer verification checklist,yes,yes,no,One-page reviewer map for artifact validation evidence inspection and misuse red flags
+docs/CLAIM_IDENTIFICATION.md,claim identification guide,yes,yes,no,Explains that human or LLM users identify candidate claims before deterministic checking
 docs/CONCEPTS.md,plain-language concept guide,yes,yes,no,Human-friendly explanation of metric-to-claim contracts GQU templates and fail-closed routing
 docs/HUMAN_REVIEWER_GUIDE.md,human reviewer guide,yes,yes,no,Non-LLM reviewer inspection guide and interpretation path
 docs/EXAMPLE_OUTPUTS.md,example outputs guide,yes,yes,no,Plain-language interpretation of common command outputs

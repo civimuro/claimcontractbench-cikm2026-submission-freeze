@@ -17,8 +17,6 @@ paper demo into `/tmp/claimcontractbench_human_trial`.
 
 For a deeper verification pass, run:
 
-Run:
-
 ```bash
 python3 src/claimcontractbench.py doctor
 python3 src/claimcontractbench.py smoke
@@ -31,13 +29,14 @@ for first inspection.
 
 1. `docs/REVIEWER_CHECKLIST.md`
 2. `docs/START_HERE.md`
-3. `docs/SUPPORTED_TEMPLATE_FAMILIES.md`
-4. `docs/CONCEPTS.md`
-5. `docs/EXAMPLE_OUTPUTS.md`
-6. `docs/REPORT_INDEX.md`
-7. `docs/BOUNDARIES.md`
-8. `docs/DATA_AND_LICENSES.md`
-9. `docs/EVALUATION_SOURCE_INVENTORY.md` if you want the advanced public-paper
+3. `docs/CLAIM_IDENTIFICATION.md`
+4. `docs/SUPPORTED_TEMPLATE_FAMILIES.md`
+5. `docs/CONCEPTS.md`
+6. `docs/EXAMPLE_OUTPUTS.md`
+7. `docs/REPORT_INDEX.md`
+8. `docs/BOUNDARIES.md`
+9. `docs/DATA_AND_LICENSES.md`
+10. `docs/EVALUATION_SOURCE_INVENTORY.md` if you want the advanced public-paper
    benchmark/source inventory rather than the ordinary user path.
 
 These files explain what the commands prove, where the generated reports go,
@@ -121,6 +120,10 @@ python3 src/claimcontractbench.py review --input claim_packets/my_claim_packet.c
 ```
 
 The report is a claim-audit aid, not a review verdict.
+
+The manual step is claim identification: you choose which empirical claims to
+inspect. The tool does not prove that you found every relevant claim in the
+paper. Use `docs/CLAIM_IDENTIFICATION.md` for selection rules.
 
 ## If You Want To Ask A Public Question
 

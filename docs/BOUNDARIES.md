@@ -20,6 +20,7 @@ metric-to-claim cases. It is designed to be useful because it fails closed.
 - It does not prove proof correctness, novelty, legal compliance, ethics
   approval, deployment safety, fairness, or human reviewer utility.
 - It does not certify full-paper coverage.
+- It does not automatically identify every candidate claim in a paper.
 - It does not redistribute raw third-party datasets.
 - It does not turn LLM output into authority. LLMs may draft or route packets;
   the deterministic checker enforces the registered boundary.

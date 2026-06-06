@@ -110,6 +110,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("Next useful commands:")
     print("- python3 src/claimcontractbench.py try-human")
     print("- python3 src/claimcontractbench.py try-llm")
+    print("- python3 src/claimcontractbench.py claim-id-guide")
     print("- python3 src/claimcontractbench.py smoke")
     print("- python3 src/claimcontractbench.py reviewer-checklist")
     print("- python3 src/claimcontractbench.py human-guide")
@@ -139,10 +140,12 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("   python3 src/claimcontractbench.py doctor")
     print("2. Run the first-inspection smoke suite:")
     print("   python3 src/claimcontractbench.py smoke")
-    print("3. Inspect the registered claim templates:")
+    print("3. Understand who identifies candidate claims:")
+    print("   python3 src/claimcontractbench.py claim-id-guide")
+    print("4. Inspect the registered claim templates:")
     print("   python3 src/claimcontractbench.py templates")
-    print("4. Read by depth:")
-    print("   10 min: docs/REVIEWER_CHECKLIST.md, docs/CONCEPTS.md, docs/BOUNDARIES.md")
+    print("5. Read by depth:")
+    print("   10 min: docs/REVIEWER_CHECKLIST.md, docs/CLAIM_IDENTIFICATION.md, docs/CONCEPTS.md")
     print("   30 min: docs/HUMAN_REVIEWER_GUIDE.md, docs/REPORT_INDEX.md, docs/EXAMPLE_OUTPUTS.md")
     print("   deep:   docs/DATA_AND_LICENSES.md, docs/REPRODUCIBILITY.md,")
     print("           docs/EVALUATION_SOURCE_INVENTORY.md, artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md")
@@ -180,6 +183,32 @@ def command_reviewer_checklist(args: argparse.Namespace) -> int:
     print("Three-family public-paper trial:")
     print("  python3 src/claimcontractbench.py realpaper-demo \\")
     print("    --output /tmp/claimcontractbench_realpaper_demo")
+    return 0
+
+
+def command_claim_id_guide(args: argparse.Namespace) -> int:
+    print("Claim identification guide")
+    print("")
+    print("ClaimContractBench checks supplied candidate claims. It does not")
+    print("automatically find every claim in a paper.")
+    print("")
+    print("Human path:")
+    print("- manually choose the paper section, paragraph, table, or claim;")
+    print("- fill one packet row per candidate empirical claim;")
+    print("- run the deterministic checker.")
+    print("")
+    print("LLM-assisted path:")
+    print("- give the LLM only allowed paper text or the fixed demo packet;")
+    print("- ask it to extract candidate empirical claims and route them;")
+    print("- run the deterministic checker; the LLM is not the authority.")
+    print("")
+    print("Current practical families:")
+    print("- llm_evaluation")
+    print("- resource_documentation")
+    print("- uncertainty_calibration")
+    print("")
+    print("When uncertain, use NEEDS_TEMPLATE_ADMISSION or OUT_OF_SCOPE_DO_NOT_CALL.")
+    print("Read: docs/CLAIM_IDENTIFICATION.md")
     return 0
 
 
@@ -627,6 +656,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     add_subcommand_root(reviewer_checklist)
     reviewer_checklist.set_defaults(func=command_reviewer_checklist)
+
+    claim_id_guide = subparsers.add_parser(
+        "claim-id-guide",
+        help="Explain who identifies candidate claims before checking.",
+    )
+    add_subcommand_root(claim_id_guide)
+    claim_id_guide.set_defaults(func=command_claim_id_guide)
 
     templates = subparsers.add_parser("templates", help="Print registered template boundaries.")
     add_subcommand_root(templates)
