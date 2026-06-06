@@ -412,6 +412,26 @@ def main() -> int:
             print("missing human trial report")
             raise SystemExit(1)
 
+        reviewer_flow = run_command(
+            "reviewer end-to-end workflow",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "reviewer-flow",
+            ],
+        )
+        assert_contains(
+            "reviewer end-to-end workflow",
+            reviewer_flow.stdout,
+            "Reviewer end-to-end workflow",
+        )
+        assert_contains(
+            "reviewer end-to-end workflow",
+            reviewer_flow.stdout,
+            "docs/REVIEWER_END_TO_END.md",
+        )
+
         llm_trial_dir = temp_root / "llm_trial"
         llm_trial = run_command(
             "LLM trial packet path",
@@ -536,7 +556,7 @@ def main() -> int:
         run_negative_packets(root, temp_root)
 
     print("PASS release smoke suite")
-    print("positive_checks: 13")
+    print("positive_checks: 14")
     print("negative_fail_closed_checks: 5")
     return 0
 

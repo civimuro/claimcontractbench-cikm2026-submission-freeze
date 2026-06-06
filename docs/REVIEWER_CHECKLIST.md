@@ -2,7 +2,12 @@
 
 Start here when you want to decide quickly whether the repository is a
 checkable resource artifact, without treating it as a paper verdict machine.
-This page is the canonical human-reviewer entry point.
+If you want a complete path from GitHub checkout to result, start with
+`docs/REVIEWER_END_TO_END.md` or:
+
+```bash
+python3 src/claimcontractbench.py reviewer-flow
+```
 
 ## Ten-Minute Check
 
@@ -23,13 +28,13 @@ Expected high-level signal:
 
 ```text
 PASS release surface validation
-rows: 132
-required_files: 132
-public_safe_rows: 132
+rows: 133
+required_files: 133
+public_safe_rows: 133
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 13
+positive_checks: 14
 negative_fail_closed_checks: 5
 ```
 
@@ -62,6 +67,7 @@ judges paper acceptance.
 
 | Question | File or command | What counts as a good signal |
 | --- | --- | --- |
+| How do I go from GitHub to an interpretable result? | `docs/REVIEWER_END_TO_END.md` or `python3 src/claimcontractbench.py reviewer-flow` | The path names clone/tag/run/read/interpret steps and separates human from LLM responsibilities. |
 | What is the core idea? | `docs/CONCEPTS.md` | You can explain metric-to-claim licensing, `G/Q/U`, and fail-closed routing in one paragraph. |
 | What exactly is in the release? | `artifact/release_manifest_20260520.csv` | Every required row exists, is public-safe, and is not raw data. |
 | What are the smallest examples? | `data/claim_passport_casebook_20260519.csv` | Five action families are present: emit, relabel, weaken, rewrite, suppress. |

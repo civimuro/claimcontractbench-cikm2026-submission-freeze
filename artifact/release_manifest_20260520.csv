@@ -17,6 +17,7 @@ LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
 docs/QUICKSTART.md,second-layer reviewer quickstart,yes,yes,no,Ten-minute reviewer path and expected outputs
 docs/START_HERE.md,first-contact trial guide,yes,yes,no,Human and LLM no-threshold trial paths for the current three-family resource surface
+docs/REVIEWER_END_TO_END.md,reviewer end-to-end workflow,yes,yes,no,Complete reviewer path from GitHub checkout to generated report and safe interpretation
 docs/REVIEWER_CHECKLIST.md,reviewer verification checklist,yes,yes,no,One-page reviewer map for artifact validation evidence inspection and misuse red flags
 docs/CLAIM_IDENTIFICATION.md,claim identification guide,yes,yes,no,Explains that human or LLM users identify candidate claims before deterministic checking
 docs/CONCEPTS.md,plain-language concept guide,yes,yes,no,Human-friendly explanation of metric-to-claim contracts GQU templates and fail-closed routing

@@ -12,7 +12,7 @@ surface.
 
 | Claim to verify | Command | Expected signal | Open after running |
 | --- | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 132 rows, 132 required files, 132 public-safe rows, 0 raw-data rows. | Console output. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 133 rows, 133 required files, 133 public-safe rows, 0 raw-data rows. | Console output. |
 | The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 13 positive checks and 5 fail-closed negative checks pass. | Console output. |
 | A human can try the current resource without an LLM. | `python3 src/claimcontractbench.py try-human` | Validates the surface and runs the 72-row public-paper demo under `/tmp`. | `/tmp/claimcontractbench_human_trial/real_paper_review_demo_report.md`. |
 | An LLM can receive a clean blind-style trial packet. | `python3 src/claimcontractbench.py try-llm` | Copies candidate claims, template cards, prompt, and LLM context only. | `/tmp/claimcontractbench_llm_trial/`. |

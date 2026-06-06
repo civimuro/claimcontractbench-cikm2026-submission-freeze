@@ -8,6 +8,32 @@ It is a research-resource snapshot, not a chatbot demo. You can inspect it with
 plain Python commands, read the evidence tables directly, or optionally use an
 LLM to draft a claim packet that the deterministic checker then audits.
 
+## Reviewer End-To-End Path
+
+If you are opening this repository for the first time as a reviewer, start with
+one complete path instead of the full menu:
+
+```bash
+git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git
+cd claimcontractbench-cikm2026-submission-freeze
+git checkout v0.1.6-cikm2026-reviewer-workflow
+python3 src/claimcontractbench.py reviewer-flow
+python3 src/claimcontractbench.py try-human
+```
+
+Then open:
+
+```text
+/tmp/claimcontractbench_human_trial/real_paper_review_demo_report.md
+```
+
+This gives a no-LLM, end-to-end reviewer trial over the current three supported
+template families. It validates the release surface, runs the public-paper
+template demo, and writes the result outside the checkout.
+
+Read `docs/REVIEWER_END_TO_END.md` for the same workflow with interpretation
+rules and optional LLM-assisted steps.
+
 ## Fastest Trial
 
 For a no-LLM human/reviewer trial:
@@ -31,13 +57,15 @@ Important: the tool checks supplied candidate claims. It does not automatically
 find every claim in a paper. For custom papers, a human or an LLM first
 identifies candidate claims; see `docs/CLAIM_IDENTIFICATION.md`.
 
-Start with `docs/START_HERE.md` if you want the shortest guided path, or
+Start with `docs/REVIEWER_END_TO_END.md` if you want the clearest reviewer
+workflow, `docs/START_HERE.md` if you want the shortest guided path, or
 `docs/LLM_CONTEXT.md` if you are giving the repository to an AI assistant.
 
 ## Choose A Path
 
 | I want to... | Start here | What you get |
 | --- | --- | --- |
+| Get a full reviewer workflow | `docs/REVIEWER_END_TO_END.md` or `python3 src/claimcontractbench.py reviewer-flow` | Clone/tag/run/read/interpret steps from GitHub to result. |
 | Try it as a human reviewer | `python3 src/claimcontractbench.py try-human` | A no-LLM public-paper trial and report under `/tmp`. |
 | Prepare a clean LLM trial | `python3 src/claimcontractbench.py try-llm` | A gold-free packet containing only candidate claims, template cards, prompt, and LLM context. |
 | Understand claim selection | `docs/CLAIM_IDENTIFICATION.md` or `python3 src/claimcontractbench.py claim-id-guide` | How humans or LLMs identify candidate claims before the checker runs. |
@@ -68,13 +96,13 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 132
-required_files: 132
-public_safe_rows: 132
+rows: 133
+required_files: 133
+public_safe_rows: 133
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 13
+positive_checks: 14
 negative_fail_closed_checks: 5
 ```
 
@@ -265,8 +293,8 @@ See `docs/TEMPLATE_ADMISSION.md`.
 ## Repository Map
 
 - `docs/`: concepts, human-facing guides, boundaries, examples, report index,
-  reviewer checklist, reproducibility, data/license posture, FAQ, and
-  LLM-assisted path.
+  reviewer workflow, reviewer checklist, reproducibility, data/license posture,
+  FAQ, and LLM-assisted path.
 - `artifact/`: schemas, manifests, quickstarts, packet templates, and release
   checklist.
 - `data/`: public-safe derived tables and compact evidence displays.
@@ -280,17 +308,18 @@ See `docs/TEMPLATE_ADMISSION.md`.
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
 current guided-trial tag is
-`v0.1.5-cikm2026-claim-identification-boundary`. Earlier tags remain part of the release
+`v0.1.6-cikm2026-reviewer-workflow`. Earlier tags remain part of the release
 history: `v0.1.0-cikm2026-submission` is the initial frozen submission
 snapshot, `v0.1.1-cikm2026-real-paper-template-addendum` adds the first public
 real-paper template addendum, `v0.1.2-cikm2026-real-paper-template-addendum`
 records the read-only-style `/tmp` trial path, and
 `v0.1.3-cikm2026-public-surface-audit` closes the public-surface manifest
 audit; `v0.1.4-cikm2026-guided-trial-paths` adds guided human and LLM trial
-paths. A Zenodo archive may be added for the public submission snapshot, but
-this repository does not claim a public DOI until the Zenodo record resolves.
-After publication, cite the tagged GitHub release and the Zenodo archive
-together.
+paths; `v0.1.5-cikm2026-claim-identification-boundary` clarifies that humans
+or LLMs identify candidate claims before checking. A Zenodo archive may be
+added for the public submission snapshot, but this repository does not claim a
+public DOI until the Zenodo record resolves. After publication, cite the tagged
+GitHub release and the Zenodo archive together.
 
 Current license scope:
 

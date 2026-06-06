@@ -14,9 +14,9 @@ Expected high-level output:
 
 ```text
 PASS release surface validation
-rows: 132
-required_files: 132
-public_safe_rows: 132
+rows: 133
+required_files: 133
+public_safe_rows: 133
 raw_data_rows: 0
 ```
 
@@ -42,7 +42,7 @@ Expected high-level output:
 
 ```text
 PASS release smoke suite
-positive_checks: 13
+positive_checks: 14
 negative_fail_closed_checks: 5
 ```
 

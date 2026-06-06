@@ -108,6 +108,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("")
     print("Ready.")
     print("Next useful commands:")
+    print("- python3 src/claimcontractbench.py reviewer-flow")
     print("- python3 src/claimcontractbench.py try-human")
     print("- python3 src/claimcontractbench.py try-llm")
     print("- python3 src/claimcontractbench.py claim-id-guide")
@@ -126,6 +127,46 @@ def command_doctor(args: argparse.Namespace) -> int:
 def command_smoke(args: argparse.Namespace) -> int:
     root = resolve(Path.cwd(), args.root)
     return run(root, [sys.executable, script(root, "run_release_smoke_suite.py"), "--root", str(root)])
+
+
+def command_reviewer_flow(args: argparse.Namespace) -> int:
+    print("Reviewer end-to-end workflow")
+    print("")
+    print("Use this path when you open the GitHub repository and want one")
+    print("complete route from checkout to interpretable result.")
+    print("")
+    print("1. Get the frozen snapshot:")
+    print("   git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git")
+    print("   cd claimcontractbench-cikm2026-submission-freeze")
+    print("   git checkout v0.1.6-cikm2026-reviewer-workflow")
+    print("")
+    print("2. Run the no-LLM reviewer trial:")
+    print("   python3 src/claimcontractbench.py try-human")
+    print("")
+    print("3. Open the generated report:")
+    print("   /tmp/claimcontractbench_human_trial/real_paper_review_demo_report.md")
+    print("")
+    print("4. Verify the package:")
+    print("   python3 src/claimcontractbench.py doctor")
+    print("   python3 src/claimcontractbench.py smoke")
+    print("")
+    print("5. Interpret narrowly:")
+    print("   For supplied candidate claims in the three registered families,")
+    print("   the checker can replay deterministic claim-audit actions under")
+    print("   explicit template boundaries.")
+    print("")
+    print("Do not interpret the result as autonomous full-paper review, paper")
+    print("accept/reject advice, human reviewer utility, broad empirical-ML")
+    print("coverage, or zero-risk claim release.")
+    print("")
+    print("Human vs LLM role split:")
+    print("- Humans may select candidate claims manually, then fill or inspect a packet.")
+    print("- LLMs may help identify and route candidate claims from allowed text.")
+    print("- The deterministic checker is the release boundary in both paths.")
+    print("")
+    print("Read the full workflow:")
+    print("   docs/REVIEWER_END_TO_END.md")
+    return 0
 
 
 def command_human_guide(args: argparse.Namespace) -> int:
@@ -622,7 +663,7 @@ def build_parser() -> argparse.ArgumentParser:
         description="One-entry ClaimContractBench command hub.",
         epilog=(
             "Fast human path: try-human. Fast LLM path: try-llm. "
-            "Deeper path: doctor -> smoke -> reviewer-checklist."
+            "Complete reviewer path: reviewer-flow."
         ),
     )
     parser.add_argument("--root", default=str(default_root()), help="Release root.")
@@ -642,6 +683,13 @@ def build_parser() -> argparse.ArgumentParser:
     smoke = subparsers.add_parser("smoke", help="Run positive and fail-closed smoke checks.")
     add_subcommand_root(smoke)
     smoke.set_defaults(func=command_smoke)
+
+    reviewer_flow = subparsers.add_parser(
+        "reviewer-flow",
+        help="Print the end-to-end reviewer workflow from GitHub checkout to result.",
+    )
+    add_subcommand_root(reviewer_flow)
+    reviewer_flow.set_defaults(func=command_reviewer_flow)
 
     human_guide = subparsers.add_parser(
         "human-guide",

@@ -2,6 +2,13 @@
 
 ClaimContractBench is easiest to try in two separate paths.
 
+If you are a reviewer opening the GitHub repository for the first time, the
+most complete path is `docs/REVIEWER_END_TO_END.md` or:
+
+```bash
+python3 src/claimcontractbench.py reviewer-flow
+```
+
 Use the human path if you want to inspect the resource yourself. Use the LLM
 path if you want an AI assistant to help adjudicate supplied candidate claims
 inside the current registered templates.

@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.6-cikm2026-reviewer-workflow - Reviewer End-To-End Path
+
+- Added `docs/REVIEWER_END_TO_END.md` as the first complete reviewer path
+  from GitHub checkout to generated report and safe interpretation.
+- Added a CLI `reviewer-flow` command that prints the clone, tag, trial,
+  verification, interpretation, and human/LLM role split.
+- Promoted the reviewer workflow in README, quickstart, checklist, and human
+  reviewer guide so a first-time reviewer does not have to infer the path from
+  a command menu.
+- Expanded smoke coverage so the reviewer workflow entry point is checked
+  alongside the existing human trial, LLM trial packet, claim-identification
+  guide, and fail-closed packet checks.
+
 ## v0.1.5-cikm2026-claim-identification-boundary - Claim Selection Boundary
 
 - Added an explicit claim-identification guide: ClaimContractBench checks

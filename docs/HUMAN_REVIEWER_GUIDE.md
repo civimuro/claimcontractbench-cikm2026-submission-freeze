@@ -6,7 +6,13 @@ LLM. If you are doing a first-pass artifact review, start with
 
 ## What To Do First
 
-If you want the lowest-friction trial first, run:
+If you want the complete GitHub-to-result path first, run:
+
+```bash
+python3 src/claimcontractbench.py reviewer-flow
+```
+
+Then run the no-LLM trial. If you want the lowest-friction trial only, run:
 
 ```bash
 python3 src/claimcontractbench.py try-human
@@ -27,16 +33,17 @@ for first inspection.
 
 ## What To Read Next
 
-1. `docs/REVIEWER_CHECKLIST.md`
-2. `docs/START_HERE.md`
-3. `docs/CLAIM_IDENTIFICATION.md`
-4. `docs/SUPPORTED_TEMPLATE_FAMILIES.md`
-5. `docs/CONCEPTS.md`
-6. `docs/EXAMPLE_OUTPUTS.md`
-7. `docs/REPORT_INDEX.md`
-8. `docs/BOUNDARIES.md`
-9. `docs/DATA_AND_LICENSES.md`
-10. `docs/EVALUATION_SOURCE_INVENTORY.md` if you want the advanced public-paper
+1. `docs/REVIEWER_END_TO_END.md`
+2. `docs/REVIEWER_CHECKLIST.md`
+3. `docs/START_HERE.md`
+4. `docs/CLAIM_IDENTIFICATION.md`
+5. `docs/SUPPORTED_TEMPLATE_FAMILIES.md`
+6. `docs/CONCEPTS.md`
+7. `docs/EXAMPLE_OUTPUTS.md`
+8. `docs/REPORT_INDEX.md`
+9. `docs/BOUNDARIES.md`
+10. `docs/DATA_AND_LICENSES.md`
+11. `docs/EVALUATION_SOURCE_INVENTORY.md` if you want the advanced public-paper
    benchmark/source inventory rather than the ordinary user path.
 
 These files explain what the commands prove, where the generated reports go,

@@ -6,6 +6,14 @@ Python packages are required.
 
 ## 1. Choose A Trial Path
 
+For the complete reviewer path from repository checkout to result:
+
+```bash
+python3 src/claimcontractbench.py reviewer-flow
+```
+
+Then use the no-LLM trial below.
+
 For a no-LLM human/reviewer trial:
 
 ```bash
@@ -36,9 +44,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 132
-required_files: 132
-public_safe_rows: 132
+rows: 133
+required_files: 133
+public_safe_rows: 133
 raw_data_rows: 0
 ```
 
@@ -57,15 +65,16 @@ Expected result:
 
 ```text
 PASS release smoke suite
-positive_checks: 13
+positive_checks: 14
 negative_fail_closed_checks: 5
 ```
 
 The positive checks cover release validation, projection smoke rows, the LLM
 packet happy path, template admission, the three-family real-paper demo, the
-human trial path, the LLM trial-packet path, the LLM adjudication scoring path,
-the one-shot agent guide, the reviewer checklist, the human guide, the claim
-identification guide, and optional feedback scaffolding. The negative checks
+human trial path, the reviewer end-to-end workflow, the LLM trial-packet path,
+the LLM adjudication scoring path, the one-shot agent guide, the reviewer
+checklist, the human guide, the claim identification guide, and optional
+feedback scaffolding. The negative checks
 verify that unsafe or malformed LLM packets fail closed rather than producing a
 licensed claim report. The smoke suite writes only temporary working files and
 should leave a clean git checkout.
