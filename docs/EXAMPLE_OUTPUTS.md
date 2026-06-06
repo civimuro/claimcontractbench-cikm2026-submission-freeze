@@ -58,7 +58,8 @@ Meaning:
 Command:
 
 ```bash
-python3 src/claimcontractbench.py realpaper-demo
+python3 src/claimcontractbench.py realpaper-demo \
+  --output /tmp/claimcontractbench_realpaper_demo
 ```
 
 Expected high-level output:

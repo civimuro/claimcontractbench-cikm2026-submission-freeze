@@ -112,7 +112,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("- python3 src/claimcontractbench.py reviewer-checklist")
     print("- python3 src/claimcontractbench.py human-guide")
     print("- python3 src/claimcontractbench.py templates")
-    print("- python3 src/claimcontractbench.py realpaper-demo")
+    print("- python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo")
     print("- python3 src/claimcontractbench.py agent-guide")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
     print("- python3 src/claimcontractbench.py admission-guide")
@@ -147,7 +147,8 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("release boundary whether a packet is written by a human or drafted by an LLM.")
     print("")
     print("For the current three-family public-paper demo, run:")
-    print("   python3 src/claimcontractbench.py realpaper-demo")
+    print("   python3 src/claimcontractbench.py realpaper-demo \\")
+    print("     --output /tmp/claimcontractbench_realpaper_demo")
     return 0
 
 
@@ -173,7 +174,8 @@ def command_reviewer_checklist(args: argparse.Namespace) -> int:
     print("raw-data redistribution claims, or forced use of nearby templates.")
     print("")
     print("Three-family public-paper trial:")
-    print("  python3 src/claimcontractbench.py realpaper-demo")
+    print("  python3 src/claimcontractbench.py realpaper-demo \\")
+    print("    --output /tmp/claimcontractbench_realpaper_demo")
     return 0
 
 

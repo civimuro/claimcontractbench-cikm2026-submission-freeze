@@ -30,7 +30,8 @@ If you want to test an LLM on a fixed public-paper packet instead of drafting a
 new packet, use:
 
 ```bash
-python3 src/claimcontractbench.py realpaper-demo
+python3 src/claimcontractbench.py realpaper-demo \
+  --output /tmp/claimcontractbench_realpaper_demo
 ```
 
 To score an LLM adjudication, give the LLM only:

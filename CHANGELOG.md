@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.2-cikm2026-real-paper-template-addendum - Trial-Path UX Check
+
+- Updated the human/reviewer quick trial path to prefer `/tmp` output, so
+  first-time users can run the real-paper demo without writing generated files
+  into their checkout.
+- Kept the tracked generated report available for evidence inspection while
+  making the read-only-style command the visible first-use route.
+
 ## v0.1.1-cikm2026-real-paper-template-addendum - Public Template Trial Addendum
 
 - Added a real-paper template review demo over 18 public arXiv papers and 72

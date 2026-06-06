@@ -15,7 +15,7 @@ LLM to draft a claim packet that the deterministic checker then audits.
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
 | Verify the resource as a reviewer | `docs/REVIEWER_CHECKLIST.md` or `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
-| Try the real-paper template demo | `python3 src/claimcontractbench.py realpaper-demo` | A 72-row public-paper claim review demo over three V1.8-backed template families. |
+| Try the real-paper template demo | `python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo` | A 72-row public-paper claim review demo over three V1.8-backed template families. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
 | Add a new claim family | `python3 src/claimcontractbench.py admission-guide` | A typed template-admission workflow instead of loose template reuse. |
 
@@ -238,12 +238,13 @@ See `docs/TEMPLATE_ADMISSION.md`.
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
 current addendum tag is
-`v0.1.1-cikm2026-real-paper-template-addendum`. The earlier
+`v0.1.2-cikm2026-real-paper-template-addendum`. The earlier
 `v0.1.0-cikm2026-submission` tag remains the initial frozen submission
-snapshot. A Zenodo archive may be added for the public submission snapshot, but
-this repository does not claim a public DOI until the Zenodo record resolves.
-After publication, cite the tagged GitHub release and the Zenodo archive
-together.
+snapshot, and `v0.1.1-cikm2026-real-paper-template-addendum` records the first
+public real-paper template addendum. A Zenodo archive may be added for the
+public submission snapshot, but this repository does not claim a public DOI
+until the Zenodo record resolves. After publication, cite the tagged GitHub
+release and the Zenodo archive together.
 
 Current license scope:
 
