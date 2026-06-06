@@ -6,6 +6,12 @@ Purpose: define the public/reviewer-facing artifact root for
 ClaimContractBench without leaking private coordination files, credentials, or
 raw datasets.
 
+Current status note: this file began as the 2026-05-20 release-root plan and is
+kept as a planning/provenance document. The canonical current file inventory is
+`artifact/release_manifest_20260520.csv`; the manifest-controlled public surface
+currently contains 128 required public-safe rows, including the later
+real-paper template-review addendum.
+
 ## 1. Release Root
 
 The reviewer checkout is organized as:
@@ -34,6 +40,13 @@ ClaimContractBench/
 │   ├── reviewer_claim_intake_schema_20260521.json
 │   ├── reviewer_claim_intake_examples_20260521.csv
 │   ├── llm_claim_review_packet_template_20260527.csv
+│   ├── real_paper_review_template_cards_v18_20260606.csv
+│   ├── real_paper_review_source_manifest_v318b_20260606.csv
+│   ├── real_paper_review_candidate_claims_v318b_20260606.csv
+│   ├── real_paper_review_reference_outcomes_v318b_20260606.csv
+│   ├── real_paper_review_evidence_summary_v318b_20260606.json
+│   ├── real_paper_review_public_manifest_v318b_20260606.json
+│   ├── real_paper_review_llm_prompt_20260606.md
 │   ├── application_motivation_cases_20260521.csv
 │   ├── claim_audit_gold_probe_schema_20260521.json
 │   ├── claim_audit_gold_probe_cases_20260521.csv
@@ -60,6 +73,7 @@ ClaimContractBench/
 │   ├── PAPER_EXCERPT_REVIEWER_VALUE_BENCHMARK_20260521.md
 │   └── APPENDIX_C_RESOURCE_RELEASE.md
 ├── reports/
+│   ├── real_paper_review_demo_20260606/
 │   ├── paragraph_claim_span_router_external_eval_guided_20260521/
 │   └── paragraph_claim_span_router_holdout_eval_guided_20260521/
 └── src/
@@ -71,6 +85,7 @@ ClaimContractBench/
     ├── run_reviewer_audit_demo.py
     ├── run_reviewer_audit_demo_regression.py
     ├── run_llm_claim_review_packet.py
+    ├── run_real_paper_review_demo.py
     ├── run_claim_audit_gold_probe.py
     ├── run_paper_claim_gold_benchmark.py
     ├── run_paper_excerpt_reviewer_value_benchmark.py
@@ -98,6 +113,7 @@ Include:
 - standard-library reviewer-facing audit demo generator;
 - standard-library reviewer-facing audit demo regression generator;
 - standard-library LLM claim-review packet generator;
+- standard-library real-paper template-review demo runner;
 - public-safe selected and holdout paragraph routing fixtures needed to
   regenerate the reviewer-facing audit demo;
 - standard-library claim-audit gold-probe runner;
@@ -107,7 +123,10 @@ Include:
 - public-safe paraphrased 40-paper claim benchmark sources and cases;
 - public-safe source-anchored selected-excerpt benchmark cases;
 - source/provenance and release posture docs;
-- first-inspection environment note.
+- first-inspection environment note;
+- public-safe real-paper template cards, source manifest, candidate claims,
+  reference outcomes, and replay summaries for the current three-family
+  addendum.
 
 Exclude:
 
@@ -135,15 +154,16 @@ python3 src/run_claim_audit_gold_probe.py --output reports/claim_audit_gold_prob
 python3 src/run_paper_claim_gold_benchmark.py --output reports/paper_claim_gold_benchmark_20260521
 python3 src/run_paper_excerpt_reviewer_value_benchmark.py --output reports/paper_excerpt_reviewer_value_benchmark_20260521
 python3 src/run_paper_claim_annotation_agreement.py --output reports/paper_claim_annotation_agreement_20260521
+python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo
 ```
 
 Expected result:
 
 ```text
 PASS release surface validation
-rows: 123
-required_files: 123
-public_safe_rows: 123
+rows: 128
+required_files: 128
+public_safe_rows: 128
 raw_data_rows: 0
 PASS projection smoke runner
 smoke_rows: 5
@@ -200,6 +220,12 @@ PASS paper claim annotation agreement scaffold
 annotation_status: PENDING_SECOND_ANNOTATOR
 annotation_rows: 128
 agreement_computed: no
+PASS real-paper review demo
+rows: 72
+source_papers: 18
+conservative_candidate_safety_accuracy: 0.958
+conservative_display_action_accuracy: 0.806
+conservative_unsafe_false_releases: 3
 ```
 
 These commands validate the release surface and regenerate the five public
@@ -235,6 +261,11 @@ claiming autonomous full-paper review.
 The annotation-agreement runner validates the randomized blind packet and
 annotation map now, then computes exact agreement and Cohen's kappa once a
 second annotator fills the route/action label columns.
+The real-paper demo runner evaluates the current public addendum over supplied
+candidate claims from 18 public arXiv papers and three V1.8-backed template
+families. It is a registered-template trial and replay surface, not automatic
+full-paper extraction, broad empirical-ML coverage, human reviewer utility, or
+zero-risk claim release.
 
 ## 3b. Release-Root Validation
 

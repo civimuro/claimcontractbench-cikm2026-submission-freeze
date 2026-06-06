@@ -1,0 +1,11 @@
+check_id,label,status,evidence
+ADM-01,inputs present,PASS,"schema, cases, casebook, and NAB visual rows loaded"
+ADM-02,case header alignment,PASS,case header has 16 expected columns
+ADM-03,public-safe template text,PASS,9 templates have no private path or credential markers
+ADM-04,expected verdict agreement,PASS,computed levels and verdicts match expected admission labels
+ADM-05,anchor resolution,PASS,admitted templates resolve to CP or NAB visual anchors
+ADM-06,critical-field completeness for admitted templates,PASS,8 admitted templates provide all nine critical fields
+ADM-07,mainline action coverage,PASS,mainline templates cover all five action families
+ADM-08,support-only ceiling,PASS,support-only rows are not promoted to mainline or headline claims
+ADM-09,boundary rejection remains active,PASS,AI4I boundary probe is rejected until it supplies the adapter contract
+ADM-10,forbidden-claim and boundary discipline,PASS,all admitted templates include forbidden claims and boundary notes

@@ -39,9 +39,9 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 123
-required_files: 123
-public_safe_rows: 123
+rows: 128
+required_files: 128
+public_safe_rows: 128
 raw_data_rows: 0
 
 PASS release smoke suite
@@ -237,13 +237,14 @@ See `docs/TEMPLATE_ADMISSION.md`.
 ## Release And Citation Status
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
-current addendum tag is
-`v0.1.2-cikm2026-real-paper-template-addendum`. The earlier
-`v0.1.0-cikm2026-submission` tag remains the initial frozen submission
-snapshot, and `v0.1.1-cikm2026-real-paper-template-addendum` records the first
-public real-paper template addendum. A Zenodo archive may be added for the
-public submission snapshot, but this repository does not claim a public DOI
-until the Zenodo record resolves. After publication, cite the tagged GitHub
+current audited public-surface tag is
+`v0.1.3-cikm2026-public-surface-audit`. Earlier tags remain part of the release
+history: `v0.1.0-cikm2026-submission` is the initial frozen submission
+snapshot, `v0.1.1-cikm2026-real-paper-template-addendum` adds the first public
+real-paper template addendum, and `v0.1.2-cikm2026-real-paper-template-addendum`
+records the read-only-style `/tmp` trial path. A Zenodo archive may be added
+for the public submission snapshot, but this repository does not claim a public
+DOI until the Zenodo record resolves. After publication, cite the tagged GitHub
 release and the Zenodo archive together.
 
 Current license scope:

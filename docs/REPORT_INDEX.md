@@ -12,8 +12,8 @@ surface.
 
 | Claim to verify | Command | Expected signal | Open after running |
 | --- | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 123 rows, 123 required files, 123 public-safe rows, 0 raw-data rows. | Console output. |
-| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 9 positive checks and 4 fail-closed negative checks pass. | Console output. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 128 rows, 128 required files, 128 public-safe rows, 0 raw-data rows. | Console output. |
+| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 9 positive checks and 5 fail-closed negative checks pass. | Console output. |
 | The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. | Console output, or the path supplied with `--write-generated`. |
 
 ## Resource Behavior Reports

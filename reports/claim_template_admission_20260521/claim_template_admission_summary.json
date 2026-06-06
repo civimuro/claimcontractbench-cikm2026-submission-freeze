@@ -1,0 +1,22 @@
+{
+  "admitted_mainline": 5,
+  "admitted_support_only": 3,
+  "boundary_probe": 0,
+  "checks_failed": 0,
+  "checks_passed": 10,
+  "critical_fields": [
+    "evidence_unit",
+    "claim_template",
+    "G_binding",
+    "Q_binding",
+    "U_binding",
+    "action_mapping",
+    "preorder_relation",
+    "forbidden_claim",
+    "visual_or_case_anchor"
+  ],
+  "rejected": 1,
+  "status": "PASS",
+  "templates": 9,
+  "tool_boundary": "typed template admission over release rows; no arbitrary prose inference and no automatic support-only promotion"
+}

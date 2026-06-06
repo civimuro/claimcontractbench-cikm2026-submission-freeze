@@ -5,6 +5,11 @@ Status: `PUBLIC_FRIENDLY_SUBMISSION_SNAPSHOT_2026-06-01`.
 This quickstart is written for the public/reviewer artifact root. It is not tied
 to private coordination directories or local machine paths.
 
+Current status note: this file preserves the release-root quickstart lineage.
+For first-time users, the README and `docs/QUICKSTART.md` are the shortest
+entry points. The current manifest-controlled surface has 128 required
+public-safe rows and includes the later real-paper template-review addendum.
+
 This archive is a manifest-controlled derived-asset release. Running these
 commands creates reviewer reports under `reports/`; those reports are generated
 inspection outputs, not raw-data reproductions and not a claim that raw
@@ -52,11 +57,36 @@ Expected output for the surface validator:
 PASS release surface validation
 root: /path/to/release/root
 manifest: artifact/release_manifest_20260520.csv
-rows: 123
-required_files: 123
-public_safe_rows: 123
+rows: 128
+required_files: 128
+public_safe_rows: 128
 raw_data_rows: 0
 ```
+
+## Current Real-Paper Template Trial
+
+For the most direct current trial path, run:
+
+```bash
+python3 src/claimcontractbench.py realpaper-demo \
+  --output /tmp/claimcontractbench_realpaper_demo
+```
+
+Expected output:
+
+```text
+PASS real-paper review demo
+rows: 72
+source_papers: 18
+conservative_candidate_safety_accuracy: 0.958
+conservative_display_action_accuracy: 0.806
+conservative_unsafe_false_releases: 3
+```
+
+This uses supplied candidate claims from 18 public arXiv papers across three
+V1.8-backed template families. It is not automatic full-paper review, human
+reviewer utility evidence, broad empirical-ML coverage, or zero-risk claim
+release.
 
 ## Fast LLM-Assisted Path
 

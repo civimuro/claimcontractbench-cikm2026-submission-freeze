@@ -122,3 +122,8 @@ reports/real_paper_review_demo_20260606/real_paper_review_demo_report.md,real-pa
 reports/real_paper_review_demo_20260606/real_paper_review_demo_decisions.csv,real-paper demo generated decisions,yes,yes,no,Public-safe generated decision table for the real-paper template review demo
 reports/real_paper_review_demo_20260606/real_paper_review_demo_summary.json,real-paper demo generated summary,yes,yes,no,Public-safe generated aggregate summary for the real-paper template review demo
 reports/real_paper_review_demo_20260606/real_paper_review_demo_checks.csv,real-paper demo generated checks,yes,yes,no,Public-safe generated check table for the real-paper template review demo
+reports/claim_template_admission_20260521/claim_template_admission_checks.csv,claim-template admission generated checks,yes,yes,no,Public-safe generated check table for the claim-template admission report
+reports/claim_template_admission_20260521/claim_template_admission_report.html,claim-template admission generated HTML report,yes,yes,no,Public-safe generated HTML report for claim-template admission
+reports/claim_template_admission_20260521/claim_template_admission_report.md,claim-template admission generated Markdown report,yes,yes,no,Public-safe generated Markdown report for claim-template admission
+reports/claim_template_admission_20260521/claim_template_admission_summary.json,claim-template admission generated summary,yes,yes,no,Public-safe generated aggregate summary for claim-template admission
+reports/claim_template_admission_20260521/claim_template_admission_verdicts.csv,claim-template admission generated verdicts,yes,yes,no,Public-safe generated verdict table for claim-template admission

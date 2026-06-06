@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.1.3-cikm2026-public-surface-audit - Public-Surface Closure
+
+- Closed the manifest surface after the real-paper template addendum: all 128
+  tracked public-safe release files are now represented in the release
+  manifest, including the tracked template-admission report fixtures.
+- Synchronized public-facing validator and smoke-suite numbers across README,
+  reviewer quickstarts, report index, resource specification, and paper-facing
+  resource appendix.
+- Kept the package boundary explicit: no credentials, private coordination
+  files, raw third-party datasets, full paper PDFs, automatic full-paper review
+  claim, human-utility claim, or zero-risk claim release is part of this
+  snapshot.
+- Refreshed citation metadata and checklist language for the current audited
+  public-surface tag.
+
 ## v0.1.2-cikm2026-real-paper-template-addendum - Trial-Path UX Check
 
 - Updated the human/reviewer quick trial path to prefer `/tmp` output, so
