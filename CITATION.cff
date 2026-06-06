@@ -1,10 +1,10 @@
 cff-version: 1.2.0
-message: "Citation metadata for the v0.1.3-cikm2026-public-surface-audit snapshot. Add the public Zenodo DOI only after the record resolves."
+message: "Citation metadata for the v0.1.4-cikm2026-guided-trial-paths snapshot. Add the public Zenodo DOI only after the record resolves."
 title: "ClaimContractBench: A Finite Claim-Licensing Resource for Metric-to-Claim Reporting"
 authors:
   - family-names: "Guo"
     given-names: "Yihui"
     affiliation: "Wuhan University"
-version: "v0.1.3-cikm2026-public-surface-audit"
+version: "v0.1.4-cikm2026-guided-trial-paths"
 repository-code: "https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze"
 license: "Apache-2.0 AND CC-BY-4.0"

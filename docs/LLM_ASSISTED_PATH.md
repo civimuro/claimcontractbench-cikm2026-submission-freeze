@@ -13,6 +13,18 @@ The human reviewer path does not require it.
 
 ## Minimal Workflow
 
+If you want the cleanest fixed public-paper trial, start with:
+
+```bash
+python3 src/claimcontractbench.py try-llm
+```
+
+This copies only candidate claims, template cards, the LLM prompt, and
+`docs/LLM_CONTEXT.md` into `/tmp/claimcontractbench_llm_trial`. It deliberately
+does not copy gold/reference outcomes or generated reports.
+
+For a custom paper packet, use:
+
 ```bash
 python3 src/claimcontractbench.py templates
 python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv

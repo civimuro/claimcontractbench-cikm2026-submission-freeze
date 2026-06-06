@@ -6,6 +6,12 @@ This page is the canonical human-reviewer entry point.
 
 ## Ten-Minute Check
 
+For a no-LLM trial over the current real-paper template surface:
+
+```bash
+python3 src/claimcontractbench.py try-human
+```
+
 Run these from the repository root:
 
 ```bash
@@ -17,13 +23,13 @@ Expected high-level signal:
 
 ```text
 PASS release surface validation
-rows: 128
-required_files: 128
-public_safe_rows: 128
+rows: 131
+required_files: 131
+public_safe_rows: 131
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 9
+positive_checks: 12
 negative_fail_closed_checks: 5
 ```
 
@@ -62,6 +68,7 @@ judges paper acceptance.
 | Which paper-facing claims are supported by which files? | `docs/REPORT_INDEX.md` | Each claim has a command, expected signal, and boundary. |
 | What should not be claimed? | `docs/BOUNDARIES.md` | No autonomous review, peer-review replacement, raw-data redistribution, or human-utility proof is asserted. |
 | How does the optional LLM path behave? | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | The packet reports registered calls, admission-needed rows, out-of-scope rows, and zero unsafe release. |
+| Can an LLM try the current real-paper packet without gold leakage? | `python3 src/claimcontractbench.py try-llm` | A clean `/tmp` packet is created with candidate claims, template cards, prompt, and LLM context only. |
 | Can the current real-paper templates be tried directly? | `python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo` | The 72-row public-paper demo reports three families, conservative safety 0.958, display-action accuracy 0.806, and three residual unsafe releases. |
 
 ## Thirty-Minute Deepening Path

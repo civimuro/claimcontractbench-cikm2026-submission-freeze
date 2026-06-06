@@ -7,7 +7,7 @@ to private coordination directories or local machine paths.
 
 Current status note: this file preserves the release-root quickstart lineage.
 For first-time users, the README and `docs/QUICKSTART.md` are the shortest
-entry points. The current manifest-controlled surface has 128 required
+entry points. The current manifest-controlled surface has 131 required
 public-safe rows and includes the later real-paper template-review addendum.
 
 This archive is a manifest-controlled derived-asset release. Running these
@@ -57,9 +57,9 @@ Expected output for the surface validator:
 PASS release surface validation
 root: /path/to/release/root
 manifest: artifact/release_manifest_20260520.csv
-rows: 128
-required_files: 128
-public_safe_rows: 128
+rows: 131
+required_files: 131
+public_safe_rows: 131
 raw_data_rows: 0
 ```
 

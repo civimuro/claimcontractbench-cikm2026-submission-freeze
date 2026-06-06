@@ -16,14 +16,17 @@ LICENSE.md,license scope,yes,yes,no,Final mixed-license scope for code and deriv
 LICENSES/Apache-2.0.txt,Apache-2.0 license text,yes,yes,no,Full Apache License 2.0 text for code and executable scripts
 LICENSES/CC-BY-4.0.txt,CC-BY-4.0 license text,yes,yes,no,Full Creative Commons Attribution 4.0 International license text for derived non-code resource materials
 docs/QUICKSTART.md,second-layer reviewer quickstart,yes,yes,no,Ten-minute reviewer path and expected outputs
+docs/START_HERE.md,first-contact trial guide,yes,yes,no,Human and LLM no-threshold trial paths for the current three-family resource surface
 docs/REVIEWER_CHECKLIST.md,reviewer verification checklist,yes,yes,no,One-page reviewer map for artifact validation evidence inspection and misuse red flags
 docs/CONCEPTS.md,plain-language concept guide,yes,yes,no,Human-friendly explanation of metric-to-claim contracts GQU templates and fail-closed routing
 docs/HUMAN_REVIEWER_GUIDE.md,human reviewer guide,yes,yes,no,Non-LLM reviewer inspection guide and interpretation path
 docs/EXAMPLE_OUTPUTS.md,example outputs guide,yes,yes,no,Plain-language interpretation of common command outputs
 docs/BOUNDARIES.md,boundary and non-goal guide,yes,yes,no,Scope roles and safe interpretation guide
 docs/REPORT_INDEX.md,report and evidence index,yes,yes,no,Maps paper-facing claims to commands outputs and boundaries
+docs/SUPPORTED_TEMPLATE_FAMILIES.md,current supported template families,yes,yes,no,Explains the three V1.8-backed template families current capability evidence and expansion rule
 docs/TEMPLATE_ADMISSION.md,template admission documentation,yes,yes,no,Explains new-template contract fields and admission outcomes
 docs/LLM_ASSISTED_PATH.md,LLM-assisted path guide,yes,yes,no,Optional LLM packet drafting path separated from human reviewer path
+docs/LLM_CONTEXT.md,LLM context guide,yes,yes,no,Gold-free context file for AI assistants using the fixed real-paper trial packet
 docs/REPRODUCIBILITY.md,reproducibility documentation,yes,yes,no,Environment and validation details for first inspection
 docs/DATA_AND_LICENSES.md,data and license documentation,yes,yes,no,Raw-data posture derived-material license and user responsibility guide
 docs/EVALUATION_SOURCE_INVENTORY.md,advanced evaluation source inventory,yes,yes,no,Reviewer-facing inventory for public-paper benchmark surfaces and public-safe source policy

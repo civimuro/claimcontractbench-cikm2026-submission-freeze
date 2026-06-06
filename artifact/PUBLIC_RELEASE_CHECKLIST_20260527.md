@@ -24,9 +24,9 @@ final public resource snapshot for the paper.
 - Plain-language concept guide for readers who are new to metric-to-claim
   contracts.
 - Public contribution, support, security, issue, and pull-request templates.
-- Current manifest validator result: 128 rows, 128 required files, 128
+- Current manifest validator result: 131 rows, 131 required files, 131
   public-safe rows, 0 raw-data rows.
-- Current smoke result: 9 positive checks and 5 negative fail-closed checks.
+- Current smoke result: 12 positive checks and 5 negative fail-closed checks.
 
 ## External Release Status To Verify
 
@@ -41,8 +41,8 @@ final public resource snapshot for the paper.
    record page for the exact published artifact.
 5. If this file is being read from the final Zenodo record page, use Zenodo
    metadata as the authoritative publication status.
-6. Verify the current public-surface tag
-   `v0.1.3-cikm2026-public-surface-audit` points to the intended audited
+6. Verify the current guided-trial tag
+   `v0.1.4-cikm2026-guided-trial-paths` points to the intended audited
    snapshot commit. Older tags remain release-history checkpoints.
 7. Create or verify a GitHub release from the tagged commit when ready.
 8. Publish or verify the Zenodo record for the same snapshot if an archive DOI

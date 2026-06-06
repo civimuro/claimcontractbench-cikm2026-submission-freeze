@@ -21,6 +21,7 @@ The first CIKM-facing release should include:
 - claim-audit gold-probe runner;
 - paper-claim gold benchmark runner;
 - real-paper registered-template demo runner;
+- no-LLM human trial command and gold-free LLM trial packet command;
 - compact derived evidence tables;
 - source/provenance and license posture table;
 - environment note;
@@ -112,10 +113,12 @@ python3 src/run_paper_claim_gold_benchmark.py --output reports/paper_claim_gold_
 python3 src/run_paper_excerpt_reviewer_value_benchmark.py --output reports/paper_excerpt_reviewer_value_benchmark_20260521
 python3 src/run_paper_claim_annotation_agreement.py --output reports/paper_claim_annotation_agreement_20260521
 python3 src/claimcontractbench.py realpaper-demo
+python3 src/claimcontractbench.py try-human
+python3 src/claimcontractbench.py try-llm
 ```
 
 Current release-candidate status: the validator passes from the release root against
-`artifact/release_manifest_20260520.csv`, with 128 required public-safe rows and
+`artifact/release_manifest_20260520.csv`, with 131 required public-safe rows and
 0 raw-data rows. The manifest includes `LICENSE.md` plus the Apache-2.0 and
 CC-BY-4.0 license texts. The validator scans required release files for private
 coordination paths, local machine paths, and credential-like patterns, and it
@@ -172,6 +175,11 @@ conservative replay. It demonstrates registered-template behavior on supplied
 candidate claims, while explicitly not claiming automatic full-paper claim
 discovery, broad empirical-ML coverage, zero-risk release, or human reviewer
 utility.
+The `try-human` command wraps this into a no-LLM reviewer path. The `try-llm`
+command creates a clean blind-style packet containing only candidate claims,
+template cards, prompt text, and LLM context; it deliberately excludes reference
+outcomes and generated scoring reports until the user supplies an adjudication
+CSV for scoring.
 
 ## Release Checklist
 

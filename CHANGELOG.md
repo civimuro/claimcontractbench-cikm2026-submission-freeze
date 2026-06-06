@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.1.4-cikm2026-guided-trial-paths - Human And LLM Trial UX
+
+- Added a first-contact guide, LLM context file, and supported-template-family
+  guide so human reviewers and AI assistants can understand the resource
+  surface without reading the whole repository first.
+- Added `try-human` for a no-LLM public-paper trial and `try-llm` for a
+  gold-free LLM packet containing only candidate claims, template cards, prompt,
+  and LLM context.
+- Promoted the current practical capability statement: three V1.8-backed
+  families (`llm_evaluation`, `resource_documentation`, and
+  `uncertainty_calibration`) are supported for supplied candidate claims; other
+  domains require template admission.
+- Expanded the smoke suite so both no-threshold trial paths are checked in
+  addition to the existing release and fail-closed checks.
+
 ## v0.1.3-cikm2026-public-surface-audit - Public-Surface Closure
 
 - Closed the manifest surface after the real-paper template addendum: all 128

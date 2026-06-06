@@ -6,6 +6,17 @@ LLM. If you are doing a first-pass artifact review, start with
 
 ## What To Do First
 
+If you want the lowest-friction trial first, run:
+
+```bash
+python3 src/claimcontractbench.py try-human
+```
+
+This validates the release surface and runs the current three-family public
+paper demo into `/tmp/claimcontractbench_human_trial`.
+
+For a deeper verification pass, run:
+
 Run:
 
 ```bash
@@ -19,12 +30,14 @@ for first inspection.
 ## What To Read Next
 
 1. `docs/REVIEWER_CHECKLIST.md`
-2. `docs/CONCEPTS.md`
-3. `docs/EXAMPLE_OUTPUTS.md`
-4. `docs/REPORT_INDEX.md`
-5. `docs/BOUNDARIES.md`
-6. `docs/DATA_AND_LICENSES.md`
-7. `docs/EVALUATION_SOURCE_INVENTORY.md` if you want the advanced public-paper
+2. `docs/START_HERE.md`
+3. `docs/SUPPORTED_TEMPLATE_FAMILIES.md`
+4. `docs/CONCEPTS.md`
+5. `docs/EXAMPLE_OUTPUTS.md`
+6. `docs/REPORT_INDEX.md`
+7. `docs/BOUNDARIES.md`
+8. `docs/DATA_AND_LICENSES.md`
+9. `docs/EVALUATION_SOURCE_INVENTORY.md` if you want the advanced public-paper
    benchmark/source inventory rather than the ordinary user path.
 
 These files explain what the commands prove, where the generated reports go,

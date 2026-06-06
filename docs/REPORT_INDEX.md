@@ -12,8 +12,10 @@ surface.
 
 | Claim to verify | Command | Expected signal | Open after running |
 | --- | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 128 rows, 128 required files, 128 public-safe rows, 0 raw-data rows. | Console output. |
-| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 9 positive checks and 5 fail-closed negative checks pass. | Console output. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 131 rows, 131 required files, 131 public-safe rows, 0 raw-data rows. | Console output. |
+| The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 12 positive checks and 5 fail-closed negative checks pass. | Console output. |
+| A human can try the current resource without an LLM. | `python3 src/claimcontractbench.py try-human` | Validates the surface and runs the 72-row public-paper demo under `/tmp`. | `/tmp/claimcontractbench_human_trial/real_paper_review_demo_report.md`. |
+| An LLM can receive a clean blind-style trial packet. | `python3 src/claimcontractbench.py try-llm` | Copies candidate claims, template cards, prompt, and LLM context only. | `/tmp/claimcontractbench_llm_trial/`. |
 | The projection operator regenerates five action-family examples. | `python3 src/run_projection_smoke.py` | 5 rows: emit, relabel, weaken, rewrite, suppress. | Console output, or the path supplied with `--write-generated`. |
 
 ## Resource Behavior Reports

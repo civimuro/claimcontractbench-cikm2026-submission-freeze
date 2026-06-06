@@ -8,10 +8,34 @@ It is a research-resource snapshot, not a chatbot demo. You can inspect it with
 plain Python commands, read the evidence tables directly, or optionally use an
 LLM to draft a claim packet that the deterministic checker then audits.
 
+## Fastest Trial
+
+For a no-LLM human/reviewer trial:
+
+```bash
+python3 src/claimcontractbench.py try-human
+```
+
+For an LLM-assisted trial packet with no gold/reference files:
+
+```bash
+python3 src/claimcontractbench.py try-llm
+```
+
+The current practical surface supports three V1.8-backed template families:
+`llm_evaluation`, `resource_documentation`, and `uncertainty_calibration`.
+Other domains should go through template admission instead of being forced into
+a nearby template.
+
+Start with `docs/START_HERE.md` if you want the shortest guided path, or
+`docs/LLM_CONTEXT.md` if you are giving the repository to an AI assistant.
+
 ## Choose A Path
 
 | I want to... | Start here | What you get |
 | --- | --- | --- |
+| Try it as a human reviewer | `python3 src/claimcontractbench.py try-human` | A no-LLM public-paper trial and report under `/tmp`. |
+| Prepare a clean LLM trial | `python3 src/claimcontractbench.py try-llm` | A gold-free packet containing only candidate claims, template cards, prompt, and LLM context. |
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
 | Verify the resource as a reviewer | `docs/REVIEWER_CHECKLIST.md` or `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
@@ -39,13 +63,13 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 128
-required_files: 128
-public_safe_rows: 128
+rows: 131
+required_files: 131
+public_safe_rows: 131
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 9
+positive_checks: 12
 negative_fail_closed_checks: 5
 ```
 
@@ -66,6 +90,7 @@ Then read by depth:
 
 | Time budget | Read |
 | --- | --- |
+| First contact | `docs/START_HERE.md`, `docs/SUPPORTED_TEMPLATE_FAMILIES.md` |
 | 10 minutes | `docs/REVIEWER_CHECKLIST.md`, `docs/CONCEPTS.md`, `docs/BOUNDARIES.md` |
 | 30 minutes | `docs/HUMAN_REVIEWER_GUIDE.md`, `docs/REPORT_INDEX.md`, `docs/EXAMPLE_OUTPUTS.md` |
 | Deep check | `docs/DATA_AND_LICENSES.md`, `docs/REPRODUCIBILITY.md`, `docs/EVALUATION_SOURCE_INVENTORY.md`, `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` |
@@ -100,6 +125,15 @@ conservative_unsafe_false_releases: 3
 Read `docs/REAL_PAPER_REVIEW_DEMO.md` for the full workflow, including how to
 score an independent LLM adjudication against the supplied reference outcomes.
 
+For a clean LLM packet, run:
+
+```bash
+python3 src/claimcontractbench.py try-llm
+```
+
+This copies only the candidate claims, template cards, LLM prompt, and LLM
+context into `/tmp/claimcontractbench_llm_trial`.
+
 ## What The Resource Does
 
 ClaimContractBench asks one narrow question:
@@ -123,6 +157,7 @@ The release includes:
 - a public-safe real-paper template-review addendum with 18 public source
   papers, 72 supplied candidate claims, three V1.8-backed template families,
   and a replay/scoring runner;
+- a no-LLM human trial command and a gold-free LLM trial-packet command;
 - an advanced evaluation-source inventory that keeps public-paper simulation
   data separate from the ordinary user path;
 - standard-library runners that regenerate reports without raw data downloads,
@@ -237,15 +272,17 @@ See `docs/TEMPLATE_ADMISSION.md`.
 ## Release And Citation Status
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
-current audited public-surface tag is
-`v0.1.3-cikm2026-public-surface-audit`. Earlier tags remain part of the release
+current guided-trial tag is
+`v0.1.4-cikm2026-guided-trial-paths`. Earlier tags remain part of the release
 history: `v0.1.0-cikm2026-submission` is the initial frozen submission
 snapshot, `v0.1.1-cikm2026-real-paper-template-addendum` adds the first public
-real-paper template addendum, and `v0.1.2-cikm2026-real-paper-template-addendum`
-records the read-only-style `/tmp` trial path. A Zenodo archive may be added
-for the public submission snapshot, but this repository does not claim a public
-DOI until the Zenodo record resolves. After publication, cite the tagged GitHub
-release and the Zenodo archive together.
+real-paper template addendum, `v0.1.2-cikm2026-real-paper-template-addendum`
+records the read-only-style `/tmp` trial path, and
+`v0.1.3-cikm2026-public-surface-audit` closes the public-surface manifest
+audit. A Zenodo archive may be added for the public submission snapshot, but
+this repository does not claim a public DOI until the Zenodo record resolves.
+After publication, cite the tagged GitHub release and the Zenodo archive
+together.
 
 Current license scope:
 

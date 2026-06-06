@@ -108,6 +108,8 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("")
     print("Ready.")
     print("Next useful commands:")
+    print("- python3 src/claimcontractbench.py try-human")
+    print("- python3 src/claimcontractbench.py try-llm")
     print("- python3 src/claimcontractbench.py smoke")
     print("- python3 src/claimcontractbench.py reviewer-checklist")
     print("- python3 src/claimcontractbench.py human-guide")
@@ -131,6 +133,8 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("Use this path when you want to inspect the resource without an LLM.")
     print("Start with docs/REVIEWER_CHECKLIST.md for the canonical first-pass map.")
     print("")
+    print("0. If you just want to try the current real-paper surface:")
+    print("   python3 src/claimcontractbench.py try-human")
     print("1. Verify that the checkout is a public-safe release surface:")
     print("   python3 src/claimcontractbench.py doctor")
     print("2. Run the first-inspection smoke suite:")
@@ -207,6 +211,120 @@ def command_realpaper_demo(args: argparse.Namespace) -> int:
     if args.adjudication:
         command.extend(["--adjudication", args.adjudication])
     return run(root, command)
+
+
+def read_realpaper_template_families(root: Path) -> list[tuple[str, str]]:
+    path = root / "artifact" / "real_paper_review_template_cards_v18_20260606.csv"
+    with path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    return [(row["family"], row["template_id"]) for row in rows]
+
+
+def command_try_human(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    output = resolve(root, args.output)
+    print("ClaimContractBench human trial")
+    print("")
+    print("This no-LLM path verifies the resource and runs the current")
+    print("three-family public-paper demo. It writes generated reports outside")
+    print("the checkout by default.")
+    print("")
+    sys.stdout.flush()
+    code = run(root, [sys.executable, script(root, "validate_release_surface.py")])
+    if code != 0:
+        return code
+    code = run(
+        root,
+        [
+            sys.executable,
+            script(root, "run_real_paper_review_demo.py"),
+            "--root",
+            str(root),
+            "--output",
+            str(output),
+        ],
+    )
+    if code != 0:
+        return code
+    print("")
+    print("Supported trial families:")
+    for family, template_id in read_realpaper_template_families(root):
+        print(f"- {family}: {template_id}")
+    print("")
+    print("Open this report:")
+    print(f"{output / 'real_paper_review_demo_report.md'}")
+    print("")
+    print("Safe interpretation:")
+    print("- three registered template families can be replayed on supplied public-paper claims;")
+    print("- unsupported domains still require template admission;")
+    print("- this is not full-paper claim discovery or a human reviewer utility study.")
+    return 0
+
+
+def command_try_llm(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    output = resolve(root, args.output)
+    if output.exists() and any(output.iterdir()) and not args.force:
+        print("FAIL LLM trial packet")
+        print(f"output directory is not empty: {output}")
+        print("Use --force to reuse it.")
+        return 1
+    output.mkdir(parents=True, exist_ok=True)
+
+    files = [
+        (
+            root / "artifact" / "real_paper_review_candidate_claims_v318b_20260606.csv",
+            output / "01_candidate_claims.csv",
+        ),
+        (
+            root / "artifact" / "real_paper_review_template_cards_v18_20260606.csv",
+            output / "02_template_cards.csv",
+        ),
+        (
+            root / "artifact" / "real_paper_review_llm_prompt_20260606.md",
+            output / "03_llm_prompt.md",
+        ),
+        (
+            root / "docs" / "LLM_CONTEXT.md",
+            output / "README_FOR_LLM.md",
+        ),
+    ]
+    for source, target in files:
+        shutil.copy2(source, target)
+
+    print("PASS LLM trial packet")
+    print(f"output: {output}")
+    print("")
+    print("Give an LLM only these copied files for the blind-style trial:")
+    for _, target in files:
+        print(f"- {target}")
+    print("")
+    print("Do not give the LLM reference outcomes, generated reports, scoring")
+    print("summaries, manuscript text, private notes, or prior audit files.")
+    print("")
+    print("After the LLM returns CSV, score it with:")
+    print("python3 src/claimcontractbench.py realpaper-demo \\")
+    print("  --adjudication /path/to/llm_output.csv \\")
+    print("  --output /tmp/claimcontractbench_realpaper_llm_score")
+    if args.adjudication:
+        score_output = output / "scored_adjudication"
+        print("")
+        print("Scoring supplied adjudication now:")
+        sys.stdout.flush()
+        return run(
+            root,
+            [
+                sys.executable,
+                script(root, "run_real_paper_review_demo.py"),
+                "--root",
+                str(root),
+                "--adjudication",
+                args.adjudication,
+                "--output",
+                str(score_output),
+            ],
+        )
+    return 0
 
 
 def command_admit_template(args: argparse.Namespace) -> int:
@@ -474,8 +592,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="One-entry ClaimContractBench command hub.",
         epilog=(
-            "Typical human path: doctor -> smoke -> human-guide. "
-            "Optional LLM path: templates -> init-packet -> review."
+            "Fast human path: try-human. Fast LLM path: try-llm. "
+            "Deeper path: doctor -> smoke -> reviewer-checklist."
         ),
     )
     parser.add_argument("--root", default=str(default_root()), help="Release root.")
@@ -593,6 +711,36 @@ def build_parser() -> argparse.ArgumentParser:
         help="Report output directory.",
     )
     realpaper_demo.set_defaults(func=command_realpaper_demo)
+
+    try_human = subparsers.add_parser(
+        "try-human",
+        help="Run the no-LLM public-paper trial for human/reviewer inspection.",
+    )
+    add_subcommand_root(try_human)
+    try_human.add_argument(
+        "--output",
+        default="/tmp/claimcontractbench_human_trial",
+        help="Report output directory.",
+    )
+    try_human.set_defaults(func=command_try_human)
+
+    try_llm = subparsers.add_parser(
+        "try-llm",
+        help="Create a clean LLM trial packet without gold/reference files.",
+    )
+    add_subcommand_root(try_llm)
+    try_llm.add_argument(
+        "--output",
+        default="/tmp/claimcontractbench_llm_trial",
+        help="Directory for the copied LLM trial packet.",
+    )
+    try_llm.add_argument("--force", action="store_true", help="Reuse a non-empty output directory.")
+    try_llm.add_argument(
+        "--adjudication",
+        default="",
+        help="Optional LLM adjudication CSV to score after packet creation.",
+    )
+    try_llm.set_defaults(func=command_try_llm)
 
     admit_template = subparsers.add_parser("admit-template", help="Check a template-admission CSV.")
     add_subcommand_root(admit_template)

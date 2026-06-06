@@ -88,6 +88,48 @@ def assert_missing(path: Path, label: str) -> None:
         raise SystemExit(1)
 
 
+def write_reference_realpaper_adjudication(root: Path, path: Path) -> None:
+    reference = root / "artifact" / "real_paper_review_reference_outcomes_v318b_20260606.csv"
+    header = [
+        "row_id",
+        "source_support_status",
+        "claim_role",
+        "reportability_gate",
+        "candidate_release_safe_yes_no",
+        "display_action",
+        "repair_suggestion_required_yes_no",
+        "suggested_rewrite",
+        "reason_code",
+        "rationale",
+        "confidence_1_to_5",
+    ]
+    with reference.open(newline="", encoding="utf-8") as handle:
+        reference_rows = list(csv.DictReader(handle))
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=header)
+        writer.writeheader()
+        for row in reference_rows:
+            writer.writerow(
+                {
+                    "row_id": row["row_id"],
+                    "source_support_status": "directly_supported"
+                    if row["reference_candidate_release_safe"] == "yes"
+                    else "partially_supported",
+                    "claim_role": "primary_result_claim",
+                    "reportability_gate": row["reference_reportability_gate"],
+                    "candidate_release_safe_yes_no": row["reference_candidate_release_safe"],
+                    "display_action": row["reference_display_action"],
+                    "repair_suggestion_required_yes_no": "yes"
+                    if row["reference_suggested_rewrite"]
+                    else "no",
+                    "suggested_rewrite": row["reference_suggested_rewrite"],
+                    "reason_code": row["reference_reason_code"],
+                    "rationale": "release smoke scoring fixture",
+                    "confidence_1_to_5": "5",
+                }
+            )
+
+
 def run_negative_packets(root: Path, temp_root: Path) -> None:
     cases = [
         (
@@ -352,6 +394,66 @@ def main() -> int:
             realpaper_demo.stdout,
             "conservative_unsafe_false_releases: 3",
         )
+        human_trial = run_command(
+            "human trial path",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "try-human",
+                "--output",
+                str(temp_root / "human_trial"),
+            ],
+        )
+        assert_contains("human trial path", human_trial.stdout, "ClaimContractBench human trial")
+        assert_contains("human trial path", human_trial.stdout, "Supported trial families:")
+        if not (temp_root / "human_trial" / "real_paper_review_demo_report.md").exists():
+            print("FAIL human trial path")
+            print("missing human trial report")
+            raise SystemExit(1)
+
+        llm_trial_dir = temp_root / "llm_trial"
+        llm_trial = run_command(
+            "LLM trial packet path",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "try-llm",
+                "--output",
+                str(llm_trial_dir),
+            ],
+        )
+        assert_contains("LLM trial packet path", llm_trial.stdout, "PASS LLM trial packet")
+        for filename in [
+            "01_candidate_claims.csv",
+            "02_template_cards.csv",
+            "03_llm_prompt.md",
+            "README_FOR_LLM.md",
+        ]:
+            if not (llm_trial_dir / filename).exists():
+                print("FAIL LLM trial packet path")
+                print(f"missing LLM trial file: {filename}")
+                raise SystemExit(1)
+
+        adjudication = temp_root / "valid_realpaper_adjudication.csv"
+        write_reference_realpaper_adjudication(root, adjudication)
+        scored_llm_trial = run_command(
+            "LLM trial scoring path",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "try-llm",
+                "--output",
+                str(temp_root / "llm_trial_scored"),
+                "--adjudication",
+                str(adjudication),
+            ],
+        )
+        assert_contains("LLM trial scoring path", scored_llm_trial.stdout, "user_candidate_safety_accuracy: 1.000")
+        assert_contains("LLM trial scoring path", scored_llm_trial.stdout, "user_unsafe_false_releases: 0")
+
         agent_guide = run_command(
             "one-shot agent guide",
             root,
@@ -420,7 +522,7 @@ def main() -> int:
         run_negative_packets(root, temp_root)
 
     print("PASS release smoke suite")
-    print("positive_checks: 9")
+    print("positive_checks: 12")
     print("negative_fail_closed_checks: 5")
     return 0
 
