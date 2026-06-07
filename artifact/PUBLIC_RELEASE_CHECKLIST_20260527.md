@@ -42,7 +42,7 @@ final public resource snapshot for the paper.
 5. If this file is being read from the final Zenodo record page, use Zenodo
    metadata as the authoritative publication status.
 6. Verify the current guided-trial tag
-   `v0.1.7-cikm2026-reviewer-closure` points to the intended audited
+   `v0.1.8-cikm2026-reviewer-closure` points to the intended audited
    snapshot commit. Older tags remain release-history checkpoints.
 7. Create or verify a GitHub release from the tagged commit when ready.
 8. Publish or verify the Zenodo record for the same snapshot if an archive DOI

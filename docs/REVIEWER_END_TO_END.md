@@ -35,7 +35,7 @@ Then either download the repository ZIP from GitHub or clone it:
 ```bash
 git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git
 cd claimcontractbench-cikm2026-submission-freeze
-git checkout v0.1.7-cikm2026-reviewer-closure
+git checkout v0.1.8-cikm2026-reviewer-closure
 ```
 
 If you use the ZIP button instead of git, unzip the file and open a terminal in

@@ -16,7 +16,7 @@ one complete path instead of the full menu:
 ```bash
 git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git
 cd claimcontractbench-cikm2026-submission-freeze
-git checkout v0.1.7-cikm2026-reviewer-closure
+git checkout v0.1.8-cikm2026-reviewer-closure
 python3 src/claimcontractbench.py reviewer-flow
 python3 src/claimcontractbench.py try-human
 ```
@@ -308,7 +308,7 @@ See `docs/TEMPLATE_ADMISSION.md`.
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
 current guided-trial tag is
-`v0.1.7-cikm2026-reviewer-closure`. Earlier tags remain part of the release
+`v0.1.8-cikm2026-reviewer-closure`. Earlier tags remain part of the release
 history: `v0.1.0-cikm2026-submission` is the initial frozen submission
 snapshot, `v0.1.1-cikm2026-real-paper-template-addendum` adds the first public
 real-paper template addendum, `v0.1.2-cikm2026-real-paper-template-addendum`
@@ -318,7 +318,9 @@ audit; `v0.1.4-cikm2026-guided-trial-paths` adds guided human and LLM trial
 paths; `v0.1.5-cikm2026-claim-identification-boundary` clarifies that humans
 or LLMs identify candidate claims before checking; `v0.1.6-cikm2026-reviewer-workflow`
 adds the first end-to-end reviewer workflow; `v0.1.7-cikm2026-reviewer-closure`
-aligns the first-contact template command and GitHub release surface. A Zenodo archive may be
+aligns the first-contact template command and GitHub release surface; and
+`v0.1.8-cikm2026-reviewer-closure` clarifies the real-paper demo naming and
+aligns the smoke-check count. A Zenodo archive may be
 added for the public submission snapshot, but this repository does not claim a
 public DOI until the Zenodo record resolves. After publication, cite the tagged
 GitHub release and the Zenodo archive together.
