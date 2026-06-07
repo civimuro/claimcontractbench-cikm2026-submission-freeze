@@ -12,6 +12,10 @@ raw third-party datasets.
 
 See `LICENSE.md` and the full license texts in `LICENSES/`.
 
+Short third-party source excerpts, source titles, URLs, and identifiers inside
+public-safe audit rows are not relicensed by ClaimContractBench. They remain
+governed by their original sources. See `docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md`.
+
 ## Raw Data Posture
 
 The first-inspection path uses manifests, schemas, derived tables, and
@@ -38,6 +42,11 @@ Derived release materials include:
 
 These files are intended to support inspection of the resource behavior without
 bundling raw third-party records.
+
+Some public-paper audit rows contain short public excerpts for source
+traceability. These excerpts are minimized inspection anchors, not raw data
+redistribution and not a ClaimContractBench-authored CC-BY grant over the
+underlying third-party text.
 
 ## User Responsibility
 

@@ -26,6 +26,8 @@ The release keeps public-source simulations low risk:
   full-text excerpts, private manuscripts, or confidential review material;
 - source-provider terms and each paper's license remain authoritative outside
   this repository;
+- short source excerpts in public-safe rows remain third-party text and are not
+  relicensed under the ClaimContractBench CC-BY-4.0 resource license;
 - arXiv or other public-preprint sources should be cited by URL or identifier,
   and any future expansion should record license/version metadata before
   adding rows;
@@ -69,6 +71,10 @@ The validation ladder adds the audit trail for the paper-facing experimental
 numbers. It stores public-safe blind rows, row-level proxy outputs, aggregate
 scores, and baseline caveats. It does not store local source caches, PDFs, full
 paper text, or hidden coordination notes.
+
+See `docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md` for the short-excerpt policy and
+for the per-rung definitions of action accuracy, release-side accuracy, and
+unsafe false release.
 
 ## How Reviewers Should Read These Files
 

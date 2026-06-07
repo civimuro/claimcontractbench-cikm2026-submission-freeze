@@ -52,6 +52,9 @@ caches, credentials, or private coordination paths.
 The `validation-ladder` command performs a public-safety scan over the ladder
 files before reporting success.
 
+For the license boundary on short excerpts and for the exact meaning of
+"correct" in each rung, read `docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md`.
+
 ## Safe Wording
 
 Supported:

@@ -31,6 +31,7 @@ docs/LLM_ASSISTED_PATH.md,LLM-assisted path guide,yes,yes,no,Optional LLM packet
 docs/LLM_CONTEXT.md,LLM context guide,yes,yes,no,Gold-free context file for AI assistants using the fixed real-paper trial packet
 docs/REPRODUCIBILITY.md,reproducibility documentation,yes,yes,no,Environment and validation details for first inspection
 docs/DATA_AND_LICENSES.md,data and license documentation,yes,yes,no,Raw-data posture derived-material license and user responsibility guide
+docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md,public excerpt and label policy,yes,yes,no,Clarifies short third-party excerpt boundaries and per-rung correctness definitions
 docs/EVALUATION_SOURCE_INVENTORY.md,advanced evaluation source inventory,yes,yes,no,Reviewer-facing inventory for public-paper benchmark surfaces and public-safe source policy
 docs/FAQ.md,public FAQ,yes,yes,no,Human-friendly answers about LLMs raw data GQU and citation
 artifact/RESOURCE_SPEC.md,resource specification,yes,yes,no,Defines artifact MVP and release boundaries

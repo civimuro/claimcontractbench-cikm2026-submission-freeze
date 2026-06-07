@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.10-cikm2026-reviewer-closure - Excerpt And Label Transparency Closure
+
+- Clarified that third-party source titles, URLs, identifiers, and short
+  excerpts are not relicensed under the ClaimContractBench CC-BY-4.0 resource
+  license.
+- Added `docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md` to explain why PDFs, full
+  paper text, and local raw caches are excluded from the frozen release.
+- Documented per-rung correctness definitions for template-rule stress,
+  positive real-paper use, and reportability-boundary replay.
+- Synchronized the release manifest to 151 required public-safe files.
+
 ## v0.1.9-cikm2026-reviewer-closure - Validation Ladder Closure
 
 - Added a public-safe validation ladder for paper-facing evidence: 42-row

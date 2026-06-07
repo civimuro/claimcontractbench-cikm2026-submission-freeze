@@ -12,7 +12,7 @@ surface.
 
 | Claim to verify | Command | Expected signal | Open after running |
 | --- | --- | --- | --- |
-| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 150 rows, 150 required files, 150 public-safe rows, 0 raw-data rows. | Console output. |
+| The package is manifest-controlled and public-safe. | `python3 src/claimcontractbench.py doctor` | 151 rows, 151 required files, 151 public-safe rows, 0 raw-data rows. | Console output. |
 | The first-inspection paths run without raw data or GPU. | `python3 src/claimcontractbench.py smoke` | 15 positive checks and 5 fail-closed negative checks pass. | Console output. |
 | A human can try the current resource without an LLM. | `python3 src/claimcontractbench.py try-human` | Validates the surface and runs the 72-row public-paper demo under `/tmp`. | `/tmp/claimcontractbench_human_trial/real_paper_review_demo_report.md`. |
 | An LLM can receive a clean blind-style trial packet. | `python3 src/claimcontractbench.py try-llm` | Copies candidate claims, template cards, prompt, and LLM context only. | `/tmp/claimcontractbench_llm_trial/`. |
@@ -82,6 +82,7 @@ python3 src/run_reviewer_audit_demo_regression.py \
 - `artifact/validation_ladder_20260607/`: public-safe validation-ladder files for template-rule stress and positive real-paper use.
 - `docs/REAL_PAPER_REVIEW_DEMO.md`: practical real-paper demo guide.
 - `docs/VALIDATION_LADDER.md`: staged validation evidence guide and safe interpretation boundary.
+- `docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md`: public-excerpt license boundary and per-rung correctness definitions.
 - `reports/validation_ladder_20260607/`: generated validation-ladder report, summary, checks, and scored template-stress rows.
 - `reports/frontend_fulltext_phase1_claim_span_gold_readout_20260523/`: fulltext-adjacent claim-span readout files.
 - `reports/frontend_fulltext_phase1_claim_span_strict_agreement_20260523/`: A/B agreement and adjudication-candidate files.

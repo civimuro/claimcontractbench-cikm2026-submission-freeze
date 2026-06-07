@@ -14,9 +14,9 @@ Expected high-level output:
 
 ```text
 PASS release surface validation
-rows: 150
-required_files: 150
-public_safe_rows: 150
+rows: 151
+required_files: 151
+public_safe_rows: 151
 raw_data_rows: 0
 ```
 

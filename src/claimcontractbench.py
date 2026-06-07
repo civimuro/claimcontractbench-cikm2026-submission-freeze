@@ -139,7 +139,7 @@ def command_reviewer_flow(args: argparse.Namespace) -> int:
     print("1. Get the frozen snapshot:")
     print("   git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git")
     print("   cd claimcontractbench-cikm2026-submission-freeze")
-    print("   git checkout v0.1.9-cikm2026-reviewer-closure")
+    print("   git checkout v0.1.10-cikm2026-reviewer-closure")
     print("")
     print("2. Run the no-LLM reviewer trial:")
     print("   python3 src/claimcontractbench.py try-human")

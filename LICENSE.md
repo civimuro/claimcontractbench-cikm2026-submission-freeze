@@ -27,7 +27,9 @@ LICENSES/Apache-2.0.txt
 Derived non-code research-resource materials are licensed under the Creative
 Commons Attribution 4.0 International License.
 
-This includes, unless otherwise stated:
+This includes original ClaimContractBench-authored documentation, schemas,
+manifests, labels, aggregate reports, and derived resource tables, unless
+otherwise stated:
 
 - `README.md`;
 - files under `artifact/`;
@@ -42,13 +44,20 @@ The full CC-BY-4.0 license text is included at:
 LICENSES/CC-BY-4.0.txt
 ```
 
+This CC-BY-4.0 grant does not relicense third-party source titles, URLs,
+identifiers, or short source excerpts that appear inside public-safe audit
+rows. Those third-party fragments remain governed by their original authors,
+publishers, repositories, or source providers. They are included only as
+minimal provenance and inspection anchors for the resource's claim-audit rows.
+
 ## Third-Party Data And External Sources
 
 This release does not redistribute raw third-party datasets. Raw ACS, WDC,
 Walmart-Amazon, NAB, AI4I, or other external source data remain governed by
 their original providers' terms. The ClaimContractBench licenses above apply
-only to this release's code and derived public-safe materials, not to external
-raw data or third-party works referenced by URL, citation, or provenance table.
+only to this release's code and ClaimContractBench-authored public-safe
+materials, not to external raw data or third-party works referenced by URL,
+citation, provenance table, title, identifier, or short excerpt.
 
 ## Citation And Attribution
 

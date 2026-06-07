@@ -35,7 +35,7 @@ Then either download the repository ZIP from GitHub or clone it:
 ```bash
 git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git
 cd claimcontractbench-cikm2026-submission-freeze
-git checkout v0.1.9-cikm2026-reviewer-closure
+git checkout v0.1.10-cikm2026-reviewer-closure
 ```
 
 If you use the ZIP button instead of git, unzip the file and open a terminal in
@@ -66,9 +66,9 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 150
-required_files: 150
-public_safe_rows: 150
+rows: 151
+required_files: 151
+public_safe_rows: 151
 raw_data_rows: 0
 
 PASS real-paper review demo
