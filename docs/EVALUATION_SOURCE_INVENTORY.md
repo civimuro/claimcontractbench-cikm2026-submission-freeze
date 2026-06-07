@@ -42,7 +42,7 @@ The release keeps public-source simulations low risk:
 | Controlled adapter admission case study | `reports/claim_span_adapter_admission_case_study_20260523/` | 6 adapter specs and 22 passport rows across three selected families | structural admission behavior and protected false-release checks | cross-domain validation |
 | Annotation agreement scaffold | `artifact/paper_claim_gold_benchmark_blind_annotation_packet_20260521.csv`, `src/run_paper_claim_annotation_agreement.py` | 128 blind annotation rows, currently pending second annotator | readiness for future independent agreement measurement | existing inter-annotator agreement |
 | Reviewer-demo regression | `src/run_reviewer_audit_demo.py`, `src/run_reviewer_audit_demo_regression.py`, `reports/reviewer_facing_audit_demo_20260521/` | 72 public-safe cards | fail-closed reviewer-facing route/card generation after supplied candidate rows | production reviewer study |
-| Real-paper template review addendum | `docs/REAL_PAPER_REVIEW_DEMO.md`, `artifact/real_paper_review_candidate_claims_v318b_20260606.csv`, `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`, `src/run_real_paper_review_demo.py`, `reports/real_paper_review_demo_20260606/` | 18 public arXiv papers, 72 supplied candidate claims, 3 V1.8-backed template families | reviewer-reproducible trial of registered templates on supplied real-paper candidate claims, with residual unsafe-release boundaries exposed | automatic full-paper extraction, broad template coverage, zero-risk release, or human-utility measurement |
+| Real-paper template review addendum | `docs/REAL_PAPER_REVIEW_DEMO.md`, `artifact/real_paper_review_candidate_claims_v318b_20260606.csv`, `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`, `src/run_real_paper_review_demo.py`, `reports/real_paper_review_demo_20260606/` | 18 public arXiv papers, 72 supplied candidate claims, 3 validated template families | reviewer-reproducible trial of registered templates on supplied real-paper candidate claims, with residual unsafe-release boundaries exposed | automatic full-paper extraction, broad template coverage, zero-risk release, or human-utility measurement |
 
 ## Source Mix
 
@@ -76,7 +76,7 @@ Use the surfaces as advanced evidence for these bounded questions:
    expanding the current template registry?
 4. Do the claim-span agreement/readout files honestly expose localization
    difficulty rather than hiding it?
-5. Can three V1.8-backed templates process supplied real-paper candidate claims
+5. Can three validated templates process supplied real-paper candidate claims
    while exposing residual unsafe-release boundaries?
 
 Do not use these files to claim:

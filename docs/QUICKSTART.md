@@ -106,7 +106,7 @@ conservative_unsafe_false_releases: 3
 ```
 
 This is the practical trial path for the current addendum. The `/tmp` output
-keeps the checkout clean. It uses three V1.8-backed template families/domains
+keeps the checkout clean. It uses three validated template families/domains
 over supplied candidate claims from public papers. It does not perform
 full-paper claim discovery or human review.
 

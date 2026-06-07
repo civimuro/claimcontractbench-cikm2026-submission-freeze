@@ -1,6 +1,6 @@
 check_id,label,status,evidence
 RP-001,candidate columns,PASS,11 columns include required candidate fields
-RP-002,template families,PASS,three V1.8-backed template families are present
+RP-002,template families,PASS,three validated template families are present
 RP-003,row alignment,PASS,72 candidate rows join to reference outcomes
 RP-004,family balance,PASS,24 rows in each of three families
 RP-005,source balance,PASS,18 public-paper source ids

@@ -262,7 +262,7 @@ The annotation-agreement runner validates the randomized blind packet and
 annotation map now, then computes exact agreement and Cohen's kappa once a
 second annotator fills the route/action label columns.
 The real-paper demo runner evaluates the current public addendum over supplied
-candidate claims from 18 public arXiv papers and three V1.8-backed template
+candidate claims from 18 public arXiv papers and three validated template
 families. It is a registered-template trial and replay surface, not automatic
 full-paper extraction, broad empirical-ML coverage, human reviewer utility, or
 zero-risk claim release.

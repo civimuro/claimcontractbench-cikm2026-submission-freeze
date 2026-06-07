@@ -25,7 +25,7 @@ docs/HUMAN_REVIEWER_GUIDE.md,human reviewer guide,yes,yes,no,Non-LLM reviewer in
 docs/EXAMPLE_OUTPUTS.md,example outputs guide,yes,yes,no,Plain-language interpretation of common command outputs
 docs/BOUNDARIES.md,boundary and non-goal guide,yes,yes,no,Scope roles and safe interpretation guide
 docs/REPORT_INDEX.md,report and evidence index,yes,yes,no,Maps paper-facing claims to commands outputs and boundaries
-docs/SUPPORTED_TEMPLATE_FAMILIES.md,current supported template families,yes,yes,no,Explains the three V1.8-backed template families current capability evidence and expansion rule
+docs/SUPPORTED_TEMPLATE_FAMILIES.md,current supported template families,yes,yes,no,Explains the three validated template families current capability evidence and expansion rule
 docs/TEMPLATE_ADMISSION.md,template admission documentation,yes,yes,no,Explains new-template contract fields and admission outcomes
 docs/LLM_ASSISTED_PATH.md,LLM-assisted path guide,yes,yes,no,Optional LLM packet drafting path separated from human reviewer path
 docs/LLM_CONTEXT.md,LLM context guide,yes,yes,no,Gold-free context file for AI assistants using the fixed real-paper trial packet
@@ -114,7 +114,7 @@ paper/figures/figure2_wdc_six_matrix_heatmap_20260520.svg,WDC figure,yes,yes,no,
 paper/APPENDIX_C_RESOURCE_RELEASE.md,release appendix,yes,yes,no,Work-use release and source posture ledger
 paper/REVIEWER_AUDIT_DEMO_USE_PROTOCOL_20260521.md,reviewer audit demo use protocol,yes,yes,no,Public-safe protocol defining human LLM and deterministic tool roles plus non-goals
 paper/PAPER_EXCERPT_REVIEWER_VALUE_BENCHMARK_20260521.md,paper-excerpt decision-surface benchmark readout,yes,yes,no,Public-safe readout for selected-excerpt decision-surface benchmark and transparent baseline
-artifact/real_paper_review_template_cards_v18_20260606.csv,real-paper template cards,yes,yes,no,Public-safe V1.8-backed template cards for LLM evaluation resource documentation and uncertainty calibration families
+artifact/real_paper_review_template_cards_v18_20260606.csv,real-paper template cards,yes,yes,no,Public-safe validated template cards for LLM evaluation resource documentation and uncertainty calibration families
 artifact/real_paper_review_source_manifest_v318b_20260606.csv,real-paper source manifest,yes,yes,no,Public-safe manifest for 18 public arXiv source papers used by the real-paper template review addendum
 artifact/real_paper_review_candidate_claims_v318b_20260606.csv,real-paper candidate claim packet,yes,yes,no,Public-safe 72-row supplied candidate claim packet with short source-span excerpts for registered-template trial
 artifact/real_paper_review_reference_outcomes_v318b_20260606.csv,real-paper reference outcomes,yes,yes,no,Public-safe reference and conservative replay outcomes for the 72-row real-paper template review addendum

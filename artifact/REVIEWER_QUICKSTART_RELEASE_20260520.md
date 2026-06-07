@@ -84,7 +84,7 @@ conservative_unsafe_false_releases: 3
 ```
 
 This uses supplied candidate claims from 18 public arXiv papers across three
-V1.8-backed template families. It is not automatic full-paper review, human
+validated template families. It is not automatic full-paper review, human
 reviewer utility evidence, broad empirical-ML coverage, or zero-risk claim
 release.
 

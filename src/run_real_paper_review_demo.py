@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the public-safe real-paper template review demo.
 
-The demo uses three V1.8-backed template families and a 72-row public-paper
+The demo uses three validated template families and a 72-row public-paper
 candidate packet.  It is not a full-paper reviewer: candidate claims are already
 supplied, and the runner either replays the public reference/conservative
 outcome or scores an optional user/LLM adjudication CSV against that reference.
@@ -309,7 +309,7 @@ def build_markdown(
     lines.append("## What This Demonstrates")
     lines.append("")
     lines.append(
-        "This demo applies three V1.8-backed claim-template families to supplied "
+        "This demo applies three validated claim-template families to supplied "
         "candidate claims from public arXiv papers: `llm_evaluation`, "
         "`resource_documentation`, and `uncertainty_calibration`. It checks a "
         "candidate claim against a short source excerpt and returns whether the "
@@ -416,8 +416,8 @@ def main() -> int:
         "template families",
         {row["family"] for row in templates}
         == {"llm_evaluation", "resource_documentation", "uncertainty_calibration"},
-        "three V1.8-backed template families are present",
-        "template family set does not match the V1.8-backed public demo",
+        "three validated template families are present",
+        "template family set does not match the public demo",
     )
     add_check(
         checks,

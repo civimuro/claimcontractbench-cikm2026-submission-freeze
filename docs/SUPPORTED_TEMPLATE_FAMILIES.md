@@ -1,7 +1,7 @@
 # Supported Template Families
 
 The current product-like surface is deliberately narrow. It is strongest when
-used on supplied candidate claims that fit one of three V1.8-backed template
+used on supplied candidate claims that fit one of three validated template
 families. Other empirical-ML claims should go through template admission.
 
 ## Current Families
@@ -39,6 +39,10 @@ conservative_unsafe_false_releases: 3
 This result is useful, but not perfect. The residual unsafe releases are
 disclosed and should be treated as a boundary, especially for
 `uncertainty_calibration` background/support-only cases.
+
+The `V18` suffix in template IDs is retained for provenance; users should read
+the families by their domains and boundaries, not by the internal version
+number.
 
 ## Template Mechanism
 

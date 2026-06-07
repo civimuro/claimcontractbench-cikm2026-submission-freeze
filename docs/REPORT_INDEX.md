@@ -73,7 +73,7 @@ python3 src/run_reviewer_audit_demo_regression.py \
 - `data/claim_passport_casebook_20260519.csv`: five public claim-passport rows.
 - `artifact/llm_claim_review_packet_template_20260527.csv`: LLM trial packet.
 - `artifact/template_admission_packet_template_20260527.csv`: admission packet.
-- `artifact/real_paper_review_template_cards_v18_20260606.csv`: three V1.8-backed real-paper template cards.
+- `artifact/real_paper_review_template_cards_v18_20260606.csv`: three validated real-paper template cards; the `v18` filename suffix is a provenance ID.
 - `artifact/real_paper_review_candidate_claims_v318b_20260606.csv`: 72 supplied public-paper candidate rows.
 - `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`: reference outcomes and conservative replay decisions for the real-paper demo.
 - `docs/REAL_PAPER_REVIEW_DEMO.md`: practical real-paper demo guide.

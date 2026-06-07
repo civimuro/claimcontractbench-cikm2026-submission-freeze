@@ -4,7 +4,7 @@ Status: generated from public-safe ClaimContractBench assets.
 
 ## What This Demonstrates
 
-This demo applies three V1.8-backed claim-template families to supplied candidate claims from public arXiv papers: `llm_evaluation`, `resource_documentation`, and `uncertainty_calibration`. It checks a candidate claim against a short source excerpt and returns whether the claim can be released as written, weakened, rewritten, kept as support-only, blocked with a suggested correction, or suppressed.
+This demo applies three validated claim-template families to supplied candidate claims from public arXiv papers: `llm_evaluation`, `resource_documentation`, and `uncertainty_calibration`. It checks a candidate claim against a short source excerpt and returns whether the claim can be released as written, weakened, rewritten, kept as support-only, blocked with a suggested correction, or suppressed.
 
 It is not automatic full-paper review, full-paper claim discovery, or a human-utility study.
 
@@ -32,7 +32,7 @@ It is not automatic full-paper review, full-paper claim discovery, or a human-ut
 | Check | Status | Evidence |
 | --- | --- | --- |
 | RP-001 candidate columns | PASS | 11 columns include required candidate fields |
-| RP-002 template families | PASS | three V1.8-backed template families are present |
+| RP-002 template families | PASS | three validated template families are present |
 | RP-003 row alignment | PASS | 72 candidate rows join to reference outcomes |
 | RP-004 family balance | PASS | 24 rows in each of three families |
 | RP-005 source balance | PASS | 18 public-paper source ids |

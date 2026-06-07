@@ -75,7 +75,7 @@ conservative_unsafe_false_releases: 3
 
 Meaning:
 
-- three V1.8-backed families are available for trial use;
+- three validated families are available for trial use;
 - 18 public source papers and 72 supplied candidate claims are included;
 - the conservative replay blocks most unsafe releases but still leaves three
   unsafe releases, concentrated in uncertainty-calibration background/support

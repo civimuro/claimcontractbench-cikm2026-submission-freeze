@@ -167,7 +167,7 @@ blind annotation packet and annotation map. Its current status is
 agreement is claimed until an independent annotator fills the route/action
 label fields.
 The real-paper template review demo adds the current practical trial surface:
-18 public arXiv papers, 72 supplied candidate claims, and three V1.8-backed
+18 public arXiv papers, 72 supplied candidate claims, and three validated
 template families (`llm_evaluation`, `resource_documentation`, and
 `uncertainty_calibration`). It reports conservative candidate-safety accuracy
 0.958, display-action accuracy 0.806, and 3 unsafe false releases under the

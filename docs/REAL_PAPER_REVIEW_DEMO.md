@@ -3,7 +3,7 @@
 This is the most direct way to try ClaimContractBench as a claim-review
 assistant.
 
-It uses three V1.8-backed template families, corresponding to three review
+It uses three validated template families, corresponding to three review
 domains:
 
 - `llm_evaluation`
@@ -15,6 +15,10 @@ The packet contains 72 supplied candidate claims from 18 public arXiv papers:
 public excerpt and a source locator. The repository does not redistribute PDFs,
 full paper text, raw datasets, confidential review material, or author-private
 notes.
+
+The file names retain `v18` and `v318b` provenance IDs so reviewers can trace
+the release back to the internal validation ladder. The user-facing experiment
+name is the real-paper template review demo, not the version ID.
 
 ## Quick Run
 
@@ -94,7 +98,7 @@ python3 src/claimcontractbench.py realpaper-demo \
 
 | File | Purpose |
 | --- | --- |
-| `artifact/real_paper_review_template_cards_v18_20260606.csv` | Three V1.8-backed template cards. |
+| `artifact/real_paper_review_template_cards_v18_20260606.csv` | Three validated template cards. |
 | `artifact/real_paper_review_source_manifest_v318b_20260606.csv` | 18 public source papers and URLs. |
 | `artifact/real_paper_review_candidate_claims_v318b_20260606.csv` | 72 public-paper candidate rows for blind-style trial use. |
 | `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv` | Post-run reference labels plus conservative aggregate outcomes. Do not give this file to an LLM before adjudication. |

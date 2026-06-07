@@ -48,7 +48,7 @@ For an LLM-assisted trial packet with no gold/reference files:
 python3 src/claimcontractbench.py try-llm
 ```
 
-The current practical surface supports three V1.8-backed template families:
+The current practical surface supports three validated template families:
 `llm_evaluation`, `resource_documentation`, and `uncertainty_calibration`.
 Other domains should go through template admission instead of being forced into
 a nearby template.
@@ -72,7 +72,7 @@ workflow, `docs/START_HERE.md` if you want the shortest guided path, or
 | Learn the idea in five minutes | `docs/CONCEPTS.md` | A plain-language explanation of metric-to-claim contracts, `G/Q/U`, templates, and fail-closed routing. |
 | Verify the resource as a reviewer | `docs/REVIEWER_CHECKLIST.md` or `python3 src/claimcontractbench.py reviewer-checklist` | A one-page verification map, then the public-safe release check and fail-closed smoke suite. |
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
-| Try the real-paper template demo | `python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo` | A 72-row public-paper claim review demo over three V1.8-backed template families. |
+| Try the real-paper template demo | `python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo` | A 72-row public-paper claim review demo over three validated template families. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
 | Add a new claim family | `python3 src/claimcontractbench.py admission-guide` | A typed template-admission workflow instead of loose template reuse. |
 
@@ -138,7 +138,7 @@ python3 src/claimcontractbench.py realpaper-demo \
   --output /tmp/claimcontractbench_realpaper_demo
 ```
 
-This runs a public-safe addendum built from three V1.8-backed template
+This runs a public-safe addendum built from three validated template
 families/domains:
 `llm_evaluation`, `resource_documentation`, and `uncertainty_calibration`. The
 packet contains 72 supplied candidate claims from 18 public arXiv papers. It
@@ -190,7 +190,7 @@ The release includes:
 - tracked fulltext-adjacent claim-span readouts and a controlled adapter
   admission case study for the paper's boundary evidence tier;
 - a public-safe real-paper template-review addendum with 18 public source
-  papers, 72 supplied candidate claims, three V1.8-backed template families,
+  papers, 72 supplied candidate claims, three validated template families,
   and a replay/scoring runner;
 - a no-LLM human trial command and a gold-free LLM trial-packet command;
 - an advanced evaluation-source inventory that keeps public-paper simulation
