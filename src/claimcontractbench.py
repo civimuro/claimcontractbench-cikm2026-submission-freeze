@@ -117,6 +117,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("- python3 src/claimcontractbench.py human-guide")
     print("- python3 src/claimcontractbench.py templates")
     print("- python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo")
+    print("- python3 src/claimcontractbench.py validation-ladder --output /tmp/claimcontractbench_validation_ladder")
     print("- python3 src/claimcontractbench.py agent-guide")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
     print("- python3 src/claimcontractbench.py admission-guide")
@@ -138,7 +139,7 @@ def command_reviewer_flow(args: argparse.Namespace) -> int:
     print("1. Get the frozen snapshot:")
     print("   git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git")
     print("   cd claimcontractbench-cikm2026-submission-freeze")
-    print("   git checkout v0.1.8-cikm2026-reviewer-closure")
+    print("   git checkout v0.1.9-cikm2026-reviewer-closure")
     print("")
     print("2. Run the no-LLM reviewer trial:")
     print("   python3 src/claimcontractbench.py try-human")
@@ -197,6 +198,10 @@ def command_human_guide(args: argparse.Namespace) -> int:
     print("For the current three-family public-paper demo, run:")
     print("   python3 src/claimcontractbench.py realpaper-demo \\")
     print("     --output /tmp/claimcontractbench_realpaper_demo")
+    print("")
+    print("For the paper-facing validation ladder, run:")
+    print("   python3 src/claimcontractbench.py validation-ladder \\")
+    print("     --output /tmp/claimcontractbench_validation_ladder")
     return 0
 
 
@@ -280,6 +285,19 @@ def command_realpaper_demo(args: argparse.Namespace) -> int:
     ]
     if args.adjudication:
         command.extend(["--adjudication", args.adjudication])
+    return run(root, command)
+
+
+def command_validation_ladder(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    command = [
+        sys.executable,
+        script(root, "run_validation_ladder.py"),
+        "--root",
+        str(root),
+        "--output",
+        args.output,
+    ]
     return run(root, command)
 
 
@@ -833,6 +851,18 @@ def build_parser() -> argparse.ArgumentParser:
         help="Report output directory.",
     )
     realpaper_demo.set_defaults(func=command_realpaper_demo)
+
+    validation_ladder = subparsers.add_parser(
+        "validation-ladder",
+        help="Recompute the public-safe validation ladder used by the paper.",
+    )
+    add_subcommand_root(validation_ladder)
+    validation_ladder.add_argument(
+        "--output",
+        default="reports/validation_ladder_20260607",
+        help="Report output directory.",
+    )
+    validation_ladder.set_defaults(func=command_validation_ladder)
 
     try_human = subparsers.add_parser(
         "try-human",

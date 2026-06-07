@@ -14,9 +14,9 @@ Expected high-level output:
 
 ```text
 PASS release surface validation
-rows: 133
-required_files: 133
-public_safe_rows: 133
+rows: 150
+required_files: 150
+public_safe_rows: 150
 raw_data_rows: 0
 ```
 
@@ -42,7 +42,7 @@ Expected high-level output:
 
 ```text
 PASS release smoke suite
-positive_checks: 14
+positive_checks: 15
 negative_fail_closed_checks: 5
 ```
 
@@ -81,6 +81,36 @@ Meaning:
   unsafe releases, concentrated in uncertainty-calibration background/support
   rows;
 - this is a bounded claim-review demo, not automatic full-paper review.
+
+## Validation Ladder
+
+Command:
+
+```bash
+python3 src/claimcontractbench.py validation-ladder \
+  --output /tmp/claimcontractbench_validation_ladder
+```
+
+Expected high-level output:
+
+```text
+PASS validation ladder
+template_rule_stress_rows: 42
+template_rule_stress_A_B_action_kappa: 1.000
+positive_realpaper_use:
+- R4_A: action_accuracy=70/72 release_side=72/72 dangerous_false_release=0
+- R4_B: action_accuracy=69/72 release_side=72/72 dangerous_false_release=0
+boundary_replay: safety=0.958 action=0.806 unsafe_false_releases=3
+```
+
+Meaning:
+
+- the template-rule stress numbers are recomputed from public-safe blind rows
+  and proxy outputs;
+- the positive real-paper use numbers are recomputed from row-level score
+  files;
+- the boundary replay exposes remaining unsafe releases instead of hiding them;
+- this is not a human-utility study or autonomous full-paper review.
 
 ## Registered Templates
 

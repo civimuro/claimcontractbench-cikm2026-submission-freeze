@@ -1,0 +1,114 @@
+{
+  "conditions": [
+    "R4_A",
+    "R4_B"
+  ],
+  "rows": 72,
+  "stage": "REAL_PAPER_V3_4_ROUTER_SCORE_AGGREGATE",
+  "summaries": [
+    {
+      "accuracy_by_family": {
+        "llm_evaluation": {
+          "action_accuracy_rate": "0.958",
+          "dangerous_false_release_count": 0,
+          "release_side_accuracy_rate": "1.000",
+          "rows": 24
+        },
+        "resource_documentation": {
+          "action_accuracy_rate": "1.000",
+          "dangerous_false_release_count": 0,
+          "release_side_accuracy_rate": "1.000",
+          "rows": 24
+        },
+        "uncertainty_calibration": {
+          "action_accuracy_rate": "0.958",
+          "dangerous_false_release_count": 0,
+          "release_side_accuracy_rate": "1.000",
+          "rows": 24
+        }
+      },
+      "action_accuracy_count": 70,
+      "action_accuracy_rate": "0.972",
+      "dangerous_false_release_count": 0,
+      "emit_accuracy_count": 72,
+      "emit_accuracy_rate": "1.000",
+      "false_suppress_count": 0,
+      "gold_action_distribution": {
+        "ACCEPT": 62,
+        "REWRITE": 8,
+        "SUPPORT_ONLY": 2
+      },
+      "has_emit_field": true,
+      "label": "R4_A",
+      "macro_f1_by_action": {
+        "ACCEPT": "0.984",
+        "REWRITE": "0.857",
+        "SUPPORT_ONLY": "1.000"
+      },
+      "macro_f1_mean_available": "0.947",
+      "protected_when_gold_release_count": 0,
+      "release_side_accuracy_count": 72,
+      "release_side_accuracy_rate": "1.000",
+      "release_when_gold_nonrelease_count": 0,
+      "router_action_distribution": {
+        "ACCEPT": 64,
+        "REWRITE": 6,
+        "SUPPORT_ONLY": 2
+      },
+      "rows": 72,
+      "stage": "REAL_PAPER_V3_4_ROUTER_SCORE_ONE"
+    },
+    {
+      "accuracy_by_family": {
+        "llm_evaluation": {
+          "action_accuracy_rate": "0.917",
+          "dangerous_false_release_count": 0,
+          "release_side_accuracy_rate": "1.000",
+          "rows": 24
+        },
+        "resource_documentation": {
+          "action_accuracy_rate": "1.000",
+          "dangerous_false_release_count": 0,
+          "release_side_accuracy_rate": "1.000",
+          "rows": 24
+        },
+        "uncertainty_calibration": {
+          "action_accuracy_rate": "0.958",
+          "dangerous_false_release_count": 0,
+          "release_side_accuracy_rate": "1.000",
+          "rows": 24
+        }
+      },
+      "action_accuracy_count": 69,
+      "action_accuracy_rate": "0.958",
+      "dangerous_false_release_count": 0,
+      "emit_accuracy_count": 72,
+      "emit_accuracy_rate": "1.000",
+      "false_suppress_count": 0,
+      "gold_action_distribution": {
+        "ACCEPT": 62,
+        "REWRITE": 8,
+        "SUPPORT_ONLY": 2
+      },
+      "has_emit_field": true,
+      "label": "R4_B",
+      "macro_f1_by_action": {
+        "ACCEPT": "0.976",
+        "REWRITE": "0.800",
+        "SUPPORT_ONLY": "1.000"
+      },
+      "macro_f1_mean_available": "0.925",
+      "protected_when_gold_release_count": 0,
+      "release_side_accuracy_count": 72,
+      "release_side_accuracy_rate": "1.000",
+      "release_when_gold_nonrelease_count": 0,
+      "router_action_distribution": {
+        "ACCEPT": 63,
+        "REWRITE": 7,
+        "SUPPORT_ONLY": 2
+      },
+      "rows": 72,
+      "stage": "REAL_PAPER_V3_4_ROUTER_SCORE_ONE"
+    }
+  ]
+}

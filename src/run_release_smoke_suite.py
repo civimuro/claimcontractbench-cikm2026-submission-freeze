@@ -394,6 +394,27 @@ def main() -> int:
             realpaper_demo.stdout,
             "conservative_unsafe_false_releases: 3",
         )
+        validation_ladder = run_command(
+            "validation ladder",
+            root,
+            [
+                sys.executable,
+                "src/run_validation_ladder.py",
+                "--output",
+                str(temp_root / "validation_ladder"),
+            ],
+        )
+        assert_contains("validation ladder", validation_ladder.stdout, "PASS validation ladder")
+        assert_contains(
+            "validation ladder",
+            validation_ladder.stdout,
+            "template_rule_stress_rows: 42",
+        )
+        assert_contains(
+            "validation ladder",
+            validation_ladder.stdout,
+            "unsafe_false_releases=3",
+        )
         human_trial = run_command(
             "human trial path",
             root,
@@ -556,7 +577,7 @@ def main() -> int:
         run_negative_packets(root, temp_root)
 
     print("PASS release smoke suite")
-    print("positive_checks: 14")
+    print("positive_checks: 15")
     print("negative_fail_closed_checks: 5")
     return 0
 

@@ -1,8 +1,28 @@
 # Changelog
 
+## v0.1.9-cikm2026-reviewer-closure - Validation Ladder Closure
+
+- Added a public-safe validation ladder for paper-facing evidence: 42-row
+  template-rule stress, 72-row positive real-paper use, and 72-row boundary
+  replay.
+- Added `python3 src/claimcontractbench.py validation-ladder` and
+  `src/run_validation_ladder.py` so reviewers can recompute the core numbers
+  from release files instead of trusting prose-only summaries.
+- Added `docs/VALIDATION_LADDER.md` and validation-ladder artifacts/reports to
+  the manifest-controlled public-safe release surface.
+- Synchronized the release manifest to 150 required public-safe files.
+
+## v0.1.8-cikm2026-reviewer-closure - Real-Paper Demo Naming And Smoke Count
+
+- Clarified that current supported template families are validated template
+  families, while retaining provenance IDs in filenames and template ids.
+- Aligned the smoke expected signal with the current 15 positive checks and 5
+  fail-closed negative checks.
+- Retagged the reviewer workflow after the public-surface check count update.
+
 ## v0.1.7-cikm2026-reviewer-closure - GitHub Release And Template Entry Closure
 
-- Promoted the current three V1.8-backed supported template families in the
+- Promoted the current three validated supported template families in the
   `templates` command before older admission-case examples, so first-time
   reviewers see the practical demo surface first.
 - Aligned README, reviewer workflow, citation metadata, and release checklist
@@ -43,7 +63,7 @@
 - Added `try-human` for a no-LLM public-paper trial and `try-llm` for a
   gold-free LLM packet containing only candidate claims, template cards, prompt,
   and LLM context.
-- Promoted the current practical capability statement: three V1.8-backed
+- Promoted the current practical capability statement: three validated
   families (`llm_evaluation`, `resource_documentation`, and
   `uncertainty_calibration`) are supported for supplied candidate claims; other
   domains require template admission.
@@ -76,7 +96,7 @@
 ## v0.1.1-cikm2026-real-paper-template-addendum - Public Template Trial Addendum
 
 - Added a real-paper template review demo over 18 public arXiv papers and 72
-  supplied candidate claims across three V1.8-backed families:
+  supplied candidate claims across three validated families:
   LLM evaluation, resource documentation, and uncertainty calibration.
 - Added public-safe template cards, source manifest, candidate packet,
   reference outcomes, conservative replay summary, clean LLM prompt, and a

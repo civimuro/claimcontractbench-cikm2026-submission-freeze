@@ -113,12 +113,13 @@ python3 src/run_paper_claim_gold_benchmark.py --output reports/paper_claim_gold_
 python3 src/run_paper_excerpt_reviewer_value_benchmark.py --output reports/paper_excerpt_reviewer_value_benchmark_20260521
 python3 src/run_paper_claim_annotation_agreement.py --output reports/paper_claim_annotation_agreement_20260521
 python3 src/claimcontractbench.py realpaper-demo
+python3 src/claimcontractbench.py validation-ladder
 python3 src/claimcontractbench.py try-human
 python3 src/claimcontractbench.py try-llm
 ```
 
 Current release-candidate status: the validator passes from the release root against
-`artifact/release_manifest_20260520.csv`, with 133 required public-safe rows and
+`artifact/release_manifest_20260520.csv`, with 150 required public-safe rows and
 0 raw-data rows. The manifest includes `LICENSE.md` plus the Apache-2.0 and
 CC-BY-4.0 license texts. The validator scans required release files for private
 coordination paths, local machine paths, and credential-like patterns, and it
@@ -133,7 +134,10 @@ generates Markdown, HTML, CSV, and JSON reports from the public claim passport,
 G/Q/U intervention, Q-policy, NAB support-only adapter, and resource-boundary
 assets, with 11 contribution-facing checks passing. These commands do not require
 raw-data downloads, third-party ML packages, or GPU training for the initial
-review path. The claim template admission runner additionally checks nine
+review path. The validation-ladder command recomputes paper-facing diagnostic
+numbers from public-safe row files and keeps its interpretation bounded to
+supplied candidate rows, not autonomous review. The claim template admission
+runner additionally checks nine
 public-safe template-admission cases, admitting five mainline templates and
 three NAB support-only templates while rejecting one AI4I patchwork-expansion
 probe; it passes 10 admission checks.

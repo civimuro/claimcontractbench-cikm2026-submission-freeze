@@ -44,9 +44,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 133
-required_files: 133
-public_safe_rows: 133
+rows: 150
+required_files: 150
+public_safe_rows: 150
 raw_data_rows: 0
 ```
 
@@ -65,16 +65,16 @@ Expected result:
 
 ```text
 PASS release smoke suite
-positive_checks: 14
+positive_checks: 15
 negative_fail_closed_checks: 5
 ```
 
 The positive checks cover release validation, projection smoke rows, the LLM
 packet happy path, template admission, the three-family real-paper demo, the
-human trial path, the reviewer end-to-end workflow, the LLM trial-packet path,
-the LLM adjudication scoring path, the one-shot agent guide, the reviewer
-checklist, the human guide, the claim identification guide, and optional
-feedback scaffolding. The negative checks
+validation ladder, the human trial path, the reviewer end-to-end workflow, the
+LLM trial-packet path, the LLM adjudication scoring path, the one-shot agent
+guide, the reviewer checklist, the human guide, the claim identification guide,
+and optional feedback scaffolding. The negative checks
 verify that unsafe or malformed LLM packets fail closed rather than producing a
 licensed claim report. The smoke suite writes only temporary working files and
 should leave a clean git checkout.
@@ -109,6 +109,17 @@ This is the practical trial path for the current addendum. The `/tmp` output
 keeps the checkout clean. It uses three validated template families/domains
 over supplied candidate claims from public papers. It does not perform
 full-paper claim discovery or human review.
+
+For paper-facing validation evidence, run:
+
+```bash
+python3 src/claimcontractbench.py validation-ladder \
+  --output /tmp/claimcontractbench_validation_ladder
+```
+
+Open `/tmp/claimcontractbench_validation_ladder/validation_ladder_report.md`.
+This recomputes the staged diagnostics behind the validation numbers; it is not
+the shortest ordinary trial.
 
 ## 5. Inspect The Registered Templates
 

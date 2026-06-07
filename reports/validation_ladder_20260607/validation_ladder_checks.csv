@@ -1,0 +1,8 @@
+check_id,label,status,evidence
+VL-00,validation ladder files are public-safety scanned,PASS,issues=0
+VL-01,template stress row ids align,PASS,rows=42
+VL-02,template stress recomputed metrics match stored summary,PASS,recomputed_kappa=1.000; stored_kappa=1.000
+VL-03-R4_A,positive real-paper R4_A recomputes aggregate metrics,PASS,action=70/72; release=72/72; dangerous=0
+VL-03-R4_B,positive real-paper R4_B recomputes aggregate metrics,PASS,action=69/72; release=72/72; dangerous=0
+VL-04,boundary replay candidate and reference row ids align,PASS,candidates=72 reference=72
+VL-05,boundary replay exposes remaining unsafe false releases,PASS,unsafe_false_releases=3

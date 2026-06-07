@@ -9,7 +9,7 @@ raw datasets.
 Current status note: this file began as the 2026-05-20 release-root plan and is
 kept as a planning/provenance document. The canonical current file inventory is
 `artifact/release_manifest_20260520.csv`; the manifest-controlled public surface
-currently contains 133 required public-safe rows, including the later
+currently contains 150 required public-safe rows, including the later
 real-paper template-review addendum.
 
 ## 1. Release Root
@@ -47,6 +47,7 @@ ClaimContractBench/
 │   ├── real_paper_review_evidence_summary_v318b_20260606.json
 │   ├── real_paper_review_public_manifest_v318b_20260606.json
 │   ├── real_paper_review_llm_prompt_20260606.md
+│   ├── validation_ladder_20260607/
 │   ├── application_motivation_cases_20260521.csv
 │   ├── claim_audit_gold_probe_schema_20260521.json
 │   ├── claim_audit_gold_probe_cases_20260521.csv
@@ -74,6 +75,7 @@ ClaimContractBench/
 │   └── APPENDIX_C_RESOURCE_RELEASE.md
 ├── reports/
 │   ├── real_paper_review_demo_20260606/
+│   ├── validation_ladder_20260607/
 │   ├── paragraph_claim_span_router_external_eval_guided_20260521/
 │   └── paragraph_claim_span_router_holdout_eval_guided_20260521/
 └── src/
@@ -155,15 +157,16 @@ python3 src/run_paper_claim_gold_benchmark.py --output reports/paper_claim_gold_
 python3 src/run_paper_excerpt_reviewer_value_benchmark.py --output reports/paper_excerpt_reviewer_value_benchmark_20260521
 python3 src/run_paper_claim_annotation_agreement.py --output reports/paper_claim_annotation_agreement_20260521
 python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo
+python3 src/claimcontractbench.py validation-ladder --output /tmp/claimcontractbench_validation_ladder
 ```
 
 Expected result:
 
 ```text
 PASS release surface validation
-rows: 133
-required_files: 133
-public_safe_rows: 133
+rows: 150
+required_files: 150
+public_safe_rows: 150
 raw_data_rows: 0
 PASS projection smoke runner
 smoke_rows: 5

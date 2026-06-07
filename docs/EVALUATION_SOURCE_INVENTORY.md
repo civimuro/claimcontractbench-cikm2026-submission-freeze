@@ -43,6 +43,7 @@ The release keeps public-source simulations low risk:
 | Annotation agreement scaffold | `artifact/paper_claim_gold_benchmark_blind_annotation_packet_20260521.csv`, `src/run_paper_claim_annotation_agreement.py` | 128 blind annotation rows, currently pending second annotator | readiness for future independent agreement measurement | existing inter-annotator agreement |
 | Reviewer-demo regression | `src/run_reviewer_audit_demo.py`, `src/run_reviewer_audit_demo_regression.py`, `reports/reviewer_facing_audit_demo_20260521/` | 72 public-safe cards | fail-closed reviewer-facing route/card generation after supplied candidate rows | production reviewer study |
 | Real-paper template review addendum | `docs/REAL_PAPER_REVIEW_DEMO.md`, `artifact/real_paper_review_candidate_claims_v318b_20260606.csv`, `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`, `src/run_real_paper_review_demo.py`, `reports/real_paper_review_demo_20260606/` | 18 public arXiv papers, 72 supplied candidate claims, 3 validated template families | reviewer-reproducible trial of registered templates on supplied real-paper candidate claims, with residual unsafe-release boundaries exposed | automatic full-paper extraction, broad template coverage, zero-risk release, or human-utility measurement |
+| Validation ladder | `docs/VALIDATION_LADDER.md`, `artifact/validation_ladder_20260607/`, `src/run_validation_ladder.py`, `reports/validation_ladder_20260607/` | 42-row template-rule stress, 72-row positive real-paper use, and 72-row boundary replay | public-safe recomputation path for paper-facing template reliability and real-paper-use numbers | human-independent reliability, autonomous review, broad coverage, or human-utility measurement |
 
 ## Source Mix
 
@@ -64,6 +65,11 @@ uncertainty-calibration papers. It stores source URLs, section locators, short
 source-span excerpts, candidate claims, template cards, reference outcomes, and
 public-safe replay summaries. It does not store PDFs or full-paper text.
 
+The validation ladder adds the audit trail for the paper-facing experimental
+numbers. It stores public-safe blind rows, row-level proxy outputs, aggregate
+scores, and baseline caveats. It does not store local source caches, PDFs, full
+paper text, or hidden coordination notes.
+
 ## How Reviewers Should Read These Files
 
 Use the surfaces as advanced evidence for these bounded questions:
@@ -78,6 +84,8 @@ Use the surfaces as advanced evidence for these bounded questions:
    difficulty rather than hiding it?
 5. Can three validated templates process supplied real-paper candidate claims
    while exposing residual unsafe-release boundaries?
+6. Can the paper-facing validation numbers be recomputed from public-safe
+   release files rather than trusted as prose-only summaries?
 
 Do not use these files to claim:
 

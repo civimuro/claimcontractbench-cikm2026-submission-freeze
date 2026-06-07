@@ -35,7 +35,7 @@ Then either download the repository ZIP from GitHub or clone it:
 ```bash
 git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git
 cd claimcontractbench-cikm2026-submission-freeze
-git checkout v0.1.8-cikm2026-reviewer-closure
+git checkout v0.1.9-cikm2026-reviewer-closure
 ```
 
 If you use the ZIP button instead of git, unzip the file and open a terminal in
@@ -66,9 +66,9 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 133
-required_files: 133
-public_safe_rows: 133
+rows: 150
+required_files: 150
+public_safe_rows: 150
 raw_data_rows: 0
 
 PASS real-paper review demo
@@ -92,13 +92,31 @@ Expected smoke result:
 
 ```text
 PASS release smoke suite
-positive_checks: 14
+positive_checks: 15
 negative_fail_closed_checks: 5
 ```
 
 The smoke suite checks the visible user paths, including the human trial, LLM
 trial packet, claim-identification guide, reviewer workflow guide, and
 fail-closed negative packets.
+
+If you want to check the paper-facing validation evidence rather than only the
+ordinary reviewer trial, run:
+
+```bash
+python3 src/claimcontractbench.py validation-ladder \
+  --output /tmp/claimcontractbench_validation_ladder
+```
+
+Open:
+
+```text
+/tmp/claimcontractbench_validation_ladder/validation_ladder_report.md
+```
+
+This recomputes the 42-row template-rule stress diagnostic, the 72-row positive
+real-paper use diagnostic, and the 72-row boundary replay from public-safe
+release files. It is not a human-utility study.
 
 ## Step 4: Interpret The Result
 
@@ -197,4 +215,5 @@ visual or case anchor, and boundary note.
 | Human-only inspection | `docs/HUMAN_REVIEWER_GUIDE.md` |
 | LLM-assisted path | `docs/LLM_CONTEXT.md` and `docs/LLM_ASSISTED_PATH.md` |
 | Evidence and report map | `docs/REPORT_INDEX.md` |
+| Validation ladder | `docs/VALIDATION_LADDER.md` |
 | Boundaries and non-goals | `docs/BOUNDARIES.md` |

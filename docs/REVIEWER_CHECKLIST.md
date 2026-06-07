@@ -28,13 +28,13 @@ Expected high-level signal:
 
 ```text
 PASS release surface validation
-rows: 133
-required_files: 133
-public_safe_rows: 133
+rows: 150
+required_files: 150
+public_safe_rows: 150
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 14
+positive_checks: 15
 negative_fail_closed_checks: 5
 ```
 
@@ -72,6 +72,7 @@ judges paper acceptance.
 | What exactly is in the release? | `artifact/release_manifest_20260520.csv` | Every required row exists, is public-safe, and is not raw data. |
 | What are the smallest examples? | `data/claim_passport_casebook_20260519.csv` | Five action families are present: emit, relabel, weaken, rewrite, suppress. |
 | Which paper-facing claims are supported by which files? | `docs/REPORT_INDEX.md` | Each claim has a command, expected signal, and boundary. |
+| Can the validation numbers be recomputed? | `python3 src/claimcontractbench.py validation-ladder --output /tmp/claimcontractbench_validation_ladder` | The report recomputes template stress, positive real-paper use, and boundary replay from public-safe files. |
 | What should not be claimed? | `docs/BOUNDARIES.md` | No autonomous review, peer-review replacement, raw-data redistribution, or human-utility proof is asserted. |
 | How does the optional LLM path behave? | `python3 src/claimcontractbench.py review --input artifact/llm_claim_review_packet_template_20260527.csv` | The packet reports registered calls, admission-needed rows, out-of-scope rows, and zero unsafe release. |
 | Can an LLM try the current real-paper packet without gold leakage? | `python3 src/claimcontractbench.py try-llm` | A clean `/tmp` packet is created with candidate claims, template cards, prompt, and LLM context only. |
@@ -91,9 +92,11 @@ judges paper acceptance.
 
 5. Read `docs/DATA_AND_LICENSES.md` before making any claim about data
    redistribution or raw-data availability.
-6. Read `docs/EVALUATION_SOURCE_INVENTORY.md` only if you want the advanced
+6. Run `python3 src/claimcontractbench.py validation-ladder --output /tmp/claimcontractbench_validation_ladder`
+   if you want to check the paper-facing validation numbers.
+7. Read `docs/EVALUATION_SOURCE_INVENTORY.md` only if you want the advanced
    public-paper benchmark/source inventory; ordinary users can skip it.
-7. Check `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` before citing this as
+8. Check `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md` before citing this as
    a final archived public release.
 
 ## Red Flags

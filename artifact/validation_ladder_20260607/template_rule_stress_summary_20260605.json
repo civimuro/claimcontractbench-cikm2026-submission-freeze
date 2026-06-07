@@ -1,0 +1,199 @@
+{
+  "A_B_action_agreement": "1.000",
+  "A_B_action_kappa": "1.000",
+  "A_B_span_found_kappa": "1.000",
+  "A_vs_proxy_adjudication": {
+    "accuracy": "1.000",
+    "macro_f1_all_labels": "1.000",
+    "macro_f1_supported_labels": "1.000",
+    "per_label": {
+      "ACCEPT": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 2,
+        "recall": "1.000",
+        "support": 2,
+        "tp": 2
+      },
+      "REJECT_OR_OUT_OF_SCOPE": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 2,
+        "recall": "1.000",
+        "support": 2,
+        "tp": 2
+      },
+      "REWRITE": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 12,
+        "recall": "1.000",
+        "support": 12,
+        "tp": 12
+      },
+      "SUPPORT_ONLY": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 2,
+        "recall": "1.000",
+        "support": 2,
+        "tp": 2
+      },
+      "SUPPRESS": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 12,
+        "recall": "1.000",
+        "support": 12,
+        "tp": 12
+      },
+      "WEAKEN": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 12,
+        "recall": "1.000",
+        "support": 12,
+        "tp": 12
+      }
+    }
+  },
+  "B_vs_proxy_adjudication": {
+    "accuracy": "1.000",
+    "macro_f1_all_labels": "1.000",
+    "macro_f1_supported_labels": "1.000",
+    "per_label": {
+      "ACCEPT": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 2,
+        "recall": "1.000",
+        "support": 2,
+        "tp": 2
+      },
+      "REJECT_OR_OUT_OF_SCOPE": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 2,
+        "recall": "1.000",
+        "support": 2,
+        "tp": 2
+      },
+      "REWRITE": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 12,
+        "recall": "1.000",
+        "support": 12,
+        "tp": 12
+      },
+      "SUPPORT_ONLY": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 2,
+        "recall": "1.000",
+        "support": 2,
+        "tp": 2
+      },
+      "SUPPRESS": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 12,
+        "recall": "1.000",
+        "support": 12,
+        "tp": 12
+      },
+      "WEAKEN": {
+        "f1": "1.000",
+        "fn": 0,
+        "fp": 0,
+        "precision": "1.000",
+        "predicted": 12,
+        "recall": "1.000",
+        "support": 12,
+        "tp": 12
+      }
+    }
+  },
+  "action_counts_A": {
+    "ACCEPT": 2,
+    "REJECT_OR_OUT_OF_SCOPE": 2,
+    "REWRITE": 12,
+    "SUPPORT_ONLY": 2,
+    "SUPPRESS": 12,
+    "WEAKEN": 12
+  },
+  "action_counts_B": {
+    "ACCEPT": 2,
+    "REJECT_OR_OUT_OF_SCOPE": 2,
+    "REWRITE": 12,
+    "SUPPORT_ONLY": 2,
+    "SUPPRESS": 12,
+    "WEAKEN": 12
+  },
+  "action_counts_C_proxy_adjudicated": {
+    "ACCEPT": 2,
+    "REJECT_OR_OUT_OF_SCOPE": 2,
+    "REWRITE": 12,
+    "SUPPORT_ONLY": 2,
+    "SUPPRESS": 12,
+    "WEAKEN": 12
+  },
+  "dangerous_boundary_flag_C_count": 12,
+  "dangerous_false_release_A_count": 0,
+  "dangerous_false_release_A_rate": "0.000",
+  "dangerous_false_release_B_count": 0,
+  "dangerous_false_release_B_rate": "0.000",
+  "evidence_class": "CROSS_MODEL_LLM_PROXY_DIAGNOSTIC_ONLY",
+  "false_suppress_A_count": 0,
+  "false_suppress_A_rate": "0.000",
+  "false_suppress_B_count": 0,
+  "false_suppress_B_rate": "0.000",
+  "guard_statuses": {
+    "A": {
+      "format_contaminated": "no",
+      "issues": "0",
+      "status": "PASS"
+    },
+    "B": {
+      "format_contaminated": "no",
+      "issues": "0",
+      "status": "PASS"
+    },
+    "C": {
+      "format_contaminated": "no",
+      "issues": "0",
+      "status": "PASS"
+    }
+  },
+  "no_span_accept_A_count": 0,
+  "no_span_accept_B_count": 0,
+  "rows": 42,
+  "soft_unsafe_support_A_count": 0,
+  "soft_unsafe_support_A_rate": "0.000",
+  "soft_unsafe_support_B_count": 0,
+  "soft_unsafe_support_B_rate": "0.000",
+  "stage": "LLM_PROXY_PILOT_SCORING",
+  "status": "PASS"
+}

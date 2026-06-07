@@ -19,6 +19,16 @@ python3 src/claimcontractbench.py smoke
 
 These commands validate the release root and run the release smoke suite.
 
+For the paper-facing validation evidence, also run:
+
+```bash
+python3 src/claimcontractbench.py validation-ladder \
+  --output /tmp/claimcontractbench_validation_ladder
+```
+
+This recomputes the staged validation summaries from public-safe files. It is
+not part of the shortest ordinary user trial.
+
 ## What The Validator Checks
 
 `doctor` runs `src/validate_release_surface.py`. It checks:
@@ -43,12 +53,26 @@ These commands validate the release root and run the release smoke suite.
 - projection smoke regeneration;
 - LLM packet happy path;
 - template-admission boundary-probe example;
+- validation-ladder recomputation;
 - human reviewer guide availability;
 - reviewer checklist availability;
 - one-shot agent guide availability;
 - optional feedback scaffold creation;
 - fail-closed negative packets for unknown template id, illegal template id on a
   non-call row, duplicate packet id, and private-marker report suppression.
+
+## What The Validation Ladder Checks
+
+`validation-ladder` checks:
+
+- 42-row template-rule stress over cross-model LLM-proxy blind outputs;
+- 72-row positive public-paper use over the three admitted template families;
+- 72-row boundary replay using the current real-paper demo reference outcomes;
+- public-safety scanning for the ladder files.
+
+It supports a bounded resource-validity claim over supplied candidate rows. It
+does not establish autonomous full-paper review, automatic claim discovery,
+human reviewer utility, or broad empirical-ML coverage.
 
 ## Generated Outputs
 

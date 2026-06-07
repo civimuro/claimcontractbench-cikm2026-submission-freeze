@@ -1,0 +1,135 @@
+{
+  "checks_failed": 0,
+  "checks_passed": 7,
+  "positive_realpaper_use": {
+    "baseline_note_path": "artifact/validation_ladder_20260607/positive_realpaper_failure_baseline_note_20260605.md",
+    "conditions": [
+      {
+        "action_accuracy_count": 70,
+        "action_accuracy_rate": "0.972",
+        "dangerous_false_release_count": 0,
+        "gold_action_distribution": {
+          "ACCEPT": 62,
+          "REWRITE": 8,
+          "SUPPORT_ONLY": 2
+        },
+        "interpretation_limit": "positive admitted-template use; gold is mostly release-side and not a robustness stress test.",
+        "label": "R4_A",
+        "release_side_accuracy_count": 72,
+        "release_side_accuracy_rate": "1.000",
+        "rows": 72
+      },
+      {
+        "action_accuracy_count": 69,
+        "action_accuracy_rate": "0.958",
+        "dangerous_false_release_count": 0,
+        "gold_action_distribution": {
+          "ACCEPT": 62,
+          "REWRITE": 8,
+          "SUPPORT_ONLY": 2
+        },
+        "interpretation_limit": "positive admitted-template use; gold is mostly release-side and not a robustness stress test.",
+        "label": "R4_B",
+        "release_side_accuracy_count": 72,
+        "release_side_accuracy_rate": "1.000",
+        "rows": 72
+      }
+    ],
+    "evidence_class": "PUBLIC_PAPER_POSITIVE_ADMITTED_TEMPLATE_DIAGNOSTIC",
+    "family_rows": [
+      {
+        "action_accuracy_rate": "0.958",
+        "dangerous_false_release_count": 0,
+        "family": "llm_evaluation",
+        "label": "R4_A",
+        "release_side_accuracy_rate": "1.000",
+        "rows": 24
+      },
+      {
+        "action_accuracy_rate": "1.000",
+        "dangerous_false_release_count": 0,
+        "family": "resource_documentation",
+        "label": "R4_A",
+        "release_side_accuracy_rate": "1.000",
+        "rows": 24
+      },
+      {
+        "action_accuracy_rate": "0.958",
+        "dangerous_false_release_count": 0,
+        "family": "uncertainty_calibration",
+        "label": "R4_A",
+        "release_side_accuracy_rate": "1.000",
+        "rows": 24
+      },
+      {
+        "action_accuracy_rate": "0.917",
+        "dangerous_false_release_count": 0,
+        "family": "llm_evaluation",
+        "label": "R4_B",
+        "release_side_accuracy_rate": "1.000",
+        "rows": 24
+      },
+      {
+        "action_accuracy_rate": "1.000",
+        "dangerous_false_release_count": 0,
+        "family": "resource_documentation",
+        "label": "R4_B",
+        "release_side_accuracy_rate": "1.000",
+        "rows": 24
+      },
+      {
+        "action_accuracy_rate": "0.958",
+        "dangerous_false_release_count": 0,
+        "family": "uncertainty_calibration",
+        "label": "R4_B",
+        "release_side_accuracy_rate": "1.000",
+        "rows": 24
+      }
+    ],
+    "interpretation_limit": "bounded positive-use evidence; dominated by acceptable/release-side rows, so pair with the boundary replay.",
+    "name": "positive_realpaper_use",
+    "stored_summary_path": "artifact/validation_ladder_20260607/positive_realpaper_router_aggregate_summary_20260605.json"
+  },
+  "reportability_boundary_replay": {
+    "candidate_packet": "artifact/real_paper_review_candidate_claims_v318b_20260606.csv",
+    "candidate_release_safety_accuracy": "0.958",
+    "direct_command": "python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo",
+    "display_action_accuracy": "0.806",
+    "evidence_class": "PUBLIC_SAFE_BOUNDARY_REPLAY",
+    "family_distribution": {
+      "llm_evaluation": 24,
+      "resource_documentation": 24,
+      "uncertainty_calibration": 24
+    },
+    "interpretation_limit": "boundary replay over supplied claims; not autonomous full-paper review or human utility.",
+    "name": "reportability_boundary_replay",
+    "reference_outcomes": "artifact/real_paper_review_reference_outcomes_v318b_20260606.csv",
+    "rows": 72,
+    "source_papers": 18,
+    "unsafe_false_releases": 3
+  },
+  "stage": "VALIDATION_LADDER_PUBLIC_SAFE_REPLAY",
+  "status": "PASS",
+  "template_rule_stress": {
+    "A_B_action_agreement": "1.000",
+    "A_B_action_kappa": "1.000",
+    "A_B_span_found_kappa": "1.000",
+    "A_vs_proxy_accuracy": "1.000",
+    "B_vs_proxy_accuracy": "1.000",
+    "action_counts_proxy": {
+      "ACCEPT": 2,
+      "REJECT_OR_OUT_OF_SCOPE": 2,
+      "REWRITE": 12,
+      "SUPPORT_ONLY": 2,
+      "SUPPRESS": 12,
+      "WEAKEN": 12
+    },
+    "dangerous_false_release_A_count": 0,
+    "dangerous_false_release_B_count": 0,
+    "evidence_class": "CROSS_MODEL_LLM_PROXY_DIAGNOSTIC_ONLY",
+    "interpretation_limit": "LLM-proxy diagnostic only; not human-independent reliability or human utility.",
+    "name": "template_rule_stress",
+    "rows": 42,
+    "stored_summary_path": "artifact/validation_ladder_20260607/template_rule_stress_summary_20260605.json"
+  }
+}

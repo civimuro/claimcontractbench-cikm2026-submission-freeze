@@ -57,9 +57,9 @@ Expected output for the surface validator:
 PASS release surface validation
 root: /path/to/release/root
 manifest: artifact/release_manifest_20260520.csv
-rows: 133
-required_files: 133
-public_safe_rows: 133
+rows: 150
+required_files: 150
+public_safe_rows: 150
 raw_data_rows: 0
 ```
 
@@ -82,6 +82,16 @@ conservative_candidate_safety_accuracy: 0.958
 conservative_display_action_accuracy: 0.806
 conservative_unsafe_false_releases: 3
 ```
+
+For paper-facing validation evidence, run:
+
+```bash
+python3 src/claimcontractbench.py validation-ladder \
+  --output /tmp/claimcontractbench_validation_ladder
+```
+
+This recomputes the staged template-rule stress, positive real-paper use, and
+boundary replay diagnostics from public-safe release files.
 
 This uses supplied candidate claims from 18 public arXiv papers across three
 validated template families. It is not automatic full-paper review, human

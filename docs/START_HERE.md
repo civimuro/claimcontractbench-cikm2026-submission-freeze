@@ -37,6 +37,16 @@ Open:
 This path needs no LLM, no raw data, no GPU, no network access, and no third
 party Python packages.
 
+If you are checking the paper's validation numbers rather than just trying the
+tool, run:
+
+```bash
+python3 src/claimcontractbench.py validation-ladder \
+  --output /tmp/claimcontractbench_validation_ladder
+```
+
+This is a reviewer/developer evidence path, not the shortest first-use path.
+
 ## Path B: LLM-Assisted Trial
 
 Run one command:
