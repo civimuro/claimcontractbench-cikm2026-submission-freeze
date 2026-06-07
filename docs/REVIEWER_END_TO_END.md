@@ -35,7 +35,7 @@ Then either download the repository ZIP from GitHub or clone it:
 ```bash
 git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git
 cd claimcontractbench-cikm2026-submission-freeze
-git checkout v0.1.10-cikm2026-reviewer-closure
+git checkout v0.1.11-cikm2026-reviewer-closure
 ```
 
 If you use the ZIP button instead of git, unzip the file and open a terminal in
@@ -66,9 +66,9 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 151
-required_files: 151
-public_safe_rows: 151
+rows: 160
+required_files: 160
+public_safe_rows: 160
 raw_data_rows: 0
 
 PASS real-paper review demo
@@ -92,7 +92,7 @@ Expected smoke result:
 
 ```text
 PASS release smoke suite
-positive_checks: 15
+positive_checks: 17
 negative_fail_closed_checks: 5
 ```
 
@@ -117,6 +117,11 @@ Open:
 This recomputes the 42-row template-rule stress diagnostic, the 72-row positive
 real-paper use diagnostic, and the 72-row boundary replay from public-safe
 release files. It is not a human-utility study.
+
+If you want to rerun the first two diagnostics with a fresh LLM or human
+annotator, use `docs/VALIDATION_RERUN_PACKETS.md`. Those reruns are stability
+probes against locked references, not exact reproduction of the original LLM
+outputs.
 
 ## Step 4: Interpret The Result
 

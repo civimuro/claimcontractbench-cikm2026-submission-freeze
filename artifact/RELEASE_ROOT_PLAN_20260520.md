@@ -9,7 +9,7 @@ raw datasets.
 Current status note: this file began as the 2026-05-20 release-root plan and is
 kept as a planning/provenance document. The canonical current file inventory is
 `artifact/release_manifest_20260520.csv`; the manifest-controlled public surface
-currently contains 151 required public-safe rows, including the later
+currently contains 160 required public-safe rows, including the later
 real-paper template-review addendum.
 
 ## 1. Release Root
@@ -164,9 +164,9 @@ Expected result:
 
 ```text
 PASS release surface validation
-rows: 151
-required_files: 151
-public_safe_rows: 151
+rows: 160
+required_files: 160
+public_safe_rows: 160
 raw_data_rows: 0
 PASS projection smoke runner
 smoke_rows: 5

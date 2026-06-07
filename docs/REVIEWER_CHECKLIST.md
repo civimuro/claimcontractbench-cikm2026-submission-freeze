@@ -28,13 +28,13 @@ Expected high-level signal:
 
 ```text
 PASS release surface validation
-rows: 151
-required_files: 151
-public_safe_rows: 151
+rows: 160
+required_files: 160
+public_safe_rows: 160
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 15
+positive_checks: 17
 negative_fail_closed_checks: 5
 ```
 

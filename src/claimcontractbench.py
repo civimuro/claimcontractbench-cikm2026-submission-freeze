@@ -118,6 +118,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     print("- python3 src/claimcontractbench.py templates")
     print("- python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo")
     print("- python3 src/claimcontractbench.py validation-ladder --output /tmp/claimcontractbench_validation_ladder")
+    print("- python3 src/claimcontractbench.py score-rerun --rung positive-realpaper --input fresh.csv --output /tmp/score")
     print("- python3 src/claimcontractbench.py agent-guide")
     print("- python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv")
     print("- python3 src/claimcontractbench.py admission-guide")
@@ -139,7 +140,7 @@ def command_reviewer_flow(args: argparse.Namespace) -> int:
     print("1. Get the frozen snapshot:")
     print("   git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git")
     print("   cd claimcontractbench-cikm2026-submission-freeze")
-    print("   git checkout v0.1.10-cikm2026-reviewer-closure")
+    print("   git checkout v0.1.11-cikm2026-reviewer-closure")
     print("")
     print("2. Run the no-LLM reviewer trial:")
     print("   python3 src/claimcontractbench.py try-human")
@@ -295,6 +296,23 @@ def command_validation_ladder(args: argparse.Namespace) -> int:
         script(root, "run_validation_ladder.py"),
         "--root",
         str(root),
+        "--output",
+        args.output,
+    ]
+    return run(root, command)
+
+
+def command_score_rerun(args: argparse.Namespace) -> int:
+    root = resolve(Path.cwd(), args.root)
+    command = [
+        sys.executable,
+        script(root, "score_validation_rerun.py"),
+        "--root",
+        str(root),
+        "--rung",
+        args.rung,
+        "--input",
+        args.input,
         "--output",
         args.output,
     ]
@@ -863,6 +881,21 @@ def build_parser() -> argparse.ArgumentParser:
         help="Report output directory.",
     )
     validation_ladder.set_defaults(func=command_validation_ladder)
+
+    score_rerun = subparsers.add_parser(
+        "score-rerun",
+        help="Score a fresh validation-ladder rerun CSV against frozen references.",
+    )
+    add_subcommand_root(score_rerun)
+    score_rerun.add_argument(
+        "--rung",
+        choices=["template-stress", "positive-realpaper"],
+        required=True,
+        help="Which rerun packet to score.",
+    )
+    score_rerun.add_argument("--input", required=True, help="Fresh rerun CSV to score.")
+    score_rerun.add_argument("--output", required=True, help="Output directory.")
+    score_rerun.set_defaults(func=command_score_rerun)
 
     try_human = subparsers.add_parser(
         "try-human",

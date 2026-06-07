@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.11-cikm2026-reviewer-closure - Validation Rerun Packet Closure
+
+- Added public-safe fresh-rerun packets for the first two validation-ladder
+  rungs: template-rule stress and positive real-paper use.
+- Added `docs/VALIDATION_RERUN_PACKETS.md` and rerun protocols explaining the
+  distinction between exact frozen replay and fresh LLM/human reruns.
+- Added `python3 src/claimcontractbench.py score-rerun` and
+  `src/score_validation_rerun.py` so fresh rerun outputs can be scored against
+  frozen public-safe reference labels.
+- Added the positive real-paper source pool, candidate packet, and locked
+  source-only reference labels to the manifest-controlled release surface.
+- Synchronized the release manifest to 160 required public-safe files.
+
 ## v0.1.10-cikm2026-reviewer-closure - Excerpt And Label Transparency Closure
 
 - Clarified that third-party source titles, URLs, identifiers, and short

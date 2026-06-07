@@ -31,13 +31,22 @@ FILES = {
     "stress_b": f"{LADDER_DIR}/template_rule_stress_channel_B_20260605.csv",
     "stress_c": f"{LADDER_DIR}/template_rule_stress_proxy_adjudication_20260605.csv",
     "stress_summary": f"{LADDER_DIR}/template_rule_stress_summary_20260605.json",
+    "stress_rerun_prompt": f"{LADDER_DIR}/template_rule_stress_rerun_prompt_20260605.txt",
+    "stress_output_schema": f"{LADDER_DIR}/template_rule_stress_output_schema_20260605.md",
+    "stress_rerun_protocol": f"{LADDER_DIR}/template_rule_stress_rerun_protocol_20260607.md",
     "positive_a": f"{LADDER_DIR}/positive_realpaper_router_R4_A_by_row_20260605.csv",
     "positive_b": f"{LADDER_DIR}/positive_realpaper_router_R4_B_by_row_20260605.csv",
     "positive_summary": f"{LADDER_DIR}/positive_realpaper_router_aggregate_summary_20260605.json",
     "positive_baseline": f"{LADDER_DIR}/positive_realpaper_failure_baseline_note_20260605.md",
     "positive_closeout": f"{LADDER_DIR}/positive_realpaper_validation_closeout_20260605.md",
+    "positive_rerun_candidates": f"{LADDER_DIR}/positive_realpaper_rerun_candidate_packet_20260605.csv",
+    "positive_source_pool": f"{LADDER_DIR}/positive_realpaper_source_pool_20260605.csv",
+    "positive_locked_reference": f"{LADDER_DIR}/positive_realpaper_locked_reference_20260605.csv",
+    "positive_rerun_protocol": f"{LADDER_DIR}/positive_realpaper_rerun_protocol_20260607.md",
     "boundary_candidates": "artifact/real_paper_review_candidate_claims_v318b_20260606.csv",
     "boundary_reference": "artifact/real_paper_review_reference_outcomes_v318b_20260606.csv",
+    "rerun_packets_doc": "docs/VALIDATION_RERUN_PACKETS.md",
+    "rerun_scorer": "src/score_validation_rerun.py",
 }
 
 LABELS = [
@@ -259,8 +268,14 @@ def summarize_positive_realpaper(root: Path, checks: list[dict[str, object]]) ->
         "R4_A": read_csv(resolve(root, FILES["positive_a"])),
         "R4_B": read_csv(resolve(root, FILES["positive_b"])),
     }
+    rerun_candidates = read_csv(resolve(root, FILES["positive_rerun_candidates"]))
+    locked_reference = read_csv(resolve(root, FILES["positive_locked_reference"]))
+    source_pool = read_csv(resolve(root, FILES["positive_source_pool"]))
     stored = json.loads(resolve(root, FILES["positive_summary"]).read_text(encoding="utf-8"))
     stored_by_label = {row["label"]: row for row in stored.get("summaries", [])}
+    candidate_ids = [row["row_id"] for row in rerun_candidates]
+    reference_ids = [row["row_id"] for row in locked_reference]
+    selected_sources = {row["source_id"] for row in rerun_candidates}
     summaries: list[dict[str, object]] = []
     family_rows: list[dict[str, object]] = []
     for label, rows in rows_by_label.items():
@@ -305,6 +320,20 @@ def summarize_positive_realpaper(root: Path, checks: list[dict[str, object]]) ->
             and str(dangerous) == str(stored_one.get("dangerous_false_release_count")),
             f"action={action}/{len(rows)}; release={release}/{len(rows)}; dangerous={dangerous}",
         )
+    add_check(
+        checks,
+        "VL-03-RERUN-IDS",
+        "positive real-paper rerun packet aligns with locked reference",
+        candidate_ids == reference_ids and len(candidate_ids) == 72,
+        f"candidates={len(candidate_ids)} reference={len(reference_ids)}",
+    )
+    add_check(
+        checks,
+        "VL-03-RERUN-SOURCES",
+        "positive real-paper source pool covers rerun packet sources",
+        selected_sources.issubset({row["source_id"] for row in source_pool}),
+        f"selected_sources={len(selected_sources)} source_pool={len(source_pool)}",
+    )
     return {
         "name": "positive_realpaper_use",
         "evidence_class": "PUBLIC_PAPER_POSITIVE_ADMITTED_TEMPLATE_DIAGNOSTIC",
@@ -312,6 +341,9 @@ def summarize_positive_realpaper(root: Path, checks: list[dict[str, object]]) ->
         "family_rows": family_rows,
         "stored_summary_path": FILES["positive_summary"],
         "baseline_note_path": FILES["positive_baseline"],
+        "fresh_rerun_packet": FILES["positive_rerun_candidates"],
+        "fresh_rerun_protocol": FILES["positive_rerun_protocol"],
+        "fresh_rerun_scorer": "python3 src/claimcontractbench.py score-rerun --rung positive-realpaper --input fresh.csv --output /tmp/score",
         "interpretation_limit": "bounded positive-use evidence; dominated by acceptable/release-side rows, so pair with the boundary replay.",
     }
 
@@ -417,6 +449,11 @@ def build_report(summary: dict[str, object], checks: list[dict[str, object]]) ->
         "- `artifact/validation_ladder_20260607/template_rule_stress_*.csv/json`: blind packet, A/B/C outputs, and stored template-rule-stress summary.",
         "- `artifact/validation_ladder_20260607/positive_realpaper_*.csv/json/md`: positive public-paper run rows, aggregate scores, and baseline caveat.",
         "- `artifact/real_paper_review_candidate_claims_v318b_20260606.csv` and `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`: current boundary replay packet and outcomes.",
+        "- `docs/VALIDATION_RERUN_PACKETS.md`: fresh-rerun protocols for rerunning the first two rungs without seeing reference labels first.",
+        "",
+        "## Replay Versus Rerun",
+        "",
+        "This command performs exact frozen replay: it recomputes metrics from repository files. Fresh LLM reruns are different. They should use the rerun protocols and are scored afterward with `score-rerun`; new LLM outputs are stability probes, not guaranteed identical reproductions.",
         "",
         "## Safe Interpretation",
         "",

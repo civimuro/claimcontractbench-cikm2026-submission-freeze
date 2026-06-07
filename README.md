@@ -16,7 +16,7 @@ one complete path instead of the full menu:
 ```bash
 git clone https://github.com/civimuro/claimcontractbench-cikm2026-submission-freeze.git
 cd claimcontractbench-cikm2026-submission-freeze
-git checkout v0.1.10-cikm2026-reviewer-closure
+git checkout v0.1.11-cikm2026-reviewer-closure
 python3 src/claimcontractbench.py reviewer-flow
 python3 src/claimcontractbench.py try-human
 ```
@@ -74,6 +74,7 @@ workflow, `docs/START_HERE.md` if you want the shortest guided path, or
 | Understand the outputs as a human | `python3 src/claimcontractbench.py human-guide` | A guided map to the reports, examples, limits, and FAQ. |
 | Try the real-paper template demo | `python3 src/claimcontractbench.py realpaper-demo --output /tmp/claimcontractbench_realpaper_demo` | A 72-row public-paper claim review demo over three validated template families. |
 | Check the paper-facing validation ladder | `python3 src/claimcontractbench.py validation-ladder --output /tmp/claimcontractbench_validation_ladder` | Recomputed template-stress, positive real-paper, and boundary-replay summaries with explicit limits. |
+| Rerun validation packets | `docs/VALIDATION_RERUN_PACKETS.md` and `python3 src/claimcontractbench.py score-rerun` | Clean public-safe inputs and scoring for fresh LLM/human reruns of the first two ladder rungs. |
 | Check excerpt and label boundaries | `docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md` | Why PDFs/full text are excluded, how short excerpts are treated, and how correctness is defined. |
 | Try it with an LLM-assisted packet | `python3 src/claimcontractbench.py templates` then `python3 src/claimcontractbench.py init-packet --output claim_packets/my_claim_packet.csv` | A conservative route for drafting candidate claims, followed by deterministic checks. |
 | Add a new claim family | `python3 src/claimcontractbench.py admission-guide` | A typed template-admission workflow instead of loose template reuse. |
@@ -98,13 +99,13 @@ Expected high-level result:
 
 ```text
 PASS release surface validation
-rows: 151
-required_files: 151
-public_safe_rows: 151
+rows: 160
+required_files: 160
+public_safe_rows: 160
 raw_data_rows: 0
 
 PASS release smoke suite
-positive_checks: 15
+positive_checks: 17
 negative_fail_closed_checks: 5
 ```
 
@@ -172,6 +173,10 @@ Then open `/tmp/claimcontractbench_validation_ladder/validation_ladder_report.md
 This route is for reviewers and tool developers; it is not the shortest ordinary
 user trial.
 
+To rerun the first two validation-ladder tasks with a fresh LLM or human
+annotator, read `docs/VALIDATION_RERUN_PACKETS.md`. Fresh reruns are stability
+probes, not exact reproduction of the original LLM outputs.
+
 For a clean LLM packet, run:
 
 ```bash
@@ -207,7 +212,8 @@ The release includes:
   papers, 72 supplied candidate claims, three validated template families,
   and a replay/scoring runner;
 - a public-safe validation ladder connecting template-rule stress, positive
-  real-paper use, and boundary replay to recomputable release files;
+  real-paper use, and boundary replay to recomputable release files, plus
+  fresh-rerun packets for the first two rungs;
 - an excerpt and label policy explaining why raw caches/PDFs are excluded and
   how each validation rung defines correctness;
 - a no-LLM human trial command and a gold-free LLM trial-packet command;
@@ -326,7 +332,7 @@ See `docs/TEMPLATE_ADMISSION.md`.
 
 This snapshot is prepared for a CIKM 2026 Resource Paper submission. The
 current guided-trial tag is
-`v0.1.10-cikm2026-reviewer-closure`. Earlier tags remain part of the release
+`v0.1.11-cikm2026-reviewer-closure`. Earlier tags remain part of the release
 history: `v0.1.0-cikm2026-submission` is the initial frozen submission
 snapshot, `v0.1.1-cikm2026-real-paper-template-addendum` adds the first public
 real-paper template addendum, `v0.1.2-cikm2026-real-paper-template-addendum`
@@ -340,9 +346,10 @@ aligns the first-contact template command and GitHub release surface; and
 `v0.1.8-cikm2026-reviewer-closure` clarifies the real-paper demo naming and
 aligns the smoke-check count; `v0.1.9-cikm2026-reviewer-closure` adds a
 public-safe validation ladder for template-rule stress, positive real-paper
-use, and boundary replay evidence; and
-`v0.1.10-cikm2026-reviewer-closure` clarifies the third-party excerpt license
-boundary and per-rung correctness definitions. A Zenodo archive may be
+use, and boundary replay evidence; `v0.1.10-cikm2026-reviewer-closure`
+clarifies the third-party excerpt license boundary and per-rung correctness
+definitions; and `v0.1.11-cikm2026-reviewer-closure` adds public-safe rerun
+packets and a scorer for fresh validation-ladder reruns. A Zenodo archive may be
 added for the public submission snapshot, but this repository does not claim a
 public DOI until the Zenodo record resolves. After publication, cite the tagged
 GitHub release and the Zenodo archive together.
@@ -358,4 +365,5 @@ See:
 - `LICENSE.md`
 - `docs/DATA_AND_LICENSES.md`
 - `docs/PUBLIC_EXCERPT_AND_LABEL_POLICY.md`
+- `docs/VALIDATION_RERUN_PACKETS.md`
 - `artifact/PUBLIC_RELEASE_CHECKLIST_20260527.md`

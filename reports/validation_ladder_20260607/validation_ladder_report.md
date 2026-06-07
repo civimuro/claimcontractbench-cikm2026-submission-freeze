@@ -21,6 +21,8 @@ This report connects paper-facing validation numbers to public-safe files in the
 | VL-02 template stress recomputed metrics match stored summary | PASS | recomputed_kappa=1.000; stored_kappa=1.000 |
 | VL-03-R4_A positive real-paper R4_A recomputes aggregate metrics | PASS | action=70/72; release=72/72; dangerous=0 |
 | VL-03-R4_B positive real-paper R4_B recomputes aggregate metrics | PASS | action=69/72; release=72/72; dangerous=0 |
+| VL-03-RERUN-IDS positive real-paper rerun packet aligns with locked reference | PASS | candidates=72 reference=72 |
+| VL-03-RERUN-SOURCES positive real-paper source pool covers rerun packet sources | PASS | selected_sources=18 source_pool=27 |
 | VL-04 boundary replay candidate and reference row ids align | PASS | candidates=72 reference=72 |
 | VL-05 boundary replay exposes remaining unsafe false releases | PASS | unsafe_false_releases=3 |
 
@@ -29,6 +31,11 @@ This report connects paper-facing validation numbers to public-safe files in the
 - `artifact/validation_ladder_20260607/template_rule_stress_*.csv/json`: blind packet, A/B/C outputs, and stored template-rule-stress summary.
 - `artifact/validation_ladder_20260607/positive_realpaper_*.csv/json/md`: positive public-paper run rows, aggregate scores, and baseline caveat.
 - `artifact/real_paper_review_candidate_claims_v318b_20260606.csv` and `artifact/real_paper_review_reference_outcomes_v318b_20260606.csv`: current boundary replay packet and outcomes.
+- `docs/VALIDATION_RERUN_PACKETS.md`: fresh-rerun protocols for rerunning the first two rungs without seeing reference labels first.
+
+## Replay Versus Rerun
+
+This command performs exact frozen replay: it recomputes metrics from repository files. Fresh LLM reruns are different. They should use the rerun protocols and are scored afterward with `score-rerun`; new LLM outputs are stability probes, not guaranteed identical reproductions.
 
 ## Safe Interpretation
 

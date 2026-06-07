@@ -31,6 +31,13 @@ arXiv source pages:
 - no excerpt is longer than 40 words;
 - no PDF or full paper text is included.
 
+The positive real-paper rerun packet follows the same public-safe style:
+
+- maximum excerpt length: 38 words;
+- average excerpt length: 22.2 words;
+- no excerpt is longer than 40 words;
+- no PDF or full paper text is included.
+
 The template-rule stress packet stores 42 short source snippets:
 
 - maximum snippet length: 19 words;
@@ -62,6 +69,16 @@ for auditability, and by not claiming to relicense them.
 
 The validation ladder has three different notions of "correct." They should
 not be collapsed into one accuracy claim.
+
+There is also a reproducibility distinction:
+
+- exact frozen replay recomputes stored metrics from repository files;
+- fresh LLM-proxy rerun repeats the task with public-safe inputs and may differ
+  from the frozen labels because model calls are not deterministic scientific
+  instruments.
+
+Fresh reruns should be reported as stability probes against the locked
+reference, not as exact replication.
 
 ### Rung 1: Template-Rule Stress
 
@@ -138,6 +155,20 @@ release makes this auditable by exposing:
 - exact commands that recompute the aggregate metrics.
 
 The release does not claim that these labels are final human expert truth.
+
+## Why The First Two Rungs Now Have Rerun Packets
+
+The first two rungs originally exposed frozen score files. The current release
+also exposes public-safe rerun inputs:
+
+- Stage 1: blind rows, clean annotator prompt, and output schema.
+- Stage 2: source pool, source URLs, short excerpts, candidate claims, template
+  cards, clean rerun protocol, and locked source-only reference labels for
+  scoring after the fresh run.
+
+This does not make LLM calls exactly reproducible. It makes the task auditable:
+another reader can run a fresh model or human annotation pass on the same
+public-safe rows, then score and compare the result.
 
 ## What To Do If More Transparency Is Needed
 

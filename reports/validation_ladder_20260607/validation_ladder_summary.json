@@ -1,6 +1,6 @@
 {
   "checks_failed": 0,
-  "checks_passed": 7,
+  "checks_passed": 9,
   "positive_realpaper_use": {
     "baseline_note_path": "artifact/validation_ladder_20260607/positive_realpaper_failure_baseline_note_20260605.md",
     "conditions": [
@@ -86,6 +86,9 @@
         "rows": 24
       }
     ],
+    "fresh_rerun_packet": "artifact/validation_ladder_20260607/positive_realpaper_rerun_candidate_packet_20260605.csv",
+    "fresh_rerun_protocol": "artifact/validation_ladder_20260607/positive_realpaper_rerun_protocol_20260607.md",
+    "fresh_rerun_scorer": "python3 src/claimcontractbench.py score-rerun --rung positive-realpaper --input fresh.csv --output /tmp/score",
     "interpretation_limit": "bounded positive-use evidence; dominated by acceptable/release-side rows, so pair with the boundary replay.",
     "name": "positive_realpaper_use",
     "stored_summary_path": "artifact/validation_ladder_20260607/positive_realpaper_router_aggregate_summary_20260605.json"

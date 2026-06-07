@@ -415,6 +415,40 @@ def main() -> int:
             validation_ladder.stdout,
             "unsafe_false_releases=3",
         )
+        template_rerun_score = run_command(
+            "template-stress rerun scorer",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "score-rerun",
+                "--rung",
+                "template-stress",
+                "--input",
+                "artifact/validation_ladder_20260607/template_rule_stress_channel_A_20260605.csv",
+                "--output",
+                str(temp_root / "template_rerun_score"),
+            ],
+        )
+        assert_contains("template-stress rerun scorer", template_rerun_score.stdout, "PASS validation rerun score")
+        assert_contains("template-stress rerun scorer", template_rerun_score.stdout, "action_accuracy: 1.000")
+        positive_rerun_score = run_command(
+            "positive real-paper rerun scorer",
+            root,
+            [
+                sys.executable,
+                "src/claimcontractbench.py",
+                "score-rerun",
+                "--rung",
+                "positive-realpaper",
+                "--input",
+                "artifact/validation_ladder_20260607/positive_realpaper_locked_reference_20260605.csv",
+                "--output",
+                str(temp_root / "positive_rerun_score"),
+            ],
+        )
+        assert_contains("positive real-paper rerun scorer", positive_rerun_score.stdout, "PASS validation rerun score")
+        assert_contains("positive real-paper rerun scorer", positive_rerun_score.stdout, "release_side_accuracy: 1.000")
         human_trial = run_command(
             "human trial path",
             root,
@@ -577,7 +611,7 @@ def main() -> int:
         run_negative_packets(root, temp_root)
 
     print("PASS release smoke suite")
-    print("positive_checks: 15")
+    print("positive_checks: 17")
     print("negative_fail_closed_checks: 5")
     return 0
 
